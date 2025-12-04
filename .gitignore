@@ -7,15 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependencies & build output
+node_modules/
+dist/
+dist-ssr/
+.vercel/
 *.local
 
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
@@ -23,4 +25,13 @@ dist-ssr
 *.sln
 *.sw?
 
-agents.md
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Coverage reports
+coverage/
+
+# Documentation not for deployment
+public/agents.md
