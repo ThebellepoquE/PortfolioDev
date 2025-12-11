@@ -37,7 +37,7 @@ function ProjectCard({ title, description, url, techStack }: ProjectCardProps) {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-8 py-4 sm:px-12 sm:py-5 md:px-16 md:py-6 font-semibold text-sm sm:text-base text-[#F5F5F5] bg-[#FF1493] hover:bg-[#FF1493]/80 transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FFF01F]"
+          className="px-8 py-4 sm:px-12 sm:py-5 md:px-16 md:py-6 font-semibold text-sm sm:text-base text-black bg-[#FF1493] hover:bg-[#FF1493]/80 transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FFF01F]"
         >
           Visitar Proyecto →
         </a>

@@ -133,7 +133,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 sm:py-6 md:py-8 mt-2 sm:mt-4 font-bold text-sm sm:text-base text-white bg-[#FF1493] hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFF01F]"
+              className="w-full py-4 sm:py-6 md:py-8 mt-2 sm:mt-4 font-bold text-sm sm:text-base text-black bg-[#FF1493] hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFF01F]"
             >
               {isSubmitting ? (
                 <span className="flex items-center justify-center gap-2">

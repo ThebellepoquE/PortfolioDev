@@ -67,7 +67,7 @@ export function Hero() {
 
           {/* Tags de stack */}
           <div className="flex flex-wrap gap-2 sm:gap-3 justify-center pt-2 sm:pt-3">
-            <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#FF1493] text-white font-medium text-xs sm:text-sm">Python</span>
+            <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#FF1493] text-black font-medium text-xs sm:text-sm">Python</span>
             <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#FFF01F] text-black font-medium text-xs sm:text-sm">JavaScript</span>
             <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#00FF00] text-black font-medium text-xs sm:text-sm">React</span>
             <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#FF1493]/20 text-[#FF1493] font-medium text-xs sm:text-sm">MySQL</span>
