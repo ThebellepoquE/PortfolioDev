@@ -1,8 +1,11 @@
+import { lazy, Suspense } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Projects } from './components/Projects';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
+
+// Lazy load components below the fold
+const Projects = lazy(() => import('./components/Projects').then(m => ({ default: m.Projects })));
+const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 
 /** Portfolio de Ione - @thebellepoque */
 function App() {
@@ -11,10 +14,14 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <Projects />
-        <Contact />
+        <Suspense fallback={<div className="min-h-[50vh]" />}>
+          <Projects />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
