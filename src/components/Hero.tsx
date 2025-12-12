@@ -18,7 +18,7 @@ export function Hero() {
           <div className="relative">
             {/* Blur effect behind photo */}
             <div
-              className="absolute inset-0 rounded-full blur-2xl sm:blur-3xl opacity-70"
+              className="absolute inset-0 rounded-full blur-3xl opacity-70"
               style={{
                 background: 'linear-gradient(135deg, #00FF00 0%, #FF1493 100%)',
                 transform: 'scale(1.3)',
