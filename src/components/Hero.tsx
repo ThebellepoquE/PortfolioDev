@@ -15,27 +15,37 @@ export function Hero() {
       <div className="flex flex-col xl:flex-row items-center justify-center gap-8 sm:gap-10 md:gap-12 xl:gap-24 w-full max-w-5xl">
         {/* Columna izquierda - Foto */}
         <div className="flex items-center justify-center lg:flex-shrink-0">
-          <div
-            className="p-1 rounded-full hover:scale-105 transition-all duration-300"
-            style={{
-              background: 'linear-gradient(135deg, #00FF00 0%, #00FF00 30%, #FF1493 70%, #FF1493 100%)',
-              boxShadow: '0 0 40px rgba(255,20,147,0.9), 0 0 80px rgba(255,20,147,0.6)',
-            }}
-          >
-            <div className="w-[180px] h-[180px] md:w-[220px] md:h-[220px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
-              <img
-                src="/profile-200.webp"
-                srcSet="/profile-200.webp 200w, /profile.webp 433w"
-                sizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
-                alt="Ione - @thebellepoque"
-                width={260}
-                height={260}
-                className="w-full h-full object-contain"
-                style={{ objectPosition: 'center calc(50% + 5px)' }}
-                loading="eager"
-                decoding="sync"
-                fetchPriority="high"
-              />
+          <div className="relative">
+            {/* Blur effect behind photo */}
+            <div
+              className="absolute inset-0 rounded-full blur-2xl sm:blur-3xl opacity-70"
+              style={{
+                background: 'linear-gradient(135deg, #00FF00 0%, #FF1493 100%)',
+                transform: 'scale(1.3)',
+              }}
+            />
+            <div
+              className="relative p-1 rounded-full hover:scale-105 transition-all duration-300"
+              style={{
+                background: 'linear-gradient(135deg, #00FF00 0%, #00FF00 30%, #FF1493 70%, #FF1493 100%)',
+                boxShadow: '0 0 40px rgba(255,20,147,0.9), 0 0 80px rgba(255,20,147,0.6)',
+              }}
+            >
+              <div className="w-[180px] h-[180px] md:w-[220px] md:h-[220px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
+                <img
+                  src="/profile-200.webp"
+                  srcSet="/profile-200.webp 200w, /profile.webp 433w"
+                  sizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
+                  alt="Ione - @thebellepoque"
+                  width={260}
+                  height={260}
+                  className="w-full h-full object-contain"
+                  style={{ objectPosition: 'center calc(50% + 5px)' }}
+                  loading="eager"
+                  decoding="sync"
+                  fetchPriority="high"
+                />
+              </div>
             </div>
           </div>
         </div>
