@@ -16,19 +16,20 @@ export function Hero() {
         {/* Columna izquierda - Foto */}
         <div className="flex items-center justify-center lg:flex-shrink-0">
           <div className="relative">
-            {/* Blur effect behind photo */}
+            {/* Glow effect - usando box-shadow para compatibilidad cross-browser */}
             <div
-              className="absolute inset-0 rounded-full blur-3xl opacity-70"
+              className="absolute rounded-full"
               style={{
-                background: 'linear-gradient(135deg, #00FF00 0%, #FF1493 100%)',
-                transform: 'scale(1.3)',
+                inset: '-30px',
+                background: 'radial-gradient(circle, rgba(0,255,0,0.4) 0%, rgba(255,20,147,0.4) 50%, transparent 70%)',
+                boxShadow: '0 0 60px 30px rgba(0,255,0,0.3), 0 0 100px 60px rgba(255,20,147,0.3)',
               }}
             />
             <div
               className="relative p-1 rounded-full hover:scale-105 transition-all duration-300"
               style={{
                 background: 'linear-gradient(135deg, #00FF00 0%, #00FF00 30%, #FF1493 70%, #FF1493 100%)',
-                boxShadow: '0 0 40px rgba(255,20,147,0.9), 0 0 80px rgba(255,20,147,0.6)',
+                boxShadow: '0 0 40px rgba(255,20,147,0.9), 0 0 80px rgba(255,20,147,0.6), 0 0 120px rgba(0,255,0,0.4)',
               }}
             >
               <div className="w-[180px] h-[180px] md:w-[220px] md:h-[220px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
