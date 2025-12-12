@@ -16,11 +16,20 @@ export function Hero() {
         {/* Columna izquierda - Foto */}
         <div className="flex items-center justify-center lg:flex-shrink-0">
           <div className="relative">
+            {/* Glow rosa - div separado para compatibilidad */}
+            <div
+              className="absolute top-1/2 left-1/2 w-[220px] h-[220px] md:w-[270px] md:h-[270px] lg:w-[320px] lg:h-[320px] rounded-full opacity-50 pointer-events-none"
+              style={{
+                transform: 'translate(-50%, -50%)',
+                background: '#FF1493',
+                filter: 'blur(40px)',
+                WebkitFilter: 'blur(40px)',
+              }}
+            />
             <div
               className="relative p-1 rounded-full hover:scale-105 transition-all duration-300"
               style={{
                 background: 'linear-gradient(135deg, #00FF00 0%, #00FF00 30%, #FF1493 70%, #FF1493 100%)',
-                boxShadow: '0 0 25px rgba(255,20,147,0.6), 0 0 50px rgba(255,20,147,0.4)',
               }}
             >
               <div className="w-[180px] h-[180px] md:w-[220px] md:h-[220px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
