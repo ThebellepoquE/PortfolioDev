@@ -14,6 +14,7 @@ export function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ export function Contact() {
     if (!formData.name || !formData.email || !formData.message) return;
 
     setIsSubmitting(true);
+    setShowError(false);
 
     try {
       const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
@@ -42,9 +44,16 @@ export function Contact() {
         setShowSuccess(true);
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setShowSuccess(false), 3000);
+      } else {
+        const errorText = await response.text();
+        console.error('EmailJS error:', response.status, errorText);
+        setShowError(true);
+        setTimeout(() => setShowError(false), 5000);
       }
     } catch (error) {
       console.error('Error enviando email:', error);
+      setShowError(true);
+      setTimeout(() => setShowError(false), 5000);
     }
 
     setIsSubmitting(false);
@@ -155,6 +164,16 @@ export function Contact() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
                 <span className="text-[#00FF00] font-semibold">¡Mensaje enviado! Te responderé pronto 💖</span>
+              </div>
+            )}
+
+            {/* Mensaje de error */}
+            {showError && (
+              <div className="p-4 bg-red-500/20 border border-red-500 flex items-center gap-3">
+                <svg className="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span className="text-red-500 font-semibold">Error al enviar. Revisa la consola o contacta por GitHub.</span>
               </div>
             )}
           </div>
