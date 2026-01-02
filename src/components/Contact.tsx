@@ -45,13 +45,10 @@ export function Contact() {
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setShowSuccess(false), 3000);
       } else {
-        const errorText = await response.text();
-        console.error('EmailJS error:', response.status, errorText);
         setShowError(true);
         setTimeout(() => setShowError(false), 5000);
       }
     } catch (error) {
-      console.error('Error enviando email:', error);
       setShowError(true);
       setTimeout(() => setShowError(false), 5000);
     }
@@ -73,13 +70,13 @@ export function Contact() {
       <div className="flex flex-col items-center w-full max-w-[320px] sm:max-w-md md:max-w-lg lg:max-w-xl gap-6 sm:gap-8">
         {/* Título */}
         <h2 
-          className="text-3xl sm:text-4xl lg:text-5xl font-black title-neon text-center"
+          className="text-2xl sm:text-3xl lg:text-4xl font-black title-neon text-center"
         >
           ¿Montamos un Dream Team?
         </h2>
 
         <p 
-          className="text-[#F5F5F5]/85 text-center text-base sm:text-lg max-w-lg px-2 sm:px-0"
+          className="text-[#F5F5F5]/85 text-center text-sm sm:text-base max-w-lg px-2 sm:px-0"
         >
           ¿Tienes un proyecto en mente o quieres colaborar? <br />
           Escríbeme, estoy abierta a nuevas oportunidades y retos.
@@ -142,7 +139,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 sm:py-6 md:py-8 mt-2 sm:mt-4 font-bold text-sm sm:text-base text-black bg-[#FF1493] hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFF01F]"
+              className="w-full py-4 sm:py-6 md:py-8 mt-2 sm:mt-4 font-bold text-sm sm:text-base text-black bg-[#00FF00] rounded-full hover:shadow-[0_8px_30px_rgba(255,20,147,0.6)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFF01F]"
             >
               {isSubmitting ? (
                 <span className="flex items-center justify-center gap-2">

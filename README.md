@@ -101,12 +101,32 @@ Ajusta las dimensiones si cambias el diseño o sustituyes la imagen.
 - `src/components/Contact.test.tsx` cubre renderizado, estados del formulario, validaciones, accesibilidad y responsive.
 - Ejecuta `npm test -- --run` antes de desplegar; `npm run test:coverage` para reportes de cobertura (usa `@vitest/coverage-v8`).
 
+## 🔒 Seguridad
+
+### Headers HTTP (`vercel.json`)
+- **Content-Security-Policy**: Protección XSS, permite EmailJS API
+- **Strict-Transport-Security**: HSTS con `includeSubDomains` y `preload`
+- **X-Frame-Options**: Previene clickjacking
+- **X-Content-Type-Options**: Previene MIME sniffing
+- **X-XSS-Protection**: Protección adicional contra XSS
+
+### Edge Middleware (`api/_middleware.js`)
+- **Rate Limiting**: 100 requests/minuto por IP
+- **Bot Protection**: Bloquea scanners maliciosos (sqlmap, nikto, nmap, etc.)
+- **Whitelist**: Permite bots legítimos (Googlebot, Bingbot)
+
+### Otros
+- **security.txt**: RFC 9116 - Contacto para reportar vulnerabilidades
+- **DNSSEC**: Configurado a nivel de DNS provider
+- **Open Graph**: Meta tags para compartir en redes sociales
+
 ## 🌐 Despliegue sugerido
 
 1. Configurar repositorio Git (recomendado nuevo repo en vez del histórico Reflex).
 2. Añadir workflow de CI (ej. GitHub Actions) que ejecute `npm ci` + `npm test -- --run` + `npm run build`.
-3. Deploy en Netlify/Vercel (en Vercel selecciona framework Vite, build `npm run build`, output `dist`, y define `VITE_EMAILJS_*`).
-4. Monitoriza Lighthouse (especialmente LCP del Hero y tamaños de bundle) sobre el deploy final.
+3. Deploy en Vercel (framework Vite, build `npm run build`, output `dist`, y define `VITE_EMAILJS_*`).
+4. Vercel automáticamente aplicará los headers de `vercel.json` y el middleware de `api/_middleware.js`.
+5. Monitoriza Lighthouse (especialmente LCP del Hero y tamaños de bundle) sobre el deploy final.
 
 ---
 

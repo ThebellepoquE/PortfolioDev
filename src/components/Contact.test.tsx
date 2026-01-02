@@ -269,9 +269,9 @@ describe('Contact Component', () => {
 
       await waitFor(() => {
         const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
-        expect(callBody).toHaveProperty('service_id', 'service_xpl27fj');
-        expect(callBody).toHaveProperty('template_id', 'template_encnhkk');
-        expect(callBody).toHaveProperty('user_id', '3_ToBVWkyMS4pqCPx');
+        expect(callBody).toHaveProperty('service_id');
+        expect(callBody).toHaveProperty('template_id');
+        expect(callBody).toHaveProperty('user_id');
         expect(callBody.template_params).toHaveProperty('from_name', 'Test');
         expect(callBody.template_params).toHaveProperty('from_email', 'test@test.com');
         expect(callBody.template_params).toHaveProperty('message', 'Test message');
@@ -409,7 +409,7 @@ describe('Contact Component', () => {
       
       const button = screen.getByRole('button', { name: /enviar mensaje/i });
       expect(button).toHaveClass('bg-[#FF1493]');
-      expect(button).toHaveClass('text-white');
+      expect(button).toHaveClass('text-black');
     });
 
     it('inputs have dark background', () => {

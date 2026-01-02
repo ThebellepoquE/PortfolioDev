@@ -53,12 +53,12 @@ export function Hero() {
         {/* Columna derecha - Contenido */}
         <div className="flex flex-col items-center text-center gap-4 sm:gap-5 md:gap-6 w-full max-w-[320px] sm:max-w-[420px] md:max-w-lg xl:pl-12">
           {/* Nombre con efecto neón */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black title-neon">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black title-neon">
             Ione
           </h1>
 
           {/* Handle */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-[#FFF01F] font-semibold tracking-wider">
+          <p className="text-base sm:text-lg lg:text-xl text-[#FFF01F] font-semibold tracking-wider">
             @thebellepoque
           </p>
 
@@ -77,10 +77,10 @@ export function Hero() {
 
           {/* Tags de stack */}
           <div className="flex flex-wrap gap-2 sm:gap-3 justify-center pt-2 sm:pt-3">
-            <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#FF1493] text-black font-medium text-xs sm:text-sm">Python</span>
-            <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#FFF01F] text-black font-medium text-xs sm:text-sm">JavaScript</span>
-            <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#00FF00] text-black font-medium text-xs sm:text-sm">React</span>
-            <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#FF1493]/20 text-[#FF1493] font-medium text-xs sm:text-sm">MySQL</span>
+            <span className="px-3 py-1.5 sm:px-4 sm:py-2 text-[#FF1493] font-medium text-xs sm:text-sm">Python</span>
+            <span className="px-3 py-1.5 sm:px-4 sm:py-2 text-[#FFF01F] font-medium text-xs sm:text-sm">JavaScript</span>
+            <span className="px-3 py-1.5 sm:px-4 sm:py-2 text-[#00FF00] font-medium text-xs sm:text-sm">React</span>
+            <span className="px-3 py-1.5 sm:px-4 sm:py-2 text-[#FF1493] font-medium text-xs sm:text-sm">MySQL</span>
             <span className="px-3 py-1.5 sm:px-4 sm:py-2 text-[#FFF01F] font-medium text-xs sm:text-sm">Vite</span>
           </div>
 
@@ -108,7 +108,7 @@ export function Hero() {
 
             {/* LinkedIn button */}
             <a
-              href="https://www.linkedin.com/in/thebellepoque"
+              href="https://www.linkedin.com/in/thebellepoque/"
               target="_blank"
               rel="noopener noreferrer"
               className="group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FFF01F]"
