@@ -1,42 +1,68 @@
+import { Link, useLocation } from 'react-router-dom';
+
 /** Navbar con logo de 3 puntos y navegación */
 export function Navbar() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-[1000] bg-[#000000] flex justify-center">
       <div className="w-full flex items-center px-4 py-4 sm:px-6 sm:py-5 md:px-8 lg:px-12 xl:px-[50px]" style={{ maxWidth: '1400px' }}>
         {/* Logo - 3 puntos fluorescentes */}
-        <a
-          href="#inicio"
+        <Link
+          to="/"
           aria-label="Ir al inicio"
           className="flex gap-1.5 sm:gap-2 hover:scale-110 transition-transform duration-300 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF1493]"
         >
           <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FF1493] glow-pink" />
           <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFF01F] glow-yellow" />
           <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#00FF00] glow-green" />
-        </a>
+        </Link>
 
         {/* Spacer */}
         <div className="flex-1" />
 
         {/* Links de navegación - ocultos en móvil */}
         <div className="hidden md:flex gap-4 lg:gap-8 items-center">
-          <a
-            href="#inicio"
-            className="text-[#F5F5F5] font-medium hover:text-[#FF1493] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF1493]"
+          {isHome ? (
+            <>
+              <a
+                href="#inicio"
+                className="text-[#F5F5F5] font-medium hover:text-[#FF1493] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF1493]"
+              >
+                Inicio
+              </a>
+              <a
+                href="#proyectos"
+                className="text-[#F5F5F5] font-medium hover:text-[#FFF01F] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFF01F]"
+              >
+                Proyectos
+              </a>
+              <a
+                href="#contacto"
+                className="text-[#F5F5F5] font-medium hover:text-[#00FF00] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00FF00]"
+              >
+                Contacto
+              </a>
+            </>
+          ) : (
+            <Link
+              to="/"
+              className="text-[#F5F5F5] font-medium hover:text-[#FF1493] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF1493]"
+            >
+              ← Home
+            </Link>
+          )}
+          <Link
+            to="/blog"
+            className={`font-medium transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFF01F] ${
+              location.pathname.startsWith('/blog') 
+                ? 'text-[#FFF01F]' 
+                : 'text-[#F5F5F5] hover:text-[#FFF01F]'
+            }`}
           >
-            Inicio
-          </a>
-          <a
-            href="#proyectos"
-            className="text-[#F5F5F5] font-medium hover:text-[#FFF01F] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFF01F]"
-          >
-            Proyectos
-          </a>
-          <a
-            href="#contacto"
-            className="text-[#F5F5F5] font-medium hover:text-[#00FF00] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00FF00]"
-          >
-            Contacto
-          </a>
+            Blog
+          </Link>
           {/* GitHub icon */}
           <a
             href="https://github.com/ThebellepoquE"

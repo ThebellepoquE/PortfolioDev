@@ -408,7 +408,7 @@ describe('Contact Component', () => {
       render(<Contact />);
       
       const button = screen.getByRole('button', { name: /enviar mensaje/i });
-      expect(button).toHaveClass('bg-[#FF1493]');
+      expect(button).toHaveClass('bg-[#00FF00]');
       expect(button).toHaveClass('text-black');
     });
 

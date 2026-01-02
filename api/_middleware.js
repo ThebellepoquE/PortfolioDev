@@ -1,66 +1,70 @@
-export const config = {
-  matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-  ],
-};
+// Vercel Edge Middleware - Rate limiting y protección básica
 
-// Rate limiting simple (por IP)
-const rateLimit = new Map();
+const RATE_LIMIT = 100; // requests per minute
+const RATE_WINDOW = 60 * 1000; // 1 minute in ms
 
-// User agents maliciosos conocidos
+// Simple in-memory rate limiting (resets on cold start)
+const requestCounts = new Map();
+
+// Blocked user agents (malicious bots)
 const blockedUserAgents = [
-  'masscan',
-  'nmap',
-  'sqlmap',
-  'nikto',
-  'w3af',
-  'acunetix',
-  'burpsuite',
-  'metasploit',
+  'semrushbot',
+  'ahrefsbot', 
+  'mj12bot',
+  'dotbot',
+  'blexbot',
+  'seekport',
 ];
 
 export default function middleware(request) {
-  const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
-  const userAgent = (request.headers.get('user-agent') || '').toLowerCase();
+  const url = new URL(request.url);
   
-  // Bloquear user agents maliciosos (excepto bots legítimos)
-  const isBlocked = blockedUserAgents.some(agent => userAgent.includes(agent));
-  const isLegitBot = userAgent.includes('googlebot') || userAgent.includes('bingbot');
-  
-  if (isBlocked && !isLegitBot) {
-    return new Response('Forbidden', { status: 403 });
+  // Skip static assets
+  if (url.pathname.match(/\.(js|css|ico|png|jpg|jpeg|svg|woff2?)$/)) {
+    return;
   }
-
-  // Rate limiting: 100 requests por minuto por IP
+  
+  // Check user agent
+  const userAgent = request.headers.get('user-agent')?.toLowerCase() || '';
+  for (const blocked of blockedUserAgents) {
+    if (userAgent.includes(blocked)) {
+      return new Response('Forbidden', { status: 403 });
+    }
+  }
+  
+  // Rate limiting by IP
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
   const now = Date.now();
-  const limit = rateLimit.get(ip);
+  const windowStart = now - RATE_WINDOW;
   
-  if (limit) {
-    if (now < limit.resetTime) {
-      if (limit.count >= 100) {
-        return new Response('Too Many Requests', { 
-          status: 429,
-          headers: {
-            'Retry-After': Math.ceil((limit.resetTime - now) / 1000).toString()
-          }
-        });
-      }
-      limit.count++;
-    } else {
-      rateLimit.set(ip, { count: 1, resetTime: now + 60000 });
-    }
-  } else {
-    rateLimit.set(ip, { count: 1, resetTime: now + 60000 });
-  }
-
-  // Limpiar entradas antiguas
-  if (Math.random() < 0.01) {
-    for (const [key, value] of rateLimit.entries()) {
-      if (now > value.resetTime) {
-        rateLimit.delete(key);
-      }
+  // Clean old entries
+  for (const [key, data] of requestCounts.entries()) {
+    if (data.timestamp < windowStart) {
+      requestCounts.delete(key);
     }
   }
-
-  return null; // Continue to next middleware/page
+  
+  // Check rate limit
+  const ipData = requestCounts.get(ip) || { count: 0, timestamp: now };
+  if (ipData.timestamp < windowStart) {
+    ipData.count = 0;
+    ipData.timestamp = now;
+  }
+  
+  ipData.count++;
+  requestCounts.set(ip, ipData);
+  
+  if (ipData.count > RATE_LIMIT) {
+    return new Response('Too Many Requests', { 
+      status: 429,
+      headers: { 'Retry-After': '60' }
+    });
+  }
+  
+  // Continue to app
+  return;
 }
+
+export const config = {
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+};
