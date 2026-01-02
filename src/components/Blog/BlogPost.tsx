@@ -24,13 +24,13 @@ export function BlogPost() {
       <div className="w-full max-w-3xl">{/* Back link */}
         <Link 
           to="/blog" 
-          className="inline-flex items-center gap-2 text-sm text-[#888] hover:text-[#00FF00] transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm text-[#888] hover:text-[#00FF00] transition-colors mb-12"
         >
           <span>←</span> Volver al blog
         </Link>
 
         {/* Header */}
-        <header className="mb-12">
+        <header className="mb-16">
           {/* Imagen destacada */}
           {post.meta.image && (
             <img 
@@ -40,8 +40,13 @@ export function BlogPost() {
             />
           )}
           
-          {/* Meta info */}
-          <div className="flex items-center gap-3 text-sm text-[#666] mb-4">
+          {/* Título primero */}
+          <h1 className="text-1xl sm:text-3xl lg:text-4xl font-black text-[#FF1493] leading-tight mb-6">
+            {post.meta.title}
+          </h1>
+
+          {/* Meta info debajo */}
+          <div className="flex items-center gap-3 text-sm text-[#666]">
             <time>
               {new Date(post.meta.date).toLocaleDateString('es-ES', {
                 year: 'numeric',
@@ -52,10 +57,6 @@ export function BlogPost() {
             <span>•</span>
             <span>{post.meta.tags.join(', ')}</span>
           </div>
-
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#F5F5F5] leading-tight">
-            {post.meta.title}
-          </h1>
         </header>
 
         {/* Content */}

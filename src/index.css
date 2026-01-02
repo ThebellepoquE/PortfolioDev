@@ -138,7 +138,7 @@ html {
 }
 
 .markdown-content ul li::marker {
-  color: #00FF00;
+  color: #FF1493;
 }
 
 .markdown-content ol li::marker {
