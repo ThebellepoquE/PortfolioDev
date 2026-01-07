@@ -1,7 +1,7 @@
 /** Footer minimalista con logo y copyright */
 export function Footer() {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-[1000] bg-[#000000] flex justify-center">
+    <footer className="hidden md:flex fixed bottom-0 left-0 right-0 z-[1000] justify-center transition-colors duration-300" style={{ backgroundColor: 'var(--bg-dark)' }}>
       <div className="w-full flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 md:px-8 lg:px-12 xl:px-[50px]" style={{ maxWidth: '1400px' }}>
         {/* GitHub - izquierda */}
         <a
@@ -25,7 +25,7 @@ export function Footer() {
         </a>
 
         {/* Centro - texto */}
-        <p className="text-[#F5F5F5]/70 text-xs md:text-sm text-center">
+        <p className="text-xs md:text-sm text-center transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
           Hecho con mucha Luz - {new Date().getFullYear()}
         </p>
 

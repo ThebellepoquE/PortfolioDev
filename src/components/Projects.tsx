@@ -9,14 +9,15 @@ interface ProjectCardProps {
 function ProjectCard({ title, description, url, techStack }: ProjectCardProps) {
   return (
     <div
-      className="w-full max-w-3xl p-6 sm:p-8 md:p-10 lg:p-14 bg-[#000000] hover:shadow-[0_0_30px_rgba(255,20,147,0.5)] transition-all duration-500"
+      className="w-full max-w-3xl p-6 sm:p-8 md:p-10 lg:p-14 hover:shadow-[0_0_30px_rgba(255,20,147,0.5)] transition-all duration-500"
+      style={{ backgroundColor: 'var(--bg-card)' }}
     >
       <div className="flex flex-col gap-5 sm:gap-6 md:gap-7 items-center text-center">
         {/* Título */}
         <h3 className="text-xl sm:text-2xl font-bold title-neon">{title}</h3>
 
         {/* Descripción */}
-        <p className="text-sm sm:text-base text-[#F5F5F5]/90 leading-relaxed">
+        <p className="text-sm sm:text-base leading-relaxed transition-colors duration-300" style={{ color: 'var(--text)' }}>
           {description}
         </p>
 
@@ -55,12 +56,12 @@ export function Projects() {
   return (
     <section
       id="proyectos"
-      className="min-h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16"
+      className="min-h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16 transition-colors duration-300"
       style={{
         scrollMarginTop: '80px',
         paddingTop: '40px',
         paddingBottom: '80px',
-        background: '#000000',
+        background: 'var(--bg-dark)',
       }}
     >
       <div className="flex flex-col items-center gap-8 sm:gap-10 md:gap-12 w-full max-w-[340px] sm:max-w-md md:max-w-2xl lg:max-w-4xl">

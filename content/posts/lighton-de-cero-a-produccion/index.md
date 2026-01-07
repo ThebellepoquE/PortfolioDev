@@ -15,7 +15,7 @@ Y, la verdad, ha sido un reto brutal. Nunca pensé que terminaría aquí, y much
 
 Pero no todo fue fácil, ha habido más cabreos que alegrias. Reconozco que, en la recta final antes de graduarme, la presión pudo conmigo. Incluso llegué a llorar de frustración. Tenía que entregar mi capstone (el proyecto final) y, además, ¡era la web para el negocio de mi hijo, que empezaba justo entonces! Iba contra reloj.
 
-Al final, con el tiempo justo y mucha ayuda de la IA (¡amo a DeepSeek y Claude!), logré crear algo decente que entregar. Para el proyecto de graduación, una web sencilla para un electricista (abierta en GitHub). Y para mi hijo, el inicio de [lighton.es](https://lighton.es) (ese, lógicamente, en un repo privado.
+Al final, con el tiempo justo y mucha ayuda de la IA (¡amo a DeepSeek y Claude!), logré crear algo decente que entregar. Para el proyecto de graduación, una web sencilla para un electricista (abierta en GitHub). Y para mi hijo, el inicio de [lighton.es](https://lighton.es) (ese, lógicamente, en un repo privado).
 
 Esta profesión me parece maravillosa. Me encanta ese proceso de elegir el stack, pensar en el "porqué" de cada tecnología, en cómo hacer que un proyecto sea consistente y pueda crecer. Mi lema siempre es: **"menos es más"** y **"keep it simple, but very functional"**.
 

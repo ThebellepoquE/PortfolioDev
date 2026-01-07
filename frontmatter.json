@@ -49,20 +49,12 @@
     {
       "title": "Blog Posts",
       "path": "[[workspace]]/content/posts",
-      "contentTypes": ["post"]
+      "contentTypes": [
+        "post"
+      ]
     }
   ],
   "frontMatter.content.publicFolder": "public",
-  "frontMatter.taxonomy.tags": [
-    "TypeScript",
-    "Python",
-    "Automatización",
-    "React",
-    "JavaScript",
-    "CSS",
-    "DevOps",
-    "Tutorial"
-  ],
   "frontMatter.framework.id": "other",
   "frontMatter.preview.host": "http://localhost:5173",
   "frontMatter.dashboard.openOnStart": false

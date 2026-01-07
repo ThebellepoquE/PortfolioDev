@@ -20,11 +20,12 @@ export function BlogPost() {
   }
 
   return (
-    <article className="min-h-screen flex justify-center px-6 sm:px-8 md:px-12 lg:px-16" style={{ paddingTop: '120px', paddingBottom: '80px' }}>
+    <article className="min-h-screen flex justify-center px-6 sm:px-8 md:px-12 lg:px-16 transition-colors duration-300" style={{ paddingTop: '120px', paddingBottom: '80px', backgroundColor: 'var(--bg-dark)' }}>
       <div className="w-full max-w-3xl">{/* Back link */}
         <Link 
           to="/blog" 
-          className="inline-flex items-center gap-2 text-sm text-[#888] hover:text-[#00FF00] transition-colors mb-12"
+          className="inline-flex items-center gap-2 text-sm hover:text-[#00FF00] transition-colors mb-12"
+          style={{ color: 'var(--text-secondary)' }}
         >
           <span>←</span> Volver al blog
         </Link>
@@ -46,7 +47,7 @@ export function BlogPost() {
           </h1>
 
           {/* Meta info debajo */}
-          <div className="flex items-center gap-3 text-sm text-[#666]">
+          <div className="flex items-center gap-3 text-sm transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
             <time>
               {new Date(post.meta.date).toLocaleDateString('es-ES', {
                 year: 'numeric',
@@ -60,7 +61,7 @@ export function BlogPost() {
         </header>
 
         {/* Content */}
-        <div className="prose prose-invert prose-pink max-w-none markdown-content text-sm sm:text-base text-[#F5F5F5]/90 leading-relaxed">
+        <div className="prose prose-invert prose-pink max-w-none markdown-content text-sm sm:text-base leading-relaxed transition-colors duration-300" style={{ color: 'var(--text)' }}>
           <ReactMarkdown 
             remarkPlugins={[remarkGfm]}
           >

@@ -3,12 +3,12 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-6 sm:px-8 md:px-12 lg:px-16"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden px-6 sm:px-8 md:px-12 lg:px-16 transition-colors duration-300"
       style={{
         scrollMarginTop: '0px',
         paddingTop: '80px',
         paddingBottom: '80px',
-        background: '#000000',
+        background: 'var(--bg-dark)',
         minHeight: 'min(900px, 100vh)',
       }}
     >
@@ -16,23 +16,14 @@ export function Hero() {
         {/* Columna izquierda - Foto */}
         <div className="flex items-center justify-center lg:flex-shrink-0">
           <div className="relative">
-            {/* Glow rosa - div separado para compatibilidad */}
-            <div
-              className="absolute top-1/2 left-1/2 w-[180px] h-[180px] md:w-[220px] md:h-[220px] lg:w-[260px] lg:h-[260px] rounded-full opacity-40 pointer-events-none"
-              style={{
-                transform: 'translate(-50%, -50%)',
-                background: '#FF1493',
-                filter: 'blur(30px)',
-                WebkitFilter: 'blur(30px)',
-              }}
-            />
             <div
               className="relative p-[2px] rounded-full hover:scale-105 transition-all duration-300"
               style={{
                 background: 'linear-gradient(135deg, #00FF00 0%, #00FF00 30%, #FF1493 70%, #FF1493 100%)',
+                boxShadow: '0 0 40px rgba(255, 20, 147, 0.3), 0 0 80px rgba(0, 255, 0, 0.2)',
               }}
             >
-              <div className="w-[180px] h-[180px] md:w-[220px] md:h-[220px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden bg-black flex items-center justify-center ring-4 ring-inset ring-black">
+              <div className="w-[180px] h-[180px] md:w-[220px] md:h-[220px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden flex items-center justify-center transition-colors duration-300" style={{ backgroundColor: 'transparent' }}>
                 <img
                   src="/profile-200.webp"
                   srcSet="/profile-200.webp 200w, /profile.webp 433w"
@@ -63,12 +54,12 @@ export function Hero() {
           </p>
 
           {/* Descripción */}
-          <p className="text-base sm:text-lg lg:text-xl text-[#F5F5F5]/90 font-medium">
+          <p className="text-base sm:text-lg lg:text-xl font-medium transition-colors duration-300" style={{ color: 'var(--text)' }}>
             Full-stack Developer | Apasionada por las Automatizaciones
           </p>
 
           {/* Bio */}
-          <p className="text-sm sm:text-base text-[#F5F5F5]/80 leading-relaxed text-justify">
+          <p className="text-sm sm:text-base leading-relaxed text-justify transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
             Llevo un año creando experiencias web, aprendiendo cada día algo nuevo.
             Formada en Bottega University (DevCamp) con Jordan Hudgens, gracias a Fundación VASS.
             Mi próximo objetivo: Automatizar procesos y llevar lighton.es al siguiente nivel.
