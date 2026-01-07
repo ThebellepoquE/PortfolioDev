@@ -13,10 +13,15 @@
     <meta property="og:image" content="https://thebellepoque.dev/profile.webp" />
     <meta property="og:url" content="https://thebellepoque.dev" />
     <meta property="og:type" content="website" />
+    <!-- DNS Prefetch para EmailJS -->
+    <link rel="dns-prefetch" href="https://api.emailjs.com" />
+    <link rel="preconnect" href="https://api.emailjs.com" crossorigin />
+    <!-- Preload imagen crítica -->
     <link
       rel="preload"
       as="image"
       href="/profile-200.webp"
+      fetchpriority="high"
       imagesrcset="/profile-200.webp 200w, /profile.webp 433w"
       imagesizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
     />

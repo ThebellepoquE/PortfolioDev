@@ -30,43 +30,45 @@ export function BlogPost() {
           <span>←</span> Volver al blog
         </Link>
 
-        {/* Header */}
-        <header className="mb-16">
-          {/* Imagen destacada */}
-          {post.meta.image && (
-            <img 
-              src={post.meta.image} 
-              alt={post.meta.title}
-              className="w-full h-64 sm:h-80 object-cover rounded-lg mb-8"
-            />
-          )}
-          
-          {/* Título primero */}
-          <h1 className="text-1xl sm:text-3xl lg:text-4xl font-black text-[#FF1493] leading-tight mb-6">
-            {post.meta.title}
-          </h1>
+        <div className="p-6 sm:p-8 md:p-10 transition-colors duration-300" style={{ backgroundColor: 'var(--bg-card)' }}>
+          {/* Header */}
+          <header className="mb-16">
+            {/* Imagen destacada */}
+            {post.meta.image && (
+              <img 
+                src={post.meta.image} 
+                alt={post.meta.title}
+                className="w-full h-64 sm:h-80 object-cover rounded-lg mb-8"
+              />
+            )}
+            
+            {/* Título primero */}
+            <h1 className="text-1xl sm:text-3xl lg:text-4xl font-black text-[#FF1493] leading-tight mb-6">
+              {post.meta.title}
+            </h1>
 
-          {/* Meta info debajo */}
-          <div className="flex items-center gap-3 text-sm transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
-            <time>
-              {new Date(post.meta.date).toLocaleDateString('es-ES', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </time>
-            <span>•</span>
-            <span>{post.meta.tags.join(', ')}</span>
+            {/* Meta info debajo */}
+            <div className="flex items-center gap-3 text-sm transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+              <time>
+                {new Date(post.meta.date).toLocaleDateString('es-ES', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              <span>•</span>
+              <span>{post.meta.tags.join(', ')}</span>
+            </div>
+          </header>
+
+          {/* Content */}
+          <div className="prose prose-invert prose-pink max-w-none markdown-content text-sm sm:text-base leading-relaxed transition-colors duration-300" style={{ color: 'var(--text)' }}>
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]}
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
-        </header>
-
-        {/* Content */}
-        <div className="prose prose-invert prose-pink max-w-none markdown-content text-sm sm:text-base leading-relaxed transition-colors duration-300" style={{ color: 'var(--text)' }}>
-          <ReactMarkdown 
-            remarkPlugins={[remarkGfm]}
-          >
-            {post.content}
-          </ReactMarkdown>
         </div>
       </div>
     </article>

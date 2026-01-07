@@ -33,6 +33,10 @@
   font-weight: 500;
 }
 
+:root.light p {
+  font-weight: 600;
+}
+
 :root.light h1,
 :root.light h2,
 :root.light h3,
@@ -40,6 +44,21 @@
 :root.light h5,
 :root.light h6 {
   font-weight: 800;
+}
+
+/* Títulos con colores fluorescentes en modo claro */
+:root.light h1 {
+  color: #FF1493 !important;
+}
+
+:root.light h2 {
+  color: #FF1493 !important;
+}
+
+/* Botón amarillo en modo claro */
+:root.light button[type="submit"],
+:root.light .bg-\[\#00FF00\] {
+  background-color: #FFF01F !important;
 }
 
 /* Footer bold en modo claro */
@@ -54,10 +73,29 @@
   font-weight: 700;
 }
 
+/* Texto amarillo -> verde en modo claro (@thebellepoque) */
+:root.light .text-\[\#FFF01F\] {
+  color: #00FF00 !important;
+  font-weight: 800;
+}
+
 /* Bordes del formulario más visibles en modo claro */
 :root.light input,
 :root.light textarea {
   border-width: 2px !important;
+}
+
+/* Contenido del blog post en bold en modo claro para mejor legibilidad */
+:root.light .markdown-content p,
+:root.light .markdown-content li,
+:root.light .markdown-content td {
+  font-weight: 600;
+}
+
+:root.light .markdown-content h1,
+:root.light .markdown-content h2,
+:root.light .markdown-content h3 {
+  font-weight: 800;
 }
 
 /* Reset y estilos base */
