@@ -20,12 +20,12 @@
   --yellow: #FFF01F;
   --green: #00FF00;
   --bg-dark: #F5F5F5;
-  --bg-card: #FFFFFF;
-  --bg-card-rgb: 255, 255, 255;
+  --bg-card: #E8E8E8;
+  --bg-card-rgb: 232, 232, 232;
   --bg-image: #0a0a0a;
   --text: #1a1a1a;
   --text-secondary: rgba(26, 26, 26, 0.7);
-  --border: rgba(0, 0, 0, 0.1);
+  --border: rgba(0, 0, 0, 0.15);
 }
 
 /* Hacer el texto más bold en modo claro para mejor legibilidad */
@@ -55,9 +55,12 @@
   color: #FF1493 !important;
 }
 
-/* Botón amarillo en modo claro */
-:root.light button[type="submit"],
-:root.light .bg-\[\#00FF00\] {
+/* Botón amarillo en modo claro (solo botones, no puntos) */
+:root.light button[type="submit"] {
+  background-color: #FFF01F !important;
+}
+
+:root.light a.bg-\[\#00FF00\] {
   background-color: #FFF01F !important;
 }
 
@@ -73,16 +76,23 @@
   font-weight: 700;
 }
 
-/* Texto amarillo -> verde en modo claro (@thebellepoque) */
+/* Texto amarillo -> verde en modo claro (@thebellepoque, tags, links del blog) */
 :root.light .text-\[\#FFF01F\] {
   color: #00FF00 !important;
   font-weight: 800;
+}
+
+/* Labels amarillos del formulario -> rosa en modo claro */
+:root.light label.text-\[\#FFF01F\] {
+  color: #FF1493 !important;
+  font-weight: 700;
 }
 
 /* Bordes del formulario más visibles en modo claro */
 :root.light input,
 :root.light textarea {
   border-width: 2px !important;
+  background-color: #FFFFFF !important;
 }
 
 /* Contenido del blog post en bold en modo claro para mejor legibilidad */
@@ -96,6 +106,13 @@
 :root.light .markdown-content h2,
 :root.light .markdown-content h3 {
   font-weight: 800;
+}
+
+/* Texto en negrita verde fosforito en el blog */
+.markdown-content strong,
+.markdown-content b {
+  color: #00FF00 !important;
+  font-weight: 800 !important;
 }
 
 /* Reset y estilos base */
@@ -145,6 +162,12 @@ html {
   background-clip: text;
   color: transparent;
   text-shadow: 0 0 18px rgba(0, 255, 0, 0.35), 0 0 30px rgba(255, 20, 147, 0.4);
+}
+
+/* Títulos en modo claro: solo verde y rosa */
+:root.light .title-neon {
+  background-image: linear-gradient(100deg, var(--green) 0%, var(--pink) 100%);
+  text-shadow: none;
 }
 
 .glow-pink {

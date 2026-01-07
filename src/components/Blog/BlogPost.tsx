@@ -8,6 +8,9 @@ export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : null;
 
+  // Debug temporal
+  console.log('Post data:', post?.meta);
+
   if (!post) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center px-6 gap-4">

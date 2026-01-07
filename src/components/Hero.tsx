@@ -31,7 +31,7 @@ export function Hero() {
                   alt="Ione - @thebellepoque"
                   width={260}
                   height={260}
-                  className="w-full h-full object-contain rounded-full"
+                  className="w-[calc(100%+8px)] h-[calc(100%+8px)] object-contain rounded-full -m-1"
                   loading="eager"
                   decoding="sync"
                   fetchPriority="high"

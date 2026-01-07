@@ -31,9 +31,9 @@ export function Footer() {
 
         {/* 3 puntos - derecha */}
         <div className="flex gap-2">
-          <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#FF1493] glow-pink" />
-          <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#FFF01F] glow-yellow" />
-          <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#00FF00] glow-green" />
+          <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#FF1493] glow-pink hover:scale-125 transition-transform duration-300 cursor-pointer" />
+          <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#FFF01F] glow-yellow hover:scale-125 transition-transform duration-300 cursor-pointer" />
+          <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#00FF00] glow-green hover:scale-125 transition-transform duration-300 cursor-pointer" />
         </div>
       </div>
     </footer>

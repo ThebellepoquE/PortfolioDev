@@ -54,8 +54,8 @@ export function getAllPosts(): BlogPost[] {
     if (post) posts.push(post);
   }
   
-  // Ordenar por fecha descendente
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // Ordenar por fecha ascendente (más antiguo primero)
+  return posts.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 }
 
 export function getPostBySlug(slug: string): { meta: BlogPost; content: string } | null {

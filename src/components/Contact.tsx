@@ -102,7 +102,7 @@ export function Contact() {
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
                 autoComplete="name"
-                className="w-full px-4 py-3 border border-[#FF1493]/15 focus:border-[#FF1493] focus:ring-2 focus:ring-[#FF1493]/20 outline-none transition-all"
+                className="w-full px-4 py-3 border border-[#FF1493]/30 focus:border-[#FF1493] focus:ring-2 focus:ring-[#FF1493]/20 outline-none transition-all"
                 style={{ backgroundColor: 'var(--bg-card)', color: 'var(--text)' }}
               />
             </div>
@@ -119,7 +119,7 @@ export function Contact() {
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
                 autoComplete="email"
-                className="w-full px-4 py-3 border border-[#FFF01F]/15 focus:border-[#FFF01F] focus:ring-2 focus:ring-[#FFF01F]/20 outline-none transition-all"
+                className="w-full px-4 py-3 border border-[#FFF01F]/30 focus:border-[#FFF01F] focus:ring-2 focus:ring-[#FFF01F]/20 outline-none transition-all"
                 style={{ backgroundColor: 'var(--bg-card)', color: 'var(--text)' }}
               />
             </div>
@@ -135,7 +135,7 @@ export function Contact() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 required
                 rows={5}
-                className="w-full px-4 py-3 border border-[#00FF00]/15 focus:border-[#00FF00] focus:ring-2 focus:ring-[#00FF00]/20 outline-none transition-all resize-none"
+                className="w-full px-4 py-3 border border-[#00FF00]/30 focus:border-[#00FF00] focus:ring-2 focus:ring-[#00FF00]/20 outline-none transition-all resize-none"
                 style={{ backgroundColor: 'var(--bg-card)', color: 'var(--text)' }}
               />
             </div>

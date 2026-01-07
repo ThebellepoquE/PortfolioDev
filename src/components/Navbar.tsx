@@ -15,11 +15,11 @@ export function Navbar() {
           <Link
             to="/"
             aria-label="Ir al inicio"
-            className="flex gap-1.5 sm:gap-2 hover:scale-110 transition-transform duration-300 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF1493]"
+            className="flex gap-1.5 sm:gap-2 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF1493]"
           >
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FF1493] glow-pink" />
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFF01F] glow-yellow" />
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#00FF00] glow-green" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FF1493] glow-pink hover:scale-125 transition-transform duration-300" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFF01F] glow-yellow hover:scale-125 transition-transform duration-300" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#00FF00] glow-green hover:scale-125 transition-transform duration-300" />
           </Link>
 
           {/* Spacer */}

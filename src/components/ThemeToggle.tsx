@@ -15,7 +15,7 @@ export function ThemeToggle() {
     >
       {/* Sol - modo claro */}
       <svg
-        className={`w-6 h-6 stroke-[#FFD700] fill-none transition-all duration-300 ${
+        className={`w-6 h-6 stroke-[#FFD700] fill-none transition-all duration-300 group-hover:rotate-45 ${
           theme === 'light'
             ? 'scale-100 rotate-0 opacity-100'
             : 'scale-0 -rotate-90 opacity-0 absolute'
