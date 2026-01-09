@@ -1,5 +1,5 @@
 ---
-title: Un año, un gran cambio y el inicio de todo
+title: Un año, un gran cambio y el inicio de todo.
 description: Mi trayectoria desde el salto al vacío hasta mi primer proyecto real como Full Stack Developer.
 date: 2026-01-02
 tags:
