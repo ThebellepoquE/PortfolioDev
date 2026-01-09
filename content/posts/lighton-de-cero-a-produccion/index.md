@@ -18,15 +18,15 @@ Pero no todo fue fácil, ha habido más cabreos que alegrias. Reconozco que, al 
 
 Al final, con el tiempo justo y mucha ayuda de la IA (¡amo a DeepSeek y Claude!), logré crear algo decente que entregar. Para el proyecto de graduación, una web sencilla para un electricista (abierta en GitHub). Y para mi hijo, el inicio de [lighton.es](https://lighton.es) (ese, lógicamente, en un repo privado).
 
-Esta profesión me parece maravillosa. Me encanta ese proceso de elegir el stack, pensar en el "porqué" de cada tecnología, en cómo hacer que un proyecto sea consistente y pueda crecer. Mi lema siempre es: **"menos es más"** y **"keep it simple, but very functional"**.
+Esta profesión me parece maravillosa. Me encanta ese proceso de elegir el stack, pensar en el "porqué" de cada tecnología, en cómo hacer que un proyecto sea consistente y pueda crecer. Mi lema siempre es: **"menos es más"** y **"Simple pero funcional"**.
 
 Quiero cerrar este primer post con un agradecimiento enorme a quienes hicieron esto posible:
 - A Bottega University, Fundación VASS y DevCamp por la oportunidad.
 - A mi orientadora de Lanbide, quien me guió hacia esta formación que me ha cambiado la perspectiva, abriéndome las puertas a poder crear sin depender de nadie.
-- Y, por supuesto, a Joaquín Rosa y Carlos Colina.
+- Y, por supuesto, a Joaquín Rosa, Carlos Colina, Mark Strada y a mi querido Jordan Hudgens! por supuesto recomiendo su libro: **Skill Up: A Software Developer's Guide to Life and Career**.
 
 Esto, claramente, continuará. Este blog irá de mi trayectoria personal en el desarrollo: los aciertos, los fallos, las dudas de junior y lo que vaya aprendiendo.
 
-¡Nos leemos pronto en la próxima entrada!
+¡Nos leemos en la próxima entrada!
 
-#FullStackDeveloper #JuniorDeveloper #GraduaciónDevCamp #FundaciónVASS #BottegaUniversity #AprendizajeContinuo #MenosEsMás #Gracias #BienvenidoAlBlog
+#FullStackDeveloper #JuniorDeveloper #GraduaciónDevCamp #FundaciónVASS #BottegaUniversity #AprendizajeContinuo #MenosEsMás #SimplePeroFuncional  #BienvenidoAlBlog  #Gracias
