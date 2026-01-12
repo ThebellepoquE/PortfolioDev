@@ -6,7 +6,7 @@ Portfolio personal migrado desde Reflex a una stack **React + Vite + TypeScript*
 
 - Secciones `Navbar`, `Hero`, `Projects`, `Contact` y `Footer` con diseño responsive para breakpoints `sm/md/lg/xl`.
 - Paleta fluorescente (pink/yellow/green) con titles `title-neon` y glow consistente.
-- Formulario de contacto con integración **EmailJS** y manejo de estados (`loading`, `success`).
+- Formulario de contacto con integración **Resend** (API serverless) y plantilla HTML personalizada.
 - 36 tests con Vitest + React Testing Library (85%+ coverage en `Contact.tsx`).
 - Optimización de imagen principal usando **Sharp** y `srcSet` responsive (ahorro ~26 KiB en móvil).
 - Accesibilidad básica: outlines `focus-visible`, labels descriptivos, `sr-only` en iconos.
@@ -54,25 +54,20 @@ public/
   profile-200.webp      # versión optimizada generada con Sharp
 ```
 
-## ✉️ Configuración EmailJS
+## ✉️ Configuración Resend
 
-El formulario (`src/components/Contact.tsx`) consume variables de entorno (`import.meta.env`, con valores de fallback para desarrollo).
+El formulario (`src/components/Contact.tsx`) envía datos a `/api/contact`, una serverless function que usa **Resend** para enviar emails con plantilla HTML personalizada.
 
-1. Copia el archivo de ejemplo y rellena tus claves:
+1. Crea una cuenta en [resend.com](https://resend.com) y genera una API Key.
 
-  ```bash
-  cp .env.example .env.local
-  ```
-
-2. Edita `.env.local`:
+2. En producción (Vercel) añade las variables en **Project Settings → Environment Variables**:
 
   ```env
-  VITE_EMAILJS_SERVICE_ID=...
-  VITE_EMAILJS_TEMPLATE_ID=...
-  VITE_EMAILJS_USER_ID=...
+  RESEND_API_KEY=re_xxxxxxxxxx
+  CONTACT_EMAIL=tu-email@ejemplo.com
   ```
 
-3. En producción (Vercel) añade las mismas variables en **Project Settings → Environment Variables** para entornos `Production` y `Preview`.
+3. La plantilla del email está en `api/contact.js` y usa los colores del portfolio (rosa/amarillo/verde).
 
 ## 🖼️ Optimización de imágenes
 
@@ -104,7 +99,7 @@ Ajusta las dimensiones si cambias el diseño o sustituyes la imagen.
 ## 🔒 Seguridad
 
 ### Headers HTTP (`vercel.json`)
-- **Content-Security-Policy**: Protección XSS, permite EmailJS API
+- **Content-Security-Policy**: Protección XSS, permite Resend API
 - **Strict-Transport-Security**: HSTS con `includeSubDomains` y `preload`
 - **X-Frame-Options**: Previene clickjacking
 - **X-Content-Type-Options**: Previene MIME sniffing
@@ -124,7 +119,7 @@ Ajusta las dimensiones si cambias el diseño o sustituyes la imagen.
 
 1. Configurar repositorio Git (recomendado nuevo repo en vez del histórico Reflex).
 2. Añadir workflow de CI (ej. GitHub Actions) que ejecute `npm ci` + `npm test -- --run` + `npm run build`.
-3. Deploy en Vercel (framework Vite, build `npm run build`, output `dist`, y define `VITE_EMAILJS_*`).
+3. Deploy en Vercel (framework Vite, build `npm run build`, output `dist`, y define `RESEND_API_KEY` + `CONTACT_EMAIL`).
 4. Vercel automáticamente aplicará los headers de `vercel.json` y el middleware de `api/_middleware.js`.
 5. Monitoriza Lighthouse (especialmente LCP del Hero y tamaños de bundle) sobre el deploy final.
 

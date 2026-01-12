@@ -29,7 +29,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-/LRzSu/E3N8ypMfYmhDR03mN5iuibgeeDZU04OS/x7Q='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.emailjs.com; object-src 'none'; base-uri 'self'; frame-src 'none'; frame-ancestors 'none';"
+          "value": "default-src 'self'; script-src 'self' 'sha256-/LRzSu/E3N8ypMfYmhDR03mN5iuibgeeDZU04OS/x7Q='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none'; frame-ancestors 'none';"
         }
       ]
     }

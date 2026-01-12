@@ -14,7 +14,7 @@ Hace justo un año, di un salto al vacío (de los buenos) y comencé mi andadura
 
 Y, la verdad, ha sido un reto brutal. Nunca pensé que terminaría aquí, y mucho menos que me iba a enganchar de esta forma. ¿El motivo? Es un campo donde nunca, nunca dejas de aprender. Cada día hay algo nuevo, un problema que resolver, una tecnología por explorar... y ahí me di cuenta: encajaba perfecto. ¡Soy puro perfil Full Stack Developer: me apasiona aprender, preguntar y experimentar con todo!
 
-Pero no todo fue fácil, ha habido más cabreos que alegrias. Reconozco que, al principio y en la recta final antes de graduarme, la presión pudo conmigo. Incluso llegué a llorar de frustración. Tenía que entregar mi capstone y, además, ¡era la web para el negocio de mi hijo, que empezaba justo entonces! Iba contra reloj.
+La verdad es que ha habido más cabreos que alegrias. Reconozco que, al principio y en la recta final antes de graduarme, la presión pudo conmigo. Incluso llegué a llorar de frustración. Tenía que entregar mi capstone y, además, ¡era la web para el negocio de mi hijo, que empezaba justo entonces! Iba contra reloj. Pero...
 
 Al final, con el tiempo justo y mucha ayuda de la IA (¡amo a DeepSeek y Claude!), logré crear algo decente que entregar. Para el proyecto de graduación, una web sencilla para un electricista (abierta en GitHub). Y para mi hijo, el inicio de [lighton.es](https://lighton.es) (ese, lógicamente, en un repo privado).
 

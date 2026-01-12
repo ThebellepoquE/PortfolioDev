@@ -89,7 +89,7 @@ export default async function handler(request, response) {
                       <tr>
                         <td style="background-color: #1a1a2e; padding: 20px; border-radius: 8px; border-left: 4px solid #FF1493;">
                           <p style="margin: 0 0 8px 0; color: #FF1493; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
-                            👤 Nombre
+                            Nombre
                           </p>
                           <p style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 500;">
                             ${sanitizedName}
@@ -103,7 +103,7 @@ export default async function handler(request, response) {
                       <tr>
                         <td style="background-color: #1a1a2e; padding: 20px; border-radius: 8px; border-left: 4px solid #FFF01F;">
                           <p style="margin: 0 0 8px 0; color: #FFF01F; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
-                            📧 Email
+                            Email
                           </p>
                           <a href="mailto:${sanitizedEmail}" style="color: #ffffff; font-size: 18px; font-weight: 500; text-decoration: none;">
                             ${sanitizedEmail}
@@ -117,7 +117,7 @@ export default async function handler(request, response) {
                       <tr>
                         <td style="background-color: #1a1a2e; padding: 20px; border-radius: 8px; border-left: 4px solid #00FF00;">
                           <p style="margin: 0 0 12px 0; color: #00FF00; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
-                            💬 Mensaje
+                            Mensaje
                           </p>
                           <p style="margin: 0; color: #ffffff; font-size: 16px; line-height: 1.6; white-space: pre-wrap;">
 ${sanitizedMessage}
@@ -139,9 +139,9 @@ ${sanitizedMessage}
                 <tr>
                   <td style="background-color: #1a1a2e; padding: 25px; text-align: center; border-radius: 0 0 10px 10px;">
                     <p style="margin: 0 0 10px 0; color: #888; font-size: 13px;">
-                      📬 Enviado desde el formulario de contacto de tu portfolio
+                      Enviado desde tu portfolio
                     </p>
-                    <p style="margin: 0; color: #555; font-size: 11px;">
+                    <p style="margin: 0; color: #616060; font-size: 11px;">
                       Puedes responder directamente a este email para contactar con ${sanitizedName}
                     </p>
                   </td>
@@ -158,17 +158,17 @@ ${sanitizedMessage}
 </html>
         `,
         text: `
-✨ Nuevo mensaje desde tu Portfolio
-=====================================
+✨ Nuevo mensaje desde tu Portfolio ✨
+======================================
 
-👤 Nombre: ${sanitizedName}
-📧 Email: ${sanitizedEmail}
+Nombre: ${sanitizedName}
+Email: ${sanitizedEmail}
 
-💬 Mensaje:
+Mensaje:
 ${sanitizedMessage}
 
 -------------------------------------
-Enviado desde el formulario de contacto
+Enviado desde tu portfolio
         `.trim(),
       }),
     });
