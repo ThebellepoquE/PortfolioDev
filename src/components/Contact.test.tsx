@@ -233,7 +233,7 @@ describe('Contact Component', () => {
       });
     });
 
-    it('sends correct data to EmailJS API', async () => {
+    it('sends correct data to contact API', async () => {
       const user = userEvent.setup();
       mockFetch.mockResolvedValueOnce({ ok: true });
       
@@ -246,7 +246,7 @@ describe('Contact Component', () => {
 
       await waitFor(() => {
         expect(mockFetch).toHaveBeenCalledWith(
-          'https://api.emailjs.com/api/v1.0/email/send',
+          '/api/contact',
           expect.objectContaining({
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -256,7 +256,7 @@ describe('Contact Component', () => {
       });
     });
 
-    it('sends correct template params structure', async () => {
+    it('sends correct request body structure', async () => {
       const user = userEvent.setup();
       mockFetch.mockResolvedValueOnce({ ok: true });
       
@@ -269,12 +269,9 @@ describe('Contact Component', () => {
 
       await waitFor(() => {
         const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
-        expect(callBody).toHaveProperty('service_id');
-        expect(callBody).toHaveProperty('template_id');
-        expect(callBody).toHaveProperty('user_id');
-        expect(callBody.template_params).toHaveProperty('from_name', 'Test');
-        expect(callBody.template_params).toHaveProperty('from_email', 'test@test.com');
-        expect(callBody.template_params).toHaveProperty('message', 'Test message');
+        expect(callBody).toHaveProperty('name', 'Test');
+        expect(callBody).toHaveProperty('email', 'test@test.com');
+        expect(callBody).toHaveProperty('message', 'Test message');
       });
     });
   });
@@ -412,11 +409,11 @@ describe('Contact Component', () => {
       expect(button).toHaveClass('text-black');
     });
 
-    it('inputs have dark background', () => {
+    it('inputs have styling applied via inline styles', () => {
       render(<Contact />);
       
       const nameInput = screen.getByLabelText(/nombre/i);
-      expect(nameInput).toHaveClass('bg-[#1a1a1a]');
+      expect(nameInput).toHaveStyle({ backgroundColor: 'var(--bg-card)' });
     });
   });
 });

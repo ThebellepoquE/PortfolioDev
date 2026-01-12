@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID ?? 'service_xpl27fj';
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? 'template_encnhkk';
-const EMAILJS_USER_ID = import.meta.env.VITE_EMAILJS_USER_ID ?? '3_ToBVWkyMS4pqCPx';
-
-/** Sección de contacto con formulario EmailJS */
+/** Sección de contacto con formulario (Resend API) */
 export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -25,18 +21,13 @@ export function Contact() {
     setShowError(false);
 
     try {
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          service_id: EMAILJS_SERVICE_ID,
-          template_id: EMAILJS_TEMPLATE_ID,
-          user_id: EMAILJS_USER_ID,
-          template_params: {
-            from_name: formData.name,
-            from_email: formData.email,
-            message: formData.message,
-          },
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
         }),
       });
 
