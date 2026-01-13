@@ -63,13 +63,12 @@ Hoy eliges uno solo, mañana quizás otro. Con el tiempo, ves que no son caminos
 
 Hay días en los que quieres entender y no hay manera. Cuanto más te empeñas, peor. Y no pasa nada.
 
-Las cosas llegan a su debido momento, y esto me lo digo a mí misma todos los días.
+Las cosas llegan a su debido momento, y esto me lo digo todos los días.
 
 Si eres curiosx, te gusta experimentar, flipas aprendiendo y creciendo a tu ritmo... estás en el camino correcto. Al menos, eso me digo a mí misma todos los días. Y hoy, te lo digo a ti también.
 
 Caminante, no hay camino, se hace camino al andar.
 
-#JuniorDeveloper #PrimerProyecto #DesarrolloWeb #React 
-#TypeScript #AprendizajeContinuo #MenosEsMás #MundoDev
+#JuniorDeveloper #PrimerProyecto #DesarrolloWeb #AprendizajeContinuo #MenosEsMás #MundoDev
 
 

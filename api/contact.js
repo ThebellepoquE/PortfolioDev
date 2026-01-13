@@ -42,10 +42,10 @@ export default async function handler(request, response) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Portfolio Contact <onboarding@resend.dev>',
+        from: 'Ione Rodríguez <hola@thebellepoque.dev>',
         to: [TO_EMAIL],
         reply_to: sanitizedEmail,
-        subject: `💌 Nuevo mensaje de ${sanitizedName} - Portfolio`,
+        subject: `Nuevo mensaje de ${sanitizedName} - Portfolio`,
         html: `
 <!DOCTYPE html>
 <html>
@@ -66,10 +66,10 @@ export default async function handler(request, response) {
                 <tr>
                   <td style="background-color: #1a1a2e; padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
                     <h1 style="margin: 0; color: #FF1493; font-size: 28px; font-weight: bold;">
-                      ✨ Nuevo Mensaje
+                      ✨ Nuevo Mensaje ✨
                     </h1>
                     <p style="margin: 10px 0 0 0; color: #888; font-size: 14px;">
-                      Alguien quiere contactar contigo desde tu portfolio
+                      Contacto desde tu portfolio
                     </p>
                   </td>
                 </tr>
@@ -142,7 +142,7 @@ ${sanitizedMessage}
                       Enviado desde tu portfolio
                     </p>
                     <p style="margin: 0; color: #616060; font-size: 11px;">
-                      Puedes responder directamente a este email para contactar con ${sanitizedName}
+                      Responde directamente a este email para contactar con ${sanitizedName}
                     </p>
                   </td>
                 </tr>
