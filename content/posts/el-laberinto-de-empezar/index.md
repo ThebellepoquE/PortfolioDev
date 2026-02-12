@@ -1,12 +1,12 @@
 ---
 title: "El laberinto de empezar"
 description: Cuando todas las puertas están abiertas
-date: 2026-02-07
+date: 2026-02-12
 tags:
   - Comienzos
   - Mundo Dev
   - Aprendizaje
-draft: true
+draft: false
 image: /images/blog/laberinto.webp
 ---
 
@@ -65,7 +65,7 @@ Hay días en los que quieres entender y no hay manera. Cuanto más te empeñas, 
 
 Las cosas llegan a su debido momento, y esto me lo digo todos los días.
 
-Si eres curiosx, te gusta experimentar, flipas aprendiendo y creciendo a tu ritmo... estás en el camino correcto. Al menos, eso me digo a mí misma todos los días. Y hoy, te lo digo a ti también.
+Si eres curiosx, te gusta experimentar, flipas aprendiendo y creciendo a tu ritmo... estás en el camino correcto. Al menos, eso me digo a mí misma todos los días. 
 
 Caminante, no hay camino, se hace camino al andar.
 
