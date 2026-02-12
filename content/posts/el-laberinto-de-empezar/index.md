@@ -16,7 +16,8 @@ Con lighton.es recién nacido en mi mente me sentía como en una biblioteca infi
 
 ## La paradoja de la libertad total
 
-Lo más irónico de comenzar algo desde cero es tener tantas opciones que no sabes ni por donde empezar.
+Lo más irónico de comenzar algo desde cero es tener tantas opciones que no sabes ni por donde empezar. Como dice **Barry Schwartz** en "La paradoja de la elección": a veces, tener libertad total no nos libera, sino que nos paraliza.
+
 Python, JavaScript, TypeScript, React... Quizás primero la estructura del proyecto. Pero para estructurarlo, hay que decidir que se quiere construir exactamente. Y para eso necesitas... ¿Una visión generalizada de arquitectura?
 
 Un círculo sin principio ni fin, como perseguir tu propia sombra.
