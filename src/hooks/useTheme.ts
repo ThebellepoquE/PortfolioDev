@@ -9,25 +9,16 @@ type Theme = 'dark' | 'light';
  * - Aplica la clase 'light' al documento para CSS
  */
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>('dark');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    // Detectar tema guardado o preferencia del sistema solo en el cliente
+  const [theme, setTheme] = useState<Theme>(() => {
+    // Pre-inicialización para evitar parpadeos y cumplir con ESLint
+    if (typeof window === 'undefined') return 'dark';
     const savedTheme = localStorage.getItem('theme') as Theme | null;
-    
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-      setTheme('light');
-    }
-    
-    setMounted(true);
-  }, []);
+    if (savedTheme) return savedTheme;
+    if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+    return 'dark';
+  });
 
   useEffect(() => {
-    if (!mounted) return;
-
     const root = document.documentElement;
 
     // Aplicar o remover clase 'light' en el HTML
@@ -41,11 +32,11 @@ export function useTheme() {
 
     // Guardar en localStorage
     localStorage.setItem('theme', theme);
-  }, [theme, mounted]);
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  return { theme, toggleTheme, mounted };
+  return { theme, toggleTheme };
 }

@@ -39,7 +39,7 @@ export function Contact() {
         setShowError(true);
         setTimeout(() => setShowError(false), 5000);
       }
-    } catch (error) {
+    } catch {
       setShowError(true);
       setTimeout(() => setShowError(false), 5000);
     }

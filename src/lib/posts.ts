@@ -8,14 +8,14 @@ export interface BlogPost {
 }
 
 // Importar todos los posts en build time (eager = síncrono)
-const postModules = import.meta.glob('/content/posts/*/index.md', { 
+const postModules = import.meta.glob('/content/posts/*/*-index.md', { 
   query: '?raw',
   import: 'default',
   eager: true,
 }) as Record<string, string>;
 
 function parsePost(path: string, content: string): BlogPost | null {
-  const slug = path.split('/')[3]; // /content/posts/[slug]/index.md
+  const slug = path.split('/')[3]; // /content/posts/[slug]/XX-index.md
   
   // Parse YAML frontmatter
   const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
@@ -59,10 +59,10 @@ export function getAllPosts(): BlogPost[] {
 }
 
 export function getPostBySlug(slug: string): { meta: BlogPost; content: string } | null {
-  const path = `/content/posts/${slug}/index.md`;
-  const rawContent = postModules[path];
+  const path = Object.keys(postModules).find(p => p.startsWith(`/content/posts/${slug}/`));
+  const rawContent = path ? postModules[path] : null;
   
-  if (!rawContent) return null;
+  if (!rawContent || !path) return null;
   
   const post = parsePost(path, rawContent);
   if (!post) return null;
