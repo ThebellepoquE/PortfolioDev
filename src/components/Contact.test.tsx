@@ -368,11 +368,11 @@ describe('Contact Component', () => {
       expect(screen.getByRole('button', { name: /enviar mensaje/i })).toBeInTheDocument();
     });
 
-    it('form container has responsive padding classes', () => {
+    it('form container has the correct base class', () => {
       render(<Contact />);
       
       const form = document.querySelector('form');
-      expect(form).toHaveClass('p-4', 'sm:p-6', 'md:p-8', 'lg:p-10');
+      expect(form).toHaveClass('contact__form');
     });
   });
 
@@ -384,36 +384,35 @@ describe('Contact Component', () => {
       render(<Contact />);
       
       const label = screen.getByText('Nombre');
-      expect(label).toHaveClass('text-[#FF1493]');
+      expect(label).toHaveClass('contact__label--name');
     });
 
     it('has correct color classes for email label', () => {
       render(<Contact />);
       
       const label = screen.getByText('Email');
-      expect(label).toHaveClass('text-[#FFF01F]');
+      expect(label).toHaveClass('contact__label--email');
     });
 
     it('has correct color classes for message label', () => {
       render(<Contact />);
       
       const label = screen.getByText('Mensaje');
-      expect(label).toHaveClass('text-[#00FF00]');
+      expect(label).toHaveClass('contact__label--message');
     });
 
-    it('submit button has correct styling', () => {
+    it('submit button has correct styling class', () => {
       render(<Contact />);
       
       const button = screen.getByRole('button', { name: /enviar mensaje/i });
-      expect(button).toHaveClass('bg-[#00FF00]');
-      expect(button).toHaveClass('text-black');
+      expect(button).toHaveClass('contact__submit');
     });
 
-    it('inputs have styling applied via inline styles', () => {
+    it('inputs have correct structure and classes', () => {
       render(<Contact />);
       
       const nameInput = screen.getByLabelText(/nombre/i);
-      expect(nameInput).toHaveStyle({ backgroundColor: 'var(--bg-card)' });
+      expect(nameInput).toHaveClass('contact__input--name');
     });
   });
 });

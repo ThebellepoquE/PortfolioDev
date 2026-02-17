@@ -1,0 +1,185 @@
+@use "../styles/variables" as *;
+
+.contact {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 1.5rem;
+  transition: background-color 0.3s;
+  scroll-margin-top: 80px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  background-color: $bg-dark;
+
+  @media (min-width: 640px) { padding: 0 2rem; }
+  @media (min-width: 768px) { padding: 0 3rem; }
+  @media (min-width: 1024px) { padding: 0 4rem; }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 320px;
+    gap: 1.5rem;
+
+    @media (min-width: 640px) { max-width: 448px; gap: 2rem; }
+    @media (min-width: 768px) { max-width: 512px; }
+    @media (min-width: 1024px) { max-width: 576px; }
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-align: center;
+    color: $text; // En modo light se sobreescribe por el global
+    
+    @media (min-width: 640px) { font-size: 1.875rem; }
+    @media (min-width: 1024px) { font-size: 2.25rem; }
+  }
+
+  &__description {
+    text-align: center;
+    font-size: 0.875rem;
+    max-width: 32rem;
+    padding: 0 0.5rem;
+    color: $text-secondary;
+    transition: color 0.3s;
+
+    @media (min-width: 640px) { font-size: 1rem; padding: 0; }
+  }
+
+  &__form {
+    width: 100%;
+    padding: 1rem;
+    background-color: $bg-card;
+    transition: background-color 0.3s;
+
+    @media (min-width: 640px) { padding: 1.5rem; }
+    @media (min-width: 768px) { padding: 2rem; }
+    @media (min-width: 1024px) { padding: 2.5rem; }
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    @media (min-width: 640px) { gap: 1.5rem; }
+    @media (min-width: 768px) { gap: 2rem; }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__label {
+    font-weight: 600;
+    font-size: 0.875rem;
+
+    &--name { color: $pink; }
+    &--email { color: $yellow; }
+    &--message { color: $green; }
+  }
+
+  &__input, &__textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid transparent;
+    outline: none;
+    transition: all 0.2s;
+    background-color: $bg-card;
+    color: $text;
+
+    &::placeholder {
+      opacity: 0.5;
+    }
+
+    &--name {
+      border-color: rgba(255, 20, 147, 0.3);
+      &:focus {
+        border-color: $pink;
+        box-shadow: 0 0 0 2px rgba(255, 20, 147, 0.2);
+      }
+    }
+
+    &--email {
+      border-color: rgba(255, 240, 31, 0.3);
+      &:focus {
+        border-color: $yellow;
+        box-shadow: 0 0 0 2px rgba(255, 240, 31, 0.2);
+      }
+    }
+
+    &--message {
+      border-color: rgba(0, 255, 0, 0.3);
+      resize: none;
+      &:focus {
+        border-color: $green;
+        box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.2);
+      }
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: black;
+    background-color: $green;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    @media (min-width: 640px) { padding: 1.5rem; margin-top: 1rem; font-size: 1rem; }
+    @media (min-width: 768px) { padding: 2rem; }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 8px 30px rgba(255, 20, 147, 0.6);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__status {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 1px solid;
+
+    &--success {
+      background-color: rgba(0, 255, 0, 0.2);
+      border-color: $green;
+      color: $green;
+      font-weight: 600;
+    }
+
+    &--error {
+      background-color: rgba(255, 0, 0, 0.2);
+      border-color: #ef4444;
+      color: #ef4444;
+      font-weight: 600;
+    }
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

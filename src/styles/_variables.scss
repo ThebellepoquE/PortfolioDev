@@ -1,0 +1,31 @@
+// 🎨 Variables de marca thebellepoque
+
+:root {
+  --pink: #FF1493;
+  --yellow: #FFF01F;
+  --green: #00FF00;
+  --bg-dark: #0a0a0a;
+  --bg-card: #1a1a1a;
+  --bg-card-rgb: 26, 26, 26;
+  --text: #F5F5F5;
+  --text-secondary: rgba(245, 245, 245, 0.7);
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+:root.light {
+  --bg-dark: #F5F5F5;
+  --bg-card: #E8E8E8;
+  --bg-card-rgb: 232, 232, 232;
+  --text: #1a1a1a;
+  --text-secondary: rgba(26, 26, 26, 0.7);
+  --border: rgba(0, 0, 0, 0.15);
+}
+
+// Atajos para usar en SCSS
+$pink: var(--pink);
+$yellow: var(--yellow);
+$green: var(--green);
+$bg-dark: var(--bg-dark);
+$bg-card: var(--bg-card);
+$text: var(--text);
+$text-secondary: var(--text-secondary);

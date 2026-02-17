@@ -1,0 +1,43 @@
+@use "variables" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: $bg-dark;
+  color: $text;
+  transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
+}
+
+// Estilos globales de modo claro
+:root.light {
+  body {
+    font-weight: 500;
+  }
+  
+  p {
+    font-weight: 600;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    color: $pink !important;
+  }
+}
+
+// Utilidades comunes (sustituyendo lo que hacía Tailwind)
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.title-neon {
+  text-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+}
