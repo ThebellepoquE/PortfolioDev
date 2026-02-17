@@ -10,19 +10,14 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="group relative p-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFF01F] active:scale-95 transition-transform duration-200"
+      className="theme-toggle"
       aria-label={`Cambiar a modo ${theme === 'dark' ? 'claro' : 'oscuro'}`}
     >
       {/* Sol - modo claro */}
       <svg
-        className={`w-6 h-6 stroke-[#FFD700] fill-none transition-all duration-300 group-hover:rotate-45 ${
-          theme === 'light'
-            ? 'scale-100 rotate-0 opacity-100'
-            : 'scale-0 -rotate-90 opacity-0 absolute'
+        className={`theme-toggle__icon theme-toggle__icon--sun ${
+          theme === 'light' ? 'is-visible' : 'is-hidden'
         }`}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
         viewBox="0 0 24 24"
       >
         <circle cx="12" cy="12" r="5" />
@@ -38,14 +33,9 @@ export function ThemeToggle() {
 
       {/* Luna - modo oscuro */}
       <svg
-        className={`w-6 h-6 stroke-[#00BFFF] fill-none transition-all duration-300 ${
-          theme === 'dark'
-            ? 'scale-100 rotate-0 opacity-100'
-            : 'scale-0 rotate-90 opacity-0 absolute'
+        className={`theme-toggle__icon theme-toggle__icon--moon ${
+          theme === 'dark' ? 'is-visible' : 'is-hidden'
         }`}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
         viewBox="0 0 24 24"
       >
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
@@ -53,3 +43,4 @@ export function ThemeToggle() {
     </button>
   );
 }
+

@@ -13,7 +13,7 @@ const BlogPost = lazy(() => import('./components/Blog/BlogPost').then(m => ({ de
 /** Portfolio de Ione - @thebellepoque */
 function App() {
   return (
-    <div className="min-h-screen bg-[#000000]">
+    <div className="app">
       <Navbar />
       <main>
         <Routes>
@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={
             <>
               <Hero />
-              <Suspense fallback={<div className="min-h-[50vh]" />}>
+              <Suspense fallback={<div className="loading-placeholder" />}>
                 <Projects />
                 <Contact />
               </Suspense>
@@ -30,12 +30,12 @@ function App() {
           
           {/* Blog routes */}
           <Route path="/blog" element={
-            <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="text-[#FFF01F]">Cargando...</p></div>}>
+            <Suspense fallback={<div className="loading-state"><p>Cargando...</p></div>}>
               <BlogList />
             </Suspense>
           } />
           <Route path="/blog/:slug" element={
-            <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="text-[#FFF01F]">Cargando...</p></div>}>
+            <Suspense fallback={<div className="loading-state"><p>Cargando...</p></div>}>
               <BlogPost />
             </Suspense>
           } />
@@ -49,3 +49,4 @@ function App() {
 }
 
 export default App;
+

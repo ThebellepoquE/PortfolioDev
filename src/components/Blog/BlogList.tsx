@@ -6,43 +6,43 @@ export function BlogList() {
   const posts = getAllPosts();
 
   return (
-    <section className="min-h-screen flex justify-center px-6 sm:px-8 md:px-12 lg:px-16 transition-colors duration-300" style={{ paddingTop: '120px', paddingBottom: '80px', backgroundColor: 'var(--bg-dark)' }}>
-      <div className="w-full max-w-4xl">{/* Header */}
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-center mb-4 transition-colors duration-300" style={{ color: 'var(--text)' }}>
+    <section className="blog-list">
+      <div className="blog-list__container">
+        {/* Header */}
+        <h1 className="blog-list__title text-gradient">
           Blog
         </h1>
 
-        <p className="text-sm sm:text-base text-center mb-12 max-w-xl mx-auto transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+        <p className="blog-list__subtitle">
           Desarrollo, automatizaciones y aprendizajes en el camino tech
         </p>
 
         {/* Posts list */}
         {posts.length === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-lg mb-4 transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>Aún no hay posts publicados</p>
-            <p className="text-sm transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>¡Pronto compartiré contenido nuevo!</p>
+          <div className="blog-list__empty">
+            <p className="blog-list__empty-text">Aún no hay posts publicados</p>
+            <p className="blog-list__empty-subtext">¡Pronto compartiré contenido nuevo!</p>
           </div>
         ) : (
-          <div className="space-y-8">
+          <div className="blog-list__grid">
             {posts.map((post) => (
               <Link
                 key={post.slug}
                 to={`/blog/${post.slug}`}
-                className="block p-6 sm:p-8 border hover:border-[#00FF00]/50 rounded-lg transition-all duration-300 group"
-                style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
+                className="blog-card"
               >
-                <div className="flex flex-col gap-4">
+                <div className="blog-card__content">
                   {/* Imagen destacada */}
                   {post.image && (
                     <img 
                       src={post.image} 
                       alt={post.title}
-                      className="w-full h-48 object-cover rounded-md"
+                      className="blog-card__image"
                     />
                   )}
                   
                   {/* Fecha y Tags en línea */}
-                  <div className="flex items-center gap-3 text-xs transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+                  <div className="blog-card__meta">
                     <time>
                       {new Date(post.date).toLocaleDateString('es-ES', {
                         year: 'numeric',
@@ -51,7 +51,7 @@ export function BlogList() {
                       })}
                     </time>
                     <span>•</span>
-                    <div className="flex gap-2">
+                    <div className="blog-card__tags">
                       {post.tags.slice(0, 3).map((tag) => (
                         <span key={tag}>
                           {tag}
@@ -61,17 +61,17 @@ export function BlogList() {
                   </div>
 
                   {/* Título */}
-                  <h2 className="text-xl sm:text-2xl font-bold group-hover:text-[#00FF00] transition-colors" style={{ color: 'var(--text)' }}>
+                  <h2 className="blog-card__title">
                     {post.title}
                   </h2>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-base leading-relaxed transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="blog-card__description">
                     {post.description}
                   </p>
 
                   {/* Read more */}
-                  <span className="text-sm text-[#FFF01F] group-hover:text-[#00FF00] transition-colors font-medium">
+                  <span className="blog-card__link">
                     Leer artículo →
                   </span>
                 </div>
@@ -83,3 +83,4 @@ export function BlogList() {
     </section>
   );
 }
+

@@ -4,28 +4,55 @@
   --pink: #FF1493;
   --yellow: #FFF01F;
   --green: #00FF00;
+  --pink-rgb: 255, 20, 147;
+  --yellow-rgb: 255, 240, 31;
+  --green-rgb: 0, 255, 0;
   --bg-dark: #0a0a0a;
   --bg-card: #1a1a1a;
+  --bg-form: #1a1a1a;
   --bg-card-rgb: 26, 26, 26;
   --text: #F5F5F5;
   --text-secondary: rgba(245, 245, 245, 0.7);
   --border: rgba(255, 255, 255, 0.1);
+  --white: #FFFFFF;
+  --black: #000000;
+  --white-rgb: 255, 255, 255;
+  --black-rgb: 0, 0, 0;
+  --error: #ef4444;
+  --error-rgb: 239, 68, 68;
+  --pre-bg: #2d2d2d;
+  --moon: #00BFFF;
+  --sun-icon: var(--yellow);
 }
 
 :root.light {
-  --bg-dark: #F5F5F5;
-  --bg-card: #E8E8E8;
-  --bg-card-rgb: 232, 232, 232;
-  --text: #1a1a1a;
-  --text-secondary: rgba(26, 26, 26, 0.7);
-  --border: rgba(0, 0, 0, 0.15);
+  --bg-dark: #D1D1D1; // Gris más oscuro para que el neon resalte
+  --bg-card: #E1E1E1;
+  --bg-form: #E8E8E8;
+  --text: #0a0a0a;
+  --text-secondary: rgba(10, 10, 10, 0.8);
+  --border: rgba(0, 0, 0, 0.2);
+  --sun-icon: #856404;
 }
 
 // Atajos para usar en SCSS
 $pink: var(--pink);
 $yellow: var(--yellow);
 $green: var(--green);
+$pink-rgb: var(--pink-rgb);
+$yellow-rgb: var(--yellow-rgb);
+$green-rgb: var(--green-rgb);
 $bg-dark: var(--bg-dark);
 $bg-card: var(--bg-card);
+$bg-form: var(--bg-form);
 $text: var(--text);
 $text-secondary: var(--text-secondary);
+$white: var(--white);
+$black: var(--black);
+$white-rgb: var(--white-rgb);
+$black-rgb: var(--black-rgb);
+$error: var(--error);
+$error-rgb: var(--error-rgb);
+$pre-bg: var(--pre-bg);
+$moon: var(--moon);
+$sun-icon: var(--sun-icon);

@@ -1,4 +1,12 @@
 @use "variables" as *;
+@use "components/Navbar";
+@use "components/Hero";
+@use "components/Projects";
+@use "components/BlogList";
+@use "components/BlogPost";
+@use "components/Contact";
+@use "components/Footer";
+@use "components/ThemeToggle";
 
 * {
   margin: 0;
@@ -24,11 +32,93 @@ body {
     font-weight: 600;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 800;
-    color: $pink !important;
+  // Refuerzo de contraste para elementos con color de marca en fondo claro
+  h1, h2, h3, h4, h5, h6, 
+  strong, code,
+  .hero__handle, 
+  .navbar__link, 
+  .navbar__github,
+  .footer__github,
+  .footer__dot, 
+  .navbar__logo-dot, 
+  .hero__tag, 
+  .project-card__tech,
+  .project-card__title,
+  .contact__label,
+  .hero__social-link,
+  .theme-toggle__icon {
+    filter: drop-shadow(0 0 1px rgba($black-rgb, 0.9));
+  }
+
+  .navbar__link {
+    color: $black !important;
+    font-weight: 700 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 6px;
+    transition: all 0.2s;
+    
+    &--pink:hover { color: $pink !important; background-color: rgba($black-rgb, 0.05); }
+    &--yellow:hover { color: $yellow !important; background-color: rgba($black-rgb, 0.05); }
+    &--green:hover { color: $green !important; background-color: rgba($black-rgb, 0.05); }
+    &.is-active { 
+       background-color: rgba($black-rgb, 0.08);
+       text-decoration: none !important;
+    }
+  }
+
+  .navbar__github svg, .footer__github svg, .hero__social-link svg {
+    filter: drop-shadow(0 0 1px rgba($black-rgb, 0.5));
+  }
+
+  .hero__tag, .project-card__tech {
+    background-color: rgba($black-rgb, 0.85) !important;
+    border-radius: 4px;
+    font-weight: 700 !important;
+  }
+
+  // Estilos específicos para el formulario de contacto en modo claro
+  .contact__input, .contact__textarea {
+    background-color: $white !important;
+    color: $black !important;
+    border-width: 2px !important; // Bordes más gruesos para que se vean
+
+    &--name { border-color: $pink !important; }
+    &--email { border-color: $yellow !important; }
+    &--message { border-color: $green !important; }
+
+    &::placeholder {
+      color: rgba($black-rgb, 0.6);
+    }
+  }
+
+  .contact__form {
+    background-color: $bg-form !important; // Un poco más de contraste para la tarjeta del form
+    box-shadow: 0 4px 20px rgba($black-rgb, 0.1);
+  }
+
+  .contact__submit:hover {
+    box-shadow: 0 8px 30px rgba($black-rgb, 0.2) !important;
   }
 }
+
+.text-gradient {
+  background: linear-gradient(135deg, $pink, $yellow, $green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $pink;
+  margin: 0;
+}
+
+.app {
+  min-height: 100vh;
+}
+
 
 // Utilidades comunes (sustituyendo lo que hacía Tailwind)
 .container {
@@ -39,5 +129,59 @@ body {
 }
 
 .title-neon {
-  text-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+  text-shadow: 
+    0 0 10px rgba($pink-rgb, 0.4),
+    0 0 20px rgba($green-rgb, 0.2);
+}
+
+/* Global button styles for consistency */
+.project-card__link, .contact__submit {
+  width: fit-content !important;
+  min-width: 180px;
+  padding: 0.75rem 2rem !important;
+  font-size: 0.9rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  text-align: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba($black-rgb, 0.3) !important;
+  }
+}
+
+.loading-state {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $yellow;
+  font-weight: bold;
+}
+
+.loading-placeholder {
+  min-height: 50vh;
+}
+
+/* Dots horizontal alignment */
+.logo-dots, .navbar__logo-flex, .footer__dots {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Hidden but accessible text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

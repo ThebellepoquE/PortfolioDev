@@ -13,6 +13,10 @@
     <meta property="og:image" content="https://thebellepoque.dev/profile.webp" />
     <meta property="og:url" content="https://thebellepoque.dev" />
     <meta property="og:type" content="website" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <!-- DNS Prefetch para EmailJS -->
     <link rel="dns-prefetch" href="https://api.emailjs.com" />
     <link rel="preconnect" href="https://api.emailjs.com" crossorigin />
@@ -26,6 +30,25 @@
       imagesizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
     />
     <title>Ione (@thebellepoque) - Portfolio</title>
+    <style>
+      /* Estilos criticos para evitar FCP alto */
+      :root {
+        --bg-dark: #0a0a0a;
+        --text: #F5F5F5;
+      }
+      :root.light {
+        --bg-dark: #D1D1D1;
+        --text: #0a0a0a;
+      }
+      body {
+        margin: 0;
+        background-color: var(--bg-dark);
+        color: var(--text);
+        font-family: 'Inter', system-ui, sans-serif;
+        line-height: inherit; /* Respetar valores de Vite/Sass */
+      }
+      #root { min-height: 100vh; }
+    </style>
     <script>
       // Aplicar tema antes de que React se monte (evita flash)
       (function() {

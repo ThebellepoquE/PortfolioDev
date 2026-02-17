@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import './Contact.scss';
 
 /** Sección de contacto con formulario (Resend API) */
 export function Contact() {
@@ -52,7 +51,7 @@ export function Contact() {
     <section id="contacto" className="contact">
       <div className="contact__container">
         {/* Título */}
-        <h2 className="contact__title title-neon">
+        <h2 className="contact__title title-neon text-gradient">
           ¿Montamos un Dream Team?
         </h2>
 
