@@ -8,9 +8,11 @@
   transition: background-color 0.3s;
   background-color: $bg-dark;
 
-  @media (min-width: 640px) { padding-left: 2rem; padding-right: 2rem; }
-  @media (min-width: 768px) { padding-left: 3rem; padding-right: 3rem; }
-  @media (min-width: 1024px) { padding-left: 4rem; padding-right: 4rem; }
+  @media (width >= 640px) { padding-left: 2rem; padding-right: 2rem; }
+
+  @media (width >= 768px) { padding-left: 3rem; padding-right: 3rem; }
+
+  @media (width >= 1024px) { padding-left: 4rem; padding-right: 4rem; }
 
   &__container {
     width: 100%;
@@ -37,8 +39,9 @@
     transition: background-color 0.3s;
     background-color: $bg-card;
 
-    @media (min-width: 640px) { padding: 2rem; }
-    @media (min-width: 768px) { padding: 2.5rem; }
+    @media (width >= 640px) { padding: 2rem; }
+
+    @media (width >= 768px) { padding: 2.5rem; }
   }
 
   &__header {
@@ -52,7 +55,7 @@
     border-radius: 0.5rem;
     margin-bottom: 2rem;
 
-    @media (min-width: 640px) { height: 20rem; }
+    @media (width >= 640px) { height: 20rem; }
   }
 
   &__title {
@@ -62,8 +65,9 @@
     margin-bottom: 1.5rem;
     display: block;
 
-    @media (min-width: 640px) { font-size: 1.5rem; }
-    @media (min-width: 1024px) { font-size: 1.75rem; }
+    @media (width >= 640px) { font-size: 1.5rem; }
+
+    @media (width >= 1024px) { font-size: 1.75rem; }
   }
 
   &__meta {
@@ -88,15 +92,29 @@
     line-height: 1.625;
     color: $text;
 
-    @media (min-width: 640px) { font-size: 1rem; }
+    @media (width >= 640px) {
+      font-size: 1rem;
+    }
 
     h1, h2, h3, h4, h5, h6 { 
       margin-top: 2rem; 
       margin-bottom: 1rem; 
     }
-    p { margin-bottom: 1rem; }
-    ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
-    li { margin-bottom: 0.5rem; }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul,
+    ol {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
     code { 
       background-color: rgba($green-rgb, 0.15); 
       color: $green;
@@ -104,6 +122,7 @@
       border-radius: 0.25rem; 
       font-weight: 600;
     }
+
     strong { 
       color: $green; 
       font-weight: 700;
@@ -111,8 +130,23 @@
       padding: 0.1rem 0.3rem;
       border-radius: 0.2rem;
     }
-    pre { background-color: $pre-bg; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1rem; }
-    a { color: $green; text-decoration: none; &:hover { color: $yellow; } }
+
+    pre {
+      background-color: $pre-bg;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: $green;
+      text-decoration: none;
+
+      &:hover {
+        color: $yellow;
+      }
+    }
   }
 
   &__error {

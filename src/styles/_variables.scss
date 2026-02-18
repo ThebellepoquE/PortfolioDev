@@ -3,7 +3,7 @@
 :root {
   --pink: #FF1493;
   --yellow: #FFF01F;
-  --green: #00FF00;
+  --green: #0F0;
   --pink-rgb: 255, 20, 147;
   --yellow-rgb: 255, 240, 31;
   --green-rgb: 0, 255, 0;
@@ -12,10 +12,10 @@
   --bg-form: #1a1a1a;
   --bg-card-rgb: 26, 26, 26;
   --text: #F5F5F5;
-  --text-secondary: rgba(245, 245, 245, 0.7);
-  --border: rgba(255, 255, 255, 0.1);
-  --white: #FFFFFF;
-  --black: #000000;
+  --text-secondary: rgb(245 245 245 / 70%);
+  --border: rgb(255 255 255 / 10%);
+  --white: #FFF;
+  --black: #000;
   --white-rgb: 255, 255, 255;
   --black-rgb: 0, 0, 0;
   --error: #ef4444;
@@ -30,8 +30,8 @@
   --bg-card: #E1E1E1;
   --bg-form: #E8E8E8;
   --text: #0a0a0a;
-  --text-secondary: rgba(10, 10, 10, 0.8);
-  --border: rgba(0, 0, 0, 0.2);
+  --text-secondary: rgb(10 10 10 / 80%);
+  --border: rgb(0 0 0 / 20%);
   --sun-icon: #856404;
 }
 

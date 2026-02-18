@@ -1,0 +1,151 @@
+@use "../variables" as *;
+
+// Estilos globales de modo claro (Modern Studio / Precision)
+:root.light {
+  body {
+    background-color: #fff;
+
+    // Puntos de cuadrícula ultra-finos (Estética Studio)
+    background-image: radial-gradient(#000 0.5px, transparent 0.5px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+    color: #121212;
+  }
+
+  // Tarjetas limpias (sin acento lateral, igual que en modo oscuro)
+  .project-card,
+  .blog-card,
+  .blog-post__article,
+  .contact__form {
+    background-color: #fff;
+    border: 1px solid rgb(0 0 0 / 10%);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 5%), 0 2px 4px -1px rgb(0 0 0 / 3%);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: rgb(0 0 0 / 20%);
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .blog-card__title,
+  .blog-post__title {
+    color: $pink;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, $pink, $green);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .navbar {
+    background-color: rgb(255 255 255 / 80%);
+    backdrop-filter: saturate(180%) blur(15px);
+    border-bottom: 1px solid rgb(0 0 0 / 6%);
+
+    &__content {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  .navbar__link {
+    color: #444;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+
+    &--pink:hover {
+      color: #fff;
+      background: $pink;
+    }
+
+    &--yellow:hover {
+      color: #000;
+      background: $yellow;
+    }
+
+    &--green:hover {
+      color: #fff;
+      background: $green;
+    }
+
+    &.is-active {
+      background-color: #111;
+      color: #fff;
+    }
+  }
+
+  .hero__tag,
+  .project-card__tech {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
+  .contact__input,
+  .contact__textarea {
+    background-color: #f9fafb;
+    color: #111;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    &:focus {
+      background-color: #fff;
+      border-color: #000;
+      box-shadow: 0 0 0 4px rgb(0 0 0 / 5%);
+    }
+  }
+
+  .title-neon {
+    color: $pink;
+    text-shadow: none;
+    border-bottom: none;
+  }
+
+  .blog-card__link {
+    color: $yellow;
+  }
+
+  p {
+    color: #374151;
+    line-height: 1.7;
+  }
+
+  .navbar__github svg,
+  .footer__github svg,
+  .hero__social-link svg {
+    color: #000;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .hero,
+  .projects,
+  .blog-list,
+  .contact,
+  .blog-post {
+    background-color: transparent;
+  }
+
+  .footer {
+    background-color: rgb(255 255 255 / 80%);
+    backdrop-filter: saturate(180%) blur(15px);
+    border-top: 1px solid rgb(0 0 0 / 6%);
+  }
+}

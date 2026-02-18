@@ -11,7 +11,7 @@
   transition: background-color 0.3s;
   background-color: $bg-dark;
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     display: flex;
   }
 
@@ -23,10 +23,13 @@
     justify-content: space-between;
     padding: 0.75rem 1rem;
 
-    @media (min-width: 640px) { padding: 1rem 1.5rem; }
-    @media (min-width: 768px) { padding: 1rem 2rem; }
-    @media (min-width: 1024px) { padding: 1rem 3rem; }
-    @media (min-width: 1280px) { padding: 1rem 50px; }
+    @media (width >= 640px) { padding: 1rem 1.5rem; }
+
+    @media (width >= 768px) { padding: 1rem 2rem; }
+
+    @media (width >= 1024px) { padding: 1rem 3rem; }
+
+    @media (width >= 1280px) { padding: 1rem 50px; }
   }
 
   &__github {
@@ -57,7 +60,7 @@
     transition: color 0.3s;
     color: $text-secondary;
 
-    @media (min-width: 768px) { font-size: 0.875rem; }
+    @media (width >= 768px) { font-size: 0.875rem; }
   }
 
   &__dots {
@@ -72,7 +75,7 @@
     transition: transform 0.3s;
     cursor: pointer;
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       width: 0.75rem;
       height: 0.75rem;
     }
@@ -85,10 +88,12 @@
       background-color: $pink;
       box-shadow: 0 0 10px rgba($pink-rgb, 0.4);
     }
+
     &--yellow { 
       background-color: $yellow;
       box-shadow: 0 0 10px rgba($yellow-rgb, 0.4);
     }
+
     &--green { 
       background-color: $green;
       box-shadow: 0 0 10px rgba($green-rgb, 0.4);

@@ -1,0 +1,107 @@
+@use "../../variables" as *;
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  transition: background-color 0.3s;
+  scroll-margin-top: 0;
+  padding-top: 100px;
+  padding-bottom: 40px;
+  background-color: $bg-dark;
+  min-height: min(800px, 100vh);
+
+  @media (width >= 640px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (width >= 768px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  @media (width >= 1024px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1024px;
+
+    @media (width >= 640px) {
+      gap: 2.5rem;
+    }
+
+    @media (width >= 768px) {
+      gap: 3rem;
+    }
+
+    @media (width >= 1280px) {
+      flex-direction: row;
+      gap: 6rem;
+    }
+  }
+
+  &__image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (width >= 1024px) {
+      flex-shrink: 0;
+    }
+  }
+
+  &__image-container {
+    position: relative;
+    padding: 2px;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    background: $green;
+    box-shadow: 0 0 40px rgba($green-rgb, 0.3);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image-frame {
+    width: 180px;
+    height: 180px;
+    border-radius: 9999px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    background-color: transparent;
+
+    @media (width >= 768px) {
+      width: 220px;
+      height: 220px;
+    }
+
+    @media (width >= 1024px) {
+      width: 260px;
+      height: 260px;
+    }
+  }
+
+  &__image {
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    object-fit: contain;
+    border-radius: 9999px;
+    margin: -4px;
+  }
+}

@@ -1,0 +1,25 @@
+@use "../variables" as *;
+
+.text-gradient {
+  background: linear-gradient(135deg, $pink, $green);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $pink;
+  margin: 0;
+}
+
+.title-neon {
+  text-shadow:
+    0 0 10px rgba($pink-rgb, 0.4),
+    0 0 20px rgba($green-rgb, 0.2);
+}

@@ -1,0 +1,19 @@
+@use "../variables" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background-color: $bg-dark;
+  color: $text;
+  transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+}

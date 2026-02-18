@@ -8,9 +8,6 @@ export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : null;
 
-  // Debug temporal
-  console.log('Post data:', post?.meta);
-
   if (!post) {
     return (
       <div className="blog-post__error">
