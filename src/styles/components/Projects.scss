@@ -124,22 +124,22 @@
 
   &__link {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
+    padding: $btn-project-py $btn-project-px;
     font-weight: 600;
-    font-size: 0.875rem;
+    font-size: $btn-project-fs;
     color: $black;
     background-color: $yellow;
-    border-radius: 9999px;
+    border-radius: $btn-radius;
     text-decoration: none;
     transition: all 0.3s;
 
     @media (width >= 640px) {
-      padding: 0.875rem 2rem;
-      font-size: 1rem;
+      padding: $btn-project-py-md $btn-project-px-md;
+      font-size: $btn-project-fs-md;
     }
 
     @media (width >= 768px) {
-      padding: 1.5rem 4rem;
+      padding: $btn-project-py-lg $btn-project-px-lg;
     }
 
     &:hover {

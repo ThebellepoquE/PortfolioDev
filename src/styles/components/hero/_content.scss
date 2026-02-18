@@ -139,21 +139,12 @@
     &--github {
       svg {
         stroke: $green;
-        fill: none;
-      }
-
-      &:hover svg {
-        stroke: $yellow;
       }
     }
 
     &--linkedin {
       svg {
-        fill: $pink;
-      }
-
-      &:hover svg {
-        fill: $yellow;
+        fill: $moon;
       }
     }
   }

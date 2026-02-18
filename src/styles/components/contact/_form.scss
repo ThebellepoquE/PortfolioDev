@@ -106,21 +106,21 @@
 
   &__submit {
     width: fit-content;
-    min-width: 200px;
-    padding: 0.75rem 2rem;
+    min-width: $btn-contact-min-w;
+    padding: $btn-contact-py $btn-contact-px;
     margin: 1rem auto 0;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: $btn-contact-fs;
     color: $black;
     background-color: $yellow;
     border: none;
-    border-radius: 9999px;
+    border-radius: $btn-radius;
     cursor: pointer;
     transition: all 0.3s;
 
     @media (width >= 640px) {
-      padding: 0.875rem 2.5rem;
-      font-size: 1rem;
+      padding: $btn-contact-py-md $btn-contact-px-md;
+      font-size: $btn-contact-fs-md;
     }
 
     &:hover:not(:disabled) {

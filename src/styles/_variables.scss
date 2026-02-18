@@ -1,58 +1,96 @@
 // 🎨 Variables de marca thebellepoque
 
 :root {
+  // Brand
   --pink: #FF1493;
   --yellow: #FFF01F;
   --green: #0F0;
   --pink-rgb: 255, 20, 147;
   --yellow-rgb: 255, 240, 31;
   --green-rgb: 0, 255, 0;
+
+  // Surface
   --bg-dark: #0a0a0a;
   --bg-card: #1a1a1a;
-  --bg-form: #1a1a1a;
   --bg-card-rgb: 26, 26, 26;
+
+  // Text & border
   --text: #F5F5F5;
   --text-secondary: rgb(245 245 245 / 70%);
   --border: rgb(255 255 255 / 10%);
-  --white: #FFF;
+
+  // Neutrals
   --black: #000;
-  --white-rgb: 255, 255, 255;
   --black-rgb: 0, 0, 0;
+
+  // State & syntax
   --error: #ef4444;
   --error-rgb: 239, 68, 68;
   --pre-bg: #2d2d2d;
+
+  // Theme icons
   --moon: #00BFFF;
   --sun-icon: var(--yellow);
 }
 
 :root.light {
+  // Surface
   --bg-dark: #D1D1D1; // Gris más oscuro para que el neon resalte
   --bg-card: #E1E1E1;
-  --bg-form: #E8E8E8;
+
+  // Text & border
   --text: #0a0a0a;
   --text-secondary: rgb(10 10 10 / 80%);
   --border: rgb(0 0 0 / 20%);
+
+  // Theme icons
   --sun-icon: #856404;
 }
 
 // Atajos para usar en SCSS
+// Brand
 $pink: var(--pink);
 $yellow: var(--yellow);
 $green: var(--green);
 $pink-rgb: var(--pink-rgb);
 $yellow-rgb: var(--yellow-rgb);
 $green-rgb: var(--green-rgb);
+
+// Surface
 $bg-dark: var(--bg-dark);
 $bg-card: var(--bg-card);
-$bg-form: var(--bg-form);
+
+// Text & border
 $text: var(--text);
 $text-secondary: var(--text-secondary);
-$white: var(--white);
+
+// Neutrals
 $black: var(--black);
-$white-rgb: var(--white-rgb);
 $black-rgb: var(--black-rgb);
+
+// State & syntax
 $error: var(--error);
 $error-rgb: var(--error-rgb);
 $pre-bg: var(--pre-bg);
+
+// Theme icons
 $moon: var(--moon);
 $sun-icon: var(--sun-icon);
+
+// Buttons
+$btn-radius: 9999px;
+$btn-contact-min-w: 200px;
+$btn-contact-py: 0.75rem;
+$btn-contact-px: 2rem;
+$btn-contact-py-md: 0.875rem;
+$btn-contact-px-md: 2.5rem;
+$btn-contact-fs: 0.9rem;
+$btn-contact-fs-md: 1rem;
+$btn-project-py: 0.75rem;
+$btn-project-px: 1.5rem;
+$btn-project-py-md: 0.875rem;
+$btn-project-px-md: 2rem;
+$btn-project-py-lg: 1.5rem;
+$btn-project-px-lg: 4rem;
+$btn-project-fs: 0.875rem;
+$btn-project-fs-md: 1rem;
