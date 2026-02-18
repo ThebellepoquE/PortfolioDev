@@ -1,128 +1,111 @@
 # thebellepoque · React Portfolio
 
-Portfolio personal migrado desde Reflex a una stack **React + Vite + TypeScript** con estética fluorescente.
+Portfolio personal en **React + Vite + TypeScript** con sistema de estilos SCSS modular, formulario de contacto con **Resend** y controles de calidad preproducción.
 
-## ✨ Características
+## ✨ Estado actual (actualizado)
 
-- Secciones `Navbar`, `Hero`, `Projects`, `Contact` y `Footer` con diseño responsive para breakpoints `sm/md/lg/xl`.
-- Paleta fluorescente (pink/yellow/green) con titles `title-neon` y glow consistente.
-- Formulario de contacto con integración **Resend** (API serverless) y plantilla HTML personalizada.
-- 36 tests con Vitest + React Testing Library (85%+ coverage en `Contact.tsx`).
-- Optimización de imagen principal usando **Sharp** y `srcSet` responsive (ahorro ~26 KiB en móvil).
-- Accesibilidad básica: outlines `focus-visible`, labels descriptivos, `sr-only` en iconos.
+- Tema oscuro/claro consolidado en SCSS (`:root` + `:root.light`).
+- Estilos modularizados por componentes y por capas (`base`, `utilities`, `themes`, `components/*`).
+- Lint de estilos activo con Stylelint + SCSS (`npm run lint:styles`).
+- Flujo de contacto vía serverless en `/api/contact` usando Resend.
+- Build, lint de estilos y test scripts preparados para checks de preproducción.
 
-## 🛠️ Tech Stack
+## 🛠️ Stack
 
 - React 19 + React DOM 19
-- Vite 7 (dev server, build)
+- Vite 7
 - TypeScript 5.9
-- Tailwind CSS 4 (config via `@tailwindcss/vite`)
-- Vitest + React Testing Library + Jest DOM
-- Sharp (optimización de assets)
+- Sass/SCSS (arquitectura modular)
+- Stylelint (SCSS), ESLint
+- Vitest + Testing Library
 
-## 🚀 Puesta en marcha
+## 🚀 Scripts principales
 
 ```bash
-npm install       # instala dependencias
-npm run dev       # levanta Vite en http://localhost:5173 (ajusta puerto si está ocupado)
+npm run dev
+npm run build
+npm run preview
 
-npm run build     # build de producción (tsc + vite build)
-npm run preview   # sirve el build generado
-npm run lint      # eslint
+npm run lint
+npm run lint:styles
 
-npm test -- --run # ejecuta Vitest en modo run (recomendado para CI)
-npm run test:coverage # cobertura con v8
+npm run test -- --run
+npm run test:coverage
+
+npm run audit:prod
+npm run check:preprod
 ```
 
-> Requiere Node.js ≥ 18.
+`check:preprod` ejecuta: tests, eslint, build y auditoría de dependencias de producción.
 
 ## 📂 Estructura relevante
 
-```
+```text
 src/
-  components/
-    Navbar.tsx
-    Hero.tsx
-    Projects.tsx
-    Contact.tsx
-    Footer.tsx
-  index.css
   App.tsx
-
-public/
-  profile.webp          # imagen original (433×561)
-  profile-200.webp      # versión optimizada generada con Sharp
+  main.tsx
+  styles/
+    _variables.scss
+    main.scss
+    base/
+      _global.scss
+      _typography.scss
+    utilities/
+      _common.scss
+    themes/
+      _light.scss
+    components/
+      Navbar.scss
+      Hero.scss
+      Contact.scss
+      ...
+      navbar/
+        _desktop.scss
+        _mobile.scss
+      hero/
+        _layout.scss
+        _content.scss
+      contact/
+        _layout.scss
+        _form.scss
+api/
+  contact.js
 ```
 
-## ✉️ Configuración Resend
+## ✉️ Contacto (Resend)
 
-El formulario (`src/components/Contact.tsx`) envía datos a `/api/contact`, una serverless function que usa **Resend** para enviar emails con plantilla HTML personalizada.
+El formulario (`src/components/Contact.tsx`) envía a `/api/contact`.
 
-1. Crea una cuenta en [resend.com](https://resend.com) y genera una API Key.
+Variables necesarias:
 
-2. En producción (Vercel) añade las variables en **Project Settings → Environment Variables**:
-
-  ```env
-  RESEND_API_KEY=re_xxxxxxxxxx
-  CONTACT_EMAIL=tu-email@ejemplo.com
-  ```
-
-3. La plantilla del email está en `api/contact.js` y usa los colores del portfolio (rosa/amarillo/verde).
-
-## 🖼️ Optimización de imágenes
-
-Se añadió **Sharp** como dev dependency para generar versiones ligeras.
-
-Comando usado para la foto principal:
-
-```bash
-node -e "const sharp=require('sharp'); sharp('public/profile.webp')
-  .resize({ width: 200, height: 200, fit: 'cover' })
-  .toFile('public/profile-200.webp');"
+```env
+RESEND_API_KEY=re_xxxxxxxxxx
+CONTACT_EMAIL=tu-email@ejemplo.com
 ```
-El componente `Hero` consume un `srcSet`:
-```tsx
-<img
-  src="/profile-200.webp"
-  srcSet="/profile-200.webp 200w, /profile.webp 433w"
-  sizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
-  ...
-/>
-```
-Ajusta las dimensiones si cambias el diseño o sustituyes la imagen.
 
-## 🧪 Testing
+Referencia local: `.env.example`.
 
-- `src/components/Contact.test.tsx` cubre renderizado, estados del formulario, validaciones, accesibilidad y responsive.
-- Ejecuta `npm test -- --run` antes de desplegar; `npm run test:coverage` para reportes de cobertura (usa `@vitest/coverage-v8`).
+## 🧪 Calidad
+
+- Lint estilos estricto con `declaration-no-important: true`.
+- Convención BEM permitida en selectores SCSS.
+- Validar antes de merge: `npm run lint:styles && npm run lint && npm run test -- --run && npm run build`.
+
+## 📦 Dependencias
+
+- Registrar en PR/commit toda alta o baja de dependencias (incluyendo motivo técnico).
+- Verificación sugerida antes de eliminar: `npx depcheck --json` + validación de scripts/config.
+- Tras limpieza, ejecutar `npm run check:preprod`.
 
 ## 🔒 Seguridad
 
-### Headers HTTP (`vercel.json`)
-- **Content-Security-Policy**: Protección XSS, permite Resend API
-- **Strict-Transport-Security**: HSTS con `includeSubDomains` y `preload`
-- **X-Frame-Options**: Previene clickjacking
-- **X-Content-Type-Options**: Previene MIME sniffing
-- **X-XSS-Protection**: Protección adicional contra XSS
+- Headers de seguridad en `vercel.json` (incluye CSP y HSTS).
+- Middleware defensivo en `middleware.js`.
+- `public/security.txt` para reporte de vulnerabilidades.
 
-### Edge Middleware (`api/_middleware.js`)
-- **Rate Limiting**: 100 requests/minuto por IP
-- **Bot Protection**: Bloquea scanners maliciosos (sqlmap, nikto, nmap, etc.)
-- **Whitelist**: Permite bots legítimos (Googlebot, Bingbot)
+## 🌐 Deploy sugerido
 
-### Otros
-- **security.txt**: RFC 9116 - Contacto para reportar vulnerabilidades
-- **DNSSEC**: Configurado a nivel de DNS provider
-- **Open Graph**: Meta tags para compartir en redes sociales
+1. Configurar variables (`RESEND_API_KEY`, `CONTACT_EMAIL`) en Vercel.
+2. Ejecutar `npm run check:preprod` antes de desplegar.
+3. Deploy con output `dist`.
 
-## 🌐 Despliegue sugerido
-
-1. Configurar repositorio Git (recomendado nuevo repo en vez del histórico Reflex).
-2. Añadir workflow de CI (ej. GitHub Actions) que ejecute `npm ci` + `npm test -- --run` + `npm run build`.
-3. Deploy en Vercel (framework Vite, build `npm run build`, output `dist`, y define `RESEND_API_KEY` + `CONTACT_EMAIL`).
-4. Vercel automáticamente aplicará los headers de `vercel.json` y el middleware de `api/_middleware.js`.
-5. Monitoriza Lighthouse (especialmente LCP del Hero y tamaños de bundle) sobre el deploy final.
-
----
-
-Si necesitas volver a generar tests, ajustar colores o preparar scripts extra, abre un issue o continuamos aquí. 💡

@@ -12,7 +12,7 @@ draft: true
 image: /images/blog/modularizacion.webp
 ---
 
-Ya han pasado unos meses desde que os conté cómo nació **LIGHT-ON**. Si en el primer post hablábamos de ese "salto al vacío" y la entrega del proyecto final, hoy quiero contaros cómo ese código de "estudiante" se ha ido transformando en una infraestructura sólida, escalable y, sobre todo, profesional.
+Ya han pasado unos meses desde que os conté cómo nació **Light-ON**. Si en el primer post hablábamos de ese "salto al vacío" y la entrega del proyecto final, hoy quiero contaros cómo ese código de "estudiante" se ha ido transformando en una infraestructura sólida, escalable y, sobre todo, profesional.
 
 Mantener un proyecto vivo desde noviembre del año pasado me ha enseñado que el desarrollo no termina cuando el cliente (en este caso, ¡mi hijo!) dice "me gusta". Ahí es donde empieza la verdadera ingeniería.
 

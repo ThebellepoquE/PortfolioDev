@@ -20,8 +20,8 @@ export const projects: Project[] = [
   },
   {
     title: "Portfolio Personal (thebellepoque.dev)",
-    description: "Portfolio moderno con diseño fluorescente neón, migrado desde Reflex a React + Vite + TypeScript. Incluye optimización de imágenes con Sharp, lazy loading, formulario con API Serverless (Resend) y 36 tests con Vitest. Desplegado en Vercel con headers de seguridad y middleware de protección.",
+    description: "Portfolio moderno con diseño fluorescente neón, migrado desde Reflex a React + Vite + TypeScript. Incluye lazy loading, formulario con API Serverless (Resend) y 36 tests con Vitest. Desplegado en Vercel con headers de seguridad y middleware de protección.",
     url: "https://github.com/ThebellepoquE/portfolio",
-    techStack: ['React', 'TypeScript', 'Vite', 'SCSS', 'Vitest', 'Sharp']
+    techStack: ['React', 'TypeScript', 'Vite', 'SCSS', 'Vitest']
   }
 ];

@@ -64,7 +64,7 @@ Implementa un contact form con:
 - Manejo de estado con React Hook Form
 - Estados visuales (loading, success, error) con Tailwind
 - Protección contra bots (honeypot o recaptcha)
-- Integración con servicio de email (EmailJS)
+- Integración con servicio de email (Resend vía serverless)
 - Animaciones con Framer Motion o Tailwind CSS
 
 7. TypeScript Best Practices
@@ -106,7 +106,7 @@ Evalua estas opciones para el backend del contact form:
 
 Opción 1: Serverless Function (Recomendada)
 
-- EmailJS
+- Resend
 
 11. Git / Commits para Portfolio
 
