@@ -144,7 +144,7 @@
     font-weight: 700;
     font-size: 0.9rem;
     color: $black;
-    background-color: $green;
+    background-color: $yellow;
     border: none;
     border-radius: 9999px;
     cursor: pointer;
@@ -163,6 +163,13 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
+  }
+
+  &__submit-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
   }
 
   &__status {

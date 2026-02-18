@@ -22,87 +22,127 @@ body {
   overflow-x: hidden;
 }
 
-// Estilos globales de modo claro
+// Estilos globales de modo claro (Modern Studio / Precision)
 :root.light {
   body {
-    font-weight: 500;
-  }
-  
-  p {
-    font-weight: 600;
+    background-color: #ffffff;
+    // Puntos de cuadrícula ultra-finos (Estética Studio)
+    background-image: radial-gradient(#000000 0.5px, transparent 0.5px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+    color: #121212;
   }
 
-  // Refuerzo de contraste para elementos con color de marca en fondo claro
-  h1, h2, h3, h4, h5, h6, 
-  strong, code,
-  .hero__handle, 
-  .navbar__link, 
-  .navbar__github,
-  .footer__github,
-  .footer__dot, 
-  .navbar__logo-dot, 
-  .hero__tag, 
-  .project-card__tech,
-  .project-card__title,
-  .contact__label,
-  .hero__social-link,
-  .theme-toggle__icon {
-    filter: drop-shadow(0 0 1px rgba($black-rgb, 0.9));
+  // Tarjetas limpias (sin acento lateral, igual que en modo oscuro)
+  .project-card, .blog-card, .blog-post__article, .contact__form {
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: rgba(0, 0, 0, 0.2) !important;
+    }
+  }
+
+  h1, h2, h3, h4, .blog-card__title, .blog-post__title {
+    color: $pink !important;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, $pink, $green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .navbar {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: saturate(180%) blur(15px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+    &__content {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
   }
 
   .navbar__link {
-    color: $black !important;
-    font-weight: 700 !important;
+    color: #444 !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem;
     padding: 0.5rem 1rem !important;
     border-radius: 6px;
-    transition: all 0.2s;
     
-    &--pink:hover { color: $pink !important; background-color: rgba($black-rgb, 0.05); }
-    &--yellow:hover { color: $yellow !important; background-color: rgba($black-rgb, 0.05); }
-    &--green:hover { color: $green !important; background-color: rgba($black-rgb, 0.05); }
-    &.is-active { 
-       background-color: rgba($black-rgb, 0.08);
-       text-decoration: none !important;
+    &--pink:hover { color: #fff !important; background: $pink; }
+    &--yellow:hover { color: #000 !important; background: $yellow; }
+    &--green:hover { color: #fff !important; background: $green; }
+    
+    &.is-active {
+      background-color: #111;
+      color: #fff !important;
     }
-  }
-
-  .navbar__github svg, .footer__github svg, .hero__social-link svg {
-    filter: drop-shadow(0 0 1px rgba($black-rgb, 0.5));
   }
 
   .hero__tag, .project-card__tech {
-    background-color: rgba($black-rgb, 0.85) !important;
+    background-color: #f3f4f6 !important;
+    color: #374151 !important;
+    border: 1px solid #e5e7eb;
+    font-weight: 600 !important;
     border-radius: 4px;
-    font-weight: 700 !important;
+    font-size: 0.7rem;
+    padding: 3px 8px !important;
   }
 
-  // Estilos específicos para el formulario de contacto en modo claro
   .contact__input, .contact__textarea {
-    background-color: $white !important;
-    color: $black !important;
-    border-width: 2px !important; // Bordes más gruesos para que se vean
-
-    &--name { border-color: $pink !important; }
-    &--email { border-color: $yellow !important; }
-    &--message { border-color: $green !important; }
-
-    &::placeholder {
-      color: rgba($black-rgb, 0.6);
+    background-color: #f9fafb !important;
+    color: #111 !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 8px !important;
+    
+    &:focus {
+      background-color: #fff !important;
+      border-color: #000 !important;
+      box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
     }
   }
 
-  .contact__form {
-    background-color: $bg-form !important; // Un poco más de contraste para la tarjeta del form
-    box-shadow: 0 4px 20px rgba($black-rgb, 0.1);
+  .title-neon {
+    color: $pink;
+    text-shadow: none;
+    border-bottom: none;
   }
 
-  .contact__submit:hover {
-    box-shadow: 0 8px 30px rgba($black-rgb, 0.2) !important;
+  .blog-card__link {
+    color: $yellow !important;
+  }
+
+  p {
+    color: #374151;
+    line-height: 1.7;
+  }
+
+  .navbar__github svg, .footer__github svg, .hero__social-link svg {
+    color: #000;
+    opacity: 0.7;
+    &:hover { opacity: 1; }
+  }
+
+  .hero, .projects, .blog-list, .contact, .blog-post {
+    background-color: transparent !important;
+  }
+
+  .footer {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: saturate(180%) blur(15px);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
   }
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, $pink, $yellow, $green);
+  background: linear-gradient(135deg, $pink, $green);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

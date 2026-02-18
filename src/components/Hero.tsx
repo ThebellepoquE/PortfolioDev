@@ -48,7 +48,7 @@ export function Hero() {
             Llevo un año creando experiencias web, aprendiendo cada día algo nuevo.
             Formada en Bottega University (DevCamp) con Jordan Hudgens, gracias a Fundación VASS.
             Mi próximo objetivo: Automatizar procesos y llevar lighton.es al siguiente nivel.
-            Cada proyecto es una oportunidad para crecer 🚀
+            Cada proyecto es una oportunidad para crecer.
           </p>
 
           {/* Tags de stack */}
