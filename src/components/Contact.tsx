@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
 
 /** Sección de contacto con formulario (Resend API) */
@@ -11,6 +11,24 @@ export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
+
+  // Limpieza de timeouts para evitar fugas de memoria
+  useEffect(() => {
+    let successTimer: number;
+    let errorTimer: number;
+
+    if (showSuccess) {
+      successTimer = window.setTimeout(() => setShowSuccess(false), 3000);
+    }
+    if (showError) {
+      errorTimer = window.setTimeout(() => setShowError(false), 5000);
+    }
+
+    return () => {
+      clearTimeout(successTimer);
+      clearTimeout(errorTimer);
+    };
+  }, [showSuccess, showError]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -34,14 +52,11 @@ export function Contact() {
       if (response.ok) {
         setShowSuccess(true);
         setFormData({ name: '', email: '', message: '' });
-        setTimeout(() => setShowSuccess(false), 3000);
       } else {
         setShowError(true);
-        setTimeout(() => setShowError(false), 5000);
       }
     } catch {
       setShowError(true);
-      setTimeout(() => setShowError(false), 5000);
     }
 
     setIsSubmitting(false);

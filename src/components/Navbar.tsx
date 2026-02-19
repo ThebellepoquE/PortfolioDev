@@ -59,7 +59,7 @@ export function Navbar() {
             )}
             <Link
               to="/blog"
-              className={`navbar__link navbar__link--yellow ${
+              className={`navbar__link navbar__link--pink ${
                 location.pathname.startsWith('/blog') ? 'is-active' : ''
               }`}
             >
@@ -128,7 +128,7 @@ export function Navbar() {
                 {/* Icono Blog */}
                 <Link
                   to="/blog"
-                  className="mobile-nav__item mobile-nav__item--green"
+                  className="mobile-nav__item mobile-nav__item--pink"
                 >
                   <div className="mobile-nav__item-icon">
                     <svg
@@ -150,7 +150,7 @@ export function Navbar() {
                 {/* Icono Contacto */}
                 <a
                   href="#contacto"
-                  className="mobile-nav__item mobile-nav__item--pink"
+                  className="mobile-nav__item mobile-nav__item--blue"
                 >
                   <div className="mobile-nav__item-icon">
                     <svg
@@ -196,7 +196,7 @@ export function Navbar() {
                 {/* Icono Blog - activo */}
                 <Link
                   to="/blog"
-                  className={`mobile-nav__item mobile-nav__item--yellow ${
+                  className={`mobile-nav__item mobile-nav__item--pink ${
                     location.pathname.startsWith('/blog') ? 'is-active' : ''
                   }`}
                 >

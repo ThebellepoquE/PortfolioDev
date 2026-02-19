@@ -67,7 +67,7 @@
   @media (width >= 1024px) { padding: 3.5rem; }
 
   &:hover {
-    box-shadow: 0 0 30px rgba($pink-rgb, 0.5);
+    box-shadow: 0 0 30px rgba($green-rgb, 0.5);
   }
 
   &__content {
@@ -124,9 +124,9 @@
 
   &__link {
     display: inline-block;
-    padding: $btn-project-py $btn-project-px;
+    padding: $btn-py $btn-px;
     font-weight: 600;
-    font-size: $btn-project-fs;
+    font-size: $btn-fs;
     color: $black;
     background-color: $yellow;
     border-radius: $btn-radius;
@@ -134,12 +134,8 @@
     transition: all 0.3s;
 
     @media (width >= 640px) {
-      padding: $btn-project-py-md $btn-project-px-md;
-      font-size: $btn-project-fs-md;
-    }
-
-    @media (width >= 768px) {
-      padding: $btn-project-py-lg $btn-project-px-lg;
+      padding: $btn-py-md $btn-px-md;
+      font-size: $btn-fs-md;
     }
 
     &:hover {

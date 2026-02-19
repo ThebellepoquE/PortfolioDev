@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -6,7 +7,10 @@ import { getPostBySlug } from '../../lib/posts';
 /** Renderiza un post individual */
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const post = slug ? getPostBySlug(slug) : null;
+  
+  const post = useMemo(() => {
+    return slug ? getPostBySlug(slug) : null;
+  }, [slug]);
 
   if (!post) {
     return (

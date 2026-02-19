@@ -77,20 +77,12 @@ $pre-bg: var(--pre-bg);
 $moon: var(--moon);
 $sun-icon: var(--sun-icon);
 
-// Buttons
+// Botones Estándar (Unificados)
 $btn-radius: 9999px;
-$btn-contact-min-w: 200px;
-$btn-contact-py: 0.75rem;
-$btn-contact-px: 2rem;
-$btn-contact-py-md: 0.875rem;
-$btn-contact-px-md: 2.5rem;
-$btn-contact-fs: 0.9rem;
-$btn-contact-fs-md: 1rem;
-$btn-project-py: 0.75rem;
-$btn-project-px: 1.5rem;
-$btn-project-py-md: 0.875rem;
-$btn-project-px-md: 2rem;
-$btn-project-py-lg: 1.5rem;
-$btn-project-px-lg: 4rem;
-$btn-project-fs: 0.875rem;
-$btn-project-fs-md: 1rem;
+$btn-min-w: 200px;
+$btn-py: 0.75rem;
+$btn-px: 1.5rem;
+$btn-py-md: 0.875rem;
+$btn-px-md: 2rem;
+$btn-fs: 0.9rem;
+$btn-fs-md: 1rem;
