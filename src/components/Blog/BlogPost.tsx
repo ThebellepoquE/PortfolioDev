@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -11,6 +11,13 @@ export function BlogPost() {
   const post = useMemo(() => {
     return slug ? getPostBySlug(slug) : null;
   }, [slug]);
+
+  // Actualizar el título de la página para SEO
+  useEffect(() => {
+    if (post) {
+      document.title = `${post.meta.title} | Blog de Ione`;
+    }
+  }, [post]);
 
   if (!post) {
     return (

@@ -38,13 +38,12 @@
 :root.light {
   // Surface
   --bg-dark: #f8f8f8; // Casi blanco
-  --bg-card: #ffffff; // Blanco puro
-  --border: rgba(0, 0, 0, 0.1);
+  --bg-card: #fff; // Blanco puro
 
   // Text & border
-  --text: #000000;    
-  --text-secondary: #222222; // Un gris casi negro para mejor definición
-  --border: rgba(0, 0, 0, 0.08);
+  --text: #000;    
+  --text-secondary: #222; // Un gris casi negro para mejor definición
+  --border: rgb(0 0 0 / 8%);
 
   // Theme icons
   --sun-icon: #f59e0b;

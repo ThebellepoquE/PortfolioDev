@@ -6,7 +6,7 @@
     background-color: var(--bg-dark);
 
     // Puntos de cuadrícula ultra-finos y muy suaves
-    background-image: radial-gradient(rgba(0,0,0,0.06) 0.5px, transparent 0.5px);
+    background-image: radial-gradient(rgb(0 0 0 / 6%) 0.5px, transparent 0.5px);
     background-size: 40px 40px;
     background-attachment: fixed;
     color: var(--text);

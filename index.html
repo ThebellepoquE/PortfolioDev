@@ -12,21 +12,51 @@
     <meta name="color-scheme" content="dark" />
     <meta name="description" content="Portfolio de Ione: Desarrolladora Python full-stack especializada en React, TypeScript y automatizaciones." />
     <meta name="google-site-verification" content="HHWnXtmHl4aKCxN7_QoqTHS7npnMwf_9V2PaFLccTOw" />
-    <meta property="og:title" content="Ione (@thebellepoque) - Portfolio" />
-    <meta property="og:description" content="Full-stack Developer | Apasionada por las Automatizaciones" />
+    <!-- Open Graph / Social SEO -->
+    <meta property="og:title" content="Ione (@thebellepoque) - Portfolio & Automatización" />
+    <meta property="og:description" content="Portfolio de Ione: Desarrolladora Full-stack especializada en React, TypeScript y automatizaciones eficaces. Descubre mis proyectos y artículos sobre desarrollo." />
     <meta property="og:image" content="https://thebellepoque.dev/profile.webp" />
     <meta property="og:url" content="https://thebellepoque.dev" />
+    <meta property="og:site_name" content="thebellepoque.dev" />
     <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ione | Full-stack Developer" />
+    <meta name="twitter:description" content="Especialista en Python, React y automatizaciones." />
+    <meta name="twitter:image" content="https://thebellepoque.dev/profile.webp" />
     
-    <!-- Fonts -->
+    <!-- Fonts Early Load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     
-    <!-- Preload imagen crítica -->
-    <link rel="preload" as="image" href="/profile-200.webp" />
+    <!-- Preload Imagen Crítica -->
+    <link 
+      rel="preload" 
+      as="image" 
+      href="/profile-200.webp" 
+      imagesrcset="/profile-200.webp 200w, /profile.webp 1000w" 
+      imagesizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
+    />
     
-    <title>Ione Portfolio</title>
+    <!-- Datos Estructurados (JSON-LD) para SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ione",
+        "alternateName": "thebellepoque",
+        "url": "https://thebellepoque.dev",
+        "image": "https://thebellepoque.dev/profile.webp",
+        "sameAs": [
+          "https://github.com/thebellepoque",
+          "https://www.linkedin.com/in/thebellepoque"
+        ],
+        "jobTitle": "Full-stack Developer",
+        "description": "Desarrolladora Python full-stack especializada en React, TypeScript y automatizaciones."
+      }
+    </script>
+    
+    <title>Ione | Full-stack Developer & Automation Specialist</title>
     
     <style>
       :root {

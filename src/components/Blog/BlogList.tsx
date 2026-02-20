@@ -1,9 +1,15 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllPosts } from '../../lib/posts';
 
 /** Lista de posts del blog */
 export function BlogList() {
   const posts = getAllPosts();
+
+  // Actualizar el título de la página para SEO
+  useEffect(() => {
+    document.title = 'Blog | Desarrollo y Automatización - thebellepoque';
+  }, []);
 
   return (
     <section className="blog-list">

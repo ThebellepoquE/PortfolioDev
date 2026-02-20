@@ -1,8 +1,13 @@
+import { useEffect } from 'react';
 import { Github, Linkedin } from 'lucide-react';
 import { SITE_CONFIG } from '../lib/config';
 
 /** Hero section con foto, nombre y bio */
 export function Hero() {
+  // Actualizar el título de la página para SEO al volver al inicio
+  useEffect(() => {
+    document.title = 'Ione | Full-stack Developer & Automations - thebellepoque';
+  }, []);
   return (
     <section id="inicio" className="hero">
       <div className="hero__container">
@@ -40,7 +45,7 @@ export function Hero() {
 
           {/* Descripción */}
           <p className="hero__subtitle">
-            Full-stack Developer | Apasionada por las Automatizaciones
+            Full-stack Developer | Automatizaciones
           </p>
 
           {/* Bio */}
