@@ -24,10 +24,24 @@
     <meta name="twitter:description" content="Especialista en Python, React y automatizaciones." />
     <meta name="twitter:image" content="https://thebellepoque.dev/profile.webp" />
     
-    <!-- Fonts Early Load -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Optimización DNS y Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link 
+      rel="preload" 
+      as="style" 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap"
+    />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap" 
+      rel="stylesheet" 
+      media="print" 
+      onload="this.media='all'" 
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap" rel="stylesheet" />
+    </noscript>
     
     <!-- Preload Imagen Crítica (Perfil) -->
     <link 
@@ -36,6 +50,7 @@
       href="/profile-520.webp" 
       imagesrcset="/profile-260.webp 260w, /profile-360.webp 360w, /profile-520.webp 520w" 
       imagesizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
+      fetchpriority="high"
     />
     
     <!-- Datos Estructurados (JSON-LD) para SEO -->
@@ -48,7 +63,7 @@
         "url": "https://thebellepoque.dev",
         "image": "https://thebellepoque.dev/profile.webp",
         "sameAs": [
-          "https://github.com/thebellepoque",
+          "https://github.com/ThebellepoquE",
           "https://www.linkedin.com/in/thebellepoque"
         ],
         "jobTitle": "Full-stack Developer",
@@ -56,7 +71,7 @@
       }
     </script>
     
-    <title>Ione | Full-stack Developer & Automation Specialist</title>
+    <title>Ione | Full-stack Developer</title>
     
     <style>
       :root {
@@ -81,7 +96,13 @@
       @keyframes spin { to { transform: rotate(360deg); } }
     </style>
     
-    <script src="/scripts/theme-init.js"></script>
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 
+                     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.classList.add(theme);
+      })();
+    </script>
   </head>
   <body>
     <noscript>
