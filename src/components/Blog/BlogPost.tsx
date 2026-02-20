@@ -30,8 +30,29 @@ export function BlogPost() {
     );
   }
 
+  // Generar datos estructurados (SEO)
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.meta.title,
+    "description": post.meta.description,
+    "image": post.meta.image ? `https://thebellepoque.dev${post.meta.image}` : "https://thebellepoque.dev/profile.webp",
+    "datePublished": post.meta.date,
+    "author": {
+      "@type": "Person",
+      "name": "Ione Rodríguez",
+      "url": "https://thebellepoque.dev"
+    }
+  };
+
   return (
     <article className="blog-post">
+      {/* Inyectar Datos Estructurados */}
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <div className="blog-post__container">
         <Link 
           to="/blog" 

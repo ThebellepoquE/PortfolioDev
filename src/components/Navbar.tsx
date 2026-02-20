@@ -92,6 +92,7 @@ export function Navbar() {
                 <a
                   href="#inicio"
                   className="mobile-nav__item mobile-nav__item--pink"
+                  aria-label="Ir al inicio"
                 >
                   <div className="mobile-nav__item-icon">
                     <Home size={24} strokeWidth={2} />
@@ -102,6 +103,7 @@ export function Navbar() {
                 <a
                   href="#proyectos"
                   className="mobile-nav__item mobile-nav__item--yellow"
+                  aria-label="Ver proyectos"
                 >
                   <div className="mobile-nav__item-icon">
                     <Briefcase size={24} strokeWidth={2} />
@@ -111,7 +113,8 @@ export function Navbar() {
                 {/* Icono Blog */}
                 <Link
                   to="/blog"
-                  className="mobile-nav__item mobile-nav__item--pink"
+                  className="mobile-nav__item mobile-nav__item--green"
+                  aria-label="Ir al blog"
                 >
                   <div className="mobile-nav__item-icon">
                     <FileText size={24} strokeWidth={2} />
@@ -121,7 +124,8 @@ export function Navbar() {
                 {/* Icono Contacto */}
                 <a
                   href="#contacto"
-                  className="mobile-nav__item mobile-nav__item--blue"
+                  className="mobile-nav__item mobile-nav__item--pink"
+                  aria-label="Ir a contacto"
                 >
                   <div className="mobile-nav__item-icon">
                     <Mail size={24} strokeWidth={2} />
@@ -139,6 +143,7 @@ export function Navbar() {
                 <Link
                   to="/"
                   className="mobile-nav__item mobile-nav__item--pink"
+                  aria-label="Ir al inicio"
                 >
                   <div className="mobile-nav__item-icon">
                     <Home size={24} strokeWidth={2} />
@@ -149,9 +154,10 @@ export function Navbar() {
                 {/* Icono Blog - activo */}
                 <Link
                   to="/blog"
-                  className={`mobile-nav__item mobile-nav__item--pink ${
+                  className={`mobile-nav__item mobile-nav__item--green ${
                     location.pathname.startsWith('/blog') ? 'is-active' : ''
                   }`}
+                  aria-label="Ir al blog"
                 >
                   <div className="mobile-nav__item-icon">
                     <FileText size={24} strokeWidth={2} />

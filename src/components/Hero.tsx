@@ -16,8 +16,8 @@ export function Hero() {
           <div className="hero__image-container">
             <div className="hero__image-frame">
               <img
-                src="/profile-200.webp"
-                srcSet="/profile-200.webp 200w, /profile.webp 1000w"
+                src="/profile-260.webp"
+                srcSet="/profile-260.webp 260w, /profile-360.webp 360w, /profile-520.webp 520w"
                 sizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
                 alt="Ione - @thebellepoque"
                 width={260}

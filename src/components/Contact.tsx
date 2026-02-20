@@ -40,7 +40,7 @@ function FormField({
       ) : (
         <input
           id={id}
-          name={type}
+          name={name}
           type={type}
           placeholder={placeholder}
           value={value}
