@@ -134,10 +134,10 @@
     font-size: 0.875rem;
     color: $yellow;
     font-weight: 500;
-    transition: color 0.3s;
+    transition: all 0.3s;
 
-    .blog-card:hover & {
-      color: $green;
+    :root.light & {
+      text-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
     }
   }
 }

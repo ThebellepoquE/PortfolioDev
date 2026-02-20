@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#FF1493" />
     <meta name="color-scheme" content="dark" />
@@ -13,54 +17,64 @@
     <meta property="og:image" content="https://thebellepoque.dev/profile.webp" />
     <meta property="og:url" content="https://thebellepoque.dev" />
     <meta property="og:type" content="website" />
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
     <!-- Preload imagen crítica -->
-    <link
-      rel="preload"
-      as="image"
-      href="/profile-200.webp"
-      fetchpriority="high"
-      imagesrcset="/profile-200.webp 200w, /profile.webp 433w"
-      imagesizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
-    />
-    <title>Ione (@thebellepoque) - Portfolio</title>
+    <link rel="preload" as="image" href="/profile-200.webp" />
+    
+    <title>Ione Portfolio</title>
+    
     <style>
-      /* Estilos criticos para evitar FCP alto */
       :root {
         --bg-dark: #0a0a0a;
+        --bg-card: #1a1a1a;
         --text: #F5F5F5;
+        --pink: #FF1493;
       }
       :root.light {
         --bg-dark: #D1D1D1;
+        --bg-card: #E5E5E5;
         --text: #0a0a0a;
+        --pink: #FF1493;
       }
       body {
         margin: 0;
         background-color: var(--bg-dark);
         color: var(--text);
         font-family: 'Inter', system-ui, sans-serif;
-        line-height: inherit; /* Respetar valores de Vite/Sass */
       }
       #root { min-height: 100vh; }
+      @keyframes spin { to { transform: rotate(360deg); } }
     </style>
+    
     <script>
-      // Aplicar tema antes de que React se monte (evita flash)
       (function() {
         const theme = localStorage.getItem('theme') || 
                      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-        if (theme === 'light') {
-          document.documentElement.classList.add('light');
-        } else {
-          document.documentElement.classList.add('dark');
-        }
+        document.documentElement.classList.add(theme);
       })();
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <noscript>
+      <div style="height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-dark); color: var(--text); font-family: sans-serif; text-align: center; padding: 20px;">
+        <div>
+          <h1 style="color: var(--pink);">¡Oops! JavaScript desactivado</h1>
+          <p>Este portfolio está construido con React. Por favor, activa JavaScript para poder verlo.</p>
+        </div>
+      </div>
+    </noscript>
+    
+    <div id="root">
+      <div style="height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-dark);">
+        <div style="width: 40px; height: 40px; border: 3px solid var(--bg-card); border-top-color: var(--pink); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+      </div>
+    </div>
+    
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

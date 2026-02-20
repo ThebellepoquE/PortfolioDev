@@ -1,0 +1,50 @@
+@use '../../styles/variables' as *;
+
+.error-boundary {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-dark;
+  color: $text;
+  text-align: center;
+  padding: 2rem;
+
+  .error-content {
+    max-width: 500px;
+    
+    .error-icon {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      color: $pink;
+      font-family: Inter, sans-serif;
+      font-weight: 800;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $text;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .error-details {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: $bg-card;
+      border: 1px solid rgba($pink, 0.2);
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: $yellow;
+      text-align: left;
+      overflow-x: auto;
+    }
+  }
+}

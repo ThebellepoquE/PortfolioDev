@@ -102,7 +102,10 @@
 
   &__link {
     font-weight: 500;
-    transition: color 0.3s;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s;
     text-decoration: none;
     color: $text;
 

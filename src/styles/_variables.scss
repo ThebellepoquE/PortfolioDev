@@ -22,6 +22,8 @@
   // Neutrals
   --black: #000;
   --black-rgb: 0, 0, 0;
+  --white: #fff;
+  --white-rgb: 255, 255, 255;
 
   // State & syntax
   --error: #ef4444;
@@ -35,16 +37,17 @@
 
 :root.light {
   // Surface
-  --bg-dark: #D1D1D1; // Gris más oscuro para que el neon resalte
-  --bg-card: #E1E1E1;
+  --bg-dark: #f8f8f8; // Casi blanco
+  --bg-card: #ffffff; // Blanco puro
+  --border: rgba(0, 0, 0, 0.1);
 
   // Text & border
-  --text: #0a0a0a;
-  --text-secondary: rgb(10 10 10 / 80%);
-  --border: rgb(0 0 0 / 20%);
+  --text: #000000;    
+  --text-secondary: #222222; // Un gris casi negro para mejor definición
+  --border: rgba(0, 0, 0, 0.08);
 
   // Theme icons
-  --sun-icon: #856404;
+  --sun-icon: #f59e0b;
 }
 
 // Atajos para usar en SCSS
@@ -67,6 +70,8 @@ $text-secondary: var(--text-secondary);
 // Neutrals
 $black: var(--black);
 $black-rgb: var(--black-rgb);
+$white: var(--white);
+$white-rgb: var(--white-rgb);
 
 // State & syntax
 $error: var(--error);

@@ -4,13 +4,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
   font-family: Inter, system-ui, -apple-system, sans-serif;
   background-color: $bg-dark;
   color: $text;
-  transition: background-color 0.3s, color 0.3s;
   overflow-x: hidden;
 }
 

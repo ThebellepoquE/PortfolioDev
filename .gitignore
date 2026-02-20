@@ -35,3 +35,5 @@ coverage/
 
 # Documentation not for deployment
 public/agents.md
+.vercel
+.env*.local

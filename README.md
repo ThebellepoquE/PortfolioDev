@@ -85,6 +85,23 @@ CONTACT_EMAIL=tu-email@ejemplo.com
 
 Referencia local: `.env.example`.
 
+## 💻 Desarrollo Local y Troubleshooting
+
+### 🔌 Puertos y Servidor
+- **Puerto por defecto**: `5173` (Vite).
+- **Vercel CLI**: Se recomienda evitar `vercel dev` para desarrollo de UI debido a conflictos de caché y colisión de puertos (suele usar el `3000`). Usa `npm run dev` para una experiencia más rápida y aislada.
+
+### 🖼️ Problemas con el Favicon (Caché)
+Si ves el favicon de un proyecto antiguo o un icono genérico en `localhost`:
+1. El navegador cachea los favicons por puerto. Al cambiar del `3000` al `5173` hemos aislado este proyecto.
+2. Si persiste, prueba en una **pestaña de incógnito**.
+3. Limpia la caché específica del sitio en: `F12 > Application > Storage > Clear site data`.
+
+### ⚡ API y Backend
+Las funciones en `/api/` (como el contacto) son **Serverless Functions** de Vercel. 
+- En `npm run dev` (Vite), estas rutas no están activas localmente. 
+- Para probar el flujo de email completo, se requiere el entorno de Vercel o un despliegue de Preview.
+
 ## 🧪 Calidad
 
 - Lint estilos estricto con `declaration-no-important: true`.

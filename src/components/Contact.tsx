@@ -1,5 +1,73 @@
 import { useState, useEffect } from 'react';
-import type { FormEvent } from 'react';
+import { Check, AlertCircle, Loader2 } from 'lucide-react';
+import type { FormEvent, ReactNode } from 'react';
+
+interface FormFieldProps {
+  id: string;
+  label: string;
+  type?: 'text' | 'email' | 'textarea';
+  name: string;
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+  required?: boolean;
+  autoComplete?: string;
+  rows?: number;
+}
+
+function FormField({ 
+  id, label, type = 'text', name, placeholder, value, onChange, required, autoComplete, rows 
+}: FormFieldProps) {
+  const baseClass = "contact__group";
+  const labelClass = `contact__label contact__label--${name}`;
+  const inputClass = `contact__input contact__input--${name}`;
+  const textareaClass = `contact__textarea contact__textarea--${name}`;
+
+  return (
+    <div className={baseClass}>
+      <label htmlFor={id} className={labelClass}>{label}</label>
+      {type === 'textarea' ? (
+        <textarea
+          id={id}
+          name={name}
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          required={required}
+          rows={rows}
+          className={textareaClass}
+        />
+      ) : (
+        <input
+          id={id}
+          name={type}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          required={required}
+          autoComplete={autoComplete}
+          className={inputClass}
+        />
+      )}
+    </div>
+  );
+}
+
+interface StatusMessageProps {
+  type: 'success' | 'error';
+  children: ReactNode;
+}
+
+function StatusMessage({ type, children }: StatusMessageProps) {
+  const Icon = type === 'success' ? Check : AlertCircle;
+  return (
+    <div className={`contact__status contact__status--${type}`}>
+      <Icon size={24} />
+      <span>{children}</span>
+    </div>
+  );
+}
 
 /** Sección de contacto con formulario (Resend API) */
 export function Contact() {
@@ -79,51 +147,42 @@ export function Contact() {
         <form onSubmit={handleSubmit} className="contact__form">
           <div className="contact__fields">
             {/* Nombre */}
-            <div className="contact__group">
-              <label htmlFor="contact-name" className="contact__label contact__label--name">Nombre</label>
-              <input
-                id="contact-name"
-                name="name"
-                type="text"
-                placeholder="Tu nombre"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
-                autoComplete="name"
-                className="contact__input contact__input--name"
-              />
-            </div>
+            <FormField
+              id="contact-name"
+              label="Nombre"
+              name="name"
+              placeholder="Tu nombre"
+              value={formData.name}
+              onChange={(value) => setFormData({ ...formData, name: value })}
+              required
+              autoComplete="name"
+            />
 
             {/* Email */}
-            <div className="contact__group">
-              <label htmlFor="contact-email" className="contact__label contact__label--email">Email</label>
-              <input
-                id="contact-email"
-                name="email"
-                type="email"
-                placeholder="tu@email.com"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-                autoComplete="email"
-                className="contact__input contact__input--email"
-              />
-            </div>
+            <FormField
+              id="contact-email"
+              label="Email"
+              type="email"
+              name="email"
+              placeholder="tu@email.com"
+              value={formData.email}
+              onChange={(value) => setFormData({ ...formData, email: value })}
+              required
+              autoComplete="email"
+            />
 
             {/* Mensaje */}
-            <div className="contact__group">
-              <label htmlFor="contact-message" className="contact__label contact__label--message">Mensaje</label>
-              <textarea
-                id="contact-message"
-                name="message"
-                placeholder="Cuéntame sobre tu proyecto o idea..."
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                required
-                rows={5}
-                className="contact__textarea contact__textarea--message"
-              />
-            </div>
+            <FormField
+              id="contact-message"
+              label="Mensaje"
+              type="textarea"
+              name="message"
+              placeholder="Cuéntame sobre tu proyecto o idea..."
+              value={formData.message}
+              onChange={(value) => setFormData({ ...formData, message: value })}
+              required
+              rows={5}
+            />
 
             {/* Botón enviar */}
             <button
@@ -133,10 +192,7 @@ export function Contact() {
             >
               {isSubmitting ? (
                 <span className="contact__submit-content">
-                  <svg className="spinner" viewBox="0 0 24 24" fill="none">
-                    <circle style={{ opacity: 0.25 }} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path style={{ opacity: 0.75 }} fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                  </svg>
+                  <Loader2 className="spinner" size={20} />
                   Enviando...
                 </span>
               ) : (
@@ -146,22 +202,16 @@ export function Contact() {
 
             {/* Mensaje de éxito */}
             {showSuccess && (
-              <div className="contact__status contact__status--success">
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span>¡Mensaje enviado! Te responderé pronto 💖</span>
-              </div>
+              <StatusMessage type="success">
+                ¡Mensaje enviado! Te responderé pronto 💖
+              </StatusMessage>
             )}
 
             {/* Mensaje de error */}
             {showError && (
-              <div className="contact__status contact__status--error">
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                <span>Error al enviar. Revisa la consola o contacta por GitHub.</span>
-              </div>
+              <StatusMessage type="error">
+                Error al enviar. Revisa la consola o contacta por GitHub.
+              </StatusMessage>
             )}
           </div>
         </form>

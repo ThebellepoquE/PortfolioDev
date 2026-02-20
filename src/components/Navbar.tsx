@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Github } from 'lucide-react';
+import { Github, Home, Briefcase, FileText, Mail } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { LogoDots } from './LogoDots';
 import { SITE_CONFIG } from '../lib/config';
@@ -94,16 +94,7 @@ export function Navbar() {
                   className="mobile-nav__item mobile-nav__item--pink"
                 >
                   <div className="mobile-nav__item-icon">
-                    <svg
-                      fill="none"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                      <polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
+                    <Home size={24} strokeWidth={2} />
                   </div>
                 </a>
 
@@ -113,15 +104,7 @@ export function Navbar() {
                   className="mobile-nav__item mobile-nav__item--yellow"
                 >
                   <div className="mobile-nav__item-icon">
-                    <svg
-                      fill="none"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
-                    </svg>
+                    <Briefcase size={24} strokeWidth={2} />
                   </div>
                 </a>
 
@@ -131,19 +114,7 @@ export function Navbar() {
                   className="mobile-nav__item mobile-nav__item--pink"
                 >
                   <div className="mobile-nav__item-icon">
-                    <svg
-                      fill="none"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                      <polyline points="14 2 14 8 20 8" />
-                      <line x1="16" y1="13" x2="8" y2="13" />
-                      <line x1="16" y1="17" x2="8" y2="17" />
-                      <polyline points="10 9 9 9 8 9" />
-                    </svg>
+                    <FileText size={24} strokeWidth={2} />
                   </div>
                 </Link>
 
@@ -153,16 +124,7 @@ export function Navbar() {
                   className="mobile-nav__item mobile-nav__item--blue"
                 >
                   <div className="mobile-nav__item-icon">
-                    <svg
-                      fill="none"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                      <polyline points="22,6 12,13 2,6" />
-                    </svg>
+                    <Mail size={24} strokeWidth={2} />
                   </div>
                 </a>
 
@@ -179,16 +141,7 @@ export function Navbar() {
                   className="mobile-nav__item mobile-nav__item--pink"
                 >
                   <div className="mobile-nav__item-icon">
-                    <svg
-                      fill="none"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                      <polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
+                    <Home size={24} strokeWidth={2} />
                   </div>
                   <span className="mobile-nav__item-label">Home</span>
                 </Link>
@@ -201,19 +154,7 @@ export function Navbar() {
                   }`}
                 >
                   <div className="mobile-nav__item-icon">
-                    <svg
-                      fill="none"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                      <polyline points="14 2 14 8 20 8" />
-                      <line x1="16" y1="13" x2="8" y2="13" />
-                      <line x1="16" y1="17" x2="8" y2="17" />
-                      <polyline points="10 9 9 9 8 9" />
-                    </svg>
+                    <FileText size={24} strokeWidth={2} />
                   </div>
                   <span className="mobile-nav__item-label">Blog</span>
                 </Link>

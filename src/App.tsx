@@ -39,6 +39,20 @@ function App() {
               <BlogPost />
             </Suspense>
           } />
+
+          {/* 404 - Catch all */}
+          <Route path="*" element={
+            <div className="error-boundary">
+              <div className="error-content">
+                <span className="error-icon">🕵️‍♀️</span>
+                <h1>404 - No hay nada aquí</h1>
+                <p>Esa ruta no existe. Quizás el enlace estaba roto o te has aventurado demasiado lejos.</p>
+                <button className="btn-main" onClick={() => window.location.href = '/'}>
+                  Volver al inicio
+                </button>
+              </div>
+            </div>
+          } />
         </Routes>
       </main>
       <Suspense fallback={null}>

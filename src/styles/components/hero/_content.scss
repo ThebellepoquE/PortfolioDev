@@ -97,6 +97,9 @@
     padding: 0.375rem 0.75rem;
     font-weight: 500;
     font-size: 0.75rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: rgb($white-rgb / 5%);
 
     @media (width >= 640px) {
       padding: 0.5rem 1rem;

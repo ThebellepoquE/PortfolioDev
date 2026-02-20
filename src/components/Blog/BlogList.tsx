@@ -72,7 +72,7 @@ export function BlogList() {
 
                   {/* Read more */}
                   <span className="blog-card__link">
-                    Leer artículo →
+                    Seguir leyendo →
                   </span>
                 </div>
               </Link>

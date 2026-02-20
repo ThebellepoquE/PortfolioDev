@@ -19,8 +19,8 @@ const blockedUserAgents = [
 export default function middleware(request) {
   const url = new URL(request.url);
   
-  // Skip static assets
-  if (url.pathname.match(/\.(js|css|ico|png|jpg|jpeg|svg|woff2?)$/)) {
+  // Skip static assets and source files in dev
+  if (url.pathname.match(/\.(js|ts|jsx|tsx|css|scss|ico|png|jpg|jpeg|svg|woff2?)$/)) {
     return;
   }
   

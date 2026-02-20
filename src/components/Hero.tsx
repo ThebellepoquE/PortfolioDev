@@ -12,7 +12,7 @@ export function Hero() {
             <div className="hero__image-frame">
               <img
                 src="/profile-200.webp"
-                srcSet="/profile-200.webp 200w, /profile.webp 433w"
+                srcSet="/profile-200.webp 200w, /profile.webp 1000w"
                 sizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
                 alt="Ione - @thebellepoque"
                 width={260}

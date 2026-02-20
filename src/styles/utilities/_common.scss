@@ -7,8 +7,7 @@
   padding: 0 1.5rem;
 }
 
-.project-card__link,
-.contact__submit {
+%btn-main {
   width: fit-content;
   min-width: 180px;
   padding: 0.75rem 2rem;
@@ -18,11 +17,29 @@
   display: block;
   text-align: center;
   transition: all 0.3s ease;
+  border-radius: 4px;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba($black-rgb, 0.3);
+    box-shadow: 0 5px 15px rgb($black-rgb / 30%);
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.btn-main {
+  @extend %btn-main;
+}
+
+// Clases Legacy para retrocompatibilidad directa
+.project-card__link,
+.contact__submit {
+  @extend %btn-main;
 }
 
 .loading-state {

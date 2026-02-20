@@ -3,28 +3,29 @@
 // Estilos globales de modo claro (Modern Studio / Precision)
 :root.light {
   body {
-    background-color: #fff;
+    background-color: var(--bg-dark);
 
-    // Puntos de cuadrícula ultra-finos (Estética Studio)
-    background-image: radial-gradient(#000 0.5px, transparent 0.5px);
+    // Puntos de cuadrícula ultra-finos y muy suaves
+    background-image: radial-gradient(rgba(0,0,0,0.06) 0.5px, transparent 0.5px);
     background-size: 40px 40px;
     background-attachment: fixed;
-    color: #121212;
+    color: var(--text);
   }
 
-  // Tarjetas limpias (sin acento lateral, igual que en modo oscuro)
+  // Tarjetas con "luz rosa" por debajo
   .project-card,
   .blog-card,
   .blog-post__article,
   .contact__form {
     background-color: #fff;
-    border: 1px solid rgb(0 0 0 / 10%);
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 5%), 0 2px 4px -1px rgb(0 0 0 / 3%);
+    border-color: var(--border);
+    box-shadow: 0 10px 25px -5px rgba($pink-rgb, 0.1),
+                0 8px 10px -6px rgba($pink-rgb, 0.1);
     border-radius: 8px;
-    transition: all 0.3s ease;
 
     &:hover {
-      border-color: rgb(0 0 0 / 20%);
+      border-color: $pink;
+      box-shadow: 0 15px 30px -5px rgba($pink-rgb, 0.2);
     }
   }
 
@@ -34,9 +35,9 @@
   h4,
   .blog-card__title,
   .blog-post__title {
-    color: $pink;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    color: var(--text); // Negro sólido para que se lea perfecto
+    font-weight: 850;   // Más grueso para que esté bien "marcado"
+    letter-spacing: -0.01em;
   }
 
   .text-gradient {
@@ -46,21 +47,14 @@
   }
 
   .navbar {
-    background-color: rgb(255 255 255 / 80%);
-    backdrop-filter: saturate(180%) blur(15px);
+    background-color: #fff;
     border-bottom: 1px solid rgb(0 0 0 / 6%);
-
-    &__content {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-    }
   }
 
   .navbar__link {
-    color: #444;
+    color: var(--text);
     font-weight: 600;
     font-size: 0.85rem;
-    padding: 0.5rem 1rem;
     border-radius: 6px;
 
     &--pink:hover {
@@ -79,32 +73,66 @@
     }
 
     &.is-active {
-      background-color: #111;
-      color: #fff;
+      background-color: var(--text);
+      color: var(--bg-dark);
     }
   }
 
-  .hero__tag,
-  .project-card__tech {
-    background-color: #f3f4f6;
-    color: #374151;
-    border: 1px solid #e5e7eb;
-    font-weight: 600;
+  .hero__tag {
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
     border-radius: 4px;
-    font-size: 0.7rem;
-    padding: 3px 8px;
+    border: 1px solid transparent;
+
+    &:nth-child(3n + 1) {
+      background-color: $pink;
+      color: #000;
+    }
+
+    &:nth-child(3n + 2) {
+      background-color: $yellow;
+      color: #000;
+    }
+
+    &:nth-child(3n + 3) {
+      background-color: $green;
+      color: #000;
+    }
+  }
+
+  .project-card__tech {
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.65rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+
+    &:nth-child(3n + 1) {
+      background-color: $pink;
+      color: #000;
+    }
+
+    &:nth-child(3n + 2) {
+      background-color: $yellow;
+      color: #000;
+    }
+
+    &:nth-child(3n + 3) {
+      background-color: $green;
+      color: #000;
+    }
   }
 
   .contact__input,
   .contact__textarea {
-    background-color: #f9fafb;
-    color: #111;
-    border: 1px solid #d1d5db;
+    background-color: #fff;
+    color: var(--text);
+    border-color: var(--border);
     border-radius: 8px;
 
     &:focus {
-      background-color: #fff;
-      border-color: #000;
+      border-color: var(--text);
       box-shadow: 0 0 0 4px rgb(0 0 0 / 5%);
     }
   }
@@ -120,14 +148,13 @@
   }
 
   p {
-    color: #374151;
-    line-height: 1.7;
+    color: var(--text-secondary);
   }
 
   .navbar__github svg,
   .footer__github svg,
   .hero__social-link svg {
-    color: #000;
+    color: var(--text);
     opacity: 0.7;
 
     &:hover {
@@ -144,8 +171,7 @@
   }
 
   .footer {
-    background-color: rgb(255 255 255 / 80%);
-    backdrop-filter: saturate(180%) blur(15px);
+    background-color: #fff;
     border-top: 1px solid rgb(0 0 0 / 6%);
   }
 }
