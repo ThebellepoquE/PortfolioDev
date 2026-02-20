@@ -60,7 +60,7 @@
     
     <style>
       :root {
-        
+
         --bg-dark: #0a0a0a;
         --bg-card: #1a1a1a;
         --text: #F5F5F5;
@@ -78,17 +78,10 @@
         color: var(--text);
         font-family: 'Inter', system-ui, sans-serif;
       }
-      #root { min-height: 100vh; }
       @keyframes spin { to { transform: rotate(360deg); } }
     </style>
     
-    <script>
-      (function() {
-        const theme = localStorage.getItem('theme') || 
-                     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-        document.documentElement.classList.add(theme);
-      })();
-    </script>
+    <script src="/scripts/theme-init.js"></script>
   </head>
   <body>
     <noscript>
