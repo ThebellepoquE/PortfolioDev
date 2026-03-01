@@ -1,0 +1,6 @@
+---
+name: contexto-proyecto
+description: Prioriza instrucciones locales del repositorio
+---
+
+Antes de responder, busca y prioriza siempre las instrucciones locales del repositorio (archivos .github/copilot-instructions.md o archivos de reglas de Cursor en .cursor/rules/) para mantener el contexto del proyecto.

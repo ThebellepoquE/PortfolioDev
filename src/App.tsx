@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 
@@ -47,9 +47,9 @@ function App() {
                 <span className="error-icon">🕵️‍♀️</span>
                 <h1>404 - No hay nada aquí</h1>
                 <p>Esa ruta no existe. Quizás el enlace estaba roto o te has aventurado demasiado lejos.</p>
-                <button className="btn-main" onClick={() => window.location.href = '/'}>
+                <Link className="btn-main" to="/">
                   Volver al inicio
-                </button>
+                </Link>
               </div>
             </div>
           } />

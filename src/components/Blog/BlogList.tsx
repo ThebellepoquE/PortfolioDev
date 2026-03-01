@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllPosts } from '../../lib/posts';
+import { SectionTitle } from '../SectionTitle';
 
 /** Lista de posts del blog */
 export function BlogList() {
-  const posts = getAllPosts();
+  const posts = useMemo(() => getAllPosts(), []);
 
   // Actualizar el título de la página para SEO
   useEffect(() => {
@@ -15,9 +16,9 @@ export function BlogList() {
     <section className="blog-list">
       <div className="blog-list__container">
         {/* Header */}
-        <h1 className="blog-list__title text-gradient">
+        <SectionTitle className="blog-list__title">
           Blog
-        </h1>
+        </SectionTitle>
 
         <p className="blog-list__subtitle">
           Desarrollo, automatizaciones y aprendizajes en el camino tech

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Check, AlertCircle, Loader2 } from 'lucide-react';
 import type { FormEvent, ReactNode } from 'react';
+import { SectionTitle } from './SectionTitle';
 
 interface FormFieldProps {
   id: string;
@@ -134,9 +135,9 @@ export function Contact() {
     <section id="contacto" className="contact">
       <div className="contact__container">
         {/* Título */}
-        <h2 className="contact__title title-neon text-gradient">
+        <SectionTitle className="contact__title">
           ¿Montamos un Dream Team?
-        </h2>
+        </SectionTitle>
 
         <p className="contact__description">
           ¿Tienes un proyecto en mente o quieres colaborar? <br />

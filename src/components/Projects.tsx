@@ -1,5 +1,6 @@
 import { projects } from '../lib/projects';
 import { ProjectCard } from './ProjectCard';
+import { SectionTitle } from './SectionTitle';
 
 /** Sección de proyectos */
 export function Projects() {
@@ -7,9 +8,9 @@ export function Projects() {
     <section id="proyectos" className="projects">
       <div className="projects__container">
         {/* Título */}
-        <h2 className="projects__title title-neon text-gradient">
+        <SectionTitle className="projects__title">
           Proyectos
-        </h2>
+        </SectionTitle>
 
         {/* Listado de proyectos modularizado */}
         {projects.map((project) => (

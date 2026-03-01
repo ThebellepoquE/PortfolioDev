@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Github, Linkedin } from 'lucide-react';
 import { SITE_CONFIG } from '../lib/config';
+import { SectionTitle } from './SectionTitle';
 
 /** Hero section con foto, nombre y bio */
 export function Hero() {
@@ -34,9 +35,9 @@ export function Hero() {
         {/* Columna derecha - Contenido */}
         <div className="hero__content">
           {/* Nombre con efecto neón */}
-          <h1 className="hero__title title-neon text-gradient">
+          <SectionTitle className="hero__title">
             Ione
-          </h1>
+          </SectionTitle>
 
           {/* Handle */}
           <p className="hero__handle">

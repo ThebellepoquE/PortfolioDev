@@ -126,3 +126,14 @@ Las funciones en `/api/` (como el contacto) son **Serverless Functions** de Verc
 2. Ejecutar `npm run check:preprod` antes de desplegar.
 3. Deploy con output `dist`.
 
+## Mejoras Recientes (Mar 2026)
+
+### Rendimiento
+- **Memoización de Markdown**: `getAllPosts()` envuelto en `useMemo` para que el parseo de posts solo se ejecute una vez por montaje.
+
+### Accesibilidad
+- **Navegación semántica**: Botones de "Volver al inicio" (404 y ErrorBoundary) sustituidos por `<Link>` y `<a>` nativos para correcto funcionamiento con lectores de pantalla y teclado.
+
+### Mantenibilidad
+- **SectionTitle**: Componente extraído para títulos de sección (`title-neon text-gradient`), eliminando duplicación en Hero, Projects, Contact y Blog.
+

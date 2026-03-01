@@ -31,12 +31,12 @@ export class ErrorBoundary extends Component<Props, State> {
             <span className="error-icon">⚠️</span>
             <h1>Puuuuuf... algo se ha roto</h1>
             <p>Parece que el código ha entrado en un bucle infinito de nostalgia o un error inesperado.</p>
-            <button 
+            <a 
               className="btn-main" 
-              onClick={() => window.location.href = '/'}
+              href="/"
             >
               Volver al inicio
-            </button>
+            </a>
             {import.meta.env.DEV && (
               <pre className="error-details">
                 {this.state.error?.toString()}
