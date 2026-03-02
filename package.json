@@ -12,7 +12,8 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "audit:prod": "npm audit --omit=dev",
-    "check:preprod": "npm run test -- --run && npm run lint && npm run build && npm run audit:prod"
+    "check:preprod": "npm run test -- --run && npm run lint && npm run build && npm run audit:prod",
+    "cleanup:repos": "bash scripts/cleanup-repos.sh"
   },
   "dependencies": {
     "lucide-react": "^0.574.0",
@@ -50,6 +51,8 @@
     "vitest": "^4.0.15"
   },
   "overrides": {
-    "minimatch": "^10.2.1"
+    "minimatch": "10.2.3",
+    "ajv": ">=6.14.0",
+    "rollup": ">=4.59.0"
   }
 }

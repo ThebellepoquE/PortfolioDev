@@ -1,0 +1,72 @@
+# Configurar email para alertas del cron de limpieza
+
+Cuando la limpieza semanal falla, el script intenta enviar un email a `thebellepoque@gmail.com`. Para que funcione, necesitas configurar un cliente de correo.
+
+## Opción recomendada: msmtp con Gmail
+
+### 1. Instalar msmtp
+
+```bash
+sudo apt install msmtp msmtp-mta
+```
+
+### 2. Crear contraseña de aplicación en Gmail
+
+1. Ve a [Google Account → Seguridad](https://myaccount.google.com/security)
+2. Activa la verificación en 2 pasos (si no la tienes)
+3. Ve a "Contraseñas de aplicaciones"
+4. Genera una para "Correo" / "Otro (nombre personalizado)" → "cron-cleanup"
+5. Copia la contraseña de 16 caracteres
+
+### 3. Configurar msmtp
+
+Crea o edita `~/.msmtprc`:
+
+```ini
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        ~/.msmtp.log
+
+account        gmail
+host           smtp.gmail.com
+port           587
+from           thebellepoque@gmail.com
+user           thebellepoque@gmail.com
+password       TU_CONTRASEÑA_DE_APLICACION
+
+account default : gmail
+```
+
+**Importante:** protege el archivo (contiene la contraseña):
+
+```bash
+chmod 600 ~/.msmtprc
+```
+
+### 4. Probar el envío
+
+```bash
+echo "Test desde cron cleanup" | msmtp thebellepoque@gmail.com
+```
+
+Si recibes el email, está listo.
+
+---
+
+## Alternativa: MAILTO de cron
+
+Si ya tienes correo configurado en el sistema (postfix, sendmail, etc.):
+
+```bash
+crontab -e
+```
+
+Añade al inicio:
+
+```
+MAILTO=thebellepoque@gmail.com
+```
+
+Cron enviará por email cualquier salida de los jobs. Con nuestro script, solo hay salida cuando falla (y además enviamos por nuestra función `send_alert`). La opción MAILTO es redundante si msmtp funciona, pero puede servir como respaldo.
