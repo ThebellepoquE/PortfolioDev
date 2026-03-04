@@ -1,0 +1,87 @@
+name: 🤖 Code Review Automático
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Cursor CLI
+        run: |
+          curl -fsSL https://cursor.sh/install.sh | bash
+          echo "$HOME/.cursor/bin" >> $GITHUB_PATH
+
+      - name: Verify authentication
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+        run: |
+          cursor-agent --version
+          echo "✅ CLI listo"
+
+      - name: Get changed files
+        id: files
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          git diff --name-only origin/${{ github.event.pull_request.base.ref }} > changed-files.txt
+          echo "📁 Archivos cambiados:"
+          cat changed-files.txt
+          echo "count=$(wc -l < changed-files.txt)" >> $GITHUB_OUTPUT
+
+      - name: Run code-reviewer (Modo Ahorro)
+        if: steps.files.outputs.count > 0
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+        run: |
+          cursor-agent --api-key "$CURSOR_API_KEY" --print --output-format=text --force "
+            Usa el subagente code-reviewer para:
+            1. Revisar SOLO los archivos en changed-files.txt
+            2. Aplicar MODO AHORRO (máx 300 palabras, solo CRÍTICO/ALTO)
+            3. Priorizar: 🔴 > 🟡 > 🟢
+            4. Formato: bullets, código, sin cortesía
+          " > review-output.md 2>&1 || true
+
+      - name: Comment PR (con manejo de caracteres)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            let review = '';
+            const reviewFile = path.join(process.env.GITHUB_WORKSPACE, 'review-output.md');
+            
+            if (fs.existsSync(reviewFile)) {
+              try {
+                review = fs.readFileSync(reviewFile, 'utf8').trim();
+              } catch (e) {
+                console.log('Error leyendo archivo:', e);
+              }
+            }
+            
+            const message = review.length > 0 
+              ? `## 🤖 Code Review (Modo Ahorro ⚡)\n\n${review}`
+              : `## 🤖 Code Review (Modo Ahorro ⚡)\n\n✅ **¡Todo despejado!** No se encontraron problemas críticos ni altos.`;
+            
+            const fullMessage = `${message}\n\n---\n*Revisión automática - ${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}*`;
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: fullMessage
+            });
