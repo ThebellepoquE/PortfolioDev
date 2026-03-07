@@ -7,7 +7,7 @@ import { SectionTitle } from './SectionTitle';
 export function Projects() {
   const sortedProjects = useMemo(
     () => [...projectsData].sort((a, b) => (a.featured === b.featured ? 0 : a.featured ? -1 : 1)),
-    [projectsData]
+    []
   );
 
   return (

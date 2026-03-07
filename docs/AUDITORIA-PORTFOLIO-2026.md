@@ -20,6 +20,16 @@
 
 **Puntuación global estimada: 7.1/10** – Base sólida; mejoras sobre todo en contenido, métricas de proyectos y SEO por ruta.
 
+### Estado post-mejoras (Marzo 2026)
+
+Tras aplicar las fases 1–3 del plan de mejoras:
+
+- **Proyectos:** Modelo enriquecido con métricas, enlaces (live/repo) y "Ver caso de estudio" → página `/proyecto/:id`. MetricBadge con tooltip y accesibilidad.
+- **SEO:** react-helmet-async; meta dinámicos por ruta (Home, Blog, posts, ProjectPage). OG y Twitter Cards; tipo `article` en posts y en página de proyecto.
+- **Fechas:** `formatDateDayMonthYear()` en blog y proyectos; `<time dateTime>` y meta en formato ISO donde aplica.
+- **Gestión:** Migración a pnpm; `packageManager` fijado en `package.json`. Documentación y scripts actualizados a pnpm.
+- **Pendiente:** Fase 4 (sitemap automatizado en build), sección "Sobre mí", skip link, competencias categorizadas.
+
 ---
 
 ## 2. Hallazgos críticos (top 5 urgencias)
@@ -87,7 +97,7 @@
 ## 4. Recomendaciones técnicas específicas
 
 - **TypeScript**  
-  Mantener `npx tsc --noEmit` en CI y pre-commit. Estado actual: sin errores.
+  Mantener `npx tsc --noEmit` en CI y pre-commit. El proyecto usa **pnpm**; validación con `pnpm run build` (incluye tsc). Estado actual: sin errores.
 
 - **Tests**  
   47 tests pasando. Añadir al menos un test de integración o E2E que cargue la home y compruebe Hero + lista de proyectos (y opcionalmente enlace al blog).
@@ -125,13 +135,13 @@
 
 1. **Esta semana**  
    - [ ] Añadir entrada de `/blog/modularizacion-lighton` al sitemap cuando el post deje de ser draft (o generar sitemap en build).  
-   - [ ] Extender `Project` con `repo?` y `metrics?` y mostrar al menos “Ver código” y 1 métrica por proyecto donde aplique.  
+   - [x] Extender `Project` con `repo?` y `metrics?` y mostrar "Ver código" / métricas (hecho: MetricBadge, ProjectPage, enlace caso de estudio).
    - [ ] Añadir skip link y revisar `:focus-visible` en navbar, hero y formulario.
 
 2. **Próximas 2 semanas**  
    - [ ] Crear sección “Sobre mí” (ruta o bloque en home) con propuesta de valor y breve trayectoria.  
-   - [ ] Implementar sitemap generado en build (script o plugin).  
-   - [ ] Añadir meta dinámicos en `/blog/:slug` (react-helmet-async o equivalente).
+   - [ ] Implementar sitemap generado en build (script o plugin) — Fase 4 del plan.  
+   - [x] Meta dinámicos en `/blog/:slug` y rutas (react-helmet-async; componente SEO).
 
 3. **Mes**  
    - [ ] Categorizar competencias (Frontend / Backend / Herramientas) y exponerlas en una sección “Stack”.  

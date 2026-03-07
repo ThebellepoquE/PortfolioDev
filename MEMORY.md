@@ -2,36 +2,44 @@
 
 Este archivo sirve como registro de las decisiones técnicas y el estado del proyecto para facilitar la continuidad entre sesiones.
 
-## 📅 Última Sesión: 20 de febrero de 2026
+## 📅 Última actualización: Marzo 2026
 
-### ✅ Logros de Performance & SEO
-- **Fuentes Asíncronas**: Implementado `preconnect` para Google Fonts y carga `print` -> `all`.
-- **LCP Optimization**: Imagen de perfil con `fetchpriority="high"` y `preload`.
-- **JSON-LD**: Automatizados esquemas `BlogPosting` (dinámico) y `Person` (estático).
-- **Sitemap**: Limpieza de rutas draft para evitar errores de indexación.
+### ✅ Estado actual del proyecto
 
-### 🛡️ Seguridad & Hardening
-- **CSP (Content Security Policy)**: Implementada política estricta en `vercel.json` con hashes SHA-256 para scripts inline.
-- **Robots.txt**: Bloqueo preventivo de bots de IA (GPTBot, Claude-Web, etc.).
+- **Gestión de paquetes:** pnpm (versión 10.28.0 fijada con `packageManager` en `package.json`). Lockfile: `pnpm-lock.yaml`.
+- **Stack:** React 19, Vite 7, TypeScript 5.9, SCSS modular. Sin Tailwind.
+- **SEO:** react-helmet-async; componente `SEO.tsx`; meta dinámicos en Home, Blog, posts y `/proyecto/:id`. Imagen OG por defecto: `og-image-default.jpg` (recomendado 1200×630).
+- **Proyectos:** Modelo enriquecido en `src/types/project.ts` y `projectsData` en `src/lib/projects.ts`. Tarjetas con métricas (MetricBadge), enlaces live/repo y "Ver caso de estudio" → `/proyecto/:id`. Página ProjectPage con SEO tipo article.
+- **Fechas:** `src/lib/formatDate.ts` con `formatDateDayMonthYear()`; formato "día de mes de año" en blog y proyectos; fechas YYYY-MM normalizadas a ISO donde hace falta (meta, `<time dateTime>`).
+- **Rutas:** `/`, `/blog`, `/blog/:slug`, `/proyecto/:id`, 404.
 
-### 🎨 UI/UX (Consistencia Visual)
-- **Mobile Dock**: Colores fijados por el usuario:
-  - 🩷 **Rosa**: Home / Contacto (Sobre).
-  - 💛 **Amarillo**: Proyectos (Maletín).
-  - 💚 **Verde**: Blog (Hoja).
-- **Light Mode**: Fondo `#f8f8f8`, tarjetas `#fff`, manteniendo glows fluorescentes.
+### 🛡️ Seguridad y rendimiento (sesiones anteriores)
 
-### ⚙️ Infraestructura & Git
-- **Repo Actual**: `ThebellepoquE/PortfolioDev` (Repositorio de 2026).
-- **Repo Legacy**: `PortfoliO` (Trabajo de bootcamp, se mantiene como historial).
-- **Vercel**: Recomendado cambiar el origen del proyecto actual a `PortfolioDev` para no perder el dominio `thebellepoque.dev`.
+- **CSP:** Política estricta en `vercel.json` con hashes SHA-256 para scripts inline.
+- **Robots.txt:** Bloqueo preventivo de bots de IA (GPTBot, Claude-Web, etc.).
+- **Fuentes e imágenes:** preconnect para Google Fonts; preload y fetchpriority para imagen de perfil (LCP).
+- **JSON-LD:** Person (estático) y BlogPosting (dinámico por post).
+
+### 🎨 UI/UX
+
+- **Tema:** Oscuro/claro en `:root` y `:root.light`; variables `--pink`, `--yellow`, `--green`, `--bg-dark`, `--bg-card`, `--text`.
+- **Mobile Dock:** Rosa (Home/Contacto), Amarillo (Proyectos), Verde (Blog).
+- **Convención:** BEM en SCSS; componentes en `src/components/` y `src/pages/`; estilos en `src/styles/components/`.
+
+### ⚙️ Infraestructura y calidad
+
+- **Repo:** `ThebellepoquE/PortfolioDev`.
+- **Deploy:** Vercel; output `dist`. Variables: `RESEND_API_KEY`, `CONTACT_EMAIL`.
+- **Validación:** `pnpm run check:preprod` (tests, lint, build, audit:prod). Definición de hecho en `.cursorrules`.
 
 ---
 
-## 🚀 Próximos Pasos (Pendientes)
-- [ ] Verificar despliegue en Vercel tras cambiar el repo de origen.
-- [ ] Lanzar el post de "Modularización" (actualmente en `draft: true`).
-- [ ] Monitorizar Lighthouse en producción para validar el ahorro de 670ms en LCP.
+## 🚀 Próximos pasos (pendientes)
+
+- [ ] **Fase 4:** Sitemap automatizado (script en build a partir de posts y rutas estáticas).
+- [ ] Añadir `public/og-image-default.jpg` (1200×630) si se quiere imagen OG por defecto dedicada.
+- [ ] Opcional: Sección "Sobre mí", skip link, competencias categorizadas (ver `docs/AUDITORIA-PORTFOLIO-2026.md`).
+- [ ] Publicar post "Modularización" (actualmente `draft: true` en `content/posts/modularizacion-lighton/`).
 
 ---
-*Documento mantenido por GitHub Copilot (Gemini 3 Flash)*
+*Documento mantenido para continuidad entre sesiones.*

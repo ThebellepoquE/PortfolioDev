@@ -1,5 +1,7 @@
 # Configurar email para alertas del cron de limpieza
 
+> **Nota:** Este proyecto usa **pnpm** como gestor de paquetes. Los scripts de Node (dev, build, test, etc.) se ejecutan con `pnpm run …`.
+
 Cuando la limpieza semanal falla, el script intenta enviar un email a `thebellepoque@gmail.com`. Para que funcione, necesitas configurar un cliente de correo.
 
 ## Opción recomendada: msmtp con Gmail

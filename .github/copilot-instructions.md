@@ -35,9 +35,9 @@ Para cada decisión técnica significativa (elección de una librería, patrón 
 
 ### 5. Control de Calidad (Pre-Producción)
 Antes de sugerir cualquier despliegue o considerar una tarea como finalizada:
-- **Ejecución de Tests**: Debes verificar si los cambios afectan a la estabilidad. Ejecuta `npm run test` para asegurar que nada se ha roto.
-- **Linting**: Asegúrate de que no hay errores de estilo o posibles bugs detectados por ESLint con `npm run lint`.
-- **Cero Tolerancia a Errores**: Nunca subas código con errores de TypeScript o tests fallidos. Si algo falla, el primer paso es arreglarlo antes de continuar.
+- **Ejecución de Tests**: Debes verificar si los cambios afectan a la estabilidad. Ejecuta `pnpm run test -- --run` para asegurar que nada se ha roto.
+- **Linting**: Asegúrate de que no hay errores de estilo o posibles bugs detectados por ESLint con `pnpm run lint` (y `pnpm run lint:styles` para SCSS).
+- **Cero Tolerancia a Errores**: Nunca subas código con errores de TypeScript o tests fallidos. Si algo falla, el primer paso es arreglarlo antes de continuar. El proyecto usa **pnpm** (no npm); versión fijada en `packageManager` del package.json.
 
 ---
 
@@ -75,7 +75,7 @@ Revisa este componente de React/TypeScript buscando:
 - Problemas con hooks (dependencias faltantes en useEffect)
 - Tipos TypeScript incorrectos o anys innecesarios
 - Violaciones de principios SOLID en componentes
-- Inconsistencias con Tailwind (clases duplicadas, responsive issues)
+- Inconsistencias con la paleta SCSS (variables en _variables.scss, BEM en components)
 - Props drilling innecesario
 - Estado innecesariamente complejo
 - Componentes demasiado grandes

@@ -2,7 +2,7 @@
 
 **Objetivo:** Implementar modelo de proyectos con métricas, SEO dinámico y sitemap automatizado con mínimo riesgo y máxima velocidad.
 
-**Criterios de éxito:** `npm run check:preprod` en verde tras cada fase; sin regresiones visuales ni de tests.
+**Criterios de éxito:** `pnpm run check:preprod` en verde tras cada fase; sin regresiones visuales ni de tests.
 
 ---
 
@@ -46,8 +46,8 @@
 
 3. **Validación Fase 1**
    - [ ] `npx tsc --noEmit` sin errores.
-   - [ ] `npm run test -- --run` pasando (ProjectCard sigue recibiendo `Project`; si el tipo se amplía, los tests existentes siguen válidos).
-   - [ ] `npm run build` correcto.
+   - [ ] `pnpm run test -- --run` pasando (ProjectCard sigue recibiendo `Project`; si el tipo se amplía, los tests existentes siguen válidos).
+   - [ ] `pnpm run build` correcto.
    - [ ] Comprobar en dev que la home sigue mostrando los 3 proyectos sin errores (los nuevos campos aún no se pintan).
 
 ### Rollback Fase 1
@@ -78,8 +78,8 @@
 
 4. **Validación Fase 2**
    - [ ] `npx tsc --noEmit`.
-   - [ ] `npm run test -- --run`. Si hay tests de `ProjectCard`, actualizar mocks para incluir `metrics`/`repo` opcionales si es necesario.
-   - [ ] `npm run lint` y `npm run lint:styles`.
+   - [ ] `pnpm run test -- --run`. Si hay tests de `ProjectCard`, actualizar mocks para incluir `metrics`/`repo` opcionales si es necesario.
+   - [ ] `pnpm run lint` y `pnpm run lint:styles`.
    - [ ] Revisión visual en dev: home, tema claro y oscuro, móvil.
 
 ### Rollback Fase 2
@@ -95,7 +95,7 @@
 ### Pasos concretos
 
 1. **Instalar dependencia**
-   - `npm install react-helmet-async`
+   - `pnpm add react-helmet-async`
 
 2. **Componente `SEO`** reutilizable:
    - Crear `src/components/SEO.tsx`.
@@ -117,8 +117,8 @@
 
 4. **Validación Fase 3**
    - [ ] `npx tsc --noEmit`.
-   - [ ] `npm run test -- --run` (si algún test hace snapshot del DOM, puede requerir ajuste por el nuevo provider).
-   - [ ] `npm run build` y `npm run preview`: abrir `/`, `/blog`, `/blog/el-laberinto-de-empezar` y comprobar en “Inspeccionar” que `<head>` cambia según la ruta (title y meta description/og).
+   - [ ] `pnpm run test -- --run` (si algún test hace snapshot del DOM, puede requerir ajuste por el nuevo provider).
+   - [ ] `pnpm run build` y `pnpm run preview`: abrir `/`, `/blog`, `/blog/el-laberinto-de-empezar` y comprobar en “Inspeccionar” que `<head>` cambia según la ruta (title y meta description/og).
 
 ### Rollback Fase 3
 
@@ -147,23 +147,23 @@
    - Opción recomendada: ejecutar el script **antes** de `vite build`, para que `public/sitemap.xml` exista y Vite lo copie a `dist/`.
    - En `package.json`:
      - Añadir script: `"sitemap": "node scripts/generate-sitemap.js"`.
-     - Cambiar `build` a: `"build": "tsc -b && npm run sitemap && vite build"` (o `"build": "npm run sitemap && tsc -b && vite build"` si prefieres sitemap antes de tsc).
-   - Comprobar que en `dist/` tras `npm run build` exista `sitemap.xml` con las URLs correctas.
+     - Cambiar `build` a: `"build": "tsc -b && pnpm run sitemap && vite build"` (o `"build": "pnpm run sitemap && tsc -b && vite build"` si prefieres sitemap antes de tsc).
+   - Comprobar que en `dist/` tras `pnpm run build` exista `sitemap.xml` con las URLs correctas.
 
 3. **Validación Fase 4**
-   - [ ] `npm run sitemap` sin errores y `public/sitemap.xml` actualizado.
-   - [ ] `npm run build`: `dist/sitemap.xml` presente y con al menos `/`, `/blog` y los posts no draft.
-   - [ ] `check:preprod` completo: test + lint + build + audit.
+   - [ ] `pnpm run sitemap` sin errores y `public/sitemap.xml` actualizado.
+   - [ ] `pnpm run build`: `dist/sitemap.xml` presente y con al menos `/`, `/blog` y los posts no draft.
+   - [ ] `pnpm run check:preprod` completo: test + lint + build + audit.
 
 ### Rollback Fase 4
 
-- Quitar la llamada a `npm run sitemap` del script `build` y volver a commitear un `public/sitemap.xml` estático manual si lo necesitas. El resto del sitio no depende del script.
+- Quitar la llamada a `pnpm run sitemap` del script `build` y volver a commitear un `public/sitemap.xml` estático manual si lo necesitas. El resto del sitio no depende del script.
 
 ---
 
 ## Puntos de validación globales (tras todas las fases)
 
-- [ ] `npm run check:preprod` pasa.
+- [ ] `pnpm run check:preprod` pasa.
 - [ ] Revisión manual: home (proyectos con métricas y enlaces), blog list, un post (meta en head), tema claro/oscuro.
 - [ ] Comprobar que `sitemap.xml` en producción incluye todas las rutas públicas.
 - [ ] Opcional: Google Search Console / rich results para comprobar que los meta por post se indexan (puede tardar).
