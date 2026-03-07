@@ -32,11 +32,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {metricsToShow.length > 0 && (
           <div className="project-card__metrics" role="list" aria-label="Métricas del proyecto">
             {metricsToShow.map((metric, index) => (
-              <MetricBadge
-                key={metric.id}
-                metric={metric}
-                colorModifier={colorModifiers[index % 3]}
-              />
+              <div key={metric.id} role="listitem">
+                <MetricBadge
+                  metric={metric}
+                  colorModifier={colorModifiers[index % 3]}
+                />
+              </div>
             ))}
           </div>
         )}

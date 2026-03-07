@@ -65,6 +65,8 @@
 
   &--pink {
     color: $pink;
+    /* Contorno sutil para contraste WCAG AA sobre fondos oscuros */
+    text-shadow: 0 0 0 1px var(--bg-dark);
     box-shadow: 0 0 12px rgba($pink-rgb, 0.3);
 
     &::after {
@@ -74,11 +76,13 @@
 
   &--yellow {
     color: $yellow;
+    text-shadow: 0 0 0 1px var(--bg-dark);
     box-shadow: 0 0 12px rgba($yellow-rgb, 0.3);
   }
 
   &--green {
     color: $green;
+    text-shadow: 0 0 0 1px var(--bg-dark);
     box-shadow: 0 0 12px rgba($green-rgb, 0.3);
   }
 }

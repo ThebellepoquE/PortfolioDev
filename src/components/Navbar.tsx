@@ -17,7 +17,7 @@ export function Navbar() {
           {/* Logo - 3 puntos fluorescentes */}
           <Link
             to="/"
-            aria-label="Ir al inicio"
+            aria-label="Inicio, página principal"
             className="navbar__logo"
           >
             <LogoDots className="navbar__logo-flex" dotClassName="navbar__logo-dot" />
@@ -57,11 +57,12 @@ export function Navbar() {
                 ← Home
               </Link>
             )}
-            <Link
-              to="/blog"
-              className={`navbar__link navbar__link--pink ${
-                location.pathname.startsWith('/blog') ? 'is-active' : ''
-              }`}
+                <Link
+                  to="/blog"
+                  className={`navbar__link navbar__link--pink ${
+                    location.pathname.startsWith('/blog') ? 'is-active' : ''
+                  }`}
+                  aria-label="Ir al blog"
             >
               Blog
             </Link>
@@ -92,7 +93,7 @@ export function Navbar() {
                 <a
                   href="#inicio"
                   className="mobile-nav__item mobile-nav__item--pink"
-                  aria-label="Ir al inicio"
+                  aria-label="Ir a sección inicio"
                 >
                   <div className="mobile-nav__item-icon">
                     <Home size={24} strokeWidth={2} />
@@ -143,7 +144,7 @@ export function Navbar() {
                 <Link
                   to="/"
                   className="mobile-nav__item mobile-nav__item--pink"
-                  aria-label="Ir al inicio"
+                  aria-label="Ir al inicio, menú"
                 >
                   <div className="mobile-nav__item-icon">
                     <Home size={24} strokeWidth={2} />
@@ -157,7 +158,7 @@ export function Navbar() {
                   className={`mobile-nav__item mobile-nav__item--green ${
                     location.pathname.startsWith('/blog') ? 'is-active' : ''
                   }`}
-                  aria-label="Ir al blog"
+                  aria-label="Ir al blog, menú"
                 >
                   <div className="mobile-nav__item-icon">
                     <FileText size={24} strokeWidth={2} />
