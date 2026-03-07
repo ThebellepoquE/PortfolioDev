@@ -1,16 +1,12 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllPosts } from '../../lib/posts';
+import { formatDateDayMonthYear } from '../../lib/formatDate';
 import { SectionTitle } from '../SectionTitle';
 
 /** Lista de posts del blog */
 export function BlogList() {
   const posts = useMemo(() => getAllPosts(), []);
-
-  // Actualizar el título de la página para SEO
-  useEffect(() => {
-    document.title = 'Blog | Desarrollo y Automatización - thebellepoque';
-  }, []);
 
   return (
     <section className="blog-list">
@@ -50,12 +46,8 @@ export function BlogList() {
                   
                   {/* Fecha y Tags en línea */}
                   <div className="blog-card__meta">
-                    <time>
-                      {new Date(post.date).toLocaleDateString('es-ES', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
-                      })}
+                    <time dateTime={post.date}>
+                      {formatDateDayMonthYear(post.date)}
                     </time>
                     <span>•</span>
                     <div className="blog-card__tags">

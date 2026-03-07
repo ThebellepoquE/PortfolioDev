@@ -2,6 +2,7 @@ export const SITE_CONFIG = {
   name: "Ione",
   username: "thebellepoque",
   title: "Full-stack Developer",
+  baseUrl: "https://thebellepoque.dev",
   social: {
     github: "https://github.com/ThebellepoquE",
     linkedin: "https://www.linkedin.com/in/thebellepoque/",

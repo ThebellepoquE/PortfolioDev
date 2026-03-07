@@ -108,6 +108,29 @@
     @media (width >= 640px) { gap: 0.75rem; }
   }
 
+  &__actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__details-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $green;
+    text-decoration: none;
+    transition: color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      color: $yellow;
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green;
+      outline-offset: 4px;
+    }
+  }
+
   &__links {
     display: flex;
     flex-wrap: wrap;

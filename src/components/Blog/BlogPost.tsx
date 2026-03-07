@@ -1,8 +1,10 @@
-import { useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug } from '../../lib/posts';
+import { formatDateDayMonthYear } from '../../lib/formatDate';
+import { SEO } from '../SEO';
 
 /** Renderiza un post individual */
 export function BlogPost() {
@@ -11,13 +13,6 @@ export function BlogPost() {
   const post = useMemo(() => {
     return slug ? getPostBySlug(slug) : null;
   }, [slug]);
-
-  // Actualizar el título de la página para SEO
-  useEffect(() => {
-    if (post) {
-      document.title = `${post.meta.title} | Blog de Ione`;
-    }
-  }, [post]);
 
   if (!post) {
     return (
@@ -47,6 +42,15 @@ export function BlogPost() {
 
   return (
     <article className="blog-post">
+      <SEO
+        title={post.meta.title}
+        description={post.meta.description}
+        image={post.meta.image}
+        url={`/blog/${post.meta.slug}`}
+        type="article"
+        publishedTime={post.meta.date}
+        tags={post.meta.tags}
+      />
       {/* Inyectar Datos Estructurados */}
       <script 
         type="application/ld+json"
@@ -80,12 +84,8 @@ export function BlogPost() {
 
             {/* Meta info debajo */}
             <div className="blog-post__meta">
-              <time>
-                {new Date(post.meta.date).toLocaleDateString('es-ES', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
+              <time dateTime={post.meta.date}>
+                {formatDateDayMonthYear(post.meta.date)}
               </time>
               <span>•</span>
               <span>{post.meta.tags.join(', ')}</span>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Project } from '../types/project';
 import { MetricBadge } from './MetricBadge';
 
@@ -39,6 +40,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
             ))}
           </div>
         )}
+
+        {/* Enlace a página de detalle / caso de estudio */}
+        <div className="project-card__actions">
+          <Link
+            to={`/proyecto/${project.id}`}
+            className="project-card__details-link"
+          >
+            Ver caso de estudio →
+          </Link>
+        </div>
 
         {/* Stack técnico */}
         <div className="project-card__stack">
