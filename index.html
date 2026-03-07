@@ -27,28 +27,27 @@
     <!-- Optimización DNS y Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <link 
-      rel="preload" 
-      as="style" 
+    <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap"
     />
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap" 
-      rel="stylesheet" 
-      media="print" 
-      onload="this.media='all'" 
+    <link
+      id="fonts-async"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap"
+      rel="stylesheet"
+      media="print"
     />
+    <script>(function(){var e=document.getElementById("fonts-async");if(e)e.media="all";})();</script>
     <noscript>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap" rel="stylesheet" />
     </noscript>
     
-    <!-- Preload Imagen Crítica (Perfil) -->
-    <link 
-      rel="preload" 
-      as="image" 
-      href="/profile-520.webp" 
-      imagesrcset="/profile-260.webp 260w, /profile-360.webp 360w, /profile-520.webp 520w" 
+    <!-- Preload LCP: imagesrcset + imagesizes (sin href para evitar doble petición; ver web.dev/preload-responsive-images) -->
+    <link
+      rel="preload"
+      as="image"
+      imagesrcset="/profile-260.webp 260w, /profile-360.webp 360w, /profile-520.webp 520w"
       imagesizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
       fetchpriority="high"
     />

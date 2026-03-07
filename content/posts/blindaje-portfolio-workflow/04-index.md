@@ -15,7 +15,7 @@ image: /images/blog/modularizacion.webp
 
 En [El laberinto de empezar](/blog/el-laberinto-de-empezar) hablábamos de ese momento en el que todas las puertas están abiertas y no sabes por cuál pasar. En [Evolución](/blog/modularizacion-lighton) conté cómo LightON pasó de entrega de estudiante a infraestructura profesional. Hoy toca hablar del **otro proyecto que cuido con el mismo cariño**: este portfolio.
 
-No es solo una tarjeta de visita en HTML. Es la puerta de entrada a conversaciones, ofertas y proyectos. Por eso, estos días lo hemos blindado. No con más features llamativas, sino con **fundamentos que no se ven**: workflow, velocidad y una definición de hecho que no negocia.
+No es solo una tarjeta de visita en HTML. Es la puerta de entrada a conversaciones, ofertas y proyectos. Por eso, estos días lo he blindado. No con más features llamativas, sino con **fundamentos que no se ven**: workflow, velocidad y una definición de hecho que no negocia.
 
 ## Por qué importa el workflow (y no solo el diseño)
 
@@ -30,11 +30,11 @@ La migración de **npm** a **pnpm** no fue capricho. Buscaba:
 - **Velocidad**: instalaciones y builds más rápidos.
 - **Consistencia**: un solo lockfile (`pnpm-lock.yaml`) y la versión fijada en `package.json` con `packageManager: "pnpm@10.28.0"` para que Corepack garantice que todo el mundo usa la misma.
 
-Así evitamos el clásico "en mi máquina funciona". Si el CI o un compañero usan la misma versión de pnpm, el árbol de dependencias es el mismo. Menos sorpresas, más tiempo para lo que importa. Gracias Midudev!! Siempre cazo algo interesante de todo lo que nos cuentas.
+Así se evita el clásico "en mi máquina funciona". Si el CI o un compañero usan la misma versión de pnpm, el árbol de dependencias es el mismo. Menos sorpresas, más tiempo para lo que importa. Gracias @midudev!! Siempre cazo algo interesante de todo lo que cuentas.
 
 ## Fases, commits y plan de rollback
 
-No hemos tirado features a lo loco. Seguimos un **plan por fases** (documentado en el repo):
+No he tirado features a lo loco. Sigo un **plan por fases** (documentado en el repo):
 
 1. **Fase 1**: Modelo de proyectos (tipos, datos).
 2. **Fase 2**: UI de métricas y enlaces (MetricBadge, "Ver caso de estudio").
@@ -54,7 +54,7 @@ No negocio con TypeScript en rojo ni con tests rotos. La **Definition of Done** 
 
 Todo eso se ejecuta con **`pnpm run check:preprod`** antes de cada despliegue. Si algo falla, no se sube. Punto. Los **47 tests** (Vitest + Testing Library) cubren componentes críticos: Contact, BlogList, ErrorBoundary, SectionTitle. No son decoración: son la red de seguridad.
 
-## Qué nos llevamos de esta parte del blindaje
+## Qué me llevo de esta parte del blindaje
 
 Un portfolio no es solo lo que se ve. Es **cómo se construye y se mantiene**. Pasar a pnpm, ordenar el trabajo en fases y no desplegar sin tests ni lint nos deja con una base sólida para la segunda parte del blindaje: **SEO, sitemap y la imagen que te representa**. Eso, en el siguiente post.
 
