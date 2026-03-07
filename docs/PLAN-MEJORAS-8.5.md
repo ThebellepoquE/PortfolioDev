@@ -132,28 +132,16 @@
 
 ### Pasos concretos
 
-1. **Script de generación**
-   - Crear `scripts/generate-sitemap.js` (o `.mjs`/`.cjs` según prefieras ESM).
-   - Entrada: lista de rutas. Opciones:
-     - **A)** Leer desde un módulo que exporte `getAllPosts()` (si el script puede ejecutar código que use `import.meta.glob`, puede ser complejo en Node).  
-     - **B)** Leer el sistema de archivos: listar carpetas en `content/posts/`, leer frontmatter de cada `*-index.md` para `date` y `draft`; filtrar drafts.
-   - Salida: escribir `public/sitemap.xml` (o `dist/sitemap.xml` si se ejecuta después de build) con:
-     - `https://thebellepoque.dev/`
-     - `https://thebellepoque.dev/blog`
-     - Una entrada por post público: `https://thebellepoque.dev/blog/<slug>`
-   - Usar `lastmod` desde el frontmatter o `mtime` del fichero; `priority` y `changefreq` según criterio (ej. home 1.0 weekly, blog 0.8 weekly, post 0.7 monthly).
+1. **Script de generación** (implementado)
+   - `scripts/generate-sitemap.ts`: ejecutado con `tsx`. Importa `projectsData` y `SITE_CONFIG.baseUrl` desde `src/lib`; lee `content/posts/` por sistema de archivos (frontmatter `date`, `draft`). Escribe `public/sitemap.xml` con home, `/blog`, cada `/proyecto/:id` y cada post no draft; `lastmod`, `priority` y `changefreq` por tipo de URL.
 
 2. **Integración en build**
-   - Opción recomendada: ejecutar el script **antes** de `vite build`, para que `public/sitemap.xml` exista y Vite lo copie a `dist/`.
-   - En `package.json`:
-     - Añadir script: `"sitemap": "node scripts/generate-sitemap.js"`.
-     - Cambiar `build` a: `"build": "tsc -b && pnpm run sitemap && vite build"` (o `"build": "pnpm run sitemap && tsc -b && vite build"` si prefieres sitemap antes de tsc).
-   - Comprobar que en `dist/` tras `pnpm run build` exista `sitemap.xml` con las URLs correctas.
+   - Script `"generate-sitemap": "tsx scripts/generate-sitemap.ts"`; `"build": "pnpm run generate-sitemap && tsc -b && vite build"`. Vite copia `public/sitemap.xml` a `dist/`.
 
 3. **Validación Fase 4**
-   - [ ] `pnpm run sitemap` sin errores y `public/sitemap.xml` actualizado.
-   - [ ] `pnpm run build`: `dist/sitemap.xml` presente y con al menos `/`, `/blog` y los posts no draft.
-   - [ ] `pnpm run check:preprod` completo: test + lint + build + audit.
+   - [x] `pnpm run generate-sitemap` sin errores y `public/sitemap.xml` actualizado.
+   - [x] `pnpm run build`: `dist/sitemap.xml` presente con `/`, `/blog`, cada `/proyecto/:id` y posts no draft.
+   - [x] `pnpm run check:preprod` completo: test + lint + build + audit.
 
 ### Rollback Fase 4
 
@@ -184,7 +172,7 @@
 | 1    | (opcional `src/types/project.ts`) | `src/lib/projects.ts` |
 | 2    | `src/components/MetricBadge.tsx`, estilos | `src/components/ProjectCard.tsx`, `src/styles/components/Projects.scss` |
 | 3    | `src/components/SEO.tsx` | `src/main.tsx`, `src/App.tsx` o rutas, `src/components/Blog/BlogPost.tsx` |
-| 4    | `scripts/generate-sitemap.js` | `package.json`, (opcional) `public/sitemap.xml` sobrescrito por script |
+| 4    | `scripts/generate-sitemap.ts` (ejecutado con tsx) | `package.json`; `public/sitemap.xml` generado en cada build |
 
 ---
 
