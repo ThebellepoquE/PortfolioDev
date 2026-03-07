@@ -10,6 +10,7 @@ tags:
   - Marca personal
   - Portfolio
 draft: true
+# Sustituir por /images/blog/blindaje-lighthouse.webp cuando el archivo exista en public/images/blog/
 image: /images/blog/modularizacion.webp
 ---
 

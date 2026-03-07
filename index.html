@@ -43,10 +43,11 @@
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap" rel="stylesheet" />
     </noscript>
     
-    <!-- Preload LCP: imagesrcset + imagesizes (sin href para evitar doble petición; ver web.dev/preload-responsive-images) -->
+    <!-- Preload LCP: href como fallback para LCP fiable; imagesrcset para variante correcta -->
     <link
       rel="preload"
       as="image"
+      href="/profile-260.webp"
       imagesrcset="/profile-260.webp 260w, /profile-360.webp 360w, /profile-520.webp 520w"
       imagesizes="(max-width: 639px) 180px, (max-width: 1023px) 220px, 260px"
       fetchpriority="high"

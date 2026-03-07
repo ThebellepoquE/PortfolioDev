@@ -1,6 +1,6 @@
 ---
 title: "Blindaje técnico I: Portfolio como máquina de oportunidades"
-description: "Cómo estructuramos el workflow profesional del portfolio: pnpm, fases, commits y 47 tests que no perdonan."
+description: "Cómo estructuré el workflow profesional del portfolio: pnpm, fases, commits y 47 tests que no perdonan."
 date: 2026-04-08
 tags:
   - Portfolio
@@ -10,6 +10,7 @@ tags:
   - Vitest
   - Definition of Done
 draft: true
+# Sustituir por /images/blog/blindaje-workflow.webp cuando el archivo exista en public/images/blog/
 image: /images/blog/modularizacion.webp
 ---
 

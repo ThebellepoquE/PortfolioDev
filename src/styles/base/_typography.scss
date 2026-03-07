@@ -19,9 +19,9 @@ h6 {
 }
 
 .title-neon {
-  /* Borde oscuro sutil para cumplir contraste WCAG sobre fondos oscuros */
+  /* Borde oscuro para contraste WCAG AA sobre fondos oscuros (Lighthouse) */
   text-shadow:
-    0 0 0 1px var(--bg-dark),
+    0 0 0 2px var(--bg-dark),
     0 0 10px rgba($pink-rgb, 0.4),
     0 0 20px rgba($green-rgb, 0.2);
 }

@@ -15,9 +15,12 @@ Este archivo sirve como registro de las decisiones técnicas y el estado del pro
 
 ### 🛡️ Seguridad y rendimiento (sesiones anteriores)
 
-- **CSP:** Política estricta en `vercel.json` con hashes SHA-256 para scripts inline.
-- **Robots.txt:** Bloqueo preventivo de bots de IA (GPTBot, Claude-Web, etc.).
-- **Fuentes e imágenes:** preconnect para Google Fonts; preload y fetchpriority para imagen de perfil (LCP).
+- **Preload LCP:** Imagen de perfil con `imagesrcset` e `imagesizes` (sin `href` para evitar doble petición); preload de hoja de Google Fonts.
+- **Fuentes async:** Carga asíncrona con patrón `media="print"` + script inline (hash en CSP) para no bloquear render (FOIT/FOUT).
+- **CSP:** Política en `vercel.json` con hashes SHA-256 para scripts inline (incluye script de activación de fuentes).
+- **Headers:** COOP/COEP; HSTS y resto en `vercel.json`.
+- **Robots.txt:** Válido (sin comentarios ni directivas no estándar como `Content-Signal`; Lighthouse marca "Unknown directive"). Sitemap y bloqueo de bots de IA.
+- **ErrorBoundary:** `console.error` solo en DEV.
 - **JSON-LD:** Person (estático) y BlogPosting (dinámico por post).
 
 ### 🎨 UI/UX
@@ -36,8 +39,8 @@ Este archivo sirve como registro de las decisiones técnicas y el estado del pro
 
 ## 🚀 Próximos pasos (pendientes)
 
-- [x] **Fase 4:** Sitemap automatizado (script `scripts/generate-sitemap.ts` con tsx; integrado en build).
-- [ ] Añadir `public/og-image-default.jpg` (1200×630) si se quiere imagen OG por defecto dedicada.
+- [x] **Fase 4:** Sitemap automatizado (script `scripts/generate-sitemap.ts`; integrado en build).
+- [x] Imagen OG por defecto: `public/og-image-default.jpg` (1200×630).
 - [ ] Opcional: Sección "Sobre mí", skip link, competencias categorizadas (ver `docs/AUDITORIA-PORTFOLIO-2026.md`).
 - [ ] Publicar post "Modularización" (actualmente `draft: true` en `content/posts/modularizacion-lighton/`).
 

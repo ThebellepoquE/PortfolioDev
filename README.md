@@ -47,6 +47,8 @@ pnpm run check:preprod
 
 `check:preprod` ejecuta: tests, eslint, build y auditoría de dependencias de producción.
 
+El build (`pnpm run build`) ejecuta `generate-sitemap` antes de compilar.
+
 ## Estructura relevante
 
 ```text
@@ -145,8 +147,10 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 ## Seguridad
 
-- Headers de seguridad en `vercel.json` (CSP, HSTS).
-- Middleware defensivo en `middleware.js`.
+- **CSP** en `vercel.json` con hashes SHA-256 para scripts inline (incluye el script de activación de fuentes async).
+- Headers **COOP/COEP**; HSTS y resto de cabeceras de seguridad.
+- `robots.txt` válido (sin comentarios, newline final); bloqueo de bots de IA.
+- ErrorBoundary: `console.error` solo en DEV.
 - `public/security.txt` para reporte de vulnerabilidades.
 
 ## Deploy sugerido
@@ -157,22 +161,39 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 ## Mejoras recientes (Mar 2026)
 
-### Contenido y UX
+### Rendimiento y LCP
 
-- **Proyectos enriquecidos:** Modelo con métricas, enlaces (live/repo), badge “Destacado” y enlace “Ver caso de estudio” a `/proyecto/:id`.
-- **Página de proyecto:** Ruta `/proyecto/:id` con SEO (article), fechas en formato “día de mes de año” y contenido detallado.
-- **Fechas:** Utilidad `formatDateDayMonthYear` en `src/lib/formatDate.ts` para formato consistente en español (blog y proyectos).
+- **Preload imagen de perfil (LCP):** `<link rel="preload" imagesrcset imagesizes>` (sin `href` para evitar doble petición).
+- **Preload hoja de fuentes** Google Fonts.
+- **Carga asíncrona de fuentes:** patrón `media="print"` + script inline con hash en CSP para no bloquear el render (evitar FOIT/FOUT).
+
+### Seguridad
+
+- CSP con hashes SHA-256 para scripts inline (incluye script de activación de fuentes).
+- Headers COOP/COEP en `vercel.json`.
+- `robots.txt` válido (sin comentarios, newline final).
+- ErrorBoundary: `console.error` solo en entorno DEV.
+
+### Accesibilidad (Lighthouse)
+
+- **ProjectCard:** ARIA `list`/`listitem` en métricas.
+- **ThemeToggle:** SVGs decorativos con `aria-hidden`.
+- **Navbar:** enlaces duplicados con `aria-label` diferenciados.
+- **Contraste:** `text-shadow` en `.title-neon` y en MetricBadge sobre fondos oscuros.
 
 ### SEO
 
-- **react-helmet-async:** Meta dinámicos por ruta (title, description, canonical, Open Graph, Twitter Cards) en Home, Blog, posts y páginas de proyecto.
-- **SEO.tsx:** Componente reutilizable; imagen OG por defecto configurable (`og-image-default.jpg` recomendado 1200×630).
+- **Sitemap** generado en build (`scripts/generate-sitemap.ts`); `generate-sitemap` se ejecuta en `pnpm run build`.
+- Imagen OG por defecto: `public/og-image-default.jpg`.
+- `robots.txt` con directiva Sitemap y bloqueo de bots de IA. No usar directivas no estándar (p. ej. `Content-Signal`); Lighthouse las marca como inválidas.
 
-### Accesibilidad
+### Contenido y UX
 
-- **MetricBadge:** Focusable con `tabIndex={0}`, tooltip visible con `:focus-visible`, outline con `currentColor`.
-- **Navegación semántica:** Enlaces “Volver” y 404 con `<Link>` / `<a>` nativos.
+- **Proyectos enriquecidos:** Modelo con métricas, enlaces (live/repo), badge "Destacado" y "Ver caso de estudio" → `/proyecto/:id`.
+- **Página de proyecto:** `/proyecto/:id` con SEO tipo article, fechas "día de mes de año".
+- **Fechas:** `formatDateDayMonthYear` en `src/lib/formatDate.ts` (blog y proyectos).
 
 ### Infraestructura
 
-- **Migración a pnpm:** Lockfile `pnpm-lock.yaml`, scripts con `pnpm run`; versión fijada con `packageManager` (Corepack).
+- **Stack:** pnpm 10.28.0, React 19, Vite 7, TypeScript 5.9.
+- **check:preprod:** test, lint, build, audit:prod.

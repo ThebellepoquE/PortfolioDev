@@ -1,16 +1,15 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { SEO } from './components/SEO';
 
-// Lazy load components below the fold
-const Projects = lazy(() => import('./components/Projects').then(m => ({ default: m.Projects })));
-const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
-const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
-const BlogList = lazy(() => import('./components/Blog/BlogList').then(m => ({ default: m.BlogList })));
-const BlogPost = lazy(() => import('./components/Blog/BlogPost').then(m => ({ default: m.BlogPost })));
+// Lazy load por ruta (code-splitting: cada página en su chunk)
+const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
+const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.BlogPage })));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage').then(m => ({ default: m.BlogPostPage })));
 const ProjectPage = lazy(() => import('./pages/ProjectPage').then(m => ({ default: m.ProjectPage })));
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
+
+const PageFallback = () => <div className="loading-placeholder" />;
 
 /** Portfolio de Ione - @thebellepoque */
 function App() {
@@ -19,48 +18,26 @@ function App() {
       <Navbar />
       <main>
         <Routes>
-          {/* Home - Portfolio */}
           <Route path="/" element={
-            <>
-              <SEO
-                title="Ione | Full-stack Developer"
-                description="Portfolio de Ione: Desarrolladora Full-stack especializada en React, TypeScript y automatizaciones. Descubre mis proyectos y artículos sobre desarrollo."
-                url="/"
-                noSuffix
-              />
-              <Hero />
-              <Suspense fallback={<div className="loading-placeholder" />}>
-                <Projects />
-                <Contact />
-              </Suspense>
-            </>
+            <Suspense fallback={<PageFallback />}>
+              <HomePage />
+            </Suspense>
           } />
-          
-          {/* Blog routes */}
           <Route path="/blog" element={
-            <>
-              <SEO
-                title="Blog"
-                description="El Laberinto del Código: pensamientos sobre desarrollo, automatización y el ecosistema de JavaScript."
-                url="/blog"
-              />
-              <Suspense fallback={<div className="loading-state"><p>Cargando...</p></div>}>
-                <BlogList />
-              </Suspense>
-            </>
+            <Suspense fallback={<PageFallback />}>
+              <BlogPage />
+            </Suspense>
           } />
           <Route path="/blog/:slug" element={
-            <Suspense fallback={<div className="loading-state"><p>Cargando...</p></div>}>
-              <BlogPost />
+            <Suspense fallback={<PageFallback />}>
+              <BlogPostPage />
             </Suspense>
           } />
           <Route path="/proyecto/:id" element={
-            <Suspense fallback={<div className="loading-state"><p>Cargando...</p></div>}>
+            <Suspense fallback={<PageFallback />}>
               <ProjectPage />
             </Suspense>
           } />
-
-          {/* 404 - Catch all */}
           <Route path="*" element={
             <div className="error-boundary">
               <div className="error-content">
@@ -83,4 +60,3 @@ function App() {
 }
 
 export default App;
-

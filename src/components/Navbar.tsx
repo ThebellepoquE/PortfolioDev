@@ -144,7 +144,7 @@ export function Navbar() {
                 <Link
                   to="/"
                   className="mobile-nav__item mobile-nav__item--pink"
-                  aria-label="Ir al inicio, menú"
+                  aria-label="Inicio, página principal"
                 >
                   <div className="mobile-nav__item-icon">
                     <Home size={24} strokeWidth={2} />
@@ -158,7 +158,7 @@ export function Navbar() {
                   className={`mobile-nav__item mobile-nav__item--green ${
                     location.pathname.startsWith('/blog') ? 'is-active' : ''
                   }`}
-                  aria-label="Ir al blog, menú"
+                  aria-label="Ir al blog"
                 >
                   <div className="mobile-nav__item-icon">
                     <FileText size={24} strokeWidth={2} />
