@@ -114,6 +114,10 @@ Las funciones en `/api/` (como el contacto) son **Serverless Functions** de Verc
 - Verificación sugerida antes de eliminar: `npx depcheck --json` + validación de scripts/config.
 - Tras limpieza, ejecutar `npm run check:preprod`.
 
+- **Overrides de seguridad**: Se han añadido overrides en `package.json` para `minimatch`, `ajv` y `rollup` con el fin de fijar versiones seguras recomendadas por las auditorías sin romper la configuración actual de Vite y del tooling.
+- **Auditoría automatizada en preproducción**: El script `npm run check:preprod` incluye la ejecución de `npm run audit:prod`, garantizando que no existan vulnerabilidades conocidas de producción antes de desplegar.
+- **Ejecución manual de auditorías**: Para revisar el estado en cualquier momento, usar `npm run audit:prod` y revisar el resumen de vulnerabilidades antes de continuar con cambios de dependencias.
+
 ## Seguridad
 
 - Headers de seguridad en `vercel.json` (incluye CSP y HSTS).

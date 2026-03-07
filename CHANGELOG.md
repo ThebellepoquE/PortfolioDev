@@ -7,6 +7,15 @@ y este proyecto adhiere a [Versionado Semántico](https://semver.org/lang/es/).
 
 ## [Unreleased]
 
+### Changed
+
+- **Flujo de preproducción**: El script `check:preprod` ahora encadena también `npm run audit:prod` para asegurar que el bundle se construye sin vulnerabilidades de producción antes de desplegar.
+
+### Security
+
+- **Overrides de dependencias**: Añadidos overrides en `package.json` para `minimatch`, `ajv` y `rollup`, fijando versiones seguras recomendadas por las auditorías sin romper la configuración actual de Vite y del bundler.
+- **Auditorías limpias**: Ejecución de `npm run audit:prod` tras aplicar los overrides, con resultado de 0 vulnerabilidades reportadas para las dependencias de producción.
+
 ## [1.0.0] - 2026-03-01
 
 ### Added

@@ -20,7 +20,21 @@ sudo apt install msmtp msmtp-mta
 
 ### 3. Configurar msmtp
 
-Crea o edita `~/.msmtprc`:
+Crea el archivo en tu **carpeta personal** (tu home), no dentro del proyecto:
+
+| Tu usuario | Ruta completa del archivo |
+|------------|---------------------------|
+| thebellepoque | `/home/thebellepoque/.msmtprc` |
+
+El archivo se llama `.msmtprc` (con el punto delante, es un archivo oculto).
+
+```bash
+nano ~/.msmtprc
+```
+
+Ese comando crea el archivo automáticamente si no existe. `~` es tu carpeta personal.
+
+Pega este contenido y **sustituye** `abcd efgh ijkl mnop` por la contraseña de 16 caracteres que copiaste de Google (la de "cron-cleanup"):
 
 ```ini
 defaults
@@ -34,16 +48,25 @@ host           smtp.gmail.com
 port           587
 from           thebellepoque@gmail.com
 user           thebellepoque@gmail.com
-password       TU_CONTRASEÑA_DE_APLICACION
+password       abcd efgh ijkl mnop
 
 account default : gmail
 ```
+
+**Ejemplo:** si Google te dio `abcd efgh ijkl mnop`, la línea quedaría:
+```
+password      abcd efgh ijkl mnop 
+```
+
+Guarda (Ctrl+O, Enter) y cierra (Ctrl+X).
 
 **Importante:** protege el archivo (contiene la contraseña):
 
 ```bash
 chmod 600 ~/.msmtprc
 ```
+
+> **Obligatorio:** msmtp **no enviará correos** si el archivo no está protegido. Rechaza usar configuraciones que otros usuarios puedan leer. Sin `chmod 600` los emails no llegarán.
 
 ### 4. Probar el envío
 
@@ -52,6 +75,8 @@ echo "Test desde cron cleanup" | msmtp thebellepoque@gmail.com
 ```
 
 Si recibes el email, está listo.
+
+**Si no llega:** comprueba que el archivo esté protegido con `ls -la ~/.msmtprc` (debe mostrar `-rw-------`). Si no, ejecuta `chmod 600 ~/.msmtprc` de nuevo.
 
 ---
 
