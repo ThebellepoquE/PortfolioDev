@@ -58,6 +58,7 @@
   }
 
   &:focus-visible {
+    /* stylelint-disable-next-line value-keyword-case -- currentColor es la ortografía canónica (accesibilidad: outline visible) */
     outline: 2px solid currentColor;
     outline-offset: 3px;
   }

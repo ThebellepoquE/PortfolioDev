@@ -11,8 +11,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "audit:prod": "npm audit --omit=dev",
-    "check:preprod": "npm run test -- --run && npm run lint && npm run build && npm run audit:prod",
+    "audit:prod": "pnpm audit --prod",
+    "check:preprod": "pnpm run test -- --run && pnpm run lint && pnpm run build && pnpm run audit:prod",
     "cleanup:repos": "bash scripts/cleanup-repos.sh"
   },
   "dependencies": {
