@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { SITE_CONFIG } from '../lib/config';
 
-/** Imagen por defecto para OG/Twitter (1200×630 recomendado). Añade public/og-image-default.jpg; si no existe aún, cambia a /profile.webp. */
+/** Imagen por defecto para OG/Twitter (1200×630). public/og-image-default.jpg */
 const OG_IMAGE_DEFAULT = `${SITE_CONFIG.baseUrl}/og-image-default.jpg`;
 
 export interface SEOProps {
