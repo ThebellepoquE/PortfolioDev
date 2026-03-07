@@ -3,7 +3,9 @@
 ## Formato requerido
 
 - **Carpeta:** `public/images/blog/`
-- **Formato de archivo:** `.webp` (recomendado para buen tamaño y calidad)
+- **Formato de archivo:** `.webp` (buen equilibrio tamaño/calidad; compatible con og:image y listado).
+- **Dimensiones recomendadas:** 1200×630 px (ratio 1.91:1, óptimo para redes y OG). Mínimo razonable: 800×420 px.
+- **Tamaño de archivo:** ideal &lt; 200 KiB por imagen; si supera ~300 KiB, conviene comprimir (p. ej. con [Squoosh](https://squoosh.app)).
 - **Nombre:** minúsculas, sin espacios. Puedes usar guiones bajos, p. ej. `blindaje-workflow.webp` o `mi_post.webp`.
 - **Ruta en el post:** la URL es desde la raíz del sitio, no desde `public/`:
   ```yaml
@@ -17,7 +19,7 @@
 | el-laberinto-de-empezar | laberinto.webp     | `/images/blog/laberinto.webp`     |
 | lighton-de-cero-a-produccion | hello_world.webp | `/images/blog/hello_world.webp` |
 | modularizacion-lighton | modularizacion.webp | `/images/blog/modularizacion.webp` |
-| blindaje-portfolio-workflow | (pendiente)   | usar imagen propia cuando la tengas |
+| blindaje-portfolio-workflow | blindaje-portfolio-workflow.webp | q`/images/blog/blindaje-portfolio-workflow.webp` |
 | blindaje-portfolio-seo-marca | (pendiente)  | usar imagen propia cuando la tengas |
 
 ## Una imagen por post

@@ -10,8 +10,7 @@ tags:
   - Vitest
   - Definition of Done
 draft: true
-# Sustituir por /images/blog/blindaje-workflow.webp cuando el archivo exista en public/images/blog/
-image: /images/blog/modularizacion.webp
+image: /images/blog/blindaje-portfolio-workflow.webp
 ---
 
 En [El laberinto de empezar](/blog/el-laberinto-de-empezar) hablábamos de ese momento en el que todas las puertas están abiertas y no sabes por cuál pasar. En [Evolución](/blog/modularizacion-lighton) conté cómo LightON pasó de entrega de estudiante a infraestructura profesional. Hoy toca hablar del **otro proyecto que cuido con el mismo cariño**: este portfolio.

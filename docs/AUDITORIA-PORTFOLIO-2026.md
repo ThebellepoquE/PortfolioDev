@@ -97,7 +97,7 @@ Tras aplicar las fases 1–3 del plan de mejoras:
 ## 4. Recomendaciones técnicas específicas
 
 - **TypeScript**  
-  Mantener `npx tsc --noEmit` en CI y pre-commit. El proyecto usa **pnpm**; validación con `pnpm run build` (incluye tsc). Estado actual: sin errores.
+  Mantener `pnpm exec tsc --noEmit` en CI y pre-commit (o `pnpm run build`, que incluye tsc). Estado actual: sin errores.
 
 - **Tests**  
   47 tests pasando. Añadir al menos un test de integración o E2E que cargue la home y compruebe Hero + lista de proyectos (y opcionalmente enlace al blog).

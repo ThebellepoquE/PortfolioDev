@@ -45,7 +45,7 @@
    - Opcional: `caseStudy` apuntando al slug de un post si lo hay.
 
 3. **Validación Fase 1**
-   - [ ] `npx tsc --noEmit` sin errores.
+   - [ ] `pnpm exec tsc --noEmit` sin errores.
    - [ ] `pnpm run test -- --run` pasando (ProjectCard sigue recibiendo `Project`; si el tipo se amplía, los tests existentes siguen válidos).
    - [ ] `pnpm run build` correcto.
    - [ ] Comprobar en dev que la home sigue mostrando los 3 proyectos sin errores (los nuevos campos aún no se pintan).
@@ -77,7 +77,7 @@
    - Responsive y contraste acorde al tema claro/oscuro.
 
 4. **Validación Fase 2**
-   - [ ] `npx tsc --noEmit`.
+   - [ ] `pnpm exec tsc --noEmit`.
    - [ ] `pnpm run test -- --run`. Si hay tests de `ProjectCard`, actualizar mocks para incluir `metrics`/`repo` opcionales si es necesario.
    - [ ] `pnpm run lint` y `pnpm run lint:styles`.
    - [ ] Revisión visual en dev: home, tema claro y oscuro, móvil.
@@ -116,7 +116,7 @@
    - Asegurar que `BlogPost` tenga acceso a `post.meta` antes de renderizar SEO (evitar flash de meta incorrectos).
 
 4. **Validación Fase 3**
-   - [ ] `npx tsc --noEmit`.
+   - [ ] `pnpm exec tsc --noEmit`.
    - [ ] `pnpm run test -- --run` (si algún test hace snapshot del DOM, puede requerir ajuste por el nuevo provider).
    - [ ] `pnpm run build` y `pnpm run preview`: abrir `/`, `/blog`, `/blog/el-laberinto-de-empezar` y comprobar en “Inspeccionar” que `<head>` cambia según la ruta (title y meta description/og).
 

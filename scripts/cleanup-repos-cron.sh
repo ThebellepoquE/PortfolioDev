@@ -29,19 +29,19 @@ export HOME="${HOME:-$(eval echo ~$(id -un))}"
 # Rotación de logs: borrar cleanup-*.log con más de 30 días (solo en $HOME, no recursivo)
 find "$HOME" -maxdepth 1 -name "cleanup-*.log" -mtime +30 -delete 2>/dev/null
 
-# Cargar nvm si existe (necesario para npm/node en cron)
+# Cargar nvm si existe (necesario para node/pnpm en cron)
 if [ -s "$HOME/.nvm/nvm.sh" ]; then
   export NVM_DIR="$HOME/.nvm"
   # shellcheck source=/dev/null
   . "$NVM_DIR/nvm.sh"
 fi
 
-# Fallback: añadir rutas comunes de node/npm
-if ! command -v npm &> /dev/null; then
+# Fallback: añadir rutas comunes de node/pnpm
+if ! command -v pnpm &> /dev/null; then
   for path in "$HOME/.nvm/versions/node/"*/bin \
               /usr/local/bin \
               /opt/node/bin; do
-    if [ -d "$path" ] && [ -x "$path/npm" ]; then
+    if [ -d "$path" ] && { [ -x "$path/pnpm" ] || [ -x "$path/npm" ]; }; then
       export PATH="$path:$PATH"
       break
     fi
