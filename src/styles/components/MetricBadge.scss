@@ -65,6 +65,7 @@
 
   &--pink {
     color: $pink;
+
     /* Contorno para contraste WCAG AA (Lighthouse) */
     text-shadow: 0 0 0 2px var(--bg-dark);
     box-shadow: 0 0 12px rgba($pink-rgb, 0.3);
@@ -76,7 +77,7 @@
 
   &--yellow {
     color: $yellow;
-    text-shadow: 0 0 0 2px var(--bg-dark);
+    text-shadow: var(--text-shadow-yellow);
     box-shadow: 0 0 12px rgba($yellow-rgb, 0.3);
   }
 
@@ -95,6 +96,7 @@
   font-weight: 500;
   opacity: 1;
   font-size: 0.6875rem;
+
   /* Contorno para contraste WCAG AA (hereda color; borde legible en fondos oscuros) */
   text-shadow: 0 0 0 2px var(--bg-dark);
 

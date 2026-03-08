@@ -47,6 +47,7 @@ Google (y otros) tienen así una lista fiable de qué páginas indexar. No hay q
 
 ## La OG image: el círculo rosa que te representa
 
+
 Cuando compartes un enlace en LinkedIn, Twitter o WhatsApp, la **miniatura** que sale es la imagen Open Graph. Si no defines una, las redes eligen cualquier cosa o nada. He definido una **imagen por defecto** (`og-image-default.jpg`): fondo negro, círculo rosa, "thebellepoque.dev", "FULL STACK DEVELOPER" y el stack (Python, TypeScript, React, etc.) en la parte inferior.
 
 Es **marca personal en un vistazo**. Quien comparte tu portfolio ve eso, no un favicon o un bloque vacío. Las páginas que no tienen imagen propia (home, listado de blog, etc.) usan esta por defecto; los posts pueden seguir usando su propia imagen si la tienen en el frontmatter.

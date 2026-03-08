@@ -43,6 +43,7 @@
     color: $yellow;
     font-weight: 600;
     letter-spacing: 0.05em;
+    text-shadow: var(--text-shadow-yellow);
 
     @media (width >= 640px) {
       font-size: 1.125rem;
@@ -112,6 +113,7 @@
 
     &--yellow {
       color: $yellow;
+      text-shadow: var(--text-shadow-yellow);
     }
 
     &--green {

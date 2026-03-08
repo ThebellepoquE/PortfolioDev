@@ -8,15 +8,21 @@ interface ProjectCardProps {
 
 /** Tarjeta de proyecto con diseño fluorescente, métricas y enlaces */
 export function ProjectCard({ project }: ProjectCardProps) {
-  const { title, shortDescription, technologies, metrics, links, featured } = project;
+  const { title, shortDescription, technologies, metrics, links, featured, status } = project;
   const metricsToShow = metrics.slice(0, 3);
   const colorModifiers = ['--pink', '--yellow', '--green'] as const;
 
   return (
     <div className="project-card">
       <div className="project-card__content">
-        {/* Badge destacado */}
-        {featured && (
+        {/* Badge en construcción */}
+        {status === 'wip' && (
+          <span className="project-card__featured project-card__featured--wip" aria-label="Proyecto en construcción">
+            En construcción
+          </span>
+        )}
+        {/* Badge destacado (si no es wip) */}
+        {featured && status !== 'wip' && (
           <span className="project-card__featured" aria-label="Proyecto destacado">
             Destacado
           </span>

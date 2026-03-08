@@ -91,14 +91,16 @@
     font-size: 0.875rem;
     line-height: 1.625;
     color: $text;
+    text-align: justify;
 
     @media (width >= 640px) {
       font-size: 1rem;
     }
 
-    h1, h2, h3, h4, h5, h6 { 
-      margin-top: 2rem; 
-      margin-bottom: 1rem; 
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      text-align: left;
     }
 
     p {
@@ -143,6 +145,7 @@
 
       &:hover {
         color: $yellow;
+        text-shadow: var(--text-shadow-yellow);
       }
     }
   }
@@ -164,7 +167,11 @@
     &-link {
       color: $green;
       text-decoration: none;
-      &:hover { color: $yellow; }
+
+      &:hover {
+        color: $yellow;
+        text-shadow: var(--text-shadow-yellow);
+      }
     }
   }
 }

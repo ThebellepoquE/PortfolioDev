@@ -30,6 +30,9 @@
   --error-rgb: 239, 68, 68;
   --pre-bg: #2d2d2d;
 
+  /* Sombra para texto amarillo (contraste WCAG sobre fondos oscuros) */
+  --text-shadow-yellow: 0 0 0 2px var(--bg-dark);
+
   // Theme icons
   --moon: #00BFFF;
   --sun-icon: var(--yellow);
@@ -41,12 +44,15 @@
   --bg-card: #fff; // Blanco puro
 
   // Text & border
-  --text: #000;    
+  --text: #000;
   --text-secondary: #222; // Un gris casi negro para mejor definición
   --border: rgb(0 0 0 / 8%);
 
   // Theme icons
   --sun-icon: #f59e0b;
+
+  /* Sombra para texto amarillo en tema claro: borde oscuro para contraste WCAG */
+  --text-shadow-yellow: 0 0 0 1.5px rgb(0 0 0 / 50%), 0 1px 2px rgb(0 0 0 / 25%);
 }
 
 // Atajos para usar en SCSS

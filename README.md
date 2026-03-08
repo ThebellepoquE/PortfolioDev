@@ -11,7 +11,8 @@ Portfolio personal en **React + Vite + TypeScript** con sistema de estilos SCSS 
 - Flujo de contacto vía serverless en `/api/contact` usando Resend.
 - **SEO:** meta dinámicos por ruta (Home, Blog, posts, proyectos) con Open Graph y Twitter Cards.
 - **Proyectos:** modelo enriquecido con métricas, enlaces (live/repo) y página de detalle `/proyecto/:id`.
-- Build, lint y tests preparados para checks de preproducción.
+- Build, lint y tests preparados para checks de preproducción. Suite de **74 tests** en 7 archivos (Vitest + Testing Library); cobertura con `pnpm run test:coverage`.
+- **Proyectos:** modelo con campo opcional `status?: 'live' | 'wip'`; si `status === 'wip'` se muestra el badge "En construcción" en la tarjeta (ej. Discográfica).
 
 ## Stack
 
@@ -70,9 +71,18 @@ src/
     MetricBadge.tsx
     SEO.tsx
     Contact.tsx
+    __tests__/
+      ProjectCard.test.tsx
+      MetricBadge.test.tsx
+    SectionTitle.test.tsx
+    Contact.test.tsx
+    ErrorBoundary.test.tsx
     Blog/
       BlogList.tsx
+      BlogList.test.tsx
       BlogPost.tsx
+      __tests__/
+        BlogPost.test.tsx
   pages/
     ProjectPage.tsx
   styles/
@@ -134,6 +144,7 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 ## Calidad
 
+- **Tests:** 74 tests en 7 archivos (ProjectCard, MetricBadge, BlogPost, SectionTitle, BlogList, ErrorBoundary, Contact). Cobertura: `pnpm run test:coverage`.
 - Lint estilos estricto con `declaration-no-important: true`.
 - Convención BEM en selectores SCSS.
 - Validar antes de merge: `pnpm run lint:styles && pnpm run lint && pnpm run test -- --run && pnpm run build`.
@@ -181,6 +192,12 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 - **Navbar:** enlaces duplicados con `aria-label` diferenciados.
 - **Contraste:** `text-shadow` en `.title-neon` y en MetricBadge sobre fondos oscuros.
 
+### Testing
+
+- **Suite:** 74 tests en 7 archivos (Vitest + Testing Library): ProjectCard (12), MetricBadge (8), BlogPost (7), SectionTitle, BlogList, ErrorBoundary, Contact.
+- Tests en `src/components/__tests__/` (ProjectCard, MetricBadge), `src/components/Blog/__tests__/` (BlogPost) y colocados junto al componente (SectionTitle, Contact, ErrorBoundary, BlogList).
+- Cobertura: `pnpm run test:coverage`. Incluido en `check:preprod`.
+
 ### SEO
 
 - **Sitemap** generado en build (`scripts/generate-sitemap.ts`); `generate-sitemap` se ejecuta en `pnpm run build`.
@@ -189,7 +206,7 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 ### Contenido y UX
 
-- **Proyectos enriquecidos:** Modelo con métricas, enlaces (live/repo), badge "Destacado" y "Ver caso de estudio" → `/proyecto/:id`.
+- **Proyectos enriquecidos:** Modelo con métricas, enlaces (live/repo), badge "Destacado" y "Ver caso de estudio" → `/proyecto/:id`. Campo opcional `status?: 'live' | 'wip'`: si `status === 'wip'` se muestra el badge "En construcción" en la tarjeta (ej. proyecto Discográfica); en ese caso no se muestra "Destacado".
 - **Página de proyecto:** `/proyecto/:id` con SEO tipo article, fechas "día de mes de año".
 - **Fechas:** `formatDateDayMonthYear` en `src/lib/formatDate.ts` (blog y proyectos).
 

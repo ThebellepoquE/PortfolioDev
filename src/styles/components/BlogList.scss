@@ -135,9 +135,6 @@
     color: $yellow;
     font-weight: 500;
     transition: all 0.3s;
-
-    :root.light & {
-      text-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
-    }
+    text-shadow: var(--text-shadow-yellow);
   }
 }

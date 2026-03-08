@@ -127,6 +127,7 @@
     &--yellow {
       &:hover {
         color: $yellow;
+        text-shadow: var(--text-shadow-yellow);
       }
 
       &:focus-visible {
@@ -135,6 +136,7 @@
 
       &.is-active {
         color: $yellow;
+        text-shadow: var(--text-shadow-yellow);
       }
     }
 

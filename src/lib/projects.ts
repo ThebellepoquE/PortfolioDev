@@ -172,6 +172,32 @@ export const projectsData: ProjectFull[] = [
     role: 'Desarrolladora full-stack',
     relatedPosts: [],
   },
+  {
+    id: 'discografica',
+    title: 'Discográfica',
+    tagline: 'En construcción',
+    shortDescription:
+      'Proyecto en desarrollo: aplicación web para gestión y difusión de catálogo discográfico. Stack moderno y diseño orientado a artista y oyente.',
+    fullDescription:
+      'Proyecto en construcción. Aplicación web para gestión y difusión de catálogo discográfico (Next.js + Sanity), con foco en experiencia de artista y oyente. Sustituye al WordPress actual; la URL definitiva será decadenciacorporal.com. Se irá actualizando conforme avance el desarrollo.',
+    complexity: 0,
+    innovation: 0,
+    impact: 0,
+    technologies: ['Next.js', 'Sanity'],
+    image: '/images/projects/portfolio.webp',
+    imageAlt: 'Proyecto Discográfica en construcción',
+    metrics: [],
+    links: [
+      { type: 'live', url: 'https://decadencia-corporal.vercel.app', title: 'Ver preview', isPrimary: true },
+    ],
+    challenges: [],
+    learnings: [],
+    featured: false,
+    status: 'wip',
+    date: '2026-03',
+    role: 'Desarrolladora full-stack',
+    relatedPosts: [],
+  },
 ];
 
 // Export para la UI actual (Fase 1): misma forma que antes

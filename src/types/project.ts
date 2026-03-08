@@ -45,6 +45,8 @@ export interface Project {
   architecture?: string;
   learnings?: string[];
   featured: boolean;
+  /** 'wip' muestra badge "En construcción" en la tarjeta */
+  status?: 'live' | 'wip';
   date: string;
   duration?: string;
   role: string;
