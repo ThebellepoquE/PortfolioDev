@@ -45,7 +45,7 @@ Un sitemap estático se desactualiza en cuanto publicas un post o añades un pro
 
 Google (y otros) tienen así una lista fiable de qué páginas indexar. No hay que acordarse de tocar el sitemap a mano: el proceso de build se encarga.
 
-## La OG image: el círculo rosa que te representa
+## La OG image: el círculo rosa que me representa
 
 
 Cuando compartes un enlace en LinkedIn, Twitter o WhatsApp, la **miniatura** que sale es la imagen Open Graph. Si no defines una, las redes eligen cualquier cosa o nada. He definido una **imagen por defecto** (`og-image-default.jpg`): fondo negro, círculo rosa, "thebellepoque.dev", "FULL STACK DEVELOPER" y el stack (Python, TypeScript, React, etc.) en la parte inferior.
