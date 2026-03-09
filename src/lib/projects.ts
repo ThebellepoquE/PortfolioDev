@@ -34,7 +34,7 @@ export const projectsData: ProjectFull[] = [
     shortDescription:
       'Sitio web corporativo para empresa de instalaciones eléctricas. Migración completa de JavaScript a TypeScript, con Express en backend y SCSS para estilos. Diseño profesional, responsive y optimizado para conversión.',
     fullDescription:
-      'Sitio web corporativo para empresa de instalaciones eléctricas. Migración completa de JavaScript a TypeScript, con Express en backend y SCSS para estilos. Diseño profesional, responsive y optimizado para conversión. Incluye formularios de contacto, integración con flujos de negocio y preparado para SEO local.',
+      'Sitio web corporativo para empresa de instalaciones eléctricas. Migración completa de JavaScript a TypeScript, con Express en backend y SCSS para estilos. Diseño profesional, responsive y optimizado para conversión. Incluye formularios de contacto, integración con flujos de negocio y preparado para SEO local. Problema: pasar de una web mínima a un sitio estable y medible. Solución: monorepo TypeScript + Express, SCSS modular y pipeline de despliegue reproducible. Resultado: sitio en producción con formularios funcionando, SEO local aplicado y monitorización básica.',
     complexity: 7,
     innovation: 6,
     impact: 8,
@@ -67,9 +67,15 @@ export const projectsData: ProjectFull[] = [
         solution: 'Migración incremental por módulos y tipado estricto en Express y plantillas',
         technologies: ['TypeScript', 'Express'],
       },
+      {
+        title: 'Pruebas E2E con Playwright',
+        description: 'Necesidad de validar rutas críticas y flujos de usuario en entorno real',
+        solution: 'Configuración de Playwright para LightOn: tests E2E de navegación, formularios y páginas clave. Suite ejecutable en CI y local para detectar regresiones antes de desplegar.',
+        technologies: ['Playwright', 'TypeScript', 'E2E'],
+      },
     ],
     architecture: 'Monorepo: frontend en root, backend en carpeta con package.json propio',
-    learnings: ['Migración incremental en proyectos en producción', 'SCSS y variables de marca reutilizables'],
+    learnings: ['Migración incremental en proyectos en producción', 'SCSS y variables de marca reutilizables', 'Configuración de tests E2E con Playwright para rutas críticas'],
     featured: true,
     date: '2025-11',
     role: 'Desarrolladora full-stack',
@@ -130,7 +136,7 @@ export const projectsData: ProjectFull[] = [
     shortDescription:
       'Portfolio moderno con diseño fluorescente neón, migrado desde Reflex a React + Vite + TypeScript. Incluye lazy loading, formulario con API Serverless (Resend) y tests con Vitest. Desplegado en Vercel con headers de seguridad.',
     fullDescription:
-      'Portfolio moderno con diseño fluorescente neón, migrado desde Reflex a React + Vite + TypeScript. Incluye lazy loading, formulario con API Serverless (Resend) y 47+ tests con Vitest. Desplegado en Vercel con headers de seguridad y middleware de protección. SCSS con variables de marca, tema claro/oscuro y blog con Markdown.',
+      'Portfolio moderno con diseño fluorescente neón, migrado desde Reflex a React + Vite + TypeScript. Incluye lazy loading, formulario con API Serverless (Resend) y 74 tests con Vitest. Desplegado en Vercel con headers de seguridad. Uso de GitGuardian para detección de secretos y limpieza de historial de credenciales en repos. Trabajo con un equipo de agentes y subagentes de IA para automatizar tareas repetitivas de desarrollo y documentación, apoyándome en Context7 para consultar documentación viva de librerías y frameworks. SCSS con variables de marca, tema claro/oscuro y blog con Markdown.',
     complexity: 6,
     innovation: 7,
     impact: 5,
@@ -141,9 +147,9 @@ export const projectsData: ProjectFull[] = [
       {
         id: 'portfolio-quality',
         type: 'code-quality',
-        value: '47+ tests',
+        value: '74 tests',
         label: 'Cobertura con Vitest',
-        description: 'Suite de tests para componentes críticos y formulario',
+        description: 'Suite de tests para componentes críticos, formulario, ProjectCard, MetricBadge y BlogPost',
       },
       {
         id: 'portfolio-technical',
@@ -166,7 +172,14 @@ export const projectsData: ProjectFull[] = [
       },
     ],
     architecture: 'SPA con rutas /, /blog, /blog/:slug; API serverless Vercel para contacto',
-    learnings: ['React 19 y Vite 7', 'Resend para emails', 'Headers de seguridad en Vercel'],
+    learnings: [
+      'React 19 y Vite 7',
+      'Resend para emails',
+      'Headers de seguridad en Vercel',
+      'GitGuardian para detección de secretos y limpieza de historial de credenciales en repos',
+      'Context7 para documentación viva de librerías',
+      'Diseño de agentes y subagentes para automatizar flujos de desarrollo',
+    ],
     featured: true,
     date: '2026-01',
     role: 'Desarrolladora full-stack',
@@ -179,19 +192,34 @@ export const projectsData: ProjectFull[] = [
     shortDescription:
       'Proyecto en desarrollo: aplicación web para gestión y difusión de catálogo discográfico. Stack moderno y diseño orientado a artista y oyente.',
     fullDescription:
-      'Proyecto en construcción. Aplicación web para gestión y difusión de catálogo discográfico (Next.js + Sanity), con foco en experiencia de artista y oyente. Sustituye al WordPress actual; la URL definitiva será decadenciacorporal.com. Se irá actualizando conforme avance el desarrollo.',
+      'Proyecto en construcción. Aplicación web para gestión y difusión de catálogo discográfico (Next.js + Sanity), con foco en experiencia de artista y oyente. Sustituye al WordPress actual; la URL definitiva será decadenciacorporal.com. Imágenes optimizadas con next/image para mejorar LCP. Problema: crear una web para una discográfica independiente con gestión de contenido dinámica y buen SEO. Solución: App Router de Next.js 15 con Sanity como CMS headless y next/image para servir portadas optimizadas. Resultado: catálogo navegable, editable desde Sanity y con métricas de LCP mejores en Lighthouse. Se irá actualizando conforme avance el desarrollo.',
     complexity: 0,
     innovation: 0,
     impact: 0,
     technologies: ['Next.js', 'Sanity'],
     image: '/images/projects/portfolio.webp',
     imageAlt: 'Proyecto Discográfica en construcción',
-    metrics: [],
+    metrics: [
+      {
+        id: 'discografica-perf',
+        type: 'performance',
+        value: 'LCP',
+        label: 'Imágenes optimizadas',
+        description: 'Uso de next/image para tamaños responsivos y prioridad en above-the-fold; mejora de LCP en Lighthouse',
+      },
+    ],
     links: [
       { type: 'live', url: 'https://decadencia-corporal.vercel.app', title: 'Ver preview', isPrimary: true },
     ],
-    challenges: [],
-    learnings: [],
+    challenges: [
+      {
+        title: 'Rendimiento y LCP',
+        description: 'Imágenes del catálogo y portadas impactando el tiempo de carga y Core Web Vitals',
+        solution: 'Integración de next/image con tamaños responsivos, prioridad para imágenes above-the-fold y formatos modernos (WebP/AVIF) para reducir peso y mejorar LCP en Lighthouse',
+        technologies: ['Next.js', 'next/image', 'Core Web Vitals'],
+      },
+    ],
+    learnings: ['Optimización de imágenes con next/image para mejorar LCP y Core Web Vitals'],
     featured: false,
     status: 'wip',
     date: '2026-03',

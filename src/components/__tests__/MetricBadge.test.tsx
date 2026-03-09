@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MetricBadge } from '../MetricBadge';
-import type { ProjectMetric } from '@/types/project';
+import type { ProjectMetric } from '../../types/project';
 
 function buildMetric(overrides: Partial<ProjectMetric> = {}): ProjectMetric {
   return {

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ProjectCard } from '../ProjectCard';
-import type { Project } from '@/types/project';
+import type { Project } from '../../types/project';
 
 /** Proyecto mínimo válido para tests */
 function buildProject(overrides: Partial<Project> = {}): Project {

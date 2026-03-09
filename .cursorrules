@@ -31,3 +31,84 @@ Un agente solo considera su tarea terminada si:
 
 ---
 **Firmado:** *El Consejo del Escuadrón de los 12*
+
+---
+
+## 🧠 **MEMORIA PERSISTENTE (Engram MCP)**
+
+Tienes acceso a memoria persistente vía Engram usando herramientas MCP
+(`mem_save`, `mem_search`, `mem_context`, `mem_session_summary`, `mem_timeline`, `mem_get_observation`, `mem_stats`).
+
+- Guarda memorias de forma proactiva **después de trabajo significativo**:
+  - Decisiones de arquitectura o diseño (usa `mem_save` con `type="architecture"` y `topic_key`).
+  - Bugs resueltos y su causa raíz (`type="bugfix"`).
+  - Cambios importantes de flujo de trabajo o tooling (CI/CD, testing, seguridad, Engram, Context7, agentes, etc.).
+- **No** guardes secretos, credenciales ni datos sensibles.
+
+### Recuperar memoria (progressive disclosure)
+
+- Para buscar contexto: usa primero `mem_search` con una query corta.
+- Si una observación parece relevante: usa `mem_timeline` sobre ese `observation_id`.
+- Solo si necesitas el detalle completo: llama a `mem_get_observation` con el ID concreto.
+
+### Sesiones y resets
+
+- Al inicio de una sesión larga o tras un reset de contexto, llama a `mem_context`
+  para recuperar el estado reciente de este proyecto.
+- Al terminar una sesión importante, usa `mem_session_summary` o `mem_session_end`
+  para guardar un resumen estructurado (objetivo, descubrimientos, logrado, archivos tocados).
+
+### Ámbito de las memorias
+
+- Usa el ámbito por defecto (`scope="project"`) para todo lo que esté ligado a este repo.
+- Usa `scope="personal"` solo para preferencias generales que no dependan del proyecto.
+
+## 🧠 GESTIÓN DE MEMORIAS ENGRAM
+
+### Actualización de memorias
+- Para temas que evolucionan (arquitectura, features largas):
+  1. Usa `mem_suggest_topic_key` primero para obtener un topic_key estable
+  2. Guarda con `mem_save` usando ese `topic_key`
+  3. Las siguientes veces que guardes con el mismo topic_key, Engram **actualizará** la memoria existente
+
+### Eliminación de memorias
+- Por defecto, `mem_delete` usa **soft-delete** (la memoria se oculta pero se puede recuperar)
+- Para borrado permanente, usa `mem_delete` con parámetro `hard: true`
+- Las memorias soft-delete no aparecen en búsquedas ni en contexto
+
+### Mantenimiento automático
+- Engram ejecuta consolidación automática en segundo plano
+- No necesitas preocuparte por duplicados ni limpieza manual
+
+---
+
+## 🧠 PROTOCOLO ENGRAM POR AGENTE
+
+### Orchestrator
+- Guarda decisiones de arquitectura y cambios de stack con `mem_save`.
+- Al cerrar sesiones importantes: `mem_session_summary`.
+
+### Research
+- Antes de investigar: `mem_search` + `mem_timeline` para recuperar ADRs, bugs y patrones.
+- Solo `mem_get_observation` si es necesario el detalle.
+
+### DevOps
+- Guarda configuraciones de CI/CD, deploys, seguridad y tooling (Engram, Context7, GitGuardian, etc.).
+
+### Architect
+- Documenta estructura con `type="architecture"` y `topic_key` al llamar a `mem_save`.
+
+### Regla general
+- **Antes de empezar algo relevante**: `mem_search`.
+- **Después de terminarlo**: `mem_save`.
+
+## 📋 FLUJO SDD PARA FEATURES GRANDES (inspirado en Agent Teams Lite)
+Para cambios significativos, sigue este pipeline:
+1. **Explorar** (@research): analiza el problema, compara enfoques
+2. **Proponer** (@architect): crea propuesta (intención, alcance)
+3. **Especificar** (@documenter): escribe especificaciones (requisitos, escenarios)
+4. **Diseñar** (@architect): define arquitectura y decisiones
+5. **Planificar** (@orchestrator): genera checklist de tareas
+6. **Implementar** (@code-reviewer): ejecuta tareas, TDD si aplica
+7. **Verificar** (@testing): valida contra especificaciones
+8. **Archivar** (@documenter): guarda en Engram con topic_key

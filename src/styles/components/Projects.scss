@@ -103,10 +103,10 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: $pink;
-    border: 1px solid $pink;
+    color: $green;
+    border: 1px solid $green;
     border-radius: 9999px;
-    box-shadow: 0 0 12px rgba($pink-rgb, 0.4);
+    box-shadow: 0 0 12px rgba($green-rgb, 0.4);
 
     @media (width >= 640px) { font-size: 0.75rem; }
 

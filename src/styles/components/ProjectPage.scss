@@ -70,6 +70,11 @@
   line-height: 1.65;
   margin-bottom: 1rem;
   text-align: justify;
+
+  .project-page__keyword {
+    color: $green;
+    font-weight: 700;
+  }
 }
 
 .project-page__meta {

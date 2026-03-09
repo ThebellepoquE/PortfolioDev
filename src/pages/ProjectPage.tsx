@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { projectsData } from '../lib/projects';
@@ -9,6 +10,25 @@ function toISODate(value: string): string {
   if (/^\d{4}-\d{2}-\d{2}/.test(value)) return value;
   if (/^\d{4}-\d{2}$/.test(value)) return `${value}-01`;
   return value;
+}
+
+function highlightCaseStudy(text: string): ReactNode {
+  const tokens = text.split(/(Problema:|Solución:|Resultado:)/);
+
+  return (
+    <>
+      {tokens.map((part, index) => {
+        if (part === 'Problema:' || part === 'Solución:' || part === 'Resultado:') {
+          return (
+            <span key={`kw-${index}`} className="project-page__keyword">
+              {part}
+            </span>
+          );
+        }
+        return <span key={`txt-${index}`}>{part}</span>;
+      })}
+    </>
+  );
 }
 
 /** Página de detalle de proyecto con SEO específico */
@@ -55,7 +75,9 @@ export function ProjectPage() {
             {project.tagline && (
               <p className="project-page__tagline">{project.tagline}</p>
             )}
-            <p className="project-page__description">{project.fullDescription}</p>
+            <p className="project-page__description">
+              {highlightCaseStudy(project.fullDescription)}
+            </p>
             <div className="project-page__meta">
               <span>{project.role}</span>
               <span>•</span>
