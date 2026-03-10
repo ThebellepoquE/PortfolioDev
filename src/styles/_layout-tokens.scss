@@ -1,0 +1,13 @@
+// Tokens de layout compartidos (alturas y offsets principales)
+
+$navbar-height-mobile: 60px;
+$navbar-height-desktop: 80px;
+$mobile-nav-height: 48px;
+
+// Offset de scroll para secciones que tienen en cuenta la navbar fija
+$section-scroll-offset: $navbar-height-desktop;
+
+// Padding base de contenido por breakpoint
+$content-padding-mobile: 16px;
+$content-padding-desktop: 24px;
+

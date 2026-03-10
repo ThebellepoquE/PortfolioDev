@@ -36,12 +36,6 @@
   @extend %btn-main;
 }
 
-// Clases Legacy para retrocompatibilidad directa
-.project-card__link,
-.contact__submit {
-  @extend %btn-main;
-}
-
 .loading-state {
   min-height: 100vh;
   display: flex;

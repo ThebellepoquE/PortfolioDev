@@ -4,6 +4,7 @@ import { viteAsyncCss } from './plugins/vite-async-css'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: { open: false },
   plugins: [react(), viteAsyncCss()],
   build: {
     rollupOptions: {

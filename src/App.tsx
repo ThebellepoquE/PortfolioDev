@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 
 // Lazy load por ruta (code-splitting: cada página en su chunk)
@@ -11,10 +11,21 @@ const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.
 
 const PageFallback = () => <div className="loading-placeholder" />;
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+  }, [pathname]);
+
+  return null;
+}
+
 /** Portfolio de Ione - @thebellepoque */
 function App() {
   return (
     <div className="app">
+      <ScrollToTop />
       <Navbar />
       <main>
         <Routes>

@@ -149,6 +149,13 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 - Convención BEM en selectores SCSS.
 - Validar antes de merge: `pnpm run lint:styles && pnpm run lint && pnpm run test -- --run && pnpm run build`.
 
+### Convención de tokens de estilos (CSS vars + SCSS vars)
+
+- Las **CSS custom properties** en `:root` y `:root.light` (por ejemplo `--pink`, `--bg-card`, `--text`) son la **fuente de verdad** de colores y superficies.
+- Las variables SCSS (`$pink`, `$bg-card`, `$text`, etc.) son **solo proxys** que referencian esas CSS vars; no se deben introducir valores “crudos” nuevos en SCSS si pueden vivir como `--var` en `:root`.
+- Para layout compartido (alturas de navbar, offsets de scroll, paddings base) se usan tokens en `src/styles/_layout-tokens.scss` y se referencian con `@use "../layout-tokens" as layout;`.
+- Cuando se añadan nuevas decisiones de tema o layout, primero se definen como CSS vars / layout tokens y luego se reutilizan en los SCSS de componentes.
+
 ## Dependencias
 
 - Registrar en PR/commit toda alta o baja de dependencias (y motivo técnico).
