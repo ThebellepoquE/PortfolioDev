@@ -145,8 +145,17 @@
   }
 
   .blog-card__link {
-    color: $yellow;
-    text-shadow: var(--text-shadow-yellow);
+    /* En modo claro usamos un tono más oscuro para mejorar el contraste sobre fondo blanco */
+    color: #b38600;
+    text-shadow: none;
+
+    &:hover {
+      color: $yellow;
+      /* Sombreado inferior para dar sensación de relieve bajo el texto */
+      text-shadow:
+        0 1px 0 rgb(0 0 0 / 45%),
+        var(--text-shadow-yellow);
+    }
   }
 
   /* MetricBadge en tema claro: borde y texto visibles sobre fondo blanco */

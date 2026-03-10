@@ -10,8 +10,8 @@ tags:
   - Marca personal
   - Portfolio
 draft: true
-# Sustituir por /images/blog/blindaje-lighthouse.webp cuando el archivo exista en public/images/blog/
-image: /images/blog/modularizacion.webp
+# Usa la imagen específica del post (guardada en public/images/blog/)
+image: /images/blog/blindaje-portfolio-seo-marca.webp
 ---
 
 En la [primera parte](/blog/blindaje-portfolio-workflow) del blindaje hablábamos de workflow, pnpm y de los 47 tests que no perdonan. Hoy toca lo que **sí ve** (o puede ver) alguien que no abre tu código: buscadores, redes sociales y la persona que hace clic en tu enlace.
