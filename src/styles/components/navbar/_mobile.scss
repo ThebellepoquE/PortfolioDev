@@ -15,6 +15,7 @@
 
   &__container {
     margin: 0;
+
     /* Un poco más compacta en vertical para que ocupe menos alto en móvil */
     padding: 0.25rem 0.5rem;
     border-radius: 0;
@@ -38,6 +39,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     /* Mantener altura táctil mínima ~44px (WCAG 2.5.5) sin hacer la barra demasiado alta */
     padding: 0.6rem 0.75rem;
     text-decoration: none;

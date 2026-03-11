@@ -9,7 +9,7 @@ Portfolio personal en **React + Vite + TypeScript** con sistema de estilos SCSS 
 - Estilos modularizados por componentes y por capas (`base`, `utilities`, `themes`, `components/*`).
 - Lint de estilos activo con Stylelint + SCSS (`pnpm run lint:styles`).
 - Flujo de contacto vía serverless en `/api/contact` usando Resend.
-- **SEO:** meta dinámicos por ruta (Home, Blog, posts, proyectos) con Open Graph y Twitter Cards.
+- **SEO:** meta dinámicos por ruta (Home, Blog, posts, proyectos) con Open Graph, Twitter Cards y componente `SEO` centralizado (`src/components/SEO.tsx`) que también permite inyectar JSON-LD (`jsonLd`) desde React (por ejemplo, la home define su schema `Person` en `HomePage`, no en `index.html`).
 - **Proyectos:** modelo enriquecido con métricas, enlaces (live/repo) y página de detalle `/proyecto/:id`.
 - Build, lint y tests preparados para checks de preproducción. Suite de **74 tests** en 7 archivos (Vitest + Testing Library); cobertura con `pnpm run test:coverage`.
 - **Proyectos:** modelo con campo opcional `status?: 'live' | 'wip'`; si `status === 'wip'` se muestra el badge "En construcción" en la tarjeta (ej. Discográfica).
@@ -165,7 +165,8 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 ## Seguridad
 
-- **CSP** en `vercel.json` con hashes SHA-256 para scripts inline (incluye el script de activación de fuentes async).
+- **CSP** estricta en `vercel.json`: `script-src` sin `unsafe-inline`, solo permite scripts servidos desde el propio dominio y con hashes registrados.
+- Los scripts de comportamiento (tema oscuro/claro y activación de fuentes async) viven en `src/bootstrap.ts` y se inicializan antes de montar React desde `src/main.tsx`; no se deben introducir nuevos scripts inline en `index.html` porque romperían la CSP.
 - Headers **COOP/COEP**; HSTS y resto de cabeceras de seguridad.
 - `robots.txt` válido (sin comentarios, newline final); bloqueo de bots de IA.
 - ErrorBoundary: `console.error` solo en DEV.
@@ -183,7 +184,7 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 - **Preload imagen de perfil (LCP):** `<link rel="preload" imagesrcset imagesizes>` (sin `href` para evitar doble petición).
 - **Preload hoja de fuentes** Google Fonts.
-- **Carga asíncrona de fuentes:** patrón `media="print"` + script inline con hash en CSP para no bloquear el render (evitar FOIT/FOUT).
+- **Carga asíncrona de fuentes:** `<link id="fonts-async" ... media="print">` + activación temprana vía `activateAsyncFonts()` en `src/bootstrap.ts` (llamado desde `main.tsx`) para no bloquear el render y evitar FOIT/FOUT.
 
 ### Seguridad
 
@@ -210,6 +211,7 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 - **Sitemap** generado en build (`scripts/generate-sitemap.ts`); `generate-sitemap` se ejecuta en `pnpm run build`.
 - Imagen OG por defecto: `public/og-image-default.jpg`.
 - `robots.txt` con directiva Sitemap y bloqueo de bots de IA. No usar directivas no estándar (p. ej. `Content-Signal`); Lighthouse las marca como inválidas.
+- JSON-LD de la home definido desde React: `HomePage` pasa el objeto `jsonLd` al componente `SEO`, que lo serializa como `<script type="application/ld+json">` en `<head>`. No se usa JSON-LD inline en `index.html`.
 
 ### Contenido y UX
 

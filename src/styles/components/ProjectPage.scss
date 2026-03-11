@@ -4,6 +4,7 @@
 .project-page {
   min-height: 80vh;
   padding: max(2rem, env(safe-area-inset-top)) max(1.5rem, env(safe-area-inset-right)) max(2rem, env(safe-area-inset-bottom)) max(1.5rem, env(safe-area-inset-left));
+
   /* Deja espacio extra para la barra de navegación móvil fija en la parte inferior */
   padding-bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 4.5rem);
   overflow-x: hidden;
@@ -15,6 +16,7 @@
 
   @media (width >= 768px) {
     padding-top: max(4.5rem, env(safe-area-inset-top));
+
     /* En escritorio no hay barra móvil fija, así que no necesitamos espacio extra al fondo */
     padding-bottom: max(3rem, env(safe-area-inset-bottom));
   }

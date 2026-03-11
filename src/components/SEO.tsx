@@ -21,6 +21,8 @@ export interface SEOProps {
   tags?: string[];
   /** Si false, no añade sufijo "| Ione | Full-stack Developer" al title */
   noSuffix?: boolean;
+  /** JSON-LD opcional para Datos Estructurados */
+  jsonLd?: Record<string, unknown>;
 }
 
 function absoluteUrl(pathOrUrl: string): string {
@@ -40,6 +42,7 @@ export function SEO({
   publishedTime,
   tags,
   noSuffix = false,
+  jsonLd,
 }: SEOProps) {
   const fullTitle = noSuffix ? title : `${title} | ${SITE_CONFIG.name} | ${SITE_CONFIG.title}`;
   const canonicalUrl = url ? absoluteUrl(url) : SITE_CONFIG.baseUrl;
@@ -72,6 +75,14 @@ export function SEO({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
+
+      {/* Datos estructurados opcionales (JSON-LD) */}
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
     </Helmet>
   );
 }
