@@ -1,5 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Github, Home, Briefcase, FileText, Mail } from 'lucide-react';
+import {
+  GithubIcon,
+  HomeIcon,
+  BriefcaseIcon,
+  FileIcon,
+  MailIcon,
+} from './icons';
 import { ThemeToggle } from './ThemeToggle';
 import { LogoDots } from './LogoDots';
 import { SITE_CONFIG } from '../lib/config';
@@ -76,7 +82,7 @@ export function Navbar() {
               className="navbar__github"
               aria-label="GitHub"
             >
-              <Github size={20} strokeWidth={2} />
+              <GithubIcon width={20} height={20} />
               <span className="sr-only">GitHub</span>
             </a>
           </div>
@@ -96,7 +102,7 @@ export function Navbar() {
                   aria-label="Ir a sección inicio"
                 >
                   <div className="mobile-nav__item-icon">
-                    <Home size={24} strokeWidth={2} />
+                    <HomeIcon width={24} height={24} />
                   </div>
                 </a>
 
@@ -107,7 +113,7 @@ export function Navbar() {
                   aria-label="Ver proyectos"
                 >
                   <div className="mobile-nav__item-icon">
-                    <Briefcase size={24} strokeWidth={2} />
+                    <BriefcaseIcon width={24} height={24} />
                   </div>
                 </a>
 
@@ -118,7 +124,7 @@ export function Navbar() {
                   aria-label="Ir al blog"
                 >
                   <div className="mobile-nav__item-icon">
-                    <FileText size={24} strokeWidth={2} />
+                    <FileIcon width={24} height={24} />
                   </div>
                 </Link>
 
@@ -129,7 +135,7 @@ export function Navbar() {
                   aria-label="Ir a contacto"
                 >
                   <div className="mobile-nav__item-icon">
-                    <Mail size={24} strokeWidth={2} />
+                    <MailIcon width={24} height={24} />
                   </div>
                 </a>
 
@@ -147,7 +153,7 @@ export function Navbar() {
                   aria-label="Inicio, página principal"
                 >
                   <div className="mobile-nav__item-icon">
-                    <Home size={24} strokeWidth={2} />
+                    <HomeIcon width={24} height={24} />
                   </div>
                   <span className="mobile-nav__item-label">Home</span>
                 </Link>
@@ -161,7 +167,7 @@ export function Navbar() {
                   aria-label="Ir al blog"
                 >
                   <div className="mobile-nav__item-icon">
-                    <FileText size={24} strokeWidth={2} />
+                    <FileIcon width={24} height={24} />
                   </div>
                   <span className="mobile-nav__item-label">Blog</span>
                 </Link>

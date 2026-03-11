@@ -1,14 +1,9 @@
-import { useEffect } from 'react';
-import { Github, Linkedin } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './icons';
 import { SITE_CONFIG } from '../lib/config';
 import { SectionTitle } from './SectionTitle';
 
 /** Hero section con foto, nombre y bio */
 export function Hero() {
-  // Actualizar el título de la página para SEO al volver al inicio
-  useEffect(() => {
-    document.title = 'Ione | Full-stack Developer & Automations - thebellepoque';
-  }, []);
   return (
     <section id="inicio" className="hero">
       <div className="hero__container">
@@ -77,7 +72,7 @@ export function Hero() {
               rel="noopener noreferrer"
               className="hero__social-link hero__social-link--github"
             >
-              <Github size={24} strokeWidth={2} />
+              <GithubIcon width={24} height={24} />
               <span className="sr-only">Perfil de GitHub</span>
             </a>
 
@@ -88,7 +83,7 @@ export function Hero() {
               rel="noopener noreferrer"
               className="hero__social-link hero__social-link--linkedin"
             >
-              <Linkedin size={24} strokeWidth={2} />
+              <LinkedinIcon width={24} height={24} />
               <span className="sr-only">Perfil de LinkedIn</span>
             </a>
           </div>

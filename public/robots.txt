@@ -1,5 +1,7 @@
 User-agent: *
-Allow: /
+Disallow:
+
+Sitemap: https://thebellepoque.dev/sitemap.xml
 
 User-agent: GPTBot
 Disallow: /
@@ -25,4 +27,5 @@ Disallow: /
 User-agent: FacebookBot
 Disallow: /
 
-Sitemap: https://thebellepoque.dev/sitemap.xml
+User-agent: Bytespider
+Disallow: /

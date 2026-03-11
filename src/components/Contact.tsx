@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Check, AlertCircle, Loader2 } from 'lucide-react';
+import { CheckIcon, AlertIcon, LoaderIcon } from './icons';
 import type { FormEvent, ReactNode } from 'react';
 import { SectionTitle } from './SectionTitle';
 
@@ -61,10 +61,10 @@ interface StatusMessageProps {
 }
 
 function StatusMessage({ type, children }: StatusMessageProps) {
-  const Icon = type === 'success' ? Check : AlertCircle;
+  const Icon = type === 'success' ? CheckIcon : AlertIcon;
   return (
     <div className={`contact__status contact__status--${type}`}>
-      <Icon size={24} />
+      <Icon width={24} height={24} />
       <span>{children}</span>
     </div>
   );
@@ -193,7 +193,7 @@ export function Contact() {
             >
               {isSubmitting ? (
                 <span className="contact__submit-content">
-                  <Loader2 className="spinner" size={20} />
+                  <LoaderIcon className="spinner" width={20} height={20} />
                   Enviando...
                 </span>
               ) : (

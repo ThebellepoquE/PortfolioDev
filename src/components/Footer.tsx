@@ -1,4 +1,4 @@
-import { Github } from 'lucide-react';
+import { GithubIcon } from './icons';
 import { LogoDots } from './LogoDots';
 import { SITE_CONFIG } from '../lib/config';
 
@@ -15,7 +15,7 @@ export function Footer() {
           className="footer__github"
           aria-label="GitHub"
         >
-          <Github size={20} strokeWidth={2} />
+          <GithubIcon width={20} height={20} />
           <span className="sr-only">Perfil de GitHub</span>
         </a>
 

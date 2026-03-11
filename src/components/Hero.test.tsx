@@ -26,14 +26,5 @@ describe('Hero', () => {
     ).toBeInTheDocument();
   });
 
-  it('actualiza el título del documento al montarse', () => {
-    const spy = vi.spyOn(document, 'title', 'set');
-
-    render(<Hero />);
-
-    expect(spy).toHaveBeenCalledWith(
-      'Ione | Full-stack Developer & Automations - thebellepoque',
-    );
-  });
 });
 
