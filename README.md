@@ -44,6 +44,8 @@ pnpm run test:coverage
 
 pnpm run audit:prod
 pnpm run check:preprod
+
+pnpm run resize-profile   # opcional: genera profile-260/360/520.webp y profile.webp desde public/profile-original.webp
 ```
 
 `check:preprod` ejecuta: tests, eslint, build y auditoría de dependencias de producción.
@@ -160,7 +162,7 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 - Registrar en PR/commit toda alta o baja de dependencias (y motivo técnico).
 - Tras limpieza, ejecutar `pnpm run check:preprod`.
-- **packageManager:** En `package.json` está fijado `"packageManager": "pnpm@10.28.0"` para Corepack.
+- **packageManager:** En `package.json` está fijado `"packageManager": "pnpm@10.31.0"` para Corepack.
 - **Auditoría:** `pnpm run check:preprod` incluye `pnpm run audit:prod`. Para revisar en cualquier momento: `pnpm run audit:prod`.
 
 ## Seguridad
@@ -202,7 +204,8 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 ### Testing
 
-- **Suite:** 74 tests en 7 archivos (Vitest + Testing Library): ProjectCard (12), MetricBadge (8), BlogPost (7), SectionTitle, BlogList, ErrorBoundary, Contact.
+- **Suite:** 74 tests en 7 archivos (Vitest + Testing Library + happy-dom): ProjectCard (12), MetricBadge (8), BlogPost (7), SectionTitle, BlogList, ErrorBoundary, Contact.
+- Entorno de tests: **happy-dom** (en lugar de jsdom) para evitar problemas ESM en distintos entornos; suficiente para componentes React con Testing Library.
 - Tests en `src/components/__tests__/` (ProjectCard, MetricBadge), `src/components/Blog/__tests__/` (BlogPost) y colocados junto al componente (SectionTitle, Contact, ErrorBoundary, BlogList).
 - Cobertura: `pnpm run test:coverage`. Incluido en `check:preprod`.
 
@@ -221,5 +224,6 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 ### Infraestructura
 
-- **Stack:** pnpm 10.28.0, React 19, Vite 7, TypeScript 5.9.
+- **Stack:** pnpm 10.31.0, React 19, Vite 7, TypeScript 5.9.
 - **check:preprod:** test, lint, build, audit:prod.
+- **Foto de perfil:** script `resize-profile` (devDependency `sharp`) genera los WebP en `public/` desde `public/profile-original.webp`; solo necesario al cambiar la foto.

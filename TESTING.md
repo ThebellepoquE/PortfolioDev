@@ -40,9 +40,10 @@ pnpm run check:preprod
 
 Ese script encadena:
 
-1. `pnpm run lint:styles`
+1. `pnpm run test -- --run`
 2. `pnpm run lint`
-3. `pnpm run test -- --run`
-4. `pnpm run build` (que a su vez genera el `sitemap.xml`)
-5. `pnpm run audit:prod`
+3. `pnpm run build` (que a su vez genera el `sitemap.xml`)
+4. `pnpm run audit:prod`
+
+Para comprobar también estilos antes de subir, ejecuta antes: `pnpm run lint:styles`.
 

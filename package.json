@@ -15,7 +15,8 @@
     "test:coverage": "vitest run --coverage",
     "audit:prod": "pnpm audit --prod",
     "check:preprod": "pnpm run test -- --run && pnpm run lint && pnpm run build && pnpm run audit:prod",
-    "cleanup:repos": "bash scripts/cleanup-repos.sh"
+    "cleanup:repos": "bash scripts/cleanup-repos.sh",
+    "resize-profile": "node scripts/resize-profile-photo.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -39,10 +40,11 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "jsdom": "^27.2.0",
+    "happy-dom": "^20.0.0",
     "lightningcss": "^1.31.1",
     "postcss-scss": "^4.0.9",
     "sass": "^1.97.3",
+    "sharp": "^0.34.0",
     "stylelint": "^17.3.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
