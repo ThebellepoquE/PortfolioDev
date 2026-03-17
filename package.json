@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "packageManager": "pnpm@10.31.0",
+  "packageManager": "pnpm@10.32.1",
   "scripts": {
     "dev": "vite",
     "generate-sitemap": "tsx scripts/generate-sitemap.ts",
@@ -55,9 +55,16 @@
     "vite": "^7.2.4",
     "vitest": "^4.0.15"
   },
-  "overrides": {
-    "minimatch": "10.2.3",
-    "ajv": ">=6.14.0",
-    "rollup": ">=4.59.0"
+  "pnpm": {
+    "overrides": {
+      "minimatch": "10.2.3",
+      "ajv": ">=6.14.0",
+      "rollup": ">=4.59.0",
+      "immutable": "5.1.5",
+      "flatted": "3.4.0"
+    },
+    "ignoredBuiltDependencies": [
+      "sharp"
+    ]
   }
 }
