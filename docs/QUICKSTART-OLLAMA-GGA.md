@@ -15,6 +15,8 @@ command -v ollama && command -v gga && command -v gga-setup
 ollama list
 ```
 
+`gga` y `gga-setup` son CLI externas (no dependencia del proyecto). Deben estar instaladas globalmente en tu sistema.
+
 ## 3) Configura un repo nuevo (una vez)
 
 ```bash

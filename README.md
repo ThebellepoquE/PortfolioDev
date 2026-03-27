@@ -33,7 +33,7 @@ Portfolio personal en **React + Vite + TypeScript** con sistema de estilos SCSS 
 
 ```bash
 pnpm run dev
-pnpm run gga:run      # ejecuta gga run (si GGA está instalado)
+pnpm run gga:run      # ejecuta gga run (requiere CLI global `gga` en PATH)
 pnpm run build
 pnpm run preview
 
@@ -69,6 +69,8 @@ systemctl --user start ollama.service
 command -v ollama && command -v gga && command -v gga-setup
 ollama list
 ```
+
+`gga` y `gga-setup` son CLI externas (no dependencia del proyecto). Deben estar instaladas globalmente en tu sistema.
 
 ### 3) Configura el repo (solo una vez)
 

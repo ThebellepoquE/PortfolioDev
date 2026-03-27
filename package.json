@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.32.1",
   "scripts": {
     "dev": "vite",
-    "gga:run": "gga run",
+    "gga:run": "bash -lc 'command -v gga >/dev/null 2>&1 || { echo \"Falta gga en PATH (instalación global requerida).\"; exit 1; }; gga run'",
     "generate-sitemap": "tsx scripts/generate-sitemap.ts",
     "build": "pnpm run generate-sitemap && tsc -b && vite build",
     "lint": "eslint .",
@@ -17,7 +17,11 @@
     "audit:prod": "pnpm audit --prod",
     "check:preprod": "pnpm run test -- --run && pnpm run lint && pnpm run build && pnpm run audit:prod",
     "cleanup:repos": "bash scripts/cleanup-repos.sh",
-    "resize-profile": "node scripts/resize-profile-photo.mjs"
+    "resize-profile": "node scripts/resize-profile-photo.mjs",
+    "gga:install": "gga install",
+    "gga:pr": "gga run --pr-mode",
+    "ollama:serve": "ollama serve",
+    "ollama:pull": "ollama pull qwen2.5-coder:7b"
   },
   "dependencies": {
     "react": "^19.2.0",
