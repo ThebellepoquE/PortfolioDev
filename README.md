@@ -33,6 +33,7 @@ Portfolio personal en **React + Vite + TypeScript** con sistema de estilos SCSS 
 
 ```bash
 pnpm run dev
+pnpm run gga:run      # ejecuta gga run (si GGA está instalado)
 pnpm run build
 pnpm run preview
 
@@ -51,6 +52,48 @@ pnpm run resize-profile   # opcional: genera profile-260/360/520.webp y profile.
 `check:preprod` ejecuta: tests, eslint, build y auditoría de dependencias de producción.
 
 El build (`pnpm run build`) ejecuta `generate-sitemap` antes de compilar.
+
+## Quickstart local: Ollama + GGA
+
+Guía ultra corta para usar GGA en este repo sin tocar el flujo normal de desarrollo.
+
+### 1) Arranca Ollama
+
+```bash
+systemctl --user start ollama.service
+```
+
+### 2) Verifica binarios y modelo
+
+```bash
+command -v ollama && command -v gga && command -v gga-setup
+ollama list
+```
+
+### 3) Configura el repo (solo una vez)
+
+```bash
+cd /ruta/al/proyecto
+gga-setup
+```
+
+### 4) Flujo diario
+
+```bash
+pnpm run gga:run      # equivalente a: gga run
+git add .
+git commit -m "mensaje"   # dispara GGA en pre-commit (si hook está activo)
+```
+
+### 5) Si falla
+
+```bash
+systemctl --user restart ollama.service
+gga install
+ollama pull qwen2.5-coder:7b
+```
+
+Modelo recomendado por defecto: `ollama:qwen2.5-coder:7b`.
 
 ## Estructura relevante
 
