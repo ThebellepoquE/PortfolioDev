@@ -39,7 +39,7 @@ Este archivo sirve como registro de las decisiones técnicas y el estado del pro
 
 ## 🚀 Próximos pasos (pendientes)
 
-- [x] **Fase 4:** Sitemap automatizado (script `scripts/generate-sitemap.ts`; integrado en build).
+- [x] **Fase 4:** Sitemap automatizado (script `scripts/generate-sitemap.mjs`; integrado en build).
 - [x] Imagen OG por defecto: `public/og-image-default.jpg` (1200×630).
 - [ ] Opcional: Sección "Sobre mí", skip link, competencias categorizadas (ver `docs/AUDITORIA-PORTFOLIO-2026.md`).
 - [ ] Publicar post "Modularización" (actualmente `draft: true` en `content/posts/modularizacion-lighton/`).

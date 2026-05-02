@@ -28,6 +28,71 @@ function toLegacy(p: ProjectFull): Project {
 
 export const projectsData: ProjectFull[] = [
   {
+    id: 'purple-basque-tours',
+    title: 'PurpleBasqueTours',
+    tagline: 'Web turística con narrativa, SEO local y captación directa',
+    shortDescription:
+      'Caso real para una marca de tours privados en Euskadi. Trabajo orientado a convertir visitas en solicitudes: propuesta de valor clara, estructura mobile-first, SEO on-page y contenido preparado para clientes internacionales.',
+    fullDescription:
+      'Web para PurpleBasqueTours, una marca de experiencias y tours privados en el País Vasco. Problema: presentar una oferta turística con confianza, claridad y diferenciación para visitantes que comparan opciones rápido desde móvil. Solución: arquitectura de contenido orientada a decisión, copy cercano y profesional, CTAs visibles, SEO on-page por intención de búsqueda y una base técnica lista para iterar. Resultado: caso real preparado para publicar y compartir con clientes, con foco en captación directa y credibilidad.',
+    complexity: 7,
+    innovation: 6,
+    impact: 8,
+    technologies: ['React', 'TypeScript', 'Vite', 'SCSS', 'SEO on-page'],
+    image: '/og-image-default.jpg',
+    imageAlt: 'Caso de estudio PurpleBasqueTours',
+    metrics: [
+      {
+        id: 'pbt-business',
+        type: 'business',
+        value: 'Caso real',
+        label: 'Proyecto orientado a clientes',
+        description: 'Contenido y estructura pensados para generar solicitudes de tours privados',
+      },
+      {
+        id: 'pbt-seo',
+        type: 'performance',
+        value: 'SEO local',
+        label: 'Base on-page preparada',
+        description: 'Headings, metadatos, narrativa y enlaces internos alineados con intención de búsqueda',
+      },
+      {
+        id: 'pbt-ux',
+        type: 'users',
+        value: 'Mobile-first',
+        label: 'Recorrido claro en móvil',
+        description: 'Jerarquía, CTAs y lectura pensados para usuarios que deciden desde el teléfono',
+      },
+    ],
+    links: [],
+    challenges: [
+      {
+        title: 'Traducir una experiencia turística en decisión de compra',
+        description: 'El usuario necesita entender rápido qué se ofrece, para quién es y por qué confiar.',
+        solution: 'Estructura por propuesta de valor, beneficios, prueba de credibilidad y llamada a contacto.',
+        technologies: ['UX Writing', 'SEO'],
+      },
+      {
+        title: 'Preparar una base publicable sin sobrecomplicar el stack',
+        description: 'El proyecto necesitaba velocidad, claridad y facilidad de mantenimiento.',
+        solution: 'SPA ligera con componentes reutilizables, estilos SCSS y contenido estructurado para iterar.',
+        technologies: ['React', 'TypeScript', 'SCSS'],
+      },
+    ],
+    architecture: 'SPA Vite + React con contenido estructurado, rutas claras y metadatos por página.',
+    learnings: [
+      'Convertir servicios presenciales en una propuesta digital clara',
+      'Priorizar mensajes y CTAs para tráfico móvil',
+      'Alinear SEO on-page con una oferta local y turística',
+    ],
+    featured: true,
+    status: 'live',
+    date: '2026-04',
+    role: 'Estrategia, copy, UX y desarrollo front-end',
+    team: { size: 1, structure: 'Solo estrategia y desarrollo' },
+    relatedPosts: [],
+  },
+  {
     id: 'lighton-es',
     title: 'Lighton.es',
     tagline: 'Sitio corporativo para instalaciones eléctricas',
@@ -39,7 +104,7 @@ export const projectsData: ProjectFull[] = [
     innovation: 6,
     impact: 8,
     technologies: ['TypeScript', 'Express', 'SCSS', 'JavaScript', 'Responsive'],
-    image: '/images/projects/lighton.webp',
+    image: '/og-image-default.jpg',
     imageAlt: 'Captura del sitio web Lighton.es',
     metrics: [
       {
@@ -94,7 +159,7 @@ export const projectsData: ProjectFull[] = [
     innovation: 8,
     impact: 8,
     technologies: ['Python', 'Automatización', 'Email APIs', 'Logic Flow', 'Data Processing'],
-    image: '/images/projects/encuestas.webp',
+    image: '/og-image-default.jpg',
     imageAlt: 'Flujo de encuestas y reseñas',
     metrics: [
       {
@@ -141,7 +206,7 @@ export const projectsData: ProjectFull[] = [
     innovation: 7,
     impact: 5,
     technologies: ['React', 'TypeScript', 'Vite', 'SCSS', 'Vitest'],
-    image: '/images/projects/portfolio.webp',
+    image: '/og-image-default.jpg',
     imageAlt: 'Portfolio thebellepoque.dev',
     metrics: [
       {
@@ -159,10 +224,7 @@ export const projectsData: ProjectFull[] = [
         description: 'Chunks separados para React, Markdown y páginas below-the-fold',
       },
     ],
-    links: [
-      { type: 'github', url: 'https://github.com/ThebellepoquE/PortfolioDev', title: 'Ver código', isPrimary: true },
-      { type: 'live', url: 'https://thebellepoque.dev', title: 'Visitar sitio' },
-    ],
+    links: [],
     challenges: [
       {
         title: 'Migración Reflex → React',
@@ -188,16 +250,16 @@ export const projectsData: ProjectFull[] = [
   {
     id: 'discografica',
     title: 'Discográfica',
-    tagline: 'En construcción',
+    tagline: 'Web para discográfica independiente',
     shortDescription:
-      'Proyecto en desarrollo: aplicación web para gestión y difusión de catálogo discográfico. Stack moderno y diseño orientado a artista y oyente.',
+      'Aplicación web para gestión y difusión de catálogo discográfico. Stack moderno y diseño orientado a artista y oyente; acabada en lo principal y pendiente solo de últimos detalles.',
     fullDescription:
-      'Proyecto en construcción. Aplicación web para gestión y difusión de catálogo discográfico (Next.js + Sanity), con foco en experiencia de artista y oyente. Sustituye al WordPress actual; la URL definitiva será decadenciacorporal.com. Imágenes optimizadas con next/image para mejorar LCP. Problema: crear una web para una discográfica independiente con gestión de contenido dinámica y buen SEO. Solución: App Router de Next.js 15 con Sanity como CMS headless y next/image para servir portadas optimizadas. Resultado: catálogo navegable, editable desde Sanity y con métricas de LCP mejores en Lighthouse. Se irá actualizando conforme avance el desarrollo.',
+      'Aplicación web para gestión y difusión de catálogo discográfico (Next.js + Sanity), con foco en experiencia de artista y oyente. Sustituye al WordPress actual; la URL definitiva será decadenciacorporal.com. Imágenes optimizadas con next/image para mejorar LCP. Problema: crear una web para una discográfica independiente con gestión de contenido dinámica y buen SEO. Solución: App Router de Next.js 15 con Sanity como CMS headless y next/image para servir portadas optimizadas. Resultado: catálogo navegable, editable desde Sanity y con métricas de LCP mejores en Lighthouse. Está acabada en lo principal y queda pendiente pulir detalles finales antes de dejarla como definitiva.',
     complexity: 0,
     innovation: 0,
     impact: 0,
     technologies: ['Next.js', 'Sanity'],
-    image: '/images/projects/portfolio.webp',
+    image: '/og-image-default.jpg',
     imageAlt: 'Proyecto Discográfica en construcción',
     metrics: [
       {
@@ -220,8 +282,8 @@ export const projectsData: ProjectFull[] = [
       },
     ],
     learnings: ['Optimización de imágenes con next/image para mejorar LCP y Core Web Vitals'],
-    featured: false,
-    status: 'wip',
+    featured: true,
+    status: 'live',
     date: '2026-03',
     role: 'Desarrolladora full-stack',
     relatedPosts: [],

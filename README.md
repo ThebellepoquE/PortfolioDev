@@ -256,7 +256,7 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 ### SEO
 
-- **Sitemap** generado en build (`scripts/generate-sitemap.ts`); `generate-sitemap` se ejecuta en `pnpm run build`.
+- **Sitemap** generado en build (`scripts/generate-sitemap.mjs`); `generate-sitemap` se ejecuta en `pnpm run build`.
 - Imagen OG por defecto: `public/og-image-default.jpg`.
 - `robots.txt` con directiva Sitemap y bloqueo de bots de IA. No usar directivas no estándar (p. ej. `Content-Signal`); Lighthouse las marca como inválidas.
 - JSON-LD de la home definido desde React: `HomePage` pasa el objeto `jsonLd` al componente `SEO`, que lo serializa como `<script type="application/ld+json">` en `<head>`. No se usa JSON-LD inline en `index.html`.

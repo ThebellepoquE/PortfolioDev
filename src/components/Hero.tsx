@@ -46,12 +46,14 @@ export function Hero() {
 
           {/* Bio */}
           <p className="hero__bio">
-            Llevo un año creando experiencias web, aprendiendo cada día algo nuevo.
-            Formada en Bottega University (DevCamp) con Jordan Hudgens, gracias a Fundación VASS.
-            Mi próximo objetivo: Automatizar procesos y llevar lighton.es al siguiente nivel.
-            Cada proyecto es una oportunidad para crecer. Ahora estoy montando un pequeño equipo de agentes y
+            Llevo un año creando experiencias web y aprendiendo cada día algo nuevo.
+            Me formé en Bottega University (DevCamp) con Jordan Hudgens, gracias a Fundación VASS,
+            y desde entonces he ido construyendo proyectos reales con React, TypeScript, Python y automatizaciones.
+            Me gusta unir desarrollo, claridad y estrategia: webs que se entienden, funcionan bien y ayudan a avanzar.
+            Ahora estoy llevando lighton.es al siguiente nivel y montando mi propio pequeño equipo de agentes y
             subagentes de IA para automatizar mi flujo de trabajo, apoyándome en Context7 para leer documentación
-            viva sin perder tiempo.
+            viva sin perder tiempo. Cada proyecto es una oportunidad para crecer, ordenar ideas y llevarlas a la
+            práctica de forma útil.
           </p>
 
           {/* Tags de stack */}
@@ -92,4 +94,3 @@ export function Hero() {
     </section>
   );
 }
-

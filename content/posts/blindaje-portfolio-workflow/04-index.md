@@ -1,63 +1,94 @@
 ---
-title: "Blindaje técnico I: Portfolio como máquina de oportunidades"
-description: "Cómo estructuré el workflow profesional del portfolio: pnpm, fases, commits y 47 tests que no perdonan."
+title: "Proyectos cercanos, problemas reales"
+description: "Lo que estoy aprendiendo al construir webs y herramientas para personas de mi entorno, en ese punto raro entre los ejercicios y el trabajo profesional."
 date: 2026-04-08
 tags:
   - Portfolio
-  - pnpm
-  - Workflow
-  - Testing
-  - Vitest
-  - Definition of Done
-draft: true
+  - Aprendizaje
+  - Proyectos reales
+  - Automatización
+  - Building in Public
+draft: false
 image: /images/blog/blindaje-portfolio-workflow.webp
 ---
 
-En [El laberinto de empezar](/blog/el-laberinto-de-empezar) hablábamos de ese momento en el que todas las puertas están abiertas y no sabes por cuál pasar. En [Evolución](/blog/modularizacion-lighton) conté cómo LightON pasó de entrega de estudiante a infraestructura profesional. Hoy toca hablar del **otro proyecto que cuido con el mismo cariño**: este portfolio.
+Hay una parte rara en empezar: todavía no estás en el lugar donde puedes decir "mis clientes" con naturalidad, pero tampoco estás ya haciendo ejercicios sin contexto.
 
-No es solo una tarjeta de visita en HTML. Es la puerta de entrada a conversaciones, ofertas y proyectos. Por eso, estos días lo he blindado. No con más features llamativas, sino con **fundamentos que no se ven**: workflow, velocidad y una definición de hecho que no negocia.
+Estás en ese punto intermedio donde aparecen proyectos cercanos: una web para alguien de tu entorno, una automatización para ahorrar trabajo, una idea que necesita orden para existir online.
 
-## Por qué importa el workflow (y no solo el diseño)
+Y ahí también se aprende muchísimo.
 
-Un portfolio puede ser precioso en local y un desastre en producción. O puede ser rápido en tu máquina y lento en la de un reclutador con tres pestañas abiertas. Lo que hemos hecho en las últimas semanas no se ve a simple vista: **pnpm**, **fases con rollback**, **47 tests** y un script de preproducción que no deja pasar ni un fallo.
+No son proyectos inventados para llenar una cuadrícula. Son webs y herramientas para familia, amistades y proyectos de mi entorno. Cosas que tenían que funcionar para alguien, no solo para mí. Y eso cambia bastante la forma de trabajar.
 
-La idea es simple: que cada cambio sea reversible, medible y coherente con el resto del stack. Que si algo se rompe, lo sepa antes de desplegar.
+## Cuando algo tiene que funcionar para alguien
 
-## De npm a pnpm: más rápido y más predecible
+Una cosa es hacer una práctica siguiendo una consigna. Otra muy distinta es construir algo que otra persona va a mirar, usar, enseñar o necesitar.
 
-La migración de **npm** a **pnpm** no fue capricho. Buscaba:
+Ahí empiezan las preguntas de verdad:
 
-- **Velocidad**: instalaciones y builds más rápidos.
-- **Consistencia**: un solo lockfile (`pnpm-lock.yaml`) y la versión fijada en `package.json` con `packageManager: "pnpm@10.28.0"` para que Corepack garantice que todo el mundo usa la misma.
+- ¿Se entiende lo que hace esta web?
+- ¿Carga bien en móvil?
+- ¿La persona que entra sabe dónde hacer clic?
+- ¿El formulario funciona?
+- ¿El contenido ayuda o estorba?
+- ¿Puedo tocar una parte sin romper otra?
 
-Así se evita el clásico "en mi máquina funciona". Si el CI o un compañero usan la misma versión de pnpm, el árbol de dependencias es el mismo. Menos sorpresas, más tiempo para lo que importa. Gracias @midudev!! Siempre cazo algo interesante de todo lo que cuentas.
+Son preguntas pequeñas, pero son las que convierten un proyecto en algo real.
 
-## Fases, commits y plan de rollback
+LightON me enseñó mucho de eso. También Discográfica. También PurpleBasqueTours. Cada uno desde un sitio distinto, con necesidades distintas, con ese punto de presión buena que aparece cuando algo deja de ser "mi código" y empieza a ser "esto le tiene que servir a alguien".
 
-No he tirado features a lo loco. Sigo un **plan por fases** (documentado en el repo):
+No hace falta que sea enorme para que importe.
 
-1. **Fase 1**: Modelo de proyectos (tipos, datos).
-2. **Fase 2**: UI de métricas y enlaces (MetricBadge, "Ver caso de estudio").
-3. **Fase 3**: SEO dinámico (react-helmet-async).
-4. **Fase 4**: Sitemap automatizado en el build.
+## Mi portfolio también tenía que ponerse a la altura
 
-Cada fase tiene **criterios de validación** y un **plan de rollback**. Si algo falla, sabemos qué commit revertir o qué script quitar del `build`. Eso es profesional: no solo "subir código", sino tener un camino de vuelta.
+Mientras iba construyendo cosas para otras personas cercanas, mi portfolio seguía ahí. Funcionaba, sí. Tenía mi foto, mis proyectos, mi blog. Pero yo ya no estaba exactamente en el mismo punto que cuando lo monté.
 
-## Los 47 tests y la definición de hecho
+Había más trabajo detrás. Más decisiones. Más intentos. Más criterio.
 
-No negocio con TypeScript en rojo ni con tests rotos. La **Definition of Done** del proyecto (en `.cursorrules`) exige:
+Y entonces me di cuenta de algo bastante obvio: si mi portfolio es la casa desde la que salgo al mundo, también necesita mantenimiento.
 
-- `pnpm run test -- --run` en verde.
-- `pnpm run lint` y `pnpm run lint:styles` limpios.
-- `pnpm run build` correcto.
-- `pnpm run audit:prod` sin vulnerabilidades en dependencias de producción.
+No quería llenarlo de fuegos artificiales. Quería que estuviera más ordenado. Que los proyectos no fueran solo una lista bonita. Que cada caso pudiera contar mejor qué hice, qué problema había y qué aprendí. Que si alguien compartía un enlace, no apareciera una miniatura cualquiera. Que Google entendiera qué páginas existen. Que antes de tocar algo tuviera una forma de comprobar que no estaba rompiendo la casa entera.
 
-Todo eso se ejecuta con **`pnpm run check:preprod`** antes de cada despliegue. Si algo falla, no se sube. Punto. Los **47 tests** (Vitest + Testing Library) cubren componentes críticos: Contact, BlogList, ErrorBoundary, SectionTitle. No son decoración: son la red de seguridad.
+A eso le puse el nombre de blindaje técnico, pero en realidad era una forma de cuidado.
 
-## Qué me llevo de esta parte del blindaje
+## Lo técnico también puede ser cuidado
 
-Un portfolio no es solo lo que se ve. Es **cómo se construye y se mantiene**. Pasar a pnpm, ordenar el trabajo en fases y no desplegar sin tests ni lint nos deja con una base sólida para la segunda parte del blindaje: **SEO, sitemap y la imagen que te representa**. Eso, en el siguiente post.
+A veces hablo de tests, build, lint, sitemap o SEO y parece que estoy hablando de una parte fría del desarrollo. Pero para mí, en este momento, tiene mucho que ver con cuidar lo que estoy construyendo.
 
-Hasta entonces: menos humo, más fundamentos.
+Tener tests no es solo "ser profesional". Es poder cambiar algo sin miedo.
 
-#Portfolio #pnpm #Workflow #Testing #Vitest #DefinitionOfDone #BuildingInPublic #JuniorDev
+Tener un `check:local` no es solo añadir otro script al `package.json`. Es tener una puerta antes del caos.
+
+Tener un sitemap no es solo SEO. Es decirle a los buscadores: estas páginas existen, esta es mi casa, aquí está mi trabajo.
+
+Tener una imagen Open Graph no es decoración. Es cuidar qué aparece cuando alguien comparte un enlace mío y yo no estoy delante para explicarlo.
+
+Todo eso suma. No porque convierta el portfolio en algo perfecto, sino porque lo convierte en algo más fiable.
+
+## El punto en el que estoy
+
+No estoy en una etapa de grandes titulares. Estoy en una etapa de construir base.
+
+Proyectos cercanos, problemas reales.
+
+Aprender haciendo.
+
+Equivocarme, corregir, documentar, volver a mirar.
+
+Y también aprender a contar lo que hago sin inflarlo, sin disfrazarlo y sin quitarle valor por ser pequeño o cercano.
+
+Porque pequeño no significa poco importante.
+
+Un proyecto para alguien de tu entorno puede enseñarte muchísimo: comunicación, claridad, límites, mantenimiento, responsabilidad. Te obliga a explicar, a escuchar, a decidir, a bajar una idea a tierra.
+
+Y ese es justo el camino que quiero ir contando aquí.
+
+## Qué me llevo
+
+Me llevo una idea sencilla: mi portfolio no tiene que aparentar una etapa que todavía no es. Tiene que contar bien la etapa en la que estoy.
+
+Y ahora mismo esa etapa va de construir cosas reales para personas cercanas, cuidar la forma en la que las enseño y seguir ganando oficio paso a paso.
+
+No sé todavía todas las puertas que se abrirán desde aquí. Pero sí sé que quiero llegar a ellas con una casa ordenada, proyectos honestos y la sensación de estar llevando mis ideas a la práctica de forma útil.
+
+#Portfolio #Aprendizaje #ProyectosReales #BuildingInPublic #JuniorDev #Automatizacion
