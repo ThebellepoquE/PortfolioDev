@@ -52,29 +52,37 @@ jobs:
       - name: Run ESLint
         id: eslint
         continue-on-error: true
-        run: pnpm run lint > eslint-output.txt 2>&1
+        run: |
+          pnpm run lint 2>&1 | tee eslint-output.txt
+          echo "${PIPESTATUS[0]}" > eslint-exit-code.txt
 
       - name: Run Stylelint
         id: stylelint
         if: always()
         continue-on-error: true
-        run: pnpm run lint:styles > stylelint-output.txt 2>&1
+        run: |
+          pnpm run lint:styles 2>&1 | tee stylelint-output.txt
+          echo "${PIPESTATUS[0]}" > stylelint-exit-code.txt
 
       - name: Fail if lint issues
         if: always()
         run: |
-          issues=0
+          eslint_exit=$(cat eslint-exit-code.txt 2>/dev/null || echo 0)
+          stylelint_exit=$(cat stylelint-exit-code.txt 2>/dev/null || echo 0)
+
           if [ -f eslint-output.txt ] && [ -s eslint-output.txt ]; then
-            echo "ESLint found issues:"
+            echo "::group::ESLint issues"
             cat eslint-output.txt
-            issues=1
+            echo "::endgroup::"
           fi
-          if [ -f stylelint-output.txt ] && grep -q '✖' stylelint-output.txt 2>/dev/null; then
-            echo "Stylelint found issues:"
+
+          if [ -f stylelint-output.txt ] && [ -s stylelint-output.txt ]; then
+            echo "::group::Stylelint issues"
             cat stylelint-output.txt
-            issues=1
+            echo "::endgroup::"
           fi
-          if [ "$issues" -eq 1 ]; then
+
+          if [ "$eslint_exit" != "0" ] || [ "$stylelint_exit" != "0" ]; then
             echo ""
             echo "❌ Code quality issues found. Fix them before merging."
             exit 1
