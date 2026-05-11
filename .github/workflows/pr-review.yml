@@ -1,12 +1,12 @@
-name: 🤖 Code Review Automático
+name: CI
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  validate:
-    name: Tests + Build
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,20 +16,28 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm run lint
-      - run: pnpm run lint:styles
       - run: pnpm test -- --run
+
+  build:
+    name: Build
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
       - run: pnpm run build
 
-  review:
+  code-review:
     name: Code Review
-    if: always()
-    needs: []
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
-
     steps:
       - uses: actions/checkout@v4
 
@@ -44,16 +52,34 @@ jobs:
       - name: Run ESLint
         id: eslint
         continue-on-error: true
-        run: |
-          pnpm run lint 2>&1 | tee eslint-output.txt || true
-          echo "issues=$(grep -c 'error\|warning' eslint-output.txt || echo 0)" >> $GITHUB_OUTPUT
+        run: pnpm run lint > eslint-output.txt 2>&1
 
       - name: Run Stylelint
         id: stylelint
+        if: always()
         continue-on-error: true
+        run: pnpm run lint:styles > stylelint-output.txt 2>&1
+
+      - name: Fail if lint issues
+        if: always()
         run: |
-          pnpm run lint:styles 2>&1 | tee stylelint-output.txt || true
-          echo "issues=$(grep -c '✖\|error\|warning' stylelint-output.txt || echo 0)" >> $GITHUB_OUTPUT
+          issues=0
+          if [ -f eslint-output.txt ] && [ -s eslint-output.txt ]; then
+            echo "ESLint found issues:"
+            cat eslint-output.txt
+            issues=1
+          fi
+          if [ -f stylelint-output.txt ] && grep -q '✖' stylelint-output.txt 2>/dev/null; then
+            echo "Stylelint found issues:"
+            cat stylelint-output.txt
+            issues=1
+          fi
+          if [ "$issues" -eq 1 ]; then
+            echo ""
+            echo "❌ Code quality issues found. Fix them before merging."
+            exit 1
+          fi
+          echo "✅ Code quality OK"
 
       - name: Comment PR
         if: always()
@@ -65,33 +91,27 @@ jobs:
 
             let body = '## 🤖 Code Review\n\n';
 
-            // ESLint
             const eslintFile = path.join(process.env.GITHUB_WORKSPACE, 'eslint-output.txt');
             if (fs.existsSync(eslintFile)) {
               const content = fs.readFileSync(eslintFile, 'utf8').trim();
-              if (content) {
-                body += '### 🔵 ESLint\n```\n' + content.slice(0, 2000) + '\n```\n\n';
-              } else {
-                body += '### ✅ ESLint\nSin errores.\n\n';
-              }
+              body += content
+                ? '### 🔵 ESLint\n```\n' + content.slice(0, 1500) + '\n```\n\n'
+                : '### ✅ ESLint\nSin errores.\n\n';
             } else {
               body += '### ✅ ESLint\nSin errores.\n\n';
             }
 
-            // Stylelint
             const stylelintFile = path.join(process.env.GITHUB_WORKSPACE, 'stylelint-output.txt');
             if (fs.existsSync(stylelintFile)) {
               const content = fs.readFileSync(stylelintFile, 'utf8').trim();
-              if (content) {
-                body += '### 🟡 Stylelint\n```\n' + content.slice(0, 2000) + '\n```\n\n';
-              } else {
-                body += '### ✅ Stylelint\nSin errores.\n\n';
-              }
+              body += content
+                ? '### 🟡 Stylelint\n```\n' + content.slice(0, 1500) + '\n```\n\n'
+                : '### ✅ Stylelint\nSin errores.\n\n';
             } else {
               body += '### ✅ Stylelint\nSin errores.\n\n';
             }
 
-            body += '---\n*Revisión automática con ESLint + Stylelint*';
+            body += '---\n*CI · ESLint + Stylelint*';
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
