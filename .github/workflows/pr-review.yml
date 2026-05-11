@@ -16,6 +16,8 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: pnpm run lint
+      - run: pnpm run lint:styles
       - run: pnpm test -- --run
       - run: pnpm run build
 
@@ -30,75 +32,70 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: pnpm
 
-      - name: Install Cursor CLI
+      - run: pnpm install --frozen-lockfile
+
+      - name: Run ESLint
+        id: eslint
+        continue-on-error: true
         run: |
-          curl -fsSL https://cursor.sh/install.sh | bash
-          echo "$HOME/.cursor/bin" >> $GITHUB_PATH
+          pnpm run lint 2>&1 | tee eslint-output.txt || true
+          echo "issues=$(grep -c 'error\|warning' eslint-output.txt || echo 0)" >> $GITHUB_OUTPUT
 
-      - name: Verify authentication
-        env:
-          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+      - name: Run Stylelint
+        id: stylelint
+        continue-on-error: true
         run: |
-          cursor-agent --version
-          echo "✅ CLI listo"
+          pnpm run lint:styles 2>&1 | tee stylelint-output.txt || true
+          echo "issues=$(grep -c '✖\|error\|warning' stylelint-output.txt || echo 0)" >> $GITHUB_OUTPUT
 
-      - name: Get changed files
-        id: files
-        run: |
-          git fetch origin ${{ github.event.pull_request.base.ref }}
-          git diff --name-only origin/${{ github.event.pull_request.base.ref }} > changed-files.txt
-          echo "📁 Archivos cambiados:"
-          cat changed-files.txt
-          echo "count=$(wc -l < changed-files.txt)" >> $GITHUB_OUTPUT
-
-      - name: Run code-reviewer (Modo Ahorro)
-        if: steps.files.outputs.count > 0
-        env:
-          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
-        run: |
-          cursor-agent --api-key "$CURSOR_API_KEY" --print --output-format=text --force "
-            Usa el subagente code-reviewer para:
-            1. Revisar SOLO los archivos en changed-files.txt
-            2. Aplicar MODO AHORRO (máx 300 palabras, solo CRÍTICO/ALTO)
-            3. Priorizar: 🔴 > 🟡 > 🟢
-            4. Formato: bullets, código, sin cortesía
-          " > review-output.md 2>&1 || true
-
-      - name: Comment PR (con manejo de caracteres)
+      - name: Comment PR
+        if: always()
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
             const path = require('path');
-            
-            let review = '';
-            const reviewFile = path.join(process.env.GITHUB_WORKSPACE, 'review-output.md');
-            
-            if (fs.existsSync(reviewFile)) {
-              try {
-                review = fs.readFileSync(reviewFile, 'utf8').trim();
-              } catch (e) {
-                console.log('Error leyendo archivo:', e);
+
+            let body = '## 🤖 Code Review\n\n';
+
+            // ESLint
+            const eslintFile = path.join(process.env.GITHUB_WORKSPACE, 'eslint-output.txt');
+            if (fs.existsSync(eslintFile)) {
+              const content = fs.readFileSync(eslintFile, 'utf8').trim();
+              if (content) {
+                body += '### 🔵 ESLint\n```\n' + content.slice(0, 2000) + '\n```\n\n';
+              } else {
+                body += '### ✅ ESLint\nSin errores.\n\n';
               }
+            } else {
+              body += '### ✅ ESLint\nSin errores.\n\n';
             }
-            
-            const message = review.length > 0 
-              ? `## 🤖 Code Review (Modo Ahorro ⚡)\n\n${review}`
-              : `## 🤖 Code Review (Modo Ahorro ⚡)\n\n✅ **¡Todo despejado!** No se encontraron problemas críticos ni altos.`;
-            
-            const fullMessage = `${message}\n\n---\n*Revisión automática - ${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}*`;
-            
+
+            // Stylelint
+            const stylelintFile = path.join(process.env.GITHUB_WORKSPACE, 'stylelint-output.txt');
+            if (fs.existsSync(stylelintFile)) {
+              const content = fs.readFileSync(stylelintFile, 'utf8').trim();
+              if (content) {
+                body += '### 🟡 Stylelint\n```\n' + content.slice(0, 2000) + '\n```\n\n';
+              } else {
+                body += '### ✅ Stylelint\nSin errores.\n\n';
+              }
+            } else {
+              body += '### ✅ Stylelint\nSin errores.\n\n';
+            }
+
+            body += '---\n*Revisión automática con ESLint + Stylelint*';
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: fullMessage
+              body: body
             });
