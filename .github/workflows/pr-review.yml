@@ -1,12 +1,12 @@
-name: 🤖 Code Review Automático
+name: CI
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  validate:
-    name: Tests + Build
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,88 +17,113 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm test -- --run
+
+  build:
+    name: Build
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
       - run: pnpm run build
 
-  review:
+  code-review:
     name: Code Review
-    if: always()
-    needs: []
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
-
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: pnpm
 
-      - name: Install Cursor CLI
+      - run: pnpm install --frozen-lockfile
+
+      - name: Run ESLint
+        id: eslint
+        continue-on-error: true
         run: |
-          curl -fsSL https://cursor.sh/install.sh | bash
-          echo "$HOME/.cursor/bin" >> $GITHUB_PATH
+          pnpm run lint 2>&1 | tee eslint-output.txt
+          echo "${PIPESTATUS[0]}" > eslint-exit-code.txt
 
-      - name: Verify authentication
-        env:
-          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+      - name: Run Stylelint
+        id: stylelint
+        if: always()
+        continue-on-error: true
         run: |
-          cursor-agent --version
-          echo "✅ CLI listo"
+          pnpm run lint:styles 2>&1 | tee stylelint-output.txt
+          echo "${PIPESTATUS[0]}" > stylelint-exit-code.txt
 
-      - name: Get changed files
-        id: files
+      - name: Fail if lint issues
+        if: always()
         run: |
-          git fetch origin ${{ github.event.pull_request.base.ref }}
-          git diff --name-only origin/${{ github.event.pull_request.base.ref }} > changed-files.txt
-          echo "📁 Archivos cambiados:"
-          cat changed-files.txt
-          echo "count=$(wc -l < changed-files.txt)" >> $GITHUB_OUTPUT
+          eslint_exit=$(cat eslint-exit-code.txt 2>/dev/null || echo 0)
+          stylelint_exit=$(cat stylelint-exit-code.txt 2>/dev/null || echo 0)
 
-      - name: Run code-reviewer (Modo Ahorro)
-        if: steps.files.outputs.count > 0
-        env:
-          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
-        run: |
-          cursor-agent --api-key "$CURSOR_API_KEY" --print --output-format=text --force "
-            Usa el subagente code-reviewer para:
-            1. Revisar SOLO los archivos en changed-files.txt
-            2. Aplicar MODO AHORRO (máx 300 palabras, solo CRÍTICO/ALTO)
-            3. Priorizar: 🔴 > 🟡 > 🟢
-            4. Formato: bullets, código, sin cortesía
-          " > review-output.md 2>&1 || true
+          if [ -f eslint-output.txt ] && [ -s eslint-output.txt ]; then
+            echo "::group::ESLint issues"
+            cat eslint-output.txt
+            echo "::endgroup::"
+          fi
 
-      - name: Comment PR (con manejo de caracteres)
+          if [ -f stylelint-output.txt ] && [ -s stylelint-output.txt ]; then
+            echo "::group::Stylelint issues"
+            cat stylelint-output.txt
+            echo "::endgroup::"
+          fi
+
+          if [ "$eslint_exit" != "0" ] || [ "$stylelint_exit" != "0" ]; then
+            echo ""
+            echo "❌ Code quality issues found. Fix them before merging."
+            exit 1
+          fi
+          echo "✅ Code quality OK"
+
+      - name: Comment PR
+        if: always()
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
             const path = require('path');
-            
-            let review = '';
-            const reviewFile = path.join(process.env.GITHUB_WORKSPACE, 'review-output.md');
-            
-            if (fs.existsSync(reviewFile)) {
-              try {
-                review = fs.readFileSync(reviewFile, 'utf8').trim();
-              } catch (e) {
-                console.log('Error leyendo archivo:', e);
-              }
+
+            let body = '## 🤖 Code Review\n\n';
+
+            const eslintFile = path.join(process.env.GITHUB_WORKSPACE, 'eslint-output.txt');
+            if (fs.existsSync(eslintFile)) {
+              const content = fs.readFileSync(eslintFile, 'utf8').trim();
+              body += content
+                ? '### 🔵 ESLint\n```\n' + content.slice(0, 1500) + '\n```\n\n'
+                : '### ✅ ESLint\nSin errores.\n\n';
+            } else {
+              body += '### ✅ ESLint\nSin errores.\n\n';
             }
-            
-            const message = review.length > 0 
-              ? `## 🤖 Code Review (Modo Ahorro ⚡)\n\n${review}`
-              : `## 🤖 Code Review (Modo Ahorro ⚡)\n\n✅ **¡Todo despejado!** No se encontraron problemas críticos ni altos.`;
-            
-            const fullMessage = `${message}\n\n---\n*Revisión automática - ${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}*`;
-            
+
+            const stylelintFile = path.join(process.env.GITHUB_WORKSPACE, 'stylelint-output.txt');
+            if (fs.existsSync(stylelintFile)) {
+              const content = fs.readFileSync(stylelintFile, 'utf8').trim();
+              body += content
+                ? '### 🟡 Stylelint\n```\n' + content.slice(0, 1500) + '\n```\n\n'
+                : '### ✅ Stylelint\nSin errores.\n\n';
+            } else {
+              body += '### ✅ Stylelint\nSin errores.\n\n';
+            }
+
+            body += '---\n*CI · ESLint + Stylelint*';
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: fullMessage
+              body: body
             });
