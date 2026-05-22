@@ -1,38 +1,47 @@
-# Code Review Rules
-
-## Stack and Scope
-- Keep the stack as-is: Vite + React + TypeScript SPA.
-- Do not introduce Next.js/Express/Tailwind in this repository.
-- Prefer small, focused changes over large rewrites.
+# PortfolioDev - Coding Standards
 
 ## TypeScript
-- Use strict typing; avoid `any` unless fully justified.
-- Prefer explicit domain types and reuse existing types from `src/types` and `src/lib`.
-- Keep functions small and side effects explicit.
+- Usar `const` y `let`, nunca `var`
+- Preferir `interface` sobre `type` para objetos
+- Evitar `any`; usar `unknown` cuando el tipo es incierto
+- Exportaciones nombradas, no default (excepto páginas/lazy routes)
+- Tipos estrictos habilitados (`strict: true` en tsconfig)
 
 ## React
-- Use functional components and hooks.
-- Keep components presentational when possible; isolate logic in helpers/hooks.
-- Preserve accessibility (`aria-*`, semantic elements, keyboard navigation).
+- Componentes funcionales con hooks, nunca clases
+- Props tipadas con interfaz explícita
+- Usar `React.memo` solo cuando esté justificado por rendimiento
+- Sin estado mutable fuera de hooks
+- `useEffect` debe tener dependencias correctas (regla react-hooks/exhaustive-deps)
 
-## Styling (SCSS)
-- Use existing design tokens and variables from `src/styles`.
-- Avoid hardcoded colors, spacing, or z-index values when a token exists.
-- Follow current SCSS architecture and naming conventions.
+## Estilos
+- SCSS con Stylelint (`stylelint-config-standard-scss`)
+- Usar CSS Modules o estilos co-localizados con el componente
+- No inline styles salvo valores dinámicos reales
 
-## Quality Gates
-- Required before merge: lint, style lint, tests, and build.
-- Commands:
-  - `pnpm run lint`
-  - `pnpm run lint:styles`
-  - `pnpm run test -- --run`
-  - `pnpm run build`
+## Testing
+- Vitest + Testing Library
+- Tests unitarios para lógica de negocio
+- Tests de integración para flujos de usuario clave
+- No testear implementation details (usar queries accesibles)
 
-## Security and Config
-- Never commit secrets or credentials.
-- Keep environment values in `.env` and examples in `.env.example`.
-- Preserve CSP and security headers behavior unless explicitly requested.
+## Estructura de archivos
+- Componentes: `src/components/NombreComponente/`
+- Un componente por archivo
+- Co-localizar test con el componente: `Componente.test.tsx`
+- Assets en `public/` o `src/assets/`
 
-## Documentation
-- Update README/docs when behavior, scripts, or workflow changes.
-- Keep instructions concise and executable.
+## Commits
+- Conventional commits: `feat:`, `fix:`, `refactor:`, `chore:`, `docs:`, `test:`
+- Mensajes en español
+- Sin atribución AI (no `Co-Authored-By`)
+
+## CI/CD
+- PRs deben pasar lint, test y build antes de merge
+- ESLint y Stylelint como gates obligatorios en CI
+- No dependencias externas de AI para CI
+
+## General
+- No emojis en código (solo en comentarios de PR si aportan claridad)
+- Código auto-documentado: nombres descriptivos sobre comentarios
+- Evitar duplicación: DRY con criterio (no sobre-abstractar)
