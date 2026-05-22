@@ -96,4 +96,24 @@ Añade al inicio:
 MAILTO=thebellepoque@gmail.com
 ```
 
-Cron enviará por email cualquier salida de los jobs. Con nuestro script, solo hay salida cuando falla (y además enviamos por nuestra función `send_alert`). La opción MAILTO es redundante si msmtp funciona, pero puede servir como respaldo.
+Cron enviará por email cualquier salida de los jobs. El wrapper `cleanup-repos-cron.sh` solo imprime salida cuando falla, y además intenta enviar alerta por `mail`, `sendmail` o `msmtp`. La opción `MAILTO` es redundante si msmtp funciona, pero puede servir como respaldo.
+
+## Probar sin borrar nada
+
+Antes de activar el cron puedes simular la limpieza:
+
+```bash
+bash scripts/cleanup-repos.sh --dry-run
+```
+
+También puedes probar el wrapper de cron en modo simulación:
+
+```bash
+CLEANUP_DRY_RUN=1 bash scripts/cleanup-repos-cron.sh
+```
+
+Si tus repos están en otras rutas, pásalas separadas por `:`:
+
+```bash
+CLEANUP_REPOS="$HOME/Escritorio/proyectos/discografica:$HOME/Escritorio/proyectos/lighton:$HOME/Escritorio/proyectos/purple-basque:$HOME/Escritorio/proyectos/PortfolioDev" bash scripts/cleanup-repos.sh --dry-run
+```

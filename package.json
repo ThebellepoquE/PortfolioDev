@@ -6,17 +6,25 @@
   "packageManager": "pnpm@10.32.1",
   "scripts": {
     "dev": "vite",
-    "generate-sitemap": "tsx scripts/generate-sitemap.ts",
+    "gga:run": "bash -lc 'command -v gga >/dev/null 2>&1 || { echo \"Falta gga en PATH (instalación global requerida).\"; exit 1; }; gga run'",
+    "generate-sitemap": "node scripts/generate-sitemap.mjs",
     "build": "pnpm run generate-sitemap && tsc -b && vite build",
     "lint": "eslint .",
     "lint:styles": "stylelint \"src/styles/**/*.scss\"",
     "preview": "vite preview",
     "test": "vitest",
+    "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "audit:prod": "pnpm audit --prod",
-    "check:preprod": "pnpm run test -- --run && pnpm run lint && pnpm run build && pnpm run audit:prod",
+    "check:local": "pnpm run test:run && pnpm run lint && pnpm run build",
+    "check:preprod": "pnpm run test:run && pnpm run lint && pnpm run build && pnpm run audit:prod",
     "cleanup:repos": "bash scripts/cleanup-repos.sh",
-    "resize-profile": "node scripts/resize-profile-photo.mjs"
+    "cleanup:repos:dry-run": "bash scripts/cleanup-repos.sh --dry-run",
+    "resize-profile": "node scripts/resize-profile-photo.mjs",
+    "gga:install": "gga install",
+    "gga:pr": "gga run --pr-mode",
+    "ollama:serve": "ollama serve",
+    "ollama:pull": "ollama pull qwen2.5-coder:7b"
   },
   "dependencies": {
     "react": "^19.2.0",

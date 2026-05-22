@@ -104,6 +104,38 @@ export function ProjectPage() {
               </ul>
             </section>
           )}
+          {project.challenges.length > 0 && (
+            <section className="project-page__section">
+              <h2 className="project-page__section-title">Decisiones clave</h2>
+              <div className="project-page__challenges">
+                {project.challenges.map((challenge) => (
+                  <article key={challenge.title} className="project-page__challenge">
+                    <h3>{challenge.title}</h3>
+                    <p>{challenge.description}</p>
+                    <p>
+                      <strong>Enfoque:</strong> {challenge.solution}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+          {project.architecture && (
+            <section className="project-page__section">
+              <h2 className="project-page__section-title">Base técnica</h2>
+              <p className="project-page__text">{project.architecture}</p>
+            </section>
+          )}
+          {project.learnings && project.learnings.length > 0 && (
+            <section className="project-page__section">
+              <h2 className="project-page__section-title">Aprendizajes aplicables</h2>
+              <ul className="project-page__list">
+                {project.learnings.map((learning) => (
+                  <li key={learning}>{learning}</li>
+                ))}
+              </ul>
+            </section>
+          )}
           <div className="project-page__links">
             {project.links.map((link) => (
               <a
@@ -116,6 +148,9 @@ export function ProjectPage() {
                 {link.title} →
               </a>
             ))}
+            <Link to="/#contacto" className="project-page__link project-page__link--secondary">
+              Hablemos de un proyecto parecido →
+            </Link>
           </div>
         </div>
       </article>

@@ -6,7 +6,12 @@ import { SectionTitle } from './SectionTitle';
 /** Sección de proyectos: destacados primero, luego el resto */
 export function Projects() {
   const sortedProjects = useMemo(
-    () => [...projectsData].sort((a, b) => (a.featured === b.featured ? 0 : a.featured ? -1 : 1)),
+    () => [...projectsData].sort((a, b) => {
+      if (a.id === 'portfolio-thebellepoque') return 1;
+      if (b.id === 'portfolio-thebellepoque') return -1;
+
+      return b.date.localeCompare(a.date);
+    }),
     []
   );
 

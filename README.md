@@ -33,6 +33,7 @@ Portfolio personal en **React + Vite + TypeScript** con sistema de estilos SCSS 
 
 ```bash
 pnpm run dev
+pnpm run gga:run      # ejecuta gga run (requiere CLI global `gga` en PATH)
 pnpm run build
 pnpm run preview
 
@@ -51,6 +52,50 @@ pnpm run resize-profile   # opcional: genera profile-260/360/520.webp y profile.
 `check:preprod` ejecuta: tests, eslint, build y auditoría de dependencias de producción.
 
 El build (`pnpm run build`) ejecuta `generate-sitemap` antes de compilar.
+
+## Quickstart local: Ollama + GGA
+
+Guía ultra corta para usar GGA en este repo sin tocar el flujo normal de desarrollo.
+
+### 1) Arranca Ollama
+
+```bash
+systemctl --user start ollama.service
+```
+
+### 2) Verifica binarios y modelo
+
+```bash
+command -v ollama && command -v gga && command -v gga-setup
+ollama list
+```
+
+`gga` y `gga-setup` son CLI externas (no dependencia del proyecto). Deben estar instaladas globalmente en tu sistema.
+
+### 3) Configura el repo (solo una vez)
+
+```bash
+cd /ruta/al/proyecto
+gga-setup
+```
+
+### 4) Flujo diario
+
+```bash
+pnpm run gga:run      # equivalente a: gga run
+git add .
+git commit -m "mensaje"   # dispara GGA en pre-commit (si hook está activo)
+```
+
+### 5) Si falla
+
+```bash
+systemctl --user restart ollama.service
+gga install
+ollama pull qwen2.5-coder:7b
+```
+
+Modelo recomendado por defecto: `ollama:qwen2.5-coder:7b`.
 
 ## Estructura relevante
 
@@ -211,7 +256,7 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 ### SEO
 
-- **Sitemap** generado en build (`scripts/generate-sitemap.ts`); `generate-sitemap` se ejecuta en `pnpm run build`.
+- **Sitemap** generado en build (`scripts/generate-sitemap.mjs`); `generate-sitemap` se ejecuta en `pnpm run build`.
 - Imagen OG por defecto: `public/og-image-default.jpg`.
 - `robots.txt` con directiva Sitemap y bloqueo de bots de IA. No usar directivas no estándar (p. ej. `Content-Signal`); Lighthouse las marca como inválidas.
 - JSON-LD de la home definido desde React: `HomePage` pasa el objeto `jsonLd` al componente `SEO`, que lo serializa como `<script type="application/ld+json">` en `<head>`. No se usa JSON-LD inline en `index.html`.

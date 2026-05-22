@@ -30,5 +30,17 @@ describe('Projects', () => {
       expect(screen.getByText(firstProjectTitle)).toBeInTheDocument();
     }
   });
-});
 
+  it('ordena proyectos por fecha descendente y deja el portfolio personal al final', () => {
+    render(
+      <MemoryRouter>
+        <Projects />
+      </MemoryRouter>,
+    );
+
+    const headings = screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent);
+
+    expect(headings.at(0)).toBe('PurpleBasqueTours');
+    expect(headings.at(-1)).toBe('Portfolio Personal (thebellepoque.dev)');
+  });
+});
