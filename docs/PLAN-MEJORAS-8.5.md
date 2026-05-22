@@ -133,10 +133,10 @@
 ### Pasos concretos
 
 1. **Script de generación** (implementado)
-   - `scripts/generate-sitemap.ts`: ejecutado con `tsx`. Importa `projectsData` y `SITE_CONFIG.baseUrl` desde `src/lib`; lee `content/posts/` por sistema de archivos (frontmatter `date`, `draft`). Escribe `public/sitemap.xml` con home, `/blog`, cada `/proyecto/:id` y cada post no draft; `lastmod`, `priority` y `changefreq` por tipo de URL.
+   - `scripts/generate-sitemap.mjs`: ejecutado con Node. Lee `SITE_CONFIG.baseUrl` y los proyectos desde `src/lib`, además de `content/posts/` por sistema de archivos (frontmatter `date`, `draft`). Escribe `public/sitemap.xml` con home, `/blog`, cada `/proyecto/:id` y cada post no draft; `lastmod`, `priority` y `changefreq` por tipo de URL.
 
 2. **Integración en build**
-   - Script `"generate-sitemap": "tsx scripts/generate-sitemap.ts"`; `"build": "pnpm run generate-sitemap && tsc -b && vite build"`. Vite copia `public/sitemap.xml` a `dist/`.
+   - Script `"generate-sitemap": "node scripts/generate-sitemap.mjs"`; `"build": "pnpm run generate-sitemap && tsc -b && vite build"`. Vite copia `public/sitemap.xml` a `dist/`.
 
 3. **Validación Fase 4**
    - [x] `pnpm run generate-sitemap` sin errores y `public/sitemap.xml` actualizado.
@@ -172,7 +172,7 @@
 | 1    | (opcional `src/types/project.ts`) | `src/lib/projects.ts` |
 | 2    | `src/components/MetricBadge.tsx`, estilos | `src/components/ProjectCard.tsx`, `src/styles/components/Projects.scss` |
 | 3    | `src/components/SEO.tsx` | `src/main.tsx`, `src/App.tsx` o rutas, `src/components/Blog/BlogPost.tsx` |
-| 4    | `scripts/generate-sitemap.ts` (ejecutado con tsx) | `package.json`; `public/sitemap.xml` generado en cada build |
+| 4    | `scripts/generate-sitemap.mjs` (ejecutado con Node) | `package.json`; `public/sitemap.xml` generado en cada build |
 
 ---
 

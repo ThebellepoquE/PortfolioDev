@@ -1,67 +1,116 @@
 ---
-title: "Blindaje técnico II | SEO, sitemap e imagen de marca"
-description: "Segunda parte del blindaje: métricas en proyectos, SEO con react-helmet-async, sitemap automático y la OG image del círculo rosa."
+title: "Cuidar la casa desde la que salgo al mundo"
+description: "Cómo estoy ordenando mi portfolio por dentro para enseñar mejor mis proyectos, compartir enlaces con más intención y no romperlo cada vez que lo toco."
 date: 2026-05-08
 tags:
-  - SEO
-  - React Helmet
-  - Sitemap
-  - Open Graph
-  - Marca personal
   - Portfolio
+  - SEO
+  - Open Graph
+  - Sitemap
+  - Testing
+  - Marca personal
 draft: true
-# Usa la imagen específica del post (guardada en public/images/blog/)
 image: /images/blog/blindaje-portfolio-seo-marca.webp
 ---
 
-En la [primera parte](/blog/blindaje-portfolio-workflow) del blindaje hablábamos de workflow, pnpm y de los 47 tests que no perdonan. Hoy toca lo que **sí ve** (o puede ver) alguien que no abre tu código: buscadores, redes sociales y la persona que hace clic en tu enlace.
+En el post anterior hablaba de [proyectos cercanos y problemas reales](/blog/blindaje-portfolio-workflow). De ese punto raro en el que ya no estás haciendo ejercicios sin contexto, pero tampoco estás hablando de "clientes" como si llevaras media vida con una agenda llena.
 
-Un portfolio bonito que no se indexa bien o que al compartirlo muestra una miniatura genérica está dejando oportunidades en la mesa. Por eso hemos blindado también **SEO, sitemap y la imagen que te representa**.
+Ese punto intermedio tiene algo muy bonito: te obliga a ser honesta.
 
-## Métricas de impacto: que los proyectos hablen por sí solos
+Estoy construyendo para personas de mi entorno. Para ideas que necesitan forma. Para webs que tienen que explicar algo. Para herramientas que pueden ahorrar tiempo. Para proyectos que quizá no son enormes, pero sí son reales.
 
-Antes, una tarjeta de proyecto era título, descripción y "Visitar". Ahora cada proyecto puede llevar **métricas concretas** (por ejemplo: "47+ tests", "Migración 100% TS", "Reducción de tiempo en tareas repetitivas") y un enlace a **"Ver caso de estudio"** que lleva a una página de detalle.
+Y si esos proyectos son reales, mi portfolio también tiene que estar a la altura.
 
-No es relleno: es **evidencia**. Un reclutador o cliente ve de un vistazo qué impacto tuvo el trabajo. Los datos están en el mismo modelo de datos (`projectsData`) y se muestran con un componente accesible (`MetricBadge`), con tooltip y buen contraste. Detalle que suma.
+## No quería hacerlo más grande, quería hacerlo más fiable
 
-## SEO dinámico: cada ruta con su título y su meta
+Durante un tiempo pensé en el portfolio como una especie de escaparate: que se vea bonito, que tenga mi foto, mis proyectos y una forma de contacto.
 
-En una SPA, si no cuidas el `<head>`, todas las páginas comparten el mismo título y la misma descripción. **react-helmet-async** nos permite inyectar por ruta:
+Pero cuanto más trabajo iba acumulando, más claro veía que no bastaba con que se viera bien. Tenía que aguantar cambios. Tenía que ordenar mejor lo que estoy aprendiendo. Tenía que explicar los proyectos sin que yo estuviera delante poniendo contexto.
 
-- **title** y **description**
-- **canonical**
-- **Open Graph** (og:title, og:description, og:image, og:url)
-- **Twitter Cards**
+No quería añadir cosas por añadir.
 
-Así, la home, el blog, cada post y cada página de proyecto tienen su propia identidad para buscadores y para cuando alguien comparte el enlace. El componente `SEO.tsx` centraliza la lógica y las rutas lo usan con los datos que ya tienen (por ejemplo, el post o el proyecto). Sin duplicar código, sin olvidar una ruta.
+Quería que cada pieza tuviera sentido.
 
-## Sitemap automatizado: que Google sepa qué existe
+Por eso empecé a ordenar el modelo de proyectos, las métricas, las páginas de detalle, el SEO, el sitemap y los controles antes de publicar. Dicho así suena muy técnico, pero en realidad era bastante simple: quería tocar mi portfolio sin miedo.
 
-Un sitemap estático se desactualiza en cuanto publicas un post o añades un proyecto. Por eso he metido en el **build** un script (`generate-sitemap.ts`) que:
+## Los casos de estudio son una forma de contar mejor
 
-- Lee los proyectos y los posts (excluyendo drafts).
-- Genera `public/sitemap.xml` con todas las URLs, prioridades y fechas de última modificación.
-- Se ejecuta antes de `vite build`, así que cada despliegue lleva el sitemap al día.
+Antes, una tarjeta de proyecto podía quedarse en título, descripción y enlace. Eso está bien para empezar, pero se queda corto cuando detrás hay decisiones reales.
 
-Google (y otros) tienen así una lista fiable de qué páginas indexar. No hay que acordarse de tocar el sitemap a mano: el proceso de build se encarga.
+No es lo mismo decir "hice una web" que contar:
 
-## La OG image: el círculo rosa que me representa
+- qué problema había,
+- qué necesitaba la persona o el proyecto,
+- qué decisiones tomé,
+- qué aprendí,
+- qué parte técnica cuidé para que funcionara mejor.
 
+Por eso añadí páginas de caso de estudio. No para sonar más grande de lo que soy, sino para explicar mejor lo que hago.
 
-Cuando compartes un enlace en LinkedIn, Twitter o WhatsApp, la **miniatura** que sale es la imagen Open Graph. Si no defines una, las redes eligen cualquier cosa o nada. He definido una **imagen por defecto** (`og-image-default.jpg`): fondo negro, círculo rosa, "thebellepoque.dev", "FULL STACK DEVELOPER" y el stack (Python, TypeScript, React, etc.) en la parte inferior.
+LightON no es solo una web. También es aprendizaje sobre estructura, formularios, mantenimiento y automatización.
 
-Es **marca personal en un vistazo**. Quien comparte tu portfolio ve eso, no un favicon o un bloque vacío. Las páginas que no tienen imagen propia (home, listado de blog, etc.) usan esta por defecto; los posts pueden seguir usando su propia imagen si la tienen en el frontmatter.
+Discográfica no es solo un proyecto bonito. También es contenido, catálogo, imágenes, CMS y rendimiento.
 
-## De "portfolio bonito" a "máquina de captar oportunidades"
+PurpleBasqueTours no es solo otra entrada en la lista. Es una forma de pensar cómo una experiencia se explica online para que alguien la entienda y pueda dar el siguiente paso.
 
-El blindaje técnico no es solo para dormir tranquilo. Es para que:
+Cuando lo miro así, el portfolio deja de ser una galería y empieza a parecerse más a un diario técnico de lo que voy construyendo.
 
-- **Buscadores** indexen bien cada ruta.
-- **Quien comparte** tu enlace muestre una miniatura que te identifica.
-- **Quien entra** vea proyectos con métricas y casos de estudio, no solo descripciones genéricas.
+## Lo que no se ve también comunica
 
-Todo eso se apoya en el workflow de la parte I: fases, tests y un `check:preprod` que no deja subir algo roto. Juntas, las dos partes son el paso de "tengo un portfolio" a "tengo un portfolio que trabaja por mí".
+Hay una parte del portfolio que casi nadie ve, pero que está trabajando todo el tiempo.
 
-Si te interesa el detalle técnico (react-helmet-async, script del sitemap, formato 1200×630 para OG), está todo en el repo y en la documentación del proyecto. Y si quieres seguir la serie, en los posts anteriores ([El laberinto de empezar](/blog/el-laberinto-de-empezar), [Un año, un gran cambio](/blog/lighton-de-cero-a-produccion), [Evolución](/blog/modularizacion-lighton)) tienes el resto del viaje.
+El `<head>` de cada página. El título que aparece en Google. La descripción cuando compartes un enlace. La imagen que sale en LinkedIn o WhatsApp. El sitemap que le dice a los buscadores qué existe. Los tests que me avisan si rompo algo. El build que falla cuando algo no está listo.
 
-#SEO #OpenGraph #Sitemap #MarcaPersonal #Portfolio #React #BuildingInPublic
+Eso también es comunicación.
+
+Cuando alguien comparte mi portfolio, yo no estoy ahí para explicar quién soy. La página tiene que hacerlo por mí.
+
+Cuando alguien entra desde móvil, no puedo pedirle paciencia infinita. La web tiene que cargar, verse bien y dejar claro qué hay.
+
+Cuando yo vuelvo dos semanas después a tocar una parte, necesito que el proyecto no dependa de la memoria que tenía ese día. Necesito estructura.
+
+Por eso el SEO, el sitemap, la imagen Open Graph y los scripts de validación no son una capa de purpurina técnica. Son parte del cuidado.
+
+## Una puerta antes del caos
+
+Ahora tengo una puerta antes de publicar.
+
+En local puedo lanzar `pnpm run check:local` y revisar tests, lint y build sin depender de internet. Antes de publicar, con conexión, `pnpm run check:preprod` añade el audit de producción.
+
+No es perfecto. Nada lo es. Pero me da una base.
+
+Si algo falla, lo veo antes. Si una ruta nueva no entra en el sitemap, puedo corregirlo. Si un componente se rompe, los tests protestan. Si una imagen falta, el build o la revisión me lo ponen delante.
+
+Y esa sensación, cuando estás construyendo tu propia casa digital mientras aprendes, vale mucho.
+
+## Mi marca también vive en los detalles
+
+Hay detalles que parecen pequeños y no lo son.
+
+La imagen Open Graph por defecto. El círculo rosa. El nombre. Los colores. El modo en el que se ordenan los proyectos. La forma de escribir una bio sin fingir una etapa que todavía no es.
+
+Todo eso habla.
+
+ThebellepoquE no es solo un nombre que pongo en una esquina. Es una forma de hacer las cosas con mucha luZ, incluso cuando estoy arreglando scripts, ajustando rutas o peleándome con un footer que tapa botones.
+
+También hay marca ahí.
+
+En la insistencia.
+
+En no dejar las cosas a medias.
+
+En intentar que algo pequeño esté hecho con cuidado.
+
+## Qué me llevo
+
+Me llevo que cuidar un portfolio no es solo actualizar textos o cambiar colores.
+
+Es revisar si lo que enseño todavía me representa. Es quitar lo que sobra. Es ordenar lo que empieza a crecer. Es dejar una base para que los próximos proyectos no entren a presión, sino con su propio sitio.
+
+Sigo empezando. Sigo aprendiendo. Sigo encontrando errores de hace un mes y pensando: "madre mía, ¿cómo no vi esto antes?".
+
+Pero también sigo construyendo.
+
+Y cada ajuste, cada test, cada caso de estudio y cada post me acercan un poco más a esa versión de mí que sabe llevar las ideas a la práctica de forma útil.
+
+#Portfolio #SEO #OpenGraph #Testing #MarcaPersonal #BuildingInPublic #JuniorDev

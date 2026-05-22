@@ -6,7 +6,7 @@
   padding: max(2rem, env(safe-area-inset-top)) max(1.5rem, env(safe-area-inset-right)) max(2rem, env(safe-area-inset-bottom)) max(1.5rem, env(safe-area-inset-left));
 
   /* Deja espacio extra para la barra de navegación móvil fija en la parte inferior */
-  padding-bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 4.5rem);
+  padding-bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 5.5rem);
   overflow-x: hidden;
   scroll-margin-top: layout.$section-scroll-offset;
 
@@ -17,8 +17,8 @@
   @media (width >= 768px) {
     padding-top: max(4.5rem, env(safe-area-inset-top));
 
-    /* En escritorio no hay barra móvil fija, así que no necesitamos espacio extra al fondo */
-    padding-bottom: max(3rem, env(safe-area-inset-bottom));
+    /* El footer de escritorio es fijo, así que reservamos espacio para que no tape los botones finales. */
+    padding-bottom: calc(max(3rem, env(safe-area-inset-bottom)) + 4.5rem);
   }
 }
 
@@ -104,7 +104,8 @@
   border-radius: 9999px;
 }
 
-.project-page__metrics {
+.project-page__metrics,
+.project-page__section {
   margin-bottom: 1.5rem;
 }
 
@@ -114,11 +115,47 @@
   margin-bottom: 0.5rem;
 }
 
-.project-page__metrics ul {
+.project-page__metrics ul,
+.project-page__list {
   margin: 0;
   padding-left: 1.25rem;
   font-size: 0.9375rem;
   line-height: 1.6;
+}
+
+.project-page__text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: $text-secondary;
+}
+
+.project-page__challenges {
+  display: grid;
+  gap: 1rem;
+}
+
+.project-page__challenge {
+  padding: 1rem;
+  border: 1px solid $border;
+  border-radius: 8px;
+  background-color: $bg-card;
+
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 0.975rem;
+  }
+
+  p {
+    margin: 0.5rem 0 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: $text-secondary;
+  }
+
+  strong {
+    color: $text;
+  }
 }
 
 .project-page__links {
@@ -140,5 +177,21 @@
 
   &:hover {
     box-shadow: 0 4px 20px rgba($pink-rgb, 0.5);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $yellow;
+    outline-offset: 4px;
+  }
+
+  &--secondary {
+    color: $text;
+    background-color: transparent;
+    border: 1px solid $border;
+
+    &:hover {
+      color: $green;
+      box-shadow: 0 0 18px rgba($green-rgb, 0.25);
+    }
   }
 }
