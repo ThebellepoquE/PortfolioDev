@@ -1,5 +1,7 @@
 // Vercel Edge Middleware - Rate limiting y protección básica
 
+import { NextResponse } from 'next/server';
+
 const RATE_LIMIT = 100; // requests per minute
 const RATE_WINDOW = 60 * 1000; // 1 minute in ms
 
@@ -16,12 +18,12 @@ const blockedUserAgents = [
   'seekport',
 ];
 
-export default function middleware(request) {
+export function middleware(request) {
   const url = new URL(request.url);
   
   // Skip static assets and source files in dev
   if (url.pathname.match(/\.(js|ts|jsx|tsx|css|scss|ico|png|jpg|jpeg|svg|woff2?)$/)) {
-    return;
+    return NextResponse.next();
   }
   
   // Check user agent
@@ -62,7 +64,7 @@ export default function middleware(request) {
   }
   
   // Continue to app
-  return;
+  return NextResponse.next();
 }
 
 export const config = {
