@@ -30,11 +30,11 @@ export const projectsData: ProjectFull[] = [
   {
     id: 'purple-basque-tours',
     title: 'PurpleBasqueTours',
-    tagline: 'Web turística con narrativa, SEO local y captación directa',
+    tagline: 'Web turística con narrativa, SEO internacional y captación directa',
     shortDescription:
       'Caso real para una marca de tours privados en Euskadi. Trabajo orientado a convertir visitas en solicitudes: propuesta de valor clara, estructura mobile-first, SEO on-page y contenido preparado para clientes internacionales.',
     fullDescription:
-      'Web para PurpleBasqueTours, una marca de experiencias y tours privados en el País Vasco. Problema: presentar una oferta turística con confianza, claridad y diferenciación para visitantes que comparan opciones rápido desde móvil. Solución: arquitectura de contenido orientada a decisión, copy cercano y profesional, CTAs visibles, SEO on-page por intención de búsqueda y una base técnica lista para iterar. Resultado: caso real preparado para publicar y compartir con clientes, con foco en captación directa y credibilidad.',
+      'Web para PurpleBasqueTours, una marca de experiencias y tours privados en el País Vasco. Problema: presentar una oferta turística con confianza, claridad y diferenciación para visitantes internacionales que comparan opciones rápido desde móvil. Solución: arquitectura de contenido orientada a decisión, copy cercano y profesional, CTAs visibles, SEO on-page por intención de búsqueda y una base técnica lista para iterar. Resultado: caso real preparado para publicar y compartir con clientes del norte de Europa y Norteamérica, con foco en captación directa y credibilidad.',
     complexity: 7,
     innovation: 6,
     impact: 8,
@@ -52,9 +52,9 @@ export const projectsData: ProjectFull[] = [
       {
         id: 'pbt-seo',
         type: 'performance',
-        value: 'SEO local',
+        value: 'SEO on-page',
         label: 'Base on-page preparada',
-        description: 'Headings, metadatos, narrativa y enlaces internos alineados con intención de búsqueda',
+        description: 'Headings, metadatos, narrativa y enlaces internos alineados con intención de búsqueda de viajeros internacionales',
       },
       {
         id: 'pbt-ux',
@@ -83,7 +83,7 @@ export const projectsData: ProjectFull[] = [
     learnings: [
       'Convertir servicios presenciales en una propuesta digital clara',
       'Priorizar mensajes y CTAs para tráfico móvil',
-      'Alinear SEO on-page con una oferta local y turística',
+      'Alinear SEO on-page con una oferta turística orientada a viajeros internacionales',
     ],
     featured: true,
     status: 'live',

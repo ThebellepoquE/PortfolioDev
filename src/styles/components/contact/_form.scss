@@ -36,6 +36,39 @@
     }
   }
 
+  &__cv {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: fit-content;
+    min-width: $btn-min-w;
+    margin: 0 auto 0.5rem;
+    padding: $btn-py $btn-px;
+    border: 1px solid $yellow;
+    border-radius: $btn-radius;
+    color: $yellow;
+    font-weight: 700;
+    font-size: $btn-fs;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    @media (width >= 640px) {
+      padding: $btn-py-md $btn-px-md;
+      font-size: $btn-fs-md;
+    }
+
+    &:hover {
+      background-color: rgba($yellow-rgb, 0.08);
+      box-shadow: 0 8px 30px rgba($pink-rgb, 0.25);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $yellow;
+      outline-offset: 4px;
+    }
+  }
+
   &__group {
     display: flex;
     flex-direction: column;
