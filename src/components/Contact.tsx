@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { CheckIcon, AlertIcon, LoaderIcon } from './icons';
+import { CheckIcon, AlertIcon, LoaderIcon, FileIcon } from './icons';
 import type { FormEvent, ReactNode } from 'react';
 import { SectionTitle } from './SectionTitle';
+import { SITE_CONFIG } from '../lib/config';
 
 interface FormFieldProps {
   id: string;
@@ -72,6 +73,8 @@ function StatusMessage({ type, children }: StatusMessageProps) {
 
 /** Sección de contacto con formulario (Resend API) */
 export function Contact() {
+  const hasCvUrl = SITE_CONFIG.cvUrl.trim().length > 0;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -143,6 +146,18 @@ export function Contact() {
           ¿Tienes un proyecto en mente o quieres colaborar? <br />
           Escríbeme, estoy abierta a nuevas oportunidades y retos.
         </p>
+
+        {hasCvUrl && (
+          <a
+            href={SITE_CONFIG.cvUrl}
+            download
+            aria-label="Descargar CV"
+            className="contact__cv"
+          >
+            <FileIcon width={18} height={18} />
+            Descargar CV
+          </a>
+        )}
 
         {/* Formulario */}
         <form onSubmit={handleSubmit} className="contact__form">

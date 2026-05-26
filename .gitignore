@@ -39,6 +39,7 @@ coverage/
 public/agents.md
 .vercel
 .env*.local
+.atl/
 
 # Local backup files
 *.bak

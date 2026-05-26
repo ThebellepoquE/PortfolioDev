@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Contact } from './Contact';
+import { SITE_CONFIG } from '../lib/config';
 
 // Mock fetch API
 const mockFetch = vi.fn();
@@ -10,6 +11,7 @@ globalThis.fetch = mockFetch;
 describe('Contact Component', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    SITE_CONFIG.cvUrl = '';
   });
 
   // ==========================================
@@ -40,6 +42,23 @@ describe('Contact Component', () => {
       render(<Contact />);
       
       expect(screen.getByText(/tienes un proyecto en mente/i)).toBeInTheDocument();
+    });
+
+    it('hides the CV download link when no URL is configured', () => {
+      render(<Contact />);
+
+      expect(screen.queryByRole('link', { name: /descargar cv/i })).not.toBeInTheDocument();
+    });
+
+    it('renders the CV download link when a URL is configured', () => {
+      SITE_CONFIG.cvUrl = '/cv.pdf';
+
+      render(<Contact />);
+
+      const link = screen.getByRole('link', { name: /descargar cv/i });
+
+      expect(link).toHaveAttribute('href', '/cv.pdf');
+      expect(link).toHaveAttribute('download');
     });
 
     it('has correct section id for navigation', () => {
