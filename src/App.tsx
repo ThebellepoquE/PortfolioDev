@@ -52,7 +52,7 @@ function App() {
           <Route path="*" element={
             <div className="error-boundary">
               <div className="error-content">
-                <span className="error-icon">🕵️‍♀️</span>
+                <span className="error-icon">404</span>
                 <h1>404 - No hay nada aquí</h1>
                 <p>Esa ruta no existe. Quizás el enlace estaba roto o te has aventurado demasiado lejos.</p>
                 <Link className="btn-main" to="/">

@@ -43,7 +43,7 @@ export function ProjectPage() {
     return (
       <div className="error-boundary">
         <div className="error-content">
-          <span className="error-icon">🕵️‍♀️</span>
+          <span className="error-icon">404</span>
           <h1>Proyecto no encontrado</h1>
           <p>No existe un proyecto con ese identificador.</p>
           <Link className="btn-main" to="/#proyectos">

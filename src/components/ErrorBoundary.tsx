@@ -30,7 +30,7 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="error-boundary">
           <div className="error-content">
-            <span className="error-icon">⚠️</span>
+            <span className="error-icon">!</span>
             <h1>Puuuuuf... algo se ha roto</h1>
             <p>Parece que el código ha entrado en un bucle infinito de nostalgia o un error inesperado.</p>
             <a 

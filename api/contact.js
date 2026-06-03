@@ -3,7 +3,7 @@
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const TO_EMAIL = process.env.CONTACT_EMAIL || 'tu-email@ejemplo.com';
 
-// 🎨 Configuración de colores (Sincronizado con _variables.scss)
+// Configuración de colores (Sincronizado con _variables.scss)
 const THEME = {
   pink: '#FF1493',
   yellow: '#FFF01F',
@@ -79,7 +79,7 @@ export default async function handler(request, response) {
                 <tr>
                   <td style="background-color: ${THEME.bgCard}; padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
                     <h1 style="margin: 0; color: ${THEME.pink}; font-size: 28px; font-weight: bold;">
-                      ✨ Nuevo Mensaje ✨
+                      Nuevo Mensaje
                     </h1>
                     <p style="margin: 10px 0 0 0; color: ${THEME.textMuted}; font-size: 14px;">
                       Contacto desde tu portfolio
@@ -171,7 +171,7 @@ ${sanitizedMessage}
 </html>
         `,
         text: `
-✨ Nuevo mensaje desde tu Portfolio ✨
+Nuevo mensaje desde tu Portfolio
 ======================================
 
 Nombre: ${sanitizedName}
