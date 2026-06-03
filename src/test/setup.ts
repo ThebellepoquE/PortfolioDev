@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import 'vitest-axe/extend-expect';
 import { afterEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 
