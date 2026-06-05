@@ -15,8 +15,6 @@
 
   &__container {
     margin: 0;
-
-    /* Un poco más compacta en vertical para que ocupe menos alto en móvil */
     padding: 0.25rem 0.5rem;
     border-radius: 0;
     backdrop-filter: blur(20px);
@@ -39,8 +37,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* Mantener altura táctil mínima ~44px (WCAG 2.5.5) sin hacer la barra demasiado alta */
     padding: 0.6rem 0.75rem;
     text-decoration: none;
     transition: all 0.2s;
@@ -70,50 +66,25 @@
       }
     }
 
+    // Color variants
     &--pink {
-      svg {
-        stroke: $pink;
-      }
-
-      &:active svg {
-        stroke: $pink;
-      }
+      svg { stroke: $pink; }
+      &:active svg { stroke: $pink; }
     }
 
     &--yellow {
-      svg {
-        stroke: $yellow;
-      }
-
-      &:active svg {
-        stroke: $yellow;
-      }
-
-      &.is-active {
-        svg {
-          stroke: $yellow;
-        }
-      }
+      svg { stroke: $yellow; }
+      &:active svg { stroke: $yellow; }
     }
 
     &--green {
-      svg {
-        stroke: $green;
-      }
-
-      &:active svg {
-        stroke: $green;
-      }
+      svg { stroke: $green; }
+      &:active svg { stroke: $green; }
     }
 
     &--blue {
-      svg {
-        stroke: $moon;
-      }
-
-      &:active svg {
-        stroke: $moon;
-      }
+      svg { stroke: $moon; }
+      &:active svg { stroke: $moon; }
     }
 
     &-label {
@@ -123,6 +94,28 @@
       color: $text;
       line-height: 1;
     }
+
+    // Active section indicator
+    &.is-active {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 3px;
+        border-radius: 0 0 2px 2px;
+        transition: background-color 0.3s ease;
+      }
+    }
+
+    // Color-specific indicator colors
+    &--pink.is-active::after { background: $pink; }
+    &--yellow.is-active::after { background: $yellow; }
+    &--green.is-active::after { background: $green; }
   }
 
   &__toggle-group {

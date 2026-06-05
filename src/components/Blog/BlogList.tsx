@@ -22,7 +22,19 @@ export function BlogList() {
         </p>
 
         {/* Posts list */}
-        {posts.length === 0 ? (
+        {posts === null ? (
+          <div className="blog-list__grid">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="blog-card blog-card--skeleton" aria-hidden="true">
+                <div className="blog-card__content">
+                  <span className="skeleton" style={{ width: '60%', height: '1.25rem' }} />
+                  <span className="skeleton" style={{ width: '40%', height: '0.875rem', marginTop: '0.75rem' }} />
+                  <span className="skeleton" style={{ width: '100%', height: '3rem', marginTop: '1rem' }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : posts.length === 0 ? (
           <div className="blog-list__empty">
             <p className="blog-list__empty-text">Aún no hay posts publicados</p>
             <p className="blog-list__empty-subtext">¡Pronto compartiré contenido nuevo!</p>
