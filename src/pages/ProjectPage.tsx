@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { projectsData } from '../lib/projects';
 import { formatDateDayMonthYear } from '../lib/formatDate';
 import { SEO } from '../components/SEO';
+import { SITE_CONFIG } from '../lib/config';
 
 /** Convierte YYYY-MM a ISO 8601 (YYYY-MM-01) para meta y <time dateTime>. */
 function toISODate(value: string): string {
@@ -54,6 +55,31 @@ export function ProjectPage() {
     );
   }
 
+  const baseUrl = SITE_CONFIG.baseUrl;
+  const projectUrl = `${baseUrl}/proyecto/${project.id}`;
+
+  const jsonLd: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.shortDescription,
+    datePublished: toISODate(project.date),
+    url: projectUrl,
+    '@id': `${projectUrl}#creativework`,
+    author: {
+      '@type': 'Person',
+      name: 'Ione Rodríguez',
+      url: baseUrl,
+      '@id': `${baseUrl}/#person`,
+    },
+  };
+
+  if (project.image) {
+    jsonLd.image = project.image.startsWith('http')
+      ? project.image
+      : `${baseUrl}${project.image}`;
+  }
+
   return (
     <>
       <SEO
@@ -64,6 +90,7 @@ export function ProjectPage() {
         type="article"
         publishedTime={toISODate(project.date)}
         tags={project.technologies}
+        jsonLd={jsonLd}
       />
       <article className="project-page">
         <div className="project-page__container">

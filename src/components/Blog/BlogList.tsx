@@ -4,6 +4,7 @@ import { getAllPosts } from '../../lib/posts';
 import { formatDateDayMonthYear } from '../../lib/formatDate';
 import { SectionTitle } from '../SectionTitle';
 import { Reveal } from '../Reveal';
+import { buildImageAttrs } from '../../lib/images';
 
 /** Lista de posts del blog */
 export function BlogList() {
@@ -49,13 +50,29 @@ export function BlogList() {
                 >
                 <div className="blog-card__content">
                   {/* Imagen destacada */}
-                  {post.image && (
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="blog-card__image"
-                    />
-                  )}
+                  {post.image && (() => {
+                    const imgAttrs = buildImageAttrs(post.image, {
+                      alt: post.title,
+                      width: 600,
+                      height: 338,
+                      className: 'blog-card__image',
+                    });
+                    return (
+                      <picture>
+                        <source type="image/avif" srcSet={imgAttrs.avifSrcSet} sizes={imgAttrs.sizes} />
+                        <source type="image/webp" srcSet={imgAttrs.srcSet} sizes={imgAttrs.sizes} />
+                        <img
+                          src={imgAttrs.src}
+                          alt={imgAttrs.alt}
+                          loading={imgAttrs.loading}
+                          decoding={imgAttrs.decoding}
+                          width={imgAttrs.width}
+                          height={imgAttrs.height}
+                          className={imgAttrs.className}
+                        />
+                      </picture>
+                    );
+                  })()}
                   
                   {/* Fecha y Tags en línea */}
                   <div className="blog-card__meta">
