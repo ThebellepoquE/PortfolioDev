@@ -43,7 +43,7 @@ El miércoles me senté a las 11 de la mañana. Tenía café, tenía una checkli
 
 Porque aquí va una confesión: durante meses trabajé a golpe de intuición. Veo algo mal, lo arreglo. Veo otra cosa, la toco. Sin orden, sin prioridades, sin saber si lo que estaba haciendo era lo que más importaba o lo que menos.
 
-Eso funciona cuando tu portfolio tiene tres páginas y dos proyectos. Pero el mío creció sin pedirme permiso, y aunque yo tengo la filosofía de aprender algo cada día — eso no se negocia —, lo que aprendí esta vez es que la intuición sola no alcanza. Que necesito método.
+Eso funciona cuando tu portfolio tiene tres páginas y dos proyectos. Pero el mío creció sin pedirme permiso, y aunque yo tengo la filosofía de aprender algo cada día — eso no se negocia —, lo que aprendí esta vez es que la intuición sola no alcanza. Que se necesita metodología.
 
 Así que antes de tocar una sola línea de código, me senté a pensar. ¿Qué necesita realmente este portfolio? ¿Qué espera Google de una página en 2026? ¿Qué espera un recruiter que abre el enlace desde LinkedIn? ¿Qué espero yo cuando vuelvo dos semanas después y necesito tocar algo sin romperlo?
 
