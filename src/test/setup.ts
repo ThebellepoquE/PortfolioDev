@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import { afterEach, expect, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
-import { toHaveNoViolations } from 'vitest-axe/matchers';
+// vitest-axe: matchers.d.ts uses export type *, bypass for verbatimModuleSyntax
+// types provided by src/test/axe-matchers.d.ts
+import { toHaveNoViolations } from 'vitest-axe/dist/matchers.js';
 
 expect.extend({ toHaveNoViolations });
 
