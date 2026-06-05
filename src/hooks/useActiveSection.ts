@@ -8,6 +8,7 @@ export function useActiveSection(sectionIds: string[]): string | null {
 
   useEffect(() => {
     if (pathname !== '/') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveSection(null);
       return;
     }

@@ -3,7 +3,7 @@
   .mobile-nav,
   .footer,
   .blog-post__back {
-    display: none !important;
+    display: none !important; /* stylelint-disable-line declaration-no-important */
   }
 
   body {
