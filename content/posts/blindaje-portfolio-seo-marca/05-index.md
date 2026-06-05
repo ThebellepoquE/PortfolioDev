@@ -15,7 +15,7 @@ draft: false
 image: /images/blog/blindaje-portfolio-seo-marca.webp
 ---
 
-En el post anterior hablaba de [proyectos cercanos y problemas reales](/blog/blindaje-portfolio-workflow). De ese punto raro en el que dejás de hacer ejercicios sin contexto pero tampoco estás hablando de clientes como si llevaras media vida con agenda llena.
+En el post anterior hablaba de [proyectos cercanos y problemas reales](/blog/blindaje-portfolio-workflow). De ese punto raro en el que dejas de hacer ejercicios sin contexto pero tampoco estás hablando de clientes como si llevaras media vida con agenda llena.
 
 Ese punto intermedio tiene algo muy bonito: te obliga a ser honesta.
 
@@ -51,7 +51,7 @@ De ahí salió una lista de 13 cosas. No 13 ideas vagas. 13 requisitos con crite
 
 Suena a ingeniería. Y lo es. Pero también es cuidado. Porque ponerse a pensar antes de picar código es la diferencia entre remendar agujeros y construir una casa.
 
-El resto de la sesión fue un baile. Yo marcando el ritmo, la IA ejecutando. Yo diciendo "esto no me gusta, revisalo". La IA trayendo opciones. Yo tomando decisiones. La IA implementando. Yo verificando.
+El resto de la sesión fue un baile. Yo marcando el ritmo, la IA ejecutando. Yo diciendo "esto no me gusta, revísalo". La IA trayendo opciones. Yo tomando decisiones. La IA implementando. Yo verificando.
 
 Así durante seis horas.
 
@@ -59,7 +59,7 @@ Así durante seis horas.
 
 A las dos de la tarde ya tenía la primera fase lista. Los metadatos que me faltaban — `twitter:site`, `og:locale` — cosas que parecen una tontería pero que son la diferencia entre "esta persona sabe lo que hace" y "esto lo hizo un robot".
 
-A las cuatro, los datos estructurados. Google no solo lee texto: lee estructura. Y si vos no le decís qué es cada cosa — esto es un artículo, esto es un proyecto, esta persona es la autora — lo adivina. Y cuando Google adivina, tu portfolio pierde.
+A las cuatro, los datos estructurados. Google no solo lee texto: lee estructura. Y si tú no le dices qué es cada cosa — esto es un artículo, esto es un proyecto, esta persona es la autora — lo adivina. Y cuando Google adivina, tu portfolio pierde.
 
 Así que le puse JSON-LD a todo. Cada post del blog ahora es un `BlogPosting` con autor, fecha y URL canónica. Cada proyecto es un `CreativeWork`. La página del blog es una `CollectionPage`. Suena a burocracia digital, pero es lo que hace que cuando alguien busca "desarrolladora full-stack portfolio", Google entienda que esta página existe y qué contiene.
 
@@ -95,7 +95,7 @@ Eso dolió. Pero también me alivió encontrarlo. Porque ahora están bien. Ahor
 
 Me llevo que blindar no es ponerle candados a todo. Es revisar. Es sentarte seis horas con un método y decir "voy a cuidar esto como si fuera para alguien más".
 
-Me llevo que la herramienta — la IA — es increíblemente potente cuando vos sabés lo que querés. Pero no reemplaza el criterio. No reemplaza la pausa de decir "esto no me gusta, revisalo". No reemplaza la decisión de qué importa y qué no.
+Me llevo que la herramienta — la IA — es increíblemente potente cuando tú sabes lo que quieres. Pero no reemplaza el criterio. No reemplaza la pausa de decir "esto no me gusta, revísalo". No reemplaza la decisión de qué importa y qué no.
 
 Me llevo que mi portfolio ya no es un escaparate. Es una casa. Con cimientos. Con puertas que cierran bien. Con una checklist de 103 cosas que sé que funcionan porque las verifiqué una por una.
 
