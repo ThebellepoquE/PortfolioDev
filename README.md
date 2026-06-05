@@ -11,7 +11,7 @@ Portfolio personal en **React + Vite + TypeScript** con sistema de estilos SCSS 
 - Flujo de contacto vía serverless en `/api/contact` usando Resend.
 - **SEO:** meta dinámicos por ruta (Home, Blog, posts, proyectos) con Open Graph, Twitter Cards y componente `SEO` centralizado (`src/components/SEO.tsx`) que también permite inyectar JSON-LD (`jsonLd`) desde React (por ejemplo, la home define su schema `Person` en `HomePage`, no en `index.html`).
 - **Proyectos:** modelo enriquecido con métricas, enlaces (live/repo) y página de detalle `/proyecto/:id`.
-- Build, lint y tests preparados para checks de preproducción. Suite de **74 tests** en 7 archivos (Vitest + Testing Library); cobertura con `pnpm run test:coverage`.
+- Build, lint y tests preparados para checks de preproducción. Suite de **93 tests** (74 unitarios + 10 a11y + 9 adicionales) en 10 archivos (Vitest + Testing Library + jsdom); cobertura con `pnpm run test:coverage`.
 - **Proyectos:** modelo con campo opcional `status?: 'live' | 'wip'`; si `status === 'wip'` se muestra el badge "En construcción" en la tarjeta (ej. Discográfica).
 
 ## Stack
@@ -240,8 +240,11 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 - `robots.txt` válido (sin comentarios, newline final).
 - ErrorBoundary: `console.error` solo en entorno DEV.
 
-### Accesibilidad (Lighthouse)
+### Accesibilidad (Lighthouse + axe-core)
 
+- **axe-core integrado:** tests de accesibilidad automatizados con `vitest-axe` en los 10 componentes core.
+- **CI gate:** `pnpm test -- --run` bloquea PRs con violaciones de accesibilidad.
+- **Limitación conocida:** `color-contrast` no es testeable en jsdom — requiere verificación manual con Lighthouse en navegador real.
 - **ProjectCard:** ARIA `list`/`listitem` en métricas.
 - **ThemeToggle:** SVGs decorativos con `aria-hidden`.
 - **Navbar:** enlaces duplicados con `aria-label` diferenciados.
@@ -249,9 +252,11 @@ Si ves un favicon antiguo: prueba en pestaña de incógnito o limpia datos del s
 
 ### Testing
 
-- **Suite:** 74 tests en 7 archivos (Vitest + Testing Library + happy-dom): ProjectCard (12), MetricBadge (8), BlogPost (7), SectionTitle, BlogList, ErrorBoundary, Contact.
-- Entorno de tests: **happy-dom** (en lugar de jsdom) para evitar problemas ESM en distintos entornos; suficiente para componentes React con Testing Library.
-- Tests en `src/components/__tests__/` (ProjectCard, MetricBadge), `src/components/Blog/__tests__/` (BlogPost) y colocados junto al componente (SectionTitle, Contact, ErrorBoundary, BlogList).
+- **Suite:** 93 tests en 10 archivos (Vitest + Testing Library + jsdom).
+- **Tests de accesibilidad:** 10 componentes con assertions `toHaveNoViolations()` usando axe-core. El `color-contrast` está postergado con `it.skip` (no testeable en jsdom).
+- **Entorno de tests:** jsdom (migrado desde happy-dom para compatibilidad con axe-core).
+- **Matcher:** `toHaveNoViolations()` registrado manualmente (bug de `extend-expect.js` vacío en vitest-axe v0.1.0). Tipos declarados en `src/test/axe-matchers.d.ts`.
+- Tests en `src/components/__tests__/`, `src/components/Blog/__tests__/` y junto al componente.
 - Cobertura: `pnpm run test:coverage`. Incluido en `check:preprod`.
 
 ### SEO
