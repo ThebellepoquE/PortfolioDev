@@ -57,7 +57,7 @@ Así durante seis horas.
 
 ## Lo que no se ve también comunica
 
-A las dos de la tarde ya tenía la primera fase lista. Los metadatos que me faltaban — `twitter:site`, `og:locale` — cosas que parecen una tontería pero que son la diferencia entre "esta persona sabe lo que hace" y "esto lo hizo un robot".
+A las dos de la tarde ya tenía la primera fase lista. Los metadatos que me faltaban — `twitter:site`, `og:locale` — detalles pequeños que, cuando faltan, se notan más de lo que parece.
 
 A las cuatro, los datos estructurados. Google no solo lee texto: lee estructura. Y si tú no le dices qué es cada cosa — esto es un artículo, esto es un proyecto, esta persona es la autora — lo adivina. Y cuando Google adivina, tu portfolio pierde.
 
