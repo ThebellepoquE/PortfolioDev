@@ -1,116 +1,108 @@
 ---
 title: "Cuidar la casa desde la que salgo al mundo"
-description: "Cómo estoy ordenando mi portfolio por dentro para enseñar mejor mis proyectos, compartir enlaces con más intención y no romperlo cada vez que lo toco."
-date: 2026-05-08
+description: "Seis horas, una IA y yo blindando cada rincón de mi portfolio. Lo que pasó cuando decidí que mi casa digital se merecía el mismo cuidado que le pongo a los proyectos de otros."
+date: 2026-06-05
 tags:
   - Portfolio
   - SEO
+  - SDD
   - Open Graph
-  - Sitemap
-  - Testing
+  - JSON-LD
+  - Performance
   - Marca personal
-draft: true
+  - Building in Public
+draft: false
 image: /images/blog/blindaje-portfolio-seo-marca.webp
 ---
 
-En el post anterior hablaba de [proyectos cercanos y problemas reales](/blog/blindaje-portfolio-workflow). De ese punto raro en el que ya no estás haciendo ejercicios sin contexto, pero tampoco estás hablando de "clientes" como si llevaras media vida con una agenda llena.
+En el post anterior hablaba de [proyectos cercanos y problemas reales](/blog/blindaje-portfolio-workflow). De ese punto raro en el que dejás de hacer ejercicios sin contexto pero tampoco estás hablando de clientes como si llevaras media vida con agenda llena.
 
 Ese punto intermedio tiene algo muy bonito: te obliga a ser honesta.
 
-Estoy construyendo para personas de mi entorno. Para ideas que necesitan forma. Para webs que tienen que explicar algo. Para herramientas que pueden ahorrar tiempo. Para proyectos que quizá no son enormes, pero sí son reales.
+Pero también tiene algo incómodo: tus propios proyectos empiezan a pedirte el mismo nivel de cuidado que les das a los de otros. Y ahí es donde yo metí la pata.
 
-Y si esos proyectos son reales, mi portfolio también tiene que estar a la altura.
+## La carpintera con la casa sin terminar
 
-## No quería hacerlo más grande, quería hacerlo más fiable
+LightON tiene TypeScript, Docker, PostgreSQL, automatización Python, tests E2E con Playwright y un Lighthouse rozando 100.
 
-Durante un tiempo pensé en el portfolio como una especie de escaparate: que se vea bonito, que tenga mi foto, mis proyectos y una forma de contacto.
+Discográfica tiene Next.js 16, Sanity CMS, optimización de imágenes y un pipeline de CI que revisa el bundle antes de deployar.
 
-Pero cuanto más trabajo iba acumulando, más claro veía que no bastaba con que se viera bien. Tenía que aguantar cambios. Tenía que ordenar mejor lo que estoy aprendiendo. Tenía que explicar los proyectos sin que yo estuviera delante poniendo contexto.
+PurpleBasqueTours tiene i18n, booking con Cal.com, formularios con Zod y monitoreo con Sentry.
 
-No quería añadir cosas por añadir.
+¿Y mi portfolio? Mi propia casa digital. Esa desde la que salgo al mundo a contar quién soy y qué hago. Esa que un recruiter abre en 15 segundos y decide si sigue leyendo o cierra la pestaña.
 
-Quería que cada pieza tuviera sentido.
+Esa... tenía los metadatos a medio poner. Las imágenes sin optimizar. El JSON-LD duplicado y roto. La fuente de Google cargando 300KB para pesos que nunca usaba. El sitemap sin decirle a Google qué imágenes tenía cada página. Y los datos de mis propios proyectos — los mismos que tanto cuido cuando son de otros — desactualizados o directamente en blanco.
 
-Por eso empecé a ordenar el modelo de proyectos, las métricas, las páginas de detalle, el SEO, el sitemap y los controles antes de publicar. Dicho así suena muy técnico, pero en realidad era bastante simple: quería tocar mi portfolio sin miedo.
+Soy la carpintera con la casa sin terminar. Y me dio vergüenza.
 
-## Los casos de estudio son una forma de contar mejor
+No la vergüenza que paraliza. La vergüenza que empuja.
 
-Antes, una tarjeta de proyecto podía quedarse en título, descripción y enlace. Eso está bien para empezar, pero se queda corto cuando detrás hay decisiones reales.
+## Seis horas, una IA y yo
 
-No es lo mismo decir "hice una web" que contar:
+El miércoles me senté a las 11 de la mañana. Tenía café, tenía una checklist mental de cosas que quería arreglar y tenía — esto es importante — un método.
 
-- qué problema había,
-- qué necesitaba la persona o el proyecto,
-- qué decisiones tomé,
-- qué aprendí,
-- qué parte técnica cuidé para que funcionara mejor.
+Porque aquí va una confesión: durante meses trabajé a golpe de intuición. Veo algo mal, lo arreglo. Veo otra cosa, la toco. Sin orden, sin prioridades, sin saber si lo que estaba haciendo era lo que más importaba o lo que menos.
 
-Por eso añadí páginas de caso de estudio. No para sonar más grande de lo que soy, sino para explicar mejor lo que hago.
+Eso funciona cuando estás aprendiendo. Cuando tu portfolio tiene tres páginas y dos proyectos. Pero cuando crece — y el mío creció sin pedirme permiso — la intuición no alcanza.
 
-LightON no es solo una web. También es aprendizaje sobre estructura, formularios, mantenimiento y automatización.
+Así que antes de tocar una sola línea de código, me senté a pensar. ¿Qué necesita realmente este portfolio? ¿Qué espera Google de una página en 2026? ¿Qué espera un recruiter que abre el enlace desde LinkedIn? ¿Qué espero yo cuando vuelvo dos semanas después y necesito tocar algo sin romperlo?
 
-Discográfica no es solo un proyecto bonito. También es contenido, catálogo, imágenes, CMS y rendimiento.
+De ahí salió una lista de 13 cosas. No 13 ideas vagas. 13 requisitos con criterios de aceptación. Cosas como "cuando alguien comparte mi portfolio en Twitter, la tarjeta tiene que mostrar mi nombre, mi descripción y mi imagen sin que yo esté ahí para comprobarlo". O "cuando Google indexa mi blog, tiene que saber que cada post es un BlogPosting, no texto suelto".
 
-PurpleBasqueTours no es solo otra entrada en la lista. Es una forma de pensar cómo una experiencia se explica online para que alguien la entienda y pueda dar el siguiente paso.
+Suena a ingeniería. Y lo es. Pero también es cuidado. Porque ponerse a pensar antes de picar código es la diferencia entre remendar agujeros y construir una casa.
 
-Cuando lo miro así, el portfolio deja de ser una galería y empieza a parecerse más a un diario técnico de lo que voy construyendo.
+El resto de la sesión fue un baile. Yo marcando el ritmo, la IA ejecutando. Yo diciendo "esto no me gusta, revisalo". La IA trayendo opciones. Yo tomando decisiones. La IA implementando. Yo verificando.
+
+Así durante seis horas.
 
 ## Lo que no se ve también comunica
 
-Hay una parte del portfolio que casi nadie ve, pero que está trabajando todo el tiempo.
+A las dos de la tarde ya tenía la primera fase lista. Los metadatos que me faltaban — `twitter:site`, `og:locale` — cosas que parecen una tontería pero que son la diferencia entre "esta persona sabe lo que hace" y "esto lo hizo un robot".
 
-El `<head>` de cada página. El título que aparece en Google. La descripción cuando compartes un enlace. La imagen que sale en LinkedIn o WhatsApp. El sitemap que le dice a los buscadores qué existe. Los tests que me avisan si rompo algo. El build que falla cuando algo no está listo.
+A las cuatro, los datos estructurados. Google no solo lee texto: lee estructura. Y si vos no le decís qué es cada cosa — esto es un artículo, esto es un proyecto, esta persona es la autora — lo adivina. Y cuando Google adivina, tu portfolio pierde.
 
-Eso también es comunicación.
+Así que le puse JSON-LD a todo. Cada post del blog ahora es un `BlogPosting` con autor, fecha y URL canónica. Cada proyecto es un `CreativeWork`. La página del blog es una `CollectionPage`. Suena a burocracia digital, pero es lo que hace que cuando alguien busca "desarrolladora full-stack portfolio", Google entienda que esta página existe y qué contiene.
 
-Cuando alguien comparte mi portfolio, yo no estoy ahí para explicar quién soy. La página tiene que hacerlo por mí.
+Luego vinieron las imágenes. En el post de LightON ya conté mi obsesión con Lighthouse. Pero una cosa es optimizar las imágenes de un cliente y otra muy distinta es optimizar las tuyas. Las mías estaban en JPEG pelado. Sin comprimir. Sin variantes para móvil. Sin formato moderno.
 
-Cuando alguien entra desde móvil, no puedo pedirle paciencia infinita. La web tiene que cargar, verse bien y dejar claro qué hay.
+Generé versiones WebP. Generé versiones AVIF — que pesan la mitad que WebP y se ven igual. Metí `srcSet` y `sizes` para que el navegador elija la imagen correcta según la pantalla. Y lo envolví todo en un `<picture>` para que los navegadores que entienden AVIF lo usen y los que no, tengan WebP de respaldo.
 
-Cuando yo vuelvo dos semanas después a tocar una parte, necesito que el proyecto no dependa de la memoria que tenía ese día. Necesito estructura.
+Cada kilobyte que no se carga es un respiro para quien entra desde el móvil. Y la mayoría entra desde el móvil.
 
-Por eso el SEO, el sitemap, la imagen Open Graph y los scripts de validación no son una capa de purpurina técnica. Son parte del cuidado.
+## La puerta antes del caos
 
-## Una puerta antes del caos
+A las seis de la tarde ya tenía el bundle analyzer corriendo. Es una herramienta que te muestra — con un gráfico de colores — qué pesa cada parte de tu sitio. Como una radiografía.
 
-Ahora tengo una puerta antes de publicar.
+Descubrí que la fuente Inter que uso para todo el portfolio estaba cargando 21 pesos tipográficos distintos. 300KB. Para un sitio que solo usa 5.
 
-En local puedo lanzar `pnpm run check:local` y revisar tests, lint y build sin depender de internet. Antes de publicar, con conexión, `pnpm run check:preprod` añade el audit de producción.
+Pasé de `wght@400..900` a `wght@400;500;600;700;900`. Cien kilobytes menos. El tipo de cambio que solo te da pararte a mirar.
 
-No es perfecto. Nada lo es. Pero me da una base.
+Luego el sitemap. Ya tenía uno, pero era básico: lista de URLs, fin. Le añadí las imágenes. Ahora Google no solo sabe qué páginas existen, sino qué imágenes tiene cada una. Para un portfolio visual, eso importa.
 
-Si algo falla, lo veo antes. Si una ruta nueva no entra en el sitemap, puedo corregirlo. Si un componente se rompe, los tests protestan. Si una imagen falta, el build o la revisión me lo ponen delante.
+Y finalmente — esto fue lo más satisfactorio — me senté a revisar los datos de mis propios proyectos en el código. Lo que dice mi portfolio sobre PurpleBasqueTours, sobre LightON, sobre Discográfica.
 
-Y esa sensación, cuando estás construyendo tu propia casa digital mientras aprendes, vale mucho.
+Era un desastre.
 
-## Mi marca también vive en los detalles
+PurpleBasqueTours aparecía como "React + Vite + SCSS" cuando en realidad es Next.js 15 con Sanity CMS, booking con Cal.com, formularios con Zod, monitoreo con Sentry y contenido multilingüe en inglés y español. Lo tenía documentado como si fuera una SPA genérica cuando es el proyecto más complejo que he hecho.
 
-Hay detalles que parecen pequeños y no lo son.
+Discográfica tenía las puntuaciones de complejidad, innovación e impacto a cero. En blanco. Como si no existiera. Y es un proyecto con Next.js 16, Lighthouse CI y Playwright.
 
-La imagen Open Graph por defecto. El círculo rosa. El nombre. Los colores. El modo en el que se ordenan los proyectos. La forma de escribir una bio sin fingir una etapa que todavía no es.
+Mi propio portfolio. Mis propios proyectos. Y yo era la que peor los estaba contando.
 
-Todo eso habla.
+Eso dolió. Pero también me alivió encontrarlo. Porque ahora están bien. Ahora quien lea mi portfolio ve lo que realmente hice, no una versión reducida que escribí con prisa hace meses.
 
-ThebellepoquE no es solo un nombre que pongo en una esquina. Es una forma de hacer las cosas con mucha luZ, incluso cuando estoy arreglando scripts, ajustando rutas o peleándome con un footer que tapa botones.
+## Lo que me llevo
 
-También hay marca ahí.
+Me llevo que blindar no es ponerle candados a todo. Es revisar. Es sentarte seis horas con un método y decir "voy a cuidar esto como si fuera para alguien más".
 
-En la insistencia.
+Me llevo que la herramienta — la IA — es increíblemente potente cuando vos sabés lo que querés. Pero no reemplaza el criterio. No reemplaza la pausa de decir "esto no me gusta, revisalo". No reemplaza la decisión de qué importa y qué no.
 
-En no dejar las cosas a medias.
+Me llevo que mi portfolio ya no es un escaparate. Es una casa. Con cimientos. Con puertas que cierran bien. Con una checklist de 103 cosas que sé que funcionan porque las verifiqué una por una.
 
-En intentar que algo pequeño esté hecho con cuidado.
+Y me llevo que thebellepoquE no es solo un nombre que pongo en una esquina. Es una forma de hacer las cosas con mucha luZ. Incluso — sobre todo — cuando estoy arreglando lo que yo misma dejé a medias.
 
-## Qué me llevo
+Sigo empezando. Sigo aprendiendo. Sigo encontrando cosas que escribí hace meses y pensando "madre mía, cómo no vi esto antes".
 
-Me llevo que cuidar un portfolio no es solo actualizar textos o cambiar colores.
+Pero ahora tengo un método. Y una casa que me representa de verdad.
 
-Es revisar si lo que enseño todavía me representa. Es quitar lo que sobra. Es ordenar lo que empieza a crecer. Es dejar una base para que los próximos proyectos no entren a presión, sino con su propio sitio.
-
-Sigo empezando. Sigo aprendiendo. Sigo encontrando errores de hace un mes y pensando: "madre mía, ¿cómo no vi esto antes?".
-
-Pero también sigo construyendo.
-
-Y cada ajuste, cada test, cada caso de estudio y cada post me acercan un poco más a esa versión de mí que sabe llevar las ideas a la práctica de forma útil.
-
-#Portfolio #SEO #OpenGraph #Testing #MarcaPersonal #BuildingInPublic #JuniorDev
+#Portfolio #SEO #JSONLD #Performance #WebP #AVIF #SpecDrivenDevelopment #MarcaPersonal #BuildingInPublic
