@@ -1,6 +1,6 @@
 # Tasks: axe-core-accessibility-testing
 
-## Phase 1: Infrastructure (MUST verify before Phase 2)
+## Phase 1: Infrastructure ✅ (PR #8 - MERGED)
 
 ### 1.1 Add dependencies to package.json
 **Files:** `package.json`
@@ -54,7 +54,7 @@ export async function checkA11y(
 
 ---
 
-## Phase 2: Component Tests
+## Phase 2: Component Tests ✅ (PR #10)
 
 ### 2.1 Hero.test.tsx
 Add accessibility describe block at end of file.

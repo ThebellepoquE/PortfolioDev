@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import type { ReactElement } from 'react';
 
 import { ErrorBoundary } from './ErrorBoundary';
+import { checkA11y } from '../test/a11y-utils';
 
 function BrokenChild(): ReactElement {
   throw new Error('Test error');
@@ -62,5 +63,21 @@ describe('404 Page - Enlace semántico', () => {
 
     const buttons = screen.queryAllByRole('button', { name: /volver al inicio/i });
     expect(buttons).toHaveLength(0);
+  });
+});
+
+describe('ErrorBoundary a11y', () => {
+  it('should have no accessibility violations on fallback UI', async () => {
+    const { container } = render(
+      <ErrorBoundary>
+        <BrokenChild />
+      </ErrorBoundary>,
+    );
+    const results = await checkA11y(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it.skip('color contrast requires manual browser verification', async () => {
+    // TODO: axe color-contrast rule doesn't work in jsdom, test manually in browser
   });
 });
