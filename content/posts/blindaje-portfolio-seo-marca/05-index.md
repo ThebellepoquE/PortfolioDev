@@ -33,7 +33,7 @@ PurpleBasqueTours tiene i18n, booking con Cal.com, formularios con Zod y monitor
 
 Esa... tenía los metadatos a medio poner. Las imágenes sin optimizar. El JSON-LD duplicado y roto. La fuente de Google cargando 300KB para pesos que nunca usaba. El sitemap sin decirle a Google qué imágenes tenía cada página. Y los datos de mis propios proyectos — los mismos que tanto cuido cuando son de otros — desactualizados o directamente en blanco.
 
-En casa de herrerx, cuchillo de palo. ¡Qué vergüenza!
+En casa de herrerx, cuchillo de palo. Qué vergüenza!
 
 No la vergüenza que paraliza. La vergüenza que empuja.
 
