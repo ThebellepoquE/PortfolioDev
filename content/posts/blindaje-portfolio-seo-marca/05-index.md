@@ -21,7 +21,7 @@ Ese punto intermedio tiene algo muy bonito: te obliga a ser honesta.
 
 Pero también tiene algo incómodo: tus propios proyectos empiezan a pedirte el mismo nivel de cuidado que les das a los de otros. Y ahí es donde yo metí la pata.
 
-## La carpintera con la casa sin terminar
+## En casa de herrerx
 
 LightON tiene TypeScript, Docker, PostgreSQL, automatización Python, tests E2E con Playwright y un Lighthouse rozando 100.
 
@@ -33,7 +33,7 @@ PurpleBasqueTours tiene i18n, booking con Cal.com, formularios con Zod y monitor
 
 Esa... tenía los metadatos a medio poner. Las imágenes sin optimizar. El JSON-LD duplicado y roto. La fuente de Google cargando 300KB para pesos que nunca usaba. El sitemap sin decirle a Google qué imágenes tenía cada página. Y los datos de mis propios proyectos — los mismos que tanto cuido cuando son de otros — desactualizados o directamente en blanco.
 
-Soy la carpintera con la casa sin terminar. Y me dio vergüenza.
+En casa de herrerx, cuchillo de palo. ¡Qué vergüenza!
 
 No la vergüenza que paraliza. La vergüenza que empuja.
 
