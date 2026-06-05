@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { projectsData } from '../lib/projects';
 import { ProjectCard } from './ProjectCard';
 import { SectionTitle } from './SectionTitle';
+import { Reveal } from './Reveal';
 
 /** Sección de proyectos: destacados primero, luego el resto */
 export function Projects() {
@@ -22,8 +23,10 @@ export function Projects() {
           Proyectos
         </SectionTitle>
 
-        {sortedProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {sortedProjects.map((project, i) => (
+          <Reveal key={project.id} delay={i * 100}>
+            <ProjectCard project={project} />
+          </Reveal>
         ))}
       </div>
     </section>
