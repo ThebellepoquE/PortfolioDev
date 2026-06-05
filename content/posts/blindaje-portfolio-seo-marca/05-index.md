@@ -19,7 +19,7 @@ En el post anterior hablaba de [proyectos cercanos y problemas reales](/blog/bli
 
 Ese punto intermedio tiene algo muy bonito: te obliga a ser honesta.
 
-Pero también tiene algo incómodo: tus propios proyectos empiezan a pedirte el mismo nivel de cuidado que les das a los de otros. Y ahí es donde yo metí la pata.
+Pero también tiene algo incómodo: tus propios proyectos empiezan a pedirte el mismo nivel de cuidado que les das a los de otros. Y ahí es donde volví a olvidarme de mí.
 
 ## En casa de herrerx
 
