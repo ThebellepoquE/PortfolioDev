@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Contact } from './Contact';
 import { SITE_CONFIG } from '../lib/config';
+import { checkA11y } from '../test/a11y-utils';
 
 // Mock fetch API
 const mockFetch = vi.fn();
@@ -433,5 +434,17 @@ describe('Contact Component', () => {
       const nameInput = screen.getByLabelText(/nombre/i);
       expect(nameInput).toHaveClass('contact__input--name');
     });
+  });
+});
+
+describe('Contact a11y', () => {
+  it('should have no accessibility violations', async () => {
+    const { container } = render(<Contact />);
+    const results = await checkA11y(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it.skip('color contrast requires manual browser verification', async () => {
+    // TODO: axe color-contrast rule doesn't work in jsdom, test manually in browser
   });
 });

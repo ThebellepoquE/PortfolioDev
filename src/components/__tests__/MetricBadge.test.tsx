@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MetricBadge } from '../MetricBadge';
 import type { ProjectMetric } from '../../types/project';
+import { checkA11y } from '../../test/a11y-utils';
 
 function buildMetric(overrides: Partial<ProjectMetric> = {}): ProjectMetric {
   return {
@@ -86,5 +87,18 @@ describe('MetricBadge', () => {
       const badge = screen.getByTitle('Usuarios: 10k');
       expect(badge).toHaveAttribute('tabIndex', '0');
     });
+  });
+});
+
+describe('MetricBadge a11y', () => {
+  it('should have no accessibility violations', async () => {
+    const metric = buildMetric({});
+    const { container } = render(<MetricBadge metric={metric} />);
+    const results = await checkA11y(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it.skip('color contrast requires manual browser verification', async () => {
+    // TODO: axe color-contrast rule doesn't work in jsdom, test manually in browser
   });
 });

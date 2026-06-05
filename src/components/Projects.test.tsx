@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Projects } from './Projects';
 import { projectsData } from '../lib/projects';
+import { checkA11y } from '../test/a11y-utils';
 
 describe('Projects', () => {
   it('renderiza el título de sección', () => {
@@ -42,5 +43,20 @@ describe('Projects', () => {
 
     expect(headings.at(0)).toBe('PurpleBasqueTours');
     expect(headings.at(-1)).toBe('Portfolio Personal (thebellepoque.dev)');
+  });});
+
+describe('Projects a11y', () => {
+  it('should have no accessibility violations', async () => {
+    const { container } = render(
+      <MemoryRouter>
+        <Projects />
+      </MemoryRouter>,
+    );
+    const results = await checkA11y(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it.skip('color contrast requires manual browser verification', async () => {
+    // TODO: axe color-contrast rule doesn't work in jsdom, test manually in browser
   });
 });

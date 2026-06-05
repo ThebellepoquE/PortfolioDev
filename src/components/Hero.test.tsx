@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Hero } from './Hero';
+import { checkA11y } from '../test/a11y-utils';
 
 describe('Hero', () => {
   it('renderiza nombre, handle y bio', () => {
@@ -25,5 +26,16 @@ describe('Hero', () => {
       screen.getByRole('link', { name: /perfil de linkedin/i }),
     ).toBeInTheDocument();
   });
+});
 
+describe('Hero a11y', () => {
+  it('should have no accessibility violations', async () => {
+    const { container } = render(<Hero />);
+    const results = await checkA11y(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it.skip('color contrast requires manual browser verification', async () => {
+    // TODO: axe color-contrast rule doesn't work in jsdom, test manually in browser
+  });
 });

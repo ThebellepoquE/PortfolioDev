@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { BlogPost } from '../BlogPost';
+import { checkA11y } from '../../../test/a11y-utils';
 
 const mockGetPostBySlug = vi.fn();
 const mockFormatDate = vi.fn((value: string) => value);
@@ -102,5 +103,33 @@ describe('BlogPost', () => {
 
       expect(mockFormatDate).toHaveBeenCalledWith('2025-01-15');
     });
+  });
+});
+
+describe('BlogPost a11y', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockFormatDate.mockReturnValue('15 de enero de 2025');
+  });
+
+  it('should have no accessibility violations', async () => {
+    mockGetPostBySlug.mockReturnValue({
+      meta: {
+        slug: 'test-post',
+        title: 'Título accesible',
+        description: 'Descripción',
+        date: '2025-01-15',
+        tags: ['react'],
+        image: '/images/post.webp',
+      },
+      content: '## Subtítulo\n\nContenido del post.',
+    });
+    const { container } = renderBlogPost('test-post');
+    const results = await checkA11y(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it.skip('color contrast requires manual browser verification', async () => {
+    // TODO: axe color-contrast rule doesn't work in jsdom, test manually in browser
   });
 });
