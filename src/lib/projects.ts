@@ -38,7 +38,7 @@ export const projectsData: ProjectFull[] = [
     complexity: 7,
     innovation: 6,
     impact: 8,
-    technologies: ['React', 'TypeScript', 'Vite', 'SCSS', 'SEO on-page'],
+    technologies: ['Next.js', 'Sanity', 'TypeScript', 'SEO on-page'],
     image: '/og-image-default.jpg',
     imageAlt: 'Caso de estudio PurpleBasqueTours',
     metrics: [
@@ -75,11 +75,11 @@ export const projectsData: ProjectFull[] = [
       {
         title: 'Preparar una base publicable sin sobrecomplicar el stack',
         description: 'El proyecto necesitaba velocidad, claridad y facilidad de mantenimiento.',
-        solution: 'SPA ligera con componentes reutilizables, estilos SCSS y contenido estructurado para iterar.',
-        technologies: ['React', 'TypeScript', 'SCSS'],
+        solution: 'Next.js con Sanity CMS para contenido dinámico gestionable sin sacrificar velocidad ni mantenimiento.',
+        technologies: ['Next.js', 'Sanity', 'TypeScript'],
       },
     ],
-    architecture: 'SPA Vite + React con contenido estructurado, rutas claras y metadatos por página.',
+    architecture: 'Next.js App Router + Sanity CMS headless con rutas dinámicas, contenido gestionable y metadatos por página.',
     learnings: [
       'Convertir servicios presenciales en una propuesta digital clara',
       'Priorizar mensajes y CTAs para tráfico móvil',
