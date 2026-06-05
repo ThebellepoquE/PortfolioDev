@@ -35,7 +35,7 @@ Esa... tenía los metadatos a medio poner. Las imágenes sin optimizar. El JSON-
 
 En casa de herrerx, cuchillo de palo. Qué vergüenza!
 
-No la vergüenza que paraliza. La vergüenza que empuja.
+No la que paraliza sino la que empuja.
 
 ## Seis horas, una IA y yo
 
