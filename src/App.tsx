@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
+import { ScrollToTopButton } from './components/ScrollToTopButton/ScrollToTopButton';
 
 // Lazy load por ruta (code-splitting: cada página en su chunk)
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
@@ -63,6 +64,7 @@ function App() {
           } />
         </Routes>
       </main>
+      <ScrollToTopButton />
       <Suspense fallback={null}>
         <Footer />
       </Suspense>

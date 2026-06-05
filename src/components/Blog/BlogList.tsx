@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getAllPosts } from '../../lib/posts';
 import { formatDateDayMonthYear } from '../../lib/formatDate';
 import { SectionTitle } from '../SectionTitle';
+import { Reveal } from '../Reveal';
 
 /** Lista de posts del blog */
 export function BlogList() {
@@ -28,12 +29,12 @@ export function BlogList() {
           </div>
         ) : (
           <div className="blog-list__grid">
-            {posts.map((post) => (
-              <Link
-                key={post.slug}
-                to={`/blog/${post.slug}`}
-                className="blog-card"
-              >
+            {posts.map((post, i) => (
+              <Reveal key={post.slug} delay={i * 100}>
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="blog-card"
+                >
                 <div className="blog-card__content">
                   {/* Imagen destacada */}
                   {post.image && (
@@ -75,7 +76,8 @@ export function BlogList() {
                   </span>
                 </div>
               </Link>
-            ))}
+            </Reveal>
+          ))}
           </div>
         )}
       </div>

@@ -1,12 +1,14 @@
 import { GithubIcon, LinkedinIcon } from './icons';
 import { SITE_CONFIG } from '../lib/config';
 import { SectionTitle } from './SectionTitle';
+import { Reveal } from './Reveal';
 
 /** Hero section con foto, nombre y bio */
 export function Hero() {
   return (
     <section id="inicio" className="hero">
-      <div className="hero__container">
+      <Reveal>
+        <div className="hero__container">
         {/* Columna izquierda - Foto */}
         <div className="hero__image-wrapper">
           <div className="hero__image-container">
@@ -91,6 +93,7 @@ export function Hero() {
           </div>
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }
