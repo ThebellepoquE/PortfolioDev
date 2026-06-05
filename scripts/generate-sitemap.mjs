@@ -37,11 +37,11 @@ function readBaseUrl() {
 function readProjectsFromSource() {
   const content = readFileSync(projectsFile, 'utf-8');
   const projects = [];
-  const projectMatcher = /id:\s*['"]([^'"]+)['"][\s\S]*?date:\s*['"]([^'"]+)['"]/g;
+  const projectMatcher = /id:\s*['"]([^'"]+)['"][\s\S]*?image:\s*['"]([^'"]+)['"][\s\S]*?date:\s*['"]([^'"]+)['"]/g;
   let match;
 
   while ((match = projectMatcher.exec(content)) !== null) {
-    projects.push({ id: match[1], date: match[2] });
+    projects.push({ id: match[1], image: match[2], date: match[3] });
   }
 
   if (projects.length === 0) {
@@ -97,7 +97,11 @@ function readPostsFromFs() {
       const dateMatch = frontmatter.match(/date:\s*(.+)/);
       const rawDate = dateMatch?.[1] ?? '';
       const date = rawDate ? normalizeDate(rawDate) || new Date().toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10);
-      entries.push({ slug, date });
+
+      const imageMatch = frontmatter.match(/image:\s*['"]([^'"]+)['"]/);
+      const image = imageMatch?.[1] ?? null;
+
+      entries.push({ slug, date, image });
     }
   } catch (error) {
     console.error('Error leyendo content/posts:', error);
@@ -105,13 +109,18 @@ function readPostsFromFs() {
   return entries;
 }
 
-function buildUrl({ loc, lastmod, changefreq, priority }) {
-  return `  <url>
+function buildUrl({ loc, lastmod, changefreq, priority, image }, baseUrl) {
+  let xml = `  <url>
     <loc>${escapeXml(loc)}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-  </url>`;
+    <priority>${priority}</priority>`;
+  if (image) {
+    const imageUrl = image.startsWith('http') ? image : `${baseUrl}${image}`;
+    xml += `\n    <image:image>\n      <image:loc>${escapeXml(imageUrl)}</image:loc>\n    </image:image>`;
+  }
+  xml += `\n  </url>`;
+  return xml;
 }
 
 function buildXml() {
@@ -125,7 +134,7 @@ function buildXml() {
       lastmod: today,
       changefreq: page.changefreq,
       priority: page.priority,
-    }));
+    }, baseUrl));
   }
 
   for (const project of readProjectsFromSource()) {
@@ -134,7 +143,8 @@ function buildXml() {
       lastmod: toLastmod(project.date),
       changefreq: PROJECT_CHANGEFREQ,
       priority: PROJECT_PRIORITY,
-    }));
+      image: project.image,
+    }, baseUrl));
   }
 
   for (const post of readPostsFromFs()) {
@@ -143,11 +153,13 @@ function buildXml() {
       lastmod: toLastmod(post.date),
       changefreq: POST_CHANGEFREQ,
       priority: POST_PRIORITY,
-    }));
+      image: post.image,
+    }, baseUrl));
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urls.join('\n')}
 </urlset>
 `;
