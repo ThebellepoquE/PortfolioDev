@@ -144,45 +144,91 @@
     border-bottom: none;
   }
 
+  /* =========================================================
+     LIGHT MODE — Patrón unificado para elementos neón
+     =========================================================
+     Reglas consistentes (siguiendo feedback del usuario):
+
+     1. **Texto pequeño (tags, links, labels, badges, botones):**
+        color darkened (no neon puro). El outline/borde negro en
+        texto pequeño ensucia y no se lee. Solo el color alcanza
+        para legibilidad. axe-core reconoce estos darkened como
+        WCAG AA.
+     2. **Badges con border:** el border se vuelve oscuro/visible
+        para que el "círculo" se distinga del fondo blanco.
+     3. **Tag amarillo (stack):** invertido (fondo amarillo + texto
+        negro) — único caso donde el amarillo sobre blanco no es
+        viable ni con outline.
+     4. **Sin darkened en dark mode** — los neón quedan como están.
+     ========================================================= */
+
   .blog-card__link {
-    /* En modo claro usamos un tono más oscuro para mejorar el contraste sobre fondo blanco */
-    color: #b38600;
+    color: #b38600; /* mostaza darkened, era 1.18:1 */
     text-shadow: none;
 
     &:hover {
       color: $yellow;
-
-      /* Sombreado inferior para dar sensación de relieve bajo el texto */
       text-shadow:
         0 1px 0 rgb(0 0 0 / 45%),
         var(--text-shadow-yellow);
     }
   }
 
-  /* MetricBadge en tema claro: borde y texto visibles sobre fondo blanco */
+  /* MetricBadge en light mode: solo color darkened (sin outline) */
   .metric-badge {
-    border-color: rgb(0 0 0 / 12%);
+    border-color: rgb(0 0 0 / 20%);
 
     &--pink {
+      color: #D11072;
       border-color: rgba($pink-rgb, 0.5);
-      text-shadow: 0 0 0 1px rgb(0 0 0 / 15%);
     }
 
     &--yellow {
-      border-color: rgb(0 0 0 / 35%);
       color: #b38600;
+      border-color: rgb(0 0 0 / 35%);
       text-shadow: var(--text-shadow-yellow);
-      box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 2px 8px rgba($yellow-rgb, 0.25);
     }
 
     &--green {
+      color: #0E8A0E;
       border-color: rgba($green-rgb, 0.4);
-      text-shadow: 0 0 0 1px rgb(0 0 0 / 15%);
     }
   }
 
-  .metric-badge__label {
-    text-shadow: 0 0 0 1px rgb(0 0 0 / 20%);
+  .project-card {
+    &__featured {
+      color: #0E8A0E; /* verde darkened, era 1.37:1 */
+      border-color: #0E8A0E; /* borde también darkened */
+    }
+
+    &__details-link {
+      color: #0E8A0E; /* verde darkened, era 1.37:1 */
+    }
+
+    &__tech {
+      &--pink {
+        color: #D11072; /* rosa darkened, era 3.64:1 */
+      }
+
+      &--green {
+        color: #0E8A0E; /* verde darkened, era 1.37:1 */
+      }
+
+      &--yellow {
+        /* Amarillo sobre blanco: invertido (fondo amarillo + texto negro) */
+        background-color: $yellow;
+        color: #000;
+        text-shadow: none;
+      }
+    }
+  }
+
+  .contact {
+    &__cv {
+      color: #b38600; /* mostaza darkened, era 1.18:1 */
+      border-color: #b38600; /* borde también darkened para que se vea */
+      text-shadow: none;
+    }
   }
 
   p {

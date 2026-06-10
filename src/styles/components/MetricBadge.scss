@@ -65,9 +65,6 @@
 
   &--pink {
     color: $pink;
-
-    /* Contorno para contraste WCAG AA (Lighthouse) */
-    text-shadow: 0 0 0 2px var(--bg-dark);
     box-shadow: 0 0 12px rgba($pink-rgb, 0.3);
 
     &::after {
@@ -83,7 +80,6 @@
 
   &--green {
     color: $green;
-    text-shadow: 0 0 0 2px var(--bg-dark);
     box-shadow: 0 0 12px rgba($green-rgb, 0.3);
   }
 }
@@ -97,8 +93,8 @@
   opacity: 1;
   font-size: 0.6875rem;
 
-  /* Contorno para contraste WCAG AA (hereda color; borde legible en fondos oscuros) */
-  text-shadow: 0 0 0 2px var(--bg-dark);
+  /* El outline para contraste WCAG AA viene del mixin en cada variante
+     (--pink / --yellow / --green). Solo re-aplicamos para tamaños mayores. */
 
   @media (width >= 640px) {
     font-size: 0.75rem;
