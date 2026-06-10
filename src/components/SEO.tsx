@@ -20,7 +20,7 @@ export interface SEOProps {
   publishedTime?: string;
   /** Para article: tags */
   tags?: string[];
-  /** Si false, no añade sufijo "| Ione | Full-stack Developer" al title */
+  /** Si false, no añade sufijo "| Ione | Desarrolladora Web" al title */
   noSuffix?: boolean;
   /** JSON-LD opcional para Datos Estructurados */
   jsonLd?: JsonLd;

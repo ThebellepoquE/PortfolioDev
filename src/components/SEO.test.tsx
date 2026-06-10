@@ -31,7 +31,7 @@ describe('SEO', () => {
     it('renders title with suffix by default', () => {
       renderSEO({ title: 'Blog', description: 'My blog' });
 
-      expect(document.title).toBe('Blog | Ione | Full-stack Developer');
+      expect(document.title).toBe('Blog | Ione | Desarrolladora Web · Formación Full-stack');
     });
 
     it('renders title without suffix when noSuffix is true', () => {

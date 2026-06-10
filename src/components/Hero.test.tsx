@@ -10,7 +10,7 @@ describe('Hero', () => {
     expect(screen.getByRole('heading', { name: /ione/i })).toBeInTheDocument();
     expect(screen.getByText('@thebellepoque')).toBeInTheDocument();
     expect(
-      screen.getByText(/Full-stack Developer \| Automatizaciones/i),
+      screen.getByText(/Desarrolladora Web.*Formación Full-stack/i),
     ).toBeInTheDocument();
   });
 

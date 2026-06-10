@@ -10,8 +10,8 @@ export function HomePage() {
   return (
     <>
       <SEO
-        title="Ione | Full-stack Developer"
-        description="Portfolio de Ione: Desarrolladora Full-stack especializada en React, TypeScript y automatizaciones. Descubre mis proyectos y artículos sobre desarrollo."
+        title="Ione | Desarrolladora Web"
+        description="Portfolio de Ione: Desarrolladora Web. Python, JavaScript, React, TypeScript & Automatizaciones."
         url="/"
         noSuffix
         jsonLd={{
@@ -25,9 +25,9 @@ export function HomePage() {
             'https://github.com/ThebellepoquE',
             'https://www.linkedin.com/in/thebellepoque',
           ],
-          jobTitle: 'Full-stack Developer',
+          jobTitle: 'Desarrolladora Web · Formación Full-stack',
           description:
-            'Desarrolladora full-stack especializada en React, TypeScript y automatizaciones.',
+            'Desarrolladora web. Python, JavaScript, React, TypeScript & Automatizaciones.',
         }}
       />
       <Hero />
