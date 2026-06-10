@@ -28,7 +28,7 @@
     "gga:install": "gga install",
     "gga:pr": "gga run --pr-mode",
     "ollama:serve": "ollama serve",
-    "ollama:pull": "ollama pull qwen2.5-coder:7b"
+    "ollama:pull": "ollama pull qwen2.5-coder:3b"
   },
   "dependencies": {
     "react": "^19.2.0",
