@@ -71,6 +71,7 @@ export function Navbar() {
                     location.pathname.startsWith('/blog') ? 'is-active' : ''
                   }`}
                   aria-label="Ir al blog"
+                  aria-current={location.pathname.startsWith('/blog') ? 'page' : undefined}
             >
               Blog
             </Link>
@@ -122,8 +123,11 @@ export function Navbar() {
                 {/* Icono Blog */}
                 <Link
                   to="/blog"
-                  className="mobile-nav__item mobile-nav__item--green"
+                  className={`mobile-nav__item mobile-nav__item--green ${
+                    location.pathname.startsWith('/blog') ? 'is-active' : ''
+                  }`}
                   aria-label="Ir al blog"
+                  aria-current={location.pathname.startsWith('/blog') ? 'page' : undefined}
                 >
                   <div className="mobile-nav__item-icon">
                     <FileIcon width={24} height={24} />
