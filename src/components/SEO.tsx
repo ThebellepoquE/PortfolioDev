@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { SITE_CONFIG } from '../lib/config';
+import type { JsonLd } from '../lib/jsonLd';
 
 /** Imagen por defecto para OG/Twitter (1200×630). public/og-image-default.webp */
 const OG_IMAGE_DEFAULT = `${SITE_CONFIG.baseUrl}/og-image-default.webp`;
@@ -22,7 +23,7 @@ export interface SEOProps {
   /** Si false, no añade sufijo "| Ione | Full-stack Developer" al title */
   noSuffix?: boolean;
   /** JSON-LD opcional para Datos Estructurados */
-  jsonLd?: Record<string, unknown>;
+  jsonLd?: JsonLd;
   /** Dimensiones de og:image (default: 1200) */
   ogImageWidth?: string;
   /** Dimensiones de og:image (default: 630) */

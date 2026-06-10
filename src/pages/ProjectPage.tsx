@@ -5,6 +5,7 @@ import { projectsData } from '../lib/projects';
 import { formatDateDayMonthYear } from '../lib/formatDate';
 import { SEO } from '../components/SEO';
 import { SITE_CONFIG } from '../lib/config';
+import type { JsonLd } from '../lib/jsonLd';
 
 /** Convierte YYYY-MM a ISO 8601 (YYYY-MM-01) para meta y <time dateTime>. */
 function toISODate(value: string): string {
@@ -58,7 +59,7 @@ export function ProjectPage() {
   const baseUrl = SITE_CONFIG.baseUrl;
   const projectUrl = `${baseUrl}/proyecto/${project.id}`;
 
-  const jsonLd: Record<string, unknown> = {
+  const jsonLd: JsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
     name: project.title,

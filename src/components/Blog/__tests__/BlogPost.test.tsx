@@ -4,6 +4,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { BlogPost } from '../BlogPost';
 import { checkA11y } from '../../../test/a11y-utils';
+import type { JsonLd } from '../../../lib/jsonLd';
 
 const mockGetPostBySlug = vi.fn();
 const mockFormatDate = vi.fn((value: string) => value);
@@ -167,7 +168,7 @@ describe('BlogPost JSON-LD', () => {
     document.head.innerHTML = '';
   });
 
-  function getJsonLd(): Record<string, unknown> | null {
+  function getJsonLd(): JsonLd | null {
     const script = document.querySelector('script[type="application/ld+json"]');
     if (!script?.textContent) return null;
     return JSON.parse(script.textContent);

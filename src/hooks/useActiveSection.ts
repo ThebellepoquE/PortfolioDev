@@ -15,7 +15,7 @@ export function useActiveSection(sectionIds: string[]): string | null {
 
     const elements = sectionIds
       .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
+      .filter((el): el is HTMLElement => el != null);
 
     if (elements.length === 0) return;
 
