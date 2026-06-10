@@ -14,6 +14,13 @@
   --bg-card: #1a1a1a;
   --bg-card-rgb: 26, 26, 26;
 
+  // Chrome (navbar, footer, mobile nav) — siempre oscuro
+  --chrome-bg: #0a0a0a;
+  --chrome-text: #F5F5F5;
+  --chrome-text-secondary: rgba(245, 245, 245, 0.7);
+  --chrome-border: rgba(255, 255, 255, 0.1);
+  --chrome-card-bg: rgba(26, 26, 26, 0.95);
+
   // Text & border
   --text: #F5F5F5;
   --text-secondary: rgb(245 245 245 / 70%);
@@ -43,6 +50,18 @@
   --bg-dark: #f8f8f8; // Casi blanco
   --bg-card: #fff; // Blanco puro
 
+  // Chrome — copia exacta del modo oscuro
+  --chrome-bg: #0a0a0a;
+  --chrome-text: #F5F5F5;
+  --chrome-text-secondary: rgba(245, 245, 245, 0.7);
+  --chrome-border: rgba(255, 255, 255, 0.1);
+  --chrome-card-bg: rgba(26, 26, 26, 0.95);
+
+  // Paleta accesible para modo claro (WCAG AA)
+  --pink-accessible: #C00F70;
+  --green-accessible: #0B6E0B;
+  --amber-accessible: #856200;
+
   // Text & border
   --text: #000;
   --text-secondary: #222; // Un gris casi negro para mejor definición
@@ -67,6 +86,13 @@ $green-rgb: var(--green-rgb);
 // Surface
 $bg-dark: var(--bg-dark);
 $bg-card: var(--bg-card);
+
+// Chrome
+$chrome-bg: var(--chrome-bg);
+$chrome-text: var(--chrome-text);
+$chrome-text-secondary: var(--chrome-text-secondary);
+$chrome-border: var(--chrome-border);
+$chrome-card-bg: var(--chrome-card-bg);
 
 // Text & border
 $text: var(--text);

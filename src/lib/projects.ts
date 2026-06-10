@@ -29,7 +29,7 @@ function toLegacy(p: ProjectFull): Project {
 export const projectsData: ProjectFull[] = [
   {
     id: 'purple-basque-tours',
-    title: 'PurpleBasqueTours',
+    title: 'Turismo',
     tagline: 'Web turística multilingüe con CMS, booking y SEO internacional',
     shortDescription:
       'Plataforma web para una marca de tours privados en Euskadi. Next.js 15 + Sanity CMS con contenido multilingüe EN/ES, integración de booking con Cal.com, formularios con Resend + Zod, galerías de fotos con lightbox y SEO internacional completo.',
@@ -64,7 +64,9 @@ export const projectsData: ProjectFull[] = [
         description: 'Routing por locale, contenido traducido en Sanity y SEO por idioma',
       },
     ],
-    links: [],
+    links: [
+      { type: 'live', url: 'https://purplebasquetours.com', title: 'Visitar sitio', isPrimary: true },
+    ],
     challenges: [
       {
         title: 'Contenido multilingüe gestionable por el cliente',
@@ -94,6 +96,7 @@ export const projectsData: ProjectFull[] = [
       'Security headers hardening (CSP, HSTS, COOP, CORP) en Next.js',
     ],
     featured: true,
+    featuredText: 'purplebasquetours.com',
     status: 'live',
     date: '2026-04',
     role: 'Full-stack developer & arquitecta',
@@ -102,7 +105,7 @@ export const projectsData: ProjectFull[] = [
   },
   {
     id: 'lighton-es',
-    title: 'Lighton.es',
+    title: 'Electricista',
     tagline: 'Plataforma full-stack con automatización, E2E y PostgreSQL',
     shortDescription:
       'Web corporativa full-stack para empresa de instalaciones eléctricas en Benidorm. React 19 + Vite en frontend, Node.js + Express + PostgreSQL en backend, automatización Python para encuestas y reseñas, y test suite completa con Vitest + Playwright E2E.',
@@ -169,6 +172,7 @@ export const projectsData: ProjectFull[] = [
       'Core Web Vitals: INP < 100ms en producción',
     ],
     featured: true,
+    featuredText: 'lighton.es',
     date: '2025-11',
     role: 'Full-stack developer & arquitecta',
     team: { size: 1, structure: 'Desarrollo full-stack + automatización' },
@@ -176,7 +180,7 @@ export const projectsData: ProjectFull[] = [
   },
   {
     id: 'lighton-encuestas',
-    title: 'Sistema de Encuestas & Reseñas (Lighton)',
+    title: 'Sistema de Encuestas & Reseñas',
     tagline: 'Automatización de feedback y Google Reviews',
     shortDescription:
       'Script Python que automatiza el envío de encuestas de satisfacción post-servicio. Si el cliente puntúa 4+ estrellas, se redirige automáticamente a Google Reviews. Optimiza la reputación online filtrando feedback negativo y potenciando reviews positivas.',
@@ -217,13 +221,14 @@ export const projectsData: ProjectFull[] = [
     ],
     learnings: ['Automatización de procesos de negocio', 'Integración con servicios externos'],
     featured: true,
+    featuredText: 'lighton.es',
     date: '2025-12',
     role: 'Desarrolladora / Automatización',
     relatedPosts: ['modularizacion-lighton'],
   },
   {
     id: 'portfolio-thebellepoque',
-    title: 'Portfolio Personal (thebellepoque.dev)',
+    title: 'Portfolio Personal',
     tagline: 'Portfolio moderno con React 19, Vite 7 y SEO completo',
     shortDescription:
       'Portfolio personal con diseño neón, tema claro/oscuro, blog con Markdown y formulario serverless. React 19 + Vite 7 + TypeScript, 124 tests con Vitest, SEO completo (metadatos, datos estructurados, imágenes responsivas WebP/AVIF), bundle visualizer y despliegue en Vercel.',
@@ -282,6 +287,7 @@ export const projectsData: ProjectFull[] = [
       'Resend para emails serverless y headers de seguridad en Vercel',
     ],
     featured: true,
+    featuredText: 'thebellepoque.dev',
     date: '2026-01',
     role: 'Full-stack developer & arquitecta',
     relatedPosts: [],
@@ -340,6 +346,7 @@ export const projectsData: ProjectFull[] = [
       'Estrategia de migración WordPress → Next.js preservando SEO y URLs',
     ],
     featured: true,
+    featuredText: 'decadenciacorporal.com',
     status: 'live',
     date: '2026-03',
     role: 'Full-stack developer & arquitecta',

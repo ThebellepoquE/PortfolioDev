@@ -1,7 +1,12 @@
 @use "../variables" as *;
 
 .blog-list {
-  min-height: 100vh;
+  min-height: calc(100svh - 60px);
+
+  @media (width >= 768px) {
+    min-height: calc(100svh - 80px);
+  }
+
   display: flex;
   justify-content: center;
   padding: 120px 1.5rem 80px;

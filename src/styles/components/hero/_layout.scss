@@ -7,12 +7,18 @@
   position: relative;
   overflow: hidden;
   padding: 0 1.5rem;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   scroll-margin-top: 0;
   padding-top: 100px;
   padding-bottom: 40px;
   background-color: $bg-dark;
-  min-height: min(800px, 100vh);
+  min-height: calc(100svh - 60px);
+
+  @media (width >= 768px) {
+    min-height: calc(100svh - 80px);
+  }
 
   @media (width >= 640px) {
     padding-left: 2rem;

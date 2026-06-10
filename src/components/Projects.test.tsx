@@ -41,8 +41,8 @@ describe('Projects', () => {
 
     const headings = screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent);
 
-    expect(headings.at(0)).toBe('PurpleBasqueTours');
-    expect(headings.at(-1)).toBe('Portfolio Personal (thebellepoque.dev)');
+    expect(headings.at(0)).toBe('Turismo');
+    expect(headings.at(-1)).toBe('Portfolio Personal');
   });});
 
 describe('Projects a11y', () => {
