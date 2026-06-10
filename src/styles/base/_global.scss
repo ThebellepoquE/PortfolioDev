@@ -14,11 +14,44 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  html {
+    scroll-snap-type: none !important;
+  }
+
+  .hero,
+  .projects,
+  .contact {
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+  }
 }
 /* stylelint-enable declaration-no-important */
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  scrollbar-color: $pink $bg-dark;
+  scrollbar-width: thin;
+}
+
+/* Scrollbar fucsia */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $pink;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(rgb(255 255 255 / 20%), rgb(255 255 255 / 20%)), $pink;
 }
 
 body {

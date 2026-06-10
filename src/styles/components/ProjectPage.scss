@@ -2,7 +2,12 @@
 @use "../layout-tokens" as layout;
 
 .project-page {
-  min-height: 80vh;
+  min-height: calc(100svh - 60px);
+
+  @media (width >= 768px) {
+    min-height: calc(100svh - 80px);
+  }
+
   padding: max(2rem, env(safe-area-inset-top)) max(1.5rem, env(safe-area-inset-right)) max(2rem, env(safe-area-inset-bottom)) max(1.5rem, env(safe-area-inset-left));
 
   /* Deja espacio extra para la barra de navegación móvil fija en la parte inferior */

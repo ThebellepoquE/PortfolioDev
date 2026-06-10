@@ -9,7 +9,7 @@
   z-index: 1000;
   justify-content: center;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  background-color: $bg-dark;
+  background-color: $chrome-bg;
 
   @media (width >= 768px) {
     display: flex;
@@ -57,8 +57,7 @@
   &__text {
     font-size: 0.75rem;
     text-align: center;
-    transition: color 0.3s;
-    color: $text-secondary;
+    color: $chrome-text-secondary;
 
     @media (width >= 768px) { font-size: 0.875rem; }
   }
@@ -84,19 +83,19 @@
       transform: scale(1.25);
     }
 
-    &--pink { 
+    &--pink {
       background-color: $pink;
-      box-shadow: 0 0 10px rgba($pink-rgb, 0.4);
+      box-shadow: 0 0 10px rgb(255 20 147 / 40%);
     }
 
-    &--yellow { 
+    &--yellow {
       background-color: $yellow;
-      box-shadow: 0 0 10px rgba($yellow-rgb, 0.4);
+      box-shadow: 0 0 10px rgb(255 240 31 / 40%);
     }
 
-    &--green { 
+    &--green {
       background-color: $green;
-      box-shadow: 0 0 10px rgba($green-rgb, 0.4);
+      box-shadow: 0 0 10px rgb(0 255 0 / 40%);
     }
   }
 }

@@ -41,7 +41,7 @@ describe('ProjectPage JSON-LD', () => {
 
     const jsonLd = getJsonLd();
     expect(jsonLd).not.toBeNull();
-    expect(jsonLd!.name).toBe('Portfolio Personal (thebellepoque.dev)');
+    expect(jsonLd!.name).toBe('Portfolio Personal');
     expect(typeof jsonLd!.description).toBe('string');
     expect(jsonLd!.datePublished).toBe('2026-01-01');
     expect(jsonLd!.url).toBe('https://thebellepoque.dev/proyecto/portfolio-thebellepoque');

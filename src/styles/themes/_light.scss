@@ -33,59 +33,25 @@
   h2,
   h3,
   h4,
+  h5,
+  h6,
   .blog-card__title,
   .blog-post__title {
-    color: var(--text); // Negro sólido para que se lea perfecto
-    font-weight: 850;   // Más grueso para que esté bien "marcado"
-    letter-spacing: -0.01em;
+    color: var(--text);
   }
 
   .text-gradient {
-    background: linear-gradient(90deg, $pink, $green);
+    background: linear-gradient(90deg, $pink, #0E8A0E);
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* Prueba: navbar con fondo tema dark en modo claro */
+  /* Navbar y footer: siempre oscuros, igual que en dark mode */
   .navbar {
-    background-color: #0a0a0a;
-    border-bottom: 1px solid rgb(255 255 255 / 10%);
-  }
-
-  .navbar .navbar__link {
-    color: #f5f5f5;
-    font-weight: 600;
-    font-size: 0.85rem;
-    border-radius: 6px;
-
-    &--pink:hover {
-      color: #fff;
-      background: $pink;
-    }
-
-    &--yellow:hover {
-      color: #000;
-      background: $yellow;
-    }
-
-    &--green:hover {
-      color: #fff;
-      background: $green;
-    }
-
-    &.is-active {
-      background-color: #f5f5f5;
-      color: #0a0a0a;
-    }
+    background-color: var(--chrome-bg);
   }
 
   .hero__tag {
-    font-weight: 700;
-    padding: 0.2rem 0.6rem;
-    font-size: 0.75rem;
-    border-radius: 4px;
-    border: 1px solid transparent;
-
     &:nth-child(3n + 1) {
       background-color: $pink;
       color: #000;
@@ -103,12 +69,6 @@
   }
 
   .project-card__tech {
-    font-weight: 700;
-    padding: 0.15rem 0.5rem;
-    font-size: 0.65rem;
-    border-radius: 4px;
-    border: 1px solid transparent;
-
     &:nth-child(3n + 1) {
       background-color: $pink;
       color: #000;
@@ -130,7 +90,6 @@
     background-color: #fff;
     color: var(--text);
     border-color: var(--border);
-    border-radius: 8px;
 
     &:focus {
       border-color: var(--text);
@@ -163,11 +122,11 @@
      ========================================================= */
 
   .blog-card__link {
-    color: #b38600; /* mostaza darkened, era 1.18:1 */
+    color: #856200;
     text-shadow: none;
 
     &:hover {
-      color: $yellow;
+      color: #8F6B00;
       text-shadow:
         0 1px 0 rgb(0 0 0 / 45%),
         var(--text-shadow-yellow);
@@ -184,7 +143,7 @@
     }
 
     &--yellow {
-      color: #b38600;
+      color: #856200;
       border-color: rgb(0 0 0 / 35%);
       text-shadow: var(--text-shadow-yellow);
     }
@@ -225,8 +184,8 @@
 
   .contact {
     &__cv {
-      color: #b38600; /* mostaza darkened, era 1.18:1 */
-      border-color: #b38600; /* borde también darkened para que se vea */
+      color: #856200;
+      border-color: #856200;
       text-shadow: none;
     }
   }
@@ -235,8 +194,10 @@
     color: var(--text-secondary);
   }
 
-  .navbar__github svg,
-  .footer__github svg,
+  .hero__handle {
+    color: #C00F70;
+  }
+
   .hero__social-link svg {
     color: var(--text);
     opacity: 0.7;
@@ -246,27 +207,82 @@
     }
   }
 
-  .hero,
-  .projects,
-  .blog-list,
-  .contact,
-  .blog-post {
-    background-color: transparent;
-  }
-
   /* Prueba: footer con fondo tema dark en modo claro */
   .footer {
-    background-color: #0a0a0a;
-    border-top: 1px solid rgb(255 255 255 / 10%);
+    background-color: var(--chrome-bg);
 
     a,
     span,
     .footer__text {
-      color: #f5f5f5;
+      color: var(--chrome-text-secondary);
     }
 
     svg {
       stroke: $pink;
     }
+  }
+
+  /* =========================================================
+     LIGHT MODE — Contraste WCAG AA (auditoría automatizada)
+     Paleta: rosa #C00F70 · verde #0B6E0B · ámbar #856200
+     ========================================================= */
+
+  .contact__label {
+    &--name { color: #C00F70; }
+    &--email { color: #856200; }
+    &--message { color: #0B6E0B; }
+  }
+
+  .contact__input::placeholder,
+  .contact__textarea::placeholder {
+    color: #595959;
+    opacity: 1;
+  }
+
+  .contact__status--success { color: #0a5c0a; }
+  .contact__status--error { color: #B91C1C; }
+
+  .blog-post__content {
+    a {
+      color: #0B6E0B;
+
+      &:hover {
+        color: #856200;
+        text-shadow: none;
+      }
+    }
+
+    code,
+    strong {
+      color: #0B6E0B;
+      text-shadow: none;
+    }
+  }
+
+  .blog-post__back:hover { color: #0B6E0B; }
+  .blog-post__error-text { color: #C00F70; }
+
+  .blog-post__error-link {
+    color: #0B6E0B;
+
+    &:hover {
+      color: #856200;
+      text-shadow: none;
+    }
+  }
+
+  .project-page__back:hover { color: #C00F70; }
+  .project-page__keyword { color: #0B6E0B; }
+  .project-page__tech { color: #C00F70; }
+  .project-page__link--secondary:hover { color: #0B6E0B; }
+
+  .loading-state {
+    color: #856200;
+    text-shadow: none;
+  }
+
+  .error-details {
+    color: #856200;
+    text-shadow: none;
   }
 }

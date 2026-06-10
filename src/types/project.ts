@@ -45,6 +45,8 @@ export interface Project {
   architecture?: string;
   learnings?: string[];
   featured: boolean;
+  /** Texto personalizado para el badge destacado (ej: dominio). Si no se define, muestra "Destacado". */
+  featuredText?: string;
   /** 'wip' muestra badge "En construcción" en la tarjeta */
   status?: 'live' | 'wip';
   date: string;

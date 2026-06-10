@@ -2,10 +2,17 @@
 @use "../layout-tokens" as layout;
 
 .projects {
-  min-height: 80vh;
+  min-height: calc(100svh - 60px);
+
+  @media (width >= 768px) {
+    min-height: calc(100svh - 80px);
+  }
+
   display: flex;
   align-items: center;
   justify-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   padding: max(40px, env(safe-area-inset-top)) max(1.5rem, env(safe-area-inset-right)) max(60px, env(safe-area-inset-bottom)) max(1.5rem, env(safe-area-inset-left));
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   scroll-margin-top: layout.$section-scroll-offset;
@@ -195,6 +202,7 @@
     padding: 0.25rem 0.625rem;
     font-weight: 500;
     font-size: 0.75rem;
+    border-radius: 10px;
 
     @media (width >= 640px) {
       padding: 0.375rem 0.75rem;

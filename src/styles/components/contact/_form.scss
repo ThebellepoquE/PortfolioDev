@@ -7,19 +7,12 @@
     background-color: $bg-card;
     border: 1px solid transparent;
     border-radius: 8px;
-    transition: background-color 0.3s, border-color 0.3s;
 
-    @media (width >= 640px) {
-      padding: 1.5rem;
-    }
+    @media (width >= 640px) { padding: 1.5rem; }
 
-    @media (width >= 768px) {
-      padding: 2rem;
-    }
+    @media (width >= 768px) { padding: 2rem; }
 
-    @media (width >= 1024px) {
-      padding: 2.5rem;
-    }
+    @media (width >= 1024px) { padding: 2.5rem; }
   }
 
   &__fields {
@@ -27,13 +20,9 @@
     flex-direction: column;
     gap: 1.25rem;
 
-    @media (width >= 640px) {
-      gap: 1.5rem;
-    }
+    @media (width >= 640px) { gap: 1.5rem; }
 
-    @media (width >= 768px) {
-      gap: 2rem;
-    }
+    @media (width >= 768px) { gap: 2rem; }
   }
 
   &__cv {
@@ -51,7 +40,6 @@
     font-weight: 700;
     font-size: $btn-fs;
     text-decoration: none;
-    transition: all 0.3s;
 
     @media (width >= 640px) {
       padding: $btn-py-md $btn-px-md;
@@ -79,17 +67,9 @@
     font-weight: 600;
     font-size: 0.875rem;
 
-    &--name {
-      color: $pink;
-    }
-
-    &--email {
-      color: $yellow;
-    }
-
-    &--message {
-      color: $green;
-    }
+    &--name { color: $pink; }
+    &--email { color: $yellow; }
+    &--message { color: $green; }
   }
 
   &__input,
@@ -98,13 +78,10 @@
     padding: 0.75rem 1rem;
     border: 1px solid transparent;
     outline: none;
-    transition: all 0.2s;
     background-color: $bg-card;
     color: $text;
 
-    &::placeholder {
-      opacity: 0.5;
-    }
+    &::placeholder { opacity: 0.5; }
   }
 
   &__input {
@@ -151,7 +128,6 @@
     border: none;
     border-radius: $btn-radius;
     cursor: pointer;
-    transition: all 0.3s;
 
     @media (width >= 640px) {
       padding: $btn-py-md $btn-px-md;
@@ -205,11 +181,6 @@
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
