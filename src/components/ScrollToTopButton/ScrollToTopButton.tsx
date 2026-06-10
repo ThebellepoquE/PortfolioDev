@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import styles from './ScrollToTopButton.module.scss';
 
 export const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,7 +22,7 @@ export const ScrollToTopButton = () => {
 
   return (
     <button
-      className={`${styles.button} ${isVisible ? styles.visible : ''}`.trim()}
+      className={`scroll-to-top${isVisible ? ' scroll-to-top--visible' : ''}`}
       aria-label="Subir arriba"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       type="button"

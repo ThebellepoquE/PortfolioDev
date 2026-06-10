@@ -1,8 +1,9 @@
-@use '../../styles/variables' as *;
-@use '../../styles/utilities/common';
+@use "../variables" as *;
+@use "../utilities/common";
 
-.button {
+.scroll-to-top {
   @extend %btn-main;
+
   position: fixed;
   bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
   right: 2rem;
@@ -32,9 +33,9 @@
   @media print {
     display: none;
   }
-}
 
-.visible {
-  opacity: 1;
-  pointer-events: auto;
+  &--visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
