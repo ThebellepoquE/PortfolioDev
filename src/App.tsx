@@ -26,9 +26,12 @@ function ScrollToTop() {
 function App() {
   return (
     <div className="app">
+      <a href="#main-content" className="skip-link">
+        Saltar al contenido principal
+      </a>
       <ScrollToTop />
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Routes>
           <Route path="/" element={
             <Suspense fallback={<PageFallback />}>
