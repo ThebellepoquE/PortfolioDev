@@ -44,5 +44,11 @@ public/agents.md
 # Bundle analysis
 stats.html
 
+# Archivos internos de herramientas (no para repo público)
+firma-gmail.html
+MEMORY.md
+.clinerules
+
 # Local backup files
 *.bak
+.gga
