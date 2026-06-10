@@ -32,7 +32,7 @@ export function BlogPage() {
         url="/blog"
         jsonLd={jsonLd}
       />
-      <BlogList />
+      <BlogList posts={posts} />
     </>
   );
 }
