@@ -1,6 +1,6 @@
 # Aloha, soy Ione
 
-**Desarrolladora Full-stack · Python, JavaScript, React, MySQL, TypeScript & Automatizaciones**
+**Desarrolladora Web · Python, JavaScript, React, MySQL, TypeScript & Automatizaciones**
 
 Este es el código de mi portfolio personal en [thebellepoque.dev](https://thebellepoque.dev). Construido desde cero con React 19, Vite 7 y TypeScript, sin plantillas. Cada decisión técnica tiene una razón.
 
