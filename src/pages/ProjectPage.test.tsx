@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ProjectPage } from './ProjectPage';
+import type { JsonLd } from '../lib/jsonLd';
 
 function renderProjectPage(id: string) {
   return render(
@@ -16,7 +17,7 @@ function renderProjectPage(id: string) {
   );
 }
 
-function getJsonLd(): Record<string, unknown> | null {
+function getJsonLd(): JsonLd | null {
   const script = document.querySelector('script[type="application/ld+json"]');
   if (!script?.textContent) return null;
   return JSON.parse(script.textContent);

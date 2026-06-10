@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { BlogPage } from './BlogPage';
+import type { JsonLd } from '../lib/jsonLd';
 
 const mockGetAllPosts = vi.fn();
 
@@ -20,7 +21,7 @@ function renderBlogPage() {
   );
 }
 
-function getJsonLd(): Record<string, unknown> | null {
+function getJsonLd(): JsonLd | null {
   const script = document.querySelector('script[type="application/ld+json"]');
   if (!script?.textContent) return null;
   return JSON.parse(script.textContent);
@@ -62,7 +63,7 @@ describe('BlogPage JSON-LD', () => {
 
     const jsonLd = getJsonLd();
     expect(jsonLd).not.toBeNull();
-    const hasPart = jsonLd!.hasPart as Record<string, unknown>[];
+    const hasPart = jsonLd!.hasPart as JsonLd[];
     expect(Array.isArray(hasPart)).toBe(true);
     expect(hasPart).toHaveLength(2);
     expect(hasPart[0]['@type']).toBe('BlogPosting');

@@ -7,6 +7,7 @@ import { formatDateDayMonthYear } from '../../lib/formatDate';
 import { SEO } from '../SEO';
 import { SITE_CONFIG } from '../../lib/config';
 import { buildImageAttrs } from '../../lib/images';
+import type { JsonLd } from '../../lib/jsonLd';
 
 /** Renderiza un post individual */
 export function BlogPost() {
@@ -31,7 +32,7 @@ export function BlogPost() {
   const postUrl = `${baseUrl}/blog/${post.meta.slug}`;
 
   // Generar datos estructurados (SEO)
-  const jsonLd = {
+  const jsonLd: JsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.meta.title,

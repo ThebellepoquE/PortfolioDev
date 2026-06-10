@@ -3,12 +3,13 @@ import { SEO } from '../components/SEO';
 import { BlogList } from '../components/Blog/BlogList';
 import { SITE_CONFIG } from '../lib/config';
 import { getAllPosts } from '../lib/posts';
+import type { JsonLd } from '../lib/jsonLd';
 
 /** Página listado del blog */
 export function BlogPage() {
   const posts = useMemo(() => getAllPosts(), []);
 
-  const jsonLd: Record<string, unknown> = {
+  const jsonLd: JsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: SITE_CONFIG.blog.title,
