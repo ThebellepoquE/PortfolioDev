@@ -1,0 +1,44 @@
+name: A11y Audit (Color Contrast)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  a11y-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Build SPA
+        run: pnpm run build
+
+      - name: Start server & audit contrast
+        run: |
+          npx --yes vite preview --port 5173 &
+          npx --yes wait-on http://localhost:5173 --timeout 30000
+          echo "Server ready, running audit..."
+          node scripts/audit-contrast.mjs
+        env:
+          CHROME_PATH: /usr/bin/google-chrome-stable
