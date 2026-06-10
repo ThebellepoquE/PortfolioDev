@@ -36,10 +36,10 @@
     color: transparent;
     -webkit-text-stroke: 2px $pink;
     text-shadow:
+      0 0 5px $pink,
       0 0 10px $pink,
       0 0 20px $pink,
-      0 0 40px $pink,
-      0 0 80px $pink;
+      0 0 35px $pink;
   }
 
   &__title {
