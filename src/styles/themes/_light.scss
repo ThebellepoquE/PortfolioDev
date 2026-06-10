@@ -245,16 +245,30 @@
   .blog-post__content {
     a {
       color: #0B6E0B;
-      &:hover { color: #856200; text-shadow: none; }
+
+      &:hover {
+        color: #856200;
+        text-shadow: none;
+      }
     }
-    code, strong { color: #0B6E0B; text-shadow: none; }
+
+    code,
+    strong {
+      color: #0B6E0B;
+      text-shadow: none;
+    }
   }
 
   .blog-post__back:hover { color: #0B6E0B; }
   .blog-post__error-text { color: #C00F70; }
+
   .blog-post__error-link {
     color: #0B6E0B;
-    &:hover { color: #856200; text-shadow: none; }
+
+    &:hover {
+      color: #856200;
+      text-shadow: none;
+    }
   }
 
   .project-page__back:hover { color: #C00F70; }
@@ -262,6 +276,13 @@
   .project-page__tech { color: #C00F70; }
   .project-page__link--secondary:hover { color: #0B6E0B; }
 
-  .loading-state { color: #856200; text-shadow: none; }
-  .error-details { color: #856200; text-shadow: none; }
+  .loading-state {
+    color: #856200;
+    text-shadow: none;
+  }
+
+  .error-details {
+    color: #856200;
+    text-shadow: none;
+  }
 }

@@ -11,6 +11,7 @@
   @media (width >= 768px) {
     bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
   }
+
   z-index: 999;
   opacity: 0;
   pointer-events: none;

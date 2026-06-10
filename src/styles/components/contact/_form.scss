@@ -9,7 +9,9 @@
     border-radius: 8px;
 
     @media (width >= 640px) { padding: 1.5rem; }
+
     @media (width >= 768px) { padding: 2rem; }
+
     @media (width >= 1024px) { padding: 2.5rem; }
   }
 
@@ -19,6 +21,7 @@
     gap: 1.25rem;
 
     @media (width >= 640px) { gap: 1.5rem; }
+
     @media (width >= 768px) { gap: 2rem; }
   }
 
@@ -84,6 +87,7 @@
   &__input {
     &--name {
       border-color: rgba($pink-rgb, 0.3);
+
       &:focus {
         border-color: $pink;
         box-shadow: 0 0 0 2px rgba($pink-rgb, 0.2);
@@ -92,6 +96,7 @@
 
     &--email {
       border-color: rgba($yellow-rgb, 0.3);
+
       &:focus {
         border-color: $yellow;
         box-shadow: 0 0 0 2px rgba($yellow-rgb, 0.2);
@@ -103,6 +108,7 @@
     &--message {
       border-color: rgba($green-rgb, 0.3);
       resize: none;
+
       &:focus {
         border-color: $green;
         box-shadow: 0 0 0 2px rgba($green-rgb, 0.2);

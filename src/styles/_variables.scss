@@ -17,9 +17,9 @@
   // Chrome (navbar, footer, mobile nav) — siempre oscuro
   --chrome-bg: #0a0a0a;
   --chrome-text: #F5F5F5;
-  --chrome-text-secondary: rgba(245, 245, 245, 0.7);
-  --chrome-border: rgba(255, 255, 255, 0.1);
-  --chrome-card-bg: rgba(26, 26, 26, 0.95);
+  --chrome-text-secondary: rgb(245 245 245 / 70%);
+  --chrome-border: rgb(255 255 255 / 10%);
+  --chrome-card-bg: rgb(26 26 26 / 95%);
 
   // Text & border
   --text: #F5F5F5;
@@ -53,9 +53,9 @@
   // Chrome — copia exacta del modo oscuro
   --chrome-bg: #0a0a0a;
   --chrome-text: #F5F5F5;
-  --chrome-text-secondary: rgba(245, 245, 245, 0.7);
-  --chrome-border: rgba(255, 255, 255, 0.1);
-  --chrome-card-bg: rgba(26, 26, 26, 0.95);
+  --chrome-text-secondary: rgb(245 245 245 / 70%);
+  --chrome-border: rgb(255 255 255 / 10%);
+  --chrome-card-bg: rgb(26 26 26 / 95%);
 
   // Paleta accesible para modo claro (WCAG AA)
   --pink-accessible: #C00F70;
