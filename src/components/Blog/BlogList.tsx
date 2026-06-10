@@ -1,14 +1,18 @@
-import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllPosts } from '../../lib/posts';
+import type { BlogPost } from '../../lib/posts';
 import { formatDateDayMonthYear } from '../../lib/formatDate';
 import { SectionTitle } from '../SectionTitle';
 import { Reveal } from '../Reveal';
 import { buildImageAttrs } from '../../lib/images';
 
-/** Lista de posts del blog */
-export function BlogList() {
-  const posts = useMemo(() => getAllPosts(), []);
+interface BlogListProps {
+  posts: BlogPost[];
+}
+
+/** Lista de posts del blog. Recibe `posts` como prop para que el padre
+ *  controle la fuente de datos (lifting state up) y se evite el cálculo
+ *  duplicado de `getAllPosts()` en BlogPage + BlogList. */
+export function BlogList({ posts }: BlogListProps) {
 
   return (
     <section className="blog-list">
