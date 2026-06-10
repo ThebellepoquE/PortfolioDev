@@ -35,6 +35,11 @@ html {
   scrollbar-width: thin;
 }
 
+::selection {
+  background: $moon;
+  color: $black;
+}
+
 /* Scrollbar fucsia */
 ::-webkit-scrollbar {
   width: 8px;

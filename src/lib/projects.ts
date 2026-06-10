@@ -208,9 +208,7 @@ export const projectsData: ProjectFull[] = [
         description: 'El cliente recibe un email con enlace directo según su valoración',
       },
     ],
-    links: [
-      { type: 'live', url: 'https://www.lighton.es', title: 'Contexto: Lighton.es', isPrimary: true },
-    ],
+    links: [],
     challenges: [
       {
         title: 'Flujo condicional según valoración',
