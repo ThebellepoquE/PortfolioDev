@@ -56,7 +56,7 @@ describe('404 Page - Enlace semántico', () => {
       </MemoryRouter>,
     );
 
-    const link = screen.getByRole('link', { name: /volver al inicio/i });
+    const link = await screen.findByRole('link', { name: /volver al inicio/i });
     expect(link).toBeInTheDocument();
     expect(link.tagName).toBe('A');
     expect(link).toHaveAttribute('href', '/');
