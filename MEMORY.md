@@ -2,11 +2,11 @@
 
 Este archivo sirve como registro de las decisiones técnicas y el estado del proyecto para facilitar la continuidad entre sesiones.
 
-## 📅 Última actualización: Marzo 2026
+## 📅 Última actualización: Junio 2026
 
 ### ✅ Estado actual del proyecto
 
-- **Gestión de paquetes:** pnpm (versión 10.28.0 fijada con `packageManager` en `package.json`). Lockfile: `pnpm-lock.yaml`.
+- **Gestión de paquetes:** pnpm (versión 10.32.1 fijada con `packageManager` en `package.json`). Lockfile: `pnpm-lock.yaml`.
 - **Stack:** React 19, Vite 7, TypeScript 5.9, SCSS modular. Sin Tailwind.
 - **SEO:** react-helmet-async; componente `SEO.tsx`; meta dinámicos en Home, Blog, posts y `/proyecto/:id`. Imagen OG por defecto: `og-image-default.jpg` (recomendado 1200×630).
 - **Proyectos:** Modelo enriquecido en `src/types/project.ts` y `projectsData` en `src/lib/projects.ts`. Tarjetas con métricas (MetricBadge), enlaces live/repo y "Ver caso de estudio" → `/proyecto/:id`. Página ProjectPage con SEO tipo article.
