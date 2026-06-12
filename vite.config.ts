@@ -24,11 +24,11 @@ export default defineConfig({
       output: {
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
-              return 'react-vendor';
-            }
             if (id.includes('react-markdown') || id.includes('remark-gfm')) {
               return 'markdown-vendor';
+            }
+            if (/node_modules\/(react|react-dom|react-router|react-router-dom|scheduler)\//.test(id)) {
+              return 'react-vendor';
             }
           }
         },

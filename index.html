@@ -39,14 +39,9 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
     />
     <link
-      id="fonts-async"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
-      media="print"
     />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-    </noscript>
     
     <!-- Preload LCP: href como fallback para LCP fiable; imagesrcset para variante correcta -->
     <link
@@ -61,6 +56,14 @@
     <title>Ione | Desarrolladora Web</title>
     
     <style>
+      @font-face {
+        font-family: "Inter-fallback";
+        src: local("Arial");
+        size-adjust: 107.4%;
+        ascent-override: 90.2%;
+        descent-override: 22.48%;
+        line-gap-override: 0%;
+      }
       :root {
 
         --bg-dark: #0a0a0a;
@@ -78,7 +81,7 @@
         margin: 0;
         background-color: var(--bg-dark);
         color: var(--text);
-        font-family: 'Inter', system-ui, sans-serif;
+        font-family: 'Inter', 'Inter-fallback', system-ui, -apple-system, sans-serif;
       }
       @keyframes spin { to { transform: rotate(360deg); } }
     </style>
