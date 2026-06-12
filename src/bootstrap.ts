@@ -10,11 +10,3 @@ export function initThemeFromPreferences(): void {
     // Si algo falla (por ejemplo, localStorage bloqueado), no rompemos el render
   }
 }
-
-export function activateAsyncFonts(): void {
-  const el = document.getElementById('fonts-async');
-  if (el instanceof HTMLLinkElement) {
-    el.media = 'all';
-  }
-}
-

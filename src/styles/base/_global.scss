@@ -60,7 +60,7 @@ html {
 }
 
 body {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: Inter, Inter-fallback, system-ui, -apple-system, sans-serif;
   background-color: $bg-dark;
   color: $text;
   overflow-x: hidden;
