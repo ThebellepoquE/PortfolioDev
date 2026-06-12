@@ -10,7 +10,7 @@ tags:
   - Testing
   - Marca personal
 draft: true
-image: /images/blog/blindaje-portfolio-seo-marca.webp
+image: /images/blog/puerta-mundo.webp
 ---
 
 En el post anterior hablaba de [proyectos cercanos y problemas reales](/blog/blindaje-portfolio-workflow). De ese punto raro en el que ya no estás haciendo ejercicios sin contexto, pero tampoco estás hablando de "clientes" como si llevaras media vida con una agenda llena.
