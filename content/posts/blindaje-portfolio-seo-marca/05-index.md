@@ -9,7 +9,7 @@ tags:
   - Sitemap
   - Testing
   - Marca personal
-draft: true
+draft: false
 image: /images/blog/puerta-mundo.webp
 ---
 
