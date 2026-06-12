@@ -2,9 +2,9 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { ScrollToTopButton } from './components/ScrollToTopButton/ScrollToTopButton';
+import { HomePage } from './pages/HomePage';
 
 // Lazy load por ruta (code-splitting: cada página en su chunk)
-const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
 const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.BlogPage })));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage').then(m => ({ default: m.BlogPostPage })));
 const ProjectPage = lazy(() => import('./pages/ProjectPage').then(m => ({ default: m.ProjectPage })));
@@ -34,11 +34,7 @@ function App() {
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <Routes>
-          <Route path="/" element={
-            <Suspense fallback={<PageFallback />}>
-              <HomePage />
-            </Suspense>
-          } />
+          <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={
             <Suspense fallback={<PageFallback />}>
               <BlogPage />
