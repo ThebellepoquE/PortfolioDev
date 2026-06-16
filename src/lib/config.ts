@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   name: "Ione",
   username: "thebellepoque",
   title: "Full-stack Developer",
-  baseUrl: "https://thebellepoque.dev",
+  baseUrl: "https://www.thebellepoque.dev",
   locale: "es_ES",
   cvUrl: "/ione_cv_2026.pdf",
   social: {

@@ -187,9 +187,9 @@ describe('BlogPost JSON-LD', () => {
 
     const jsonLd = getJsonLd();
     expect(jsonLd).not.toBeNull();
-    expect(jsonLd!.url).toBe('https://thebellepoque.dev/blog/test-post');
-    expect(jsonLd!['@id']).toBe('https://thebellepoque.dev/blog/test-post#blogposting');
-    expect(jsonLd!.mainEntityOfPage).toBe('https://thebellepoque.dev/blog/test-post');
+    expect(jsonLd!.url).toBe('https://www.thebellepoque.dev/blog/test-post');
+    expect(jsonLd!['@id']).toBe('https://www.thebellepoque.dev/blog/test-post#blogposting');
+    expect(jsonLd!.mainEntityOfPage).toBe('https://www.thebellepoque.dev/blog/test-post');
   });
 
   it('author has @id pointing to /#person', () => {
@@ -200,8 +200,8 @@ describe('BlogPost JSON-LD', () => {
     expect(jsonLd!.author).toEqual({
       '@type': 'Person',
       name: 'Ione Rodríguez',
-      url: 'https://thebellepoque.dev',
-      '@id': 'https://thebellepoque.dev/#person',
+      url: 'https://www.thebellepoque.dev',
+      '@id': 'https://www.thebellepoque.dev/#person',
     });
   });
 });

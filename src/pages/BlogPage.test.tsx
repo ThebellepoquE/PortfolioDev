@@ -68,7 +68,7 @@ describe('BlogPage JSON-LD', () => {
     expect(hasPart).toHaveLength(2);
     expect(hasPart[0]['@type']).toBe('BlogPosting');
     expect(hasPart[0].headline).toBe('First Post');
-    expect(hasPart[0].url).toBe('https://thebellepoque.dev/blog/post-one');
+    expect(hasPart[0].url).toBe('https://www.thebellepoque.dev/blog/post-one');
     expect(hasPart[1].headline).toBe('Second Post');
   });
 

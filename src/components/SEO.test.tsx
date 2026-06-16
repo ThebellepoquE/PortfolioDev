@@ -54,7 +54,7 @@ describe('SEO', () => {
       renderSEO({ title: 'Test', description: 'A test page' });
 
       expect(metaContent('og:image')).toBe(
-        'https://thebellepoque.dev/og-image-default.webp',
+        'https://www.thebellepoque.dev/og-image-default.webp',
       );
     });
 
@@ -66,7 +66,7 @@ describe('SEO', () => {
       });
 
       expect(metaContent('og:image')).toBe(
-        'https://thebellepoque.dev/images/hero.webp',
+        'https://www.thebellepoque.dev/images/hero.webp',
       );
     });
 
@@ -158,14 +158,14 @@ describe('SEO', () => {
       });
 
       const link = document.querySelector('link[rel="canonical"]');
-      expect(link?.getAttribute('href')).toBe('https://thebellepoque.dev/blog/my-post');
+      expect(link?.getAttribute('href')).toBe('https://www.thebellepoque.dev/blog/my-post');
     });
 
     it('falls back to baseUrl when no url is passed', () => {
       renderSEO({ title: 'Home', description: 'Welcome' });
 
       const link = document.querySelector('link[rel="canonical"]');
-      expect(link?.getAttribute('href')).toBe('https://thebellepoque.dev');
+      expect(link?.getAttribute('href')).toBe('https://www.thebellepoque.dev');
     });
   });
 
@@ -178,7 +178,7 @@ describe('SEO', () => {
       });
 
       expect(metaContent('og:image')).toBe(
-        'https://thebellepoque.dev/images/photo.jpg',
+        'https://www.thebellepoque.dev/images/photo.jpg',
       );
     });
 
