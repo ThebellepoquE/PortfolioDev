@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "lint:styles": "stylelint \"src/styles/**/*.scss\"",
     "preview": "vite preview",
+    "typecheck": "tsc -b",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
