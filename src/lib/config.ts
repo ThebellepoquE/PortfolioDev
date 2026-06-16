@@ -3,6 +3,7 @@ export const SITE_CONFIG = {
   username: "thebellepoque",
   title: "Full-stack Developer",
   baseUrl: "https://thebellepoque.dev",
+  locale: "es_ES",
   cvUrl: "/ione_cv_2026.pdf",
   social: {
     github: "https://github.com/ThebellepoquE",

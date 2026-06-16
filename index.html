@@ -10,37 +10,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#FF1493" />
     <meta name="color-scheme" content="dark" />
-    <meta name="description" content="Portfolio de Ione: Desarrolladora Python full-stack especializada en React, TypeScript y automatizaciones." />
+    <meta name="description" content="Portfolio de Ione: Desarrolladora Web. Python, JavaScript, React, TypeScript & Automatizaciones." />
     <meta name="google-site-verification" content="HHWnXtmHl4aKCxN7_QoqTHS7npnMwf_9V2PaFLccTOw" />
     <!-- Open Graph / Social SEO -->
-    <meta property="og:title" content="Ione (@thebellepoque) - Portfolio & Automatización" />
-    <meta property="og:description" content="Portfolio de Ione: Desarrolladora Full-stack especializada en React, TypeScript y automatizaciones eficaces. Descubre mis proyectos y artículos sobre desarrollo." />
-    <meta property="og:image" content="https://thebellepoque.dev/og-image-default.jpg" />
+    <meta property="og:title" content="Ione | Desarrolladora Web" />
+    <meta property="og:description" content="Portfolio de Ione: Desarrolladora Web. Python, JavaScript, React, TypeScript & Automatizaciones." />
+    <meta property="og:image" content="https://thebellepoque.dev/og-image-default.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/webp" />
     <meta property="og:url" content="https://thebellepoque.dev" />
     <meta property="og:site_name" content="thebellepoque.dev" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Ione | Full-stack Developer" />
-    <meta name="twitter:description" content="Especialista en Python, React y automatizaciones." />
-    <meta name="twitter:image" content="https://thebellepoque.dev/og-image-default.jpg" />
+    <meta name="twitter:title" content="Ione | Desarrolladora Web" />
+    <meta name="twitter:description" content="Portfolio de Ione: Desarrolladora Web. Python, JavaScript, React, TypeScript & Automatizaciones." />
+    <meta name="twitter:image" content="https://thebellepoque.dev/og-image-default.webp" />
+    <meta name="twitter:site" content="@thebellepoque" />
+    <meta name="twitter:creator" content="@thebellepoque" />
+    <meta property="og:locale" content="es_ES" />
     
-    <!-- Optimización DNS y Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap"
-    />
-    <link
-      id="fonts-async"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap"
-      rel="stylesheet"
-      media="print"
-    />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap" rel="stylesheet" />
-    </noscript>
+    <!-- Inter self-hosted: sin terceros ni CSS bloqueante -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin />
     
     <!-- Preload LCP: href como fallback para LCP fiable; imagesrcset para variante correcta -->
     <link
@@ -52,9 +43,33 @@
       fetchpriority="high"
     />
     
-    <title>Ione | Full-stack Developer</title>
+    <title>Ione | Desarrolladora Web</title>
     
     <style>
+      @font-face {
+        font-family: "Inter-fallback";
+        src: local("Arial");
+        size-adjust: 107.4%;
+        ascent-override: 90.2%;
+        descent-override: 22.48%;
+        line-gap-override: 0%;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400 900;
+        font-display: swap;
+        src: url("/fonts/inter-latin.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400 900;
+        font-display: swap;
+        src: url("/fonts/inter-latin-ext.woff2") format("woff2");
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
       :root {
 
         --bg-dark: #0a0a0a;
@@ -72,7 +87,7 @@
         margin: 0;
         background-color: var(--bg-dark);
         color: var(--text);
-        font-family: 'Inter', system-ui, sans-serif;
+        font-family: 'Inter', 'Inter-fallback', system-ui, -apple-system, sans-serif;
       }
       @keyframes spin { to { transform: rotate(360deg); } }
     </style>

@@ -1,0 +1,84 @@
+@use "../variables" as *;
+
+.not-found {
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-dark;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+
+  &__glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($pink-rgb, 0.15) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  &__content {
+    position: relative;
+    text-align: center;
+    max-width: 480px;
+  }
+
+  &__number {
+    display: block;
+    font-size: clamp(6rem, 15vw, 12rem);
+    font-weight: 900;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 2px $pink;
+    text-shadow:
+      0 0 5px $pink,
+      0 0 10px $pink,
+      0 0 20px $pink,
+      0 0 35px $pink;
+  }
+
+  &__title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: $text;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    text-shadow:
+      0 0 7px rgba($pink-rgb, 0.4),
+      0 0 20px rgba($pink-rgb, 0.2);
+  }
+
+  &__text {
+    color: $text-secondary;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: $black;
+    background: $pink;
+    border: none;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: box-shadow 0.3s, transform 0.2s;
+
+    &:hover {
+      box-shadow:
+        0 0 15px $pink,
+        0 0 30px $pink,
+        0 0 60px $pink;
+      transform: scale(1.05);
+    }
+  }
+}

@@ -1,12 +1,18 @@
-import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllPosts } from '../../lib/posts';
+import type { BlogPost } from '../../lib/posts';
 import { formatDateDayMonthYear } from '../../lib/formatDate';
 import { SectionTitle } from '../SectionTitle';
+import { Reveal } from '../Reveal';
+import { buildImageAttrs } from '../../lib/images';
 
-/** Lista de posts del blog */
-export function BlogList() {
-  const posts = useMemo(() => getAllPosts(), []);
+interface BlogListProps {
+  posts: BlogPost[];
+}
+
+/** Lista de posts del blog. Recibe `posts` como prop para que el padre
+ *  controle la fuente de datos (lifting state up) y se evite el cálculo
+ *  duplicado de `getAllPosts()` en BlogPage + BlogList. */
+export function BlogList({ posts }: BlogListProps) {
 
   return (
     <section className="blog-list">
@@ -21,28 +27,56 @@ export function BlogList() {
         </p>
 
         {/* Posts list */}
-        {posts.length === 0 ? (
+        {posts === null ? (
+          <div className="blog-list__grid">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="blog-card blog-card--skeleton" aria-hidden="true">
+                <div className="blog-card__content">
+                  <span className="skeleton" style={{ width: '60%', height: '1.25rem' }} />
+                  <span className="skeleton" style={{ width: '40%', height: '0.875rem', marginTop: '0.75rem' }} />
+                  <span className="skeleton" style={{ width: '100%', height: '3rem', marginTop: '1rem' }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : posts.length === 0 ? (
           <div className="blog-list__empty">
             <p className="blog-list__empty-text">Aún no hay posts publicados</p>
             <p className="blog-list__empty-subtext">¡Pronto compartiré contenido nuevo!</p>
           </div>
         ) : (
           <div className="blog-list__grid">
-            {posts.map((post) => (
-              <Link
-                key={post.slug}
-                to={`/blog/${post.slug}`}
-                className="blog-card"
-              >
+            {posts.map((post, i) => (
+              <Reveal key={post.slug} delay={i * 100}>
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="blog-card"
+                >
                 <div className="blog-card__content">
                   {/* Imagen destacada */}
-                  {post.image && (
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="blog-card__image"
-                    />
-                  )}
+                  {post.image && (() => {
+                    const imgAttrs = buildImageAttrs(post.image, {
+                      alt: post.title,
+                      width: 600,
+                      height: 338,
+                      className: 'blog-card__image',
+                    });
+                    return (
+                      <picture>
+                        <source type="image/avif" srcSet={imgAttrs.avifSrcSet} sizes={imgAttrs.sizes} />
+                        <source type="image/webp" srcSet={imgAttrs.srcSet} sizes={imgAttrs.sizes} />
+                        <img
+                          src={imgAttrs.src}
+                          alt={imgAttrs.alt}
+                          loading={imgAttrs.loading}
+                          decoding={imgAttrs.decoding}
+                          width={imgAttrs.width}
+                          height={imgAttrs.height}
+                          className={imgAttrs.className}
+                        />
+                      </picture>
+                    );
+                  })()}
                   
                   {/* Fecha y Tags en línea */}
                   <div className="blog-card__meta">
@@ -75,7 +109,8 @@ export function BlogList() {
                   </span>
                 </div>
               </Link>
-            ))}
+            </Reveal>
+          ))}
           </div>
         )}
       </div>

@@ -9,8 +9,8 @@ tags:
   - Sitemap
   - Testing
   - Marca personal
-draft: true
-image: /images/blog/blindaje-portfolio-seo-marca.webp
+draft: false
+image: /images/blog/puerta-mundo.webp
 ---
 
 En el post anterior hablaba de [proyectos cercanos y problemas reales](/blog/blindaje-portfolio-workflow). De ese punto raro en el que ya no estás haciendo ejercicios sin contexto, pero tampoco estás hablando de "clientes" como si llevaras media vida con una agenda llena.
@@ -45,13 +45,13 @@ No es lo mismo decir "hice una web" que contar:
 - qué aprendí,
 - qué parte técnica cuidé para que funcionara mejor.
 
-Por eso añadí páginas de caso de estudio. No para sonar más grande de lo que soy, sino para explicar mejor lo que hago.
+Por eso añadí páginas de caso de estudio, para explicar mejor lo que hago.
 
-LightON no es solo una web. También es aprendizaje sobre estructura, formularios, mantenimiento y automatización.
+LightON no es solo una web. También es aprendizaje sobre estructura, formularios, mantenimiento, automatización, despliegue...
 
 Discográfica no es solo un proyecto bonito. También es contenido, catálogo, imágenes, CMS y rendimiento.
 
-PurpleBasqueTours no es solo otra entrada en la lista. Es una forma de pensar cómo una experiencia se explica online para que alguien la entienda y pueda dar el siguiente paso.
+PurpleBasqueTours no es un proyecto más... Es un viaje turistico por el País Vasco, cómo una experiencia se explica online para que alguien la entienda y pueda dar el siguiente paso. Para mi estos proyectos son como mis hijos. Los he gestado con mucho cariño hasta salir al mundo y sus dueños merecen todos mis respetos por depositar su confianza en mi.
 
 Cuando lo miro así, el portfolio deja de ser una galería y empieza a parecerse más a un diario técnico de lo que voy construyendo.
 
@@ -59,7 +59,7 @@ Cuando lo miro así, el portfolio deja de ser una galería y empieza a parecerse
 
 Hay una parte del portfolio que casi nadie ve, pero que está trabajando todo el tiempo.
 
-El `<head>` de cada página. El título que aparece en Google. La descripción cuando compartes un enlace. La imagen que sale en LinkedIn o WhatsApp. El sitemap que le dice a los buscadores qué existe. Los tests que me avisan si rompo algo. El build que falla cuando algo no está listo.
+El `<head>` de cada página. El título que aparece en Google. La descripción cuando compartes un enlace. La imagen que sale en LinkedIn o WhatsApp. El sitemap que le dice a los buscadores qué existe. Los tests que me avisan si rompo algo. El build que falla cuando algo no está listo...
 
 Eso también es comunicación.
 
@@ -77,15 +77,15 @@ Ahora tengo una puerta antes de publicar.
 
 En local puedo lanzar `pnpm run check:local` y revisar tests, lint y build sin depender de internet. Antes de publicar, con conexión, `pnpm run check:preprod` añade el audit de producción.
 
-No es perfecto. Nada lo es. Pero me da una base.
+No es perfecto. Nada lo es. Gracias a Dios!. Pero me da una base.
 
 Si algo falla, lo veo antes. Si una ruta nueva no entra en el sitemap, puedo corregirlo. Si un componente se rompe, los tests protestan. Si una imagen falta, el build o la revisión me lo ponen delante.
 
-Y esa sensación, cuando estás construyendo tu propia casa digital mientras aprendes, vale mucho.
+Y esa sensación, cuando estás construyendo tu propia casa digital mientras aprendes, es oro puro.
 
 ## Mi marca también vive en los detalles
 
-Hay detalles que parecen pequeños y no lo son.
+Otra de mis frasecitas... Los detalles pequeños son los más grandes.
 
 La imagen Open Graph por defecto. El círculo rosa. El nombre. Los colores. El modo en el que se ordenan los proyectos. La forma de escribir una bio sin fingir una etapa que todavía no es.
 

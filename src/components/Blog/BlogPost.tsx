@@ -5,6 +5,9 @@ import remarkGfm from 'remark-gfm';
 import { getPostBySlug } from '../../lib/posts';
 import { formatDateDayMonthYear } from '../../lib/formatDate';
 import { SEO } from '../SEO';
+import { SITE_CONFIG } from '../../lib/config';
+import { buildImageAttrs } from '../../lib/images';
+import type { JsonLd } from '../../lib/jsonLd';
 
 /** Renderiza un post individual */
 export function BlogPost() {
@@ -25,18 +28,25 @@ export function BlogPost() {
     );
   }
 
+  const baseUrl = SITE_CONFIG.baseUrl;
+  const postUrl = `${baseUrl}/blog/${post.meta.slug}`;
+
   // Generar datos estructurados (SEO)
-  const jsonLd = {
+  const jsonLd: JsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.meta.title,
     "description": post.meta.description,
-    "image": post.meta.image ? `https://thebellepoque.dev${post.meta.image}` : "https://thebellepoque.dev/profile.webp",
+    "image": post.meta.image ? `${baseUrl}${post.meta.image}` : `${baseUrl}/profile.webp`,
     "datePublished": post.meta.date,
+    "url": postUrl,
+    "@id": `${postUrl}#blogposting`,
+    "mainEntityOfPage": postUrl,
     "author": {
       "@type": "Person",
       "name": "Ione Rodríguez",
-      "url": "https://thebellepoque.dev"
+      "url": baseUrl,
+      "@id": `${baseUrl}/#person`
     }
   };
 
@@ -50,11 +60,7 @@ export function BlogPost() {
         type="article"
         publishedTime={post.meta.date}
         tags={post.meta.tags}
-      />
-      {/* Inyectar Datos Estructurados */}
-      <script 
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        jsonLd={jsonLd}
       />
 
       <div className="blog-post__container">
@@ -69,13 +75,29 @@ export function BlogPost() {
           {/* Header */}
           <header className="blog-post__header">
             {/* Imagen destacada */}
-            {post.meta.image && (
-              <img 
-                src={post.meta.image} 
-                alt={post.meta.title}
-                className="blog-post__image"
-              />
-            )}
+            {post.meta.image && (() => {
+              const imgAttrs = buildImageAttrs(post.meta.image, {
+                alt: post.meta.title,
+                width: 1200,
+                height: 675,
+                className: 'blog-post__image',
+              });
+              return (
+                <picture>
+                  <source type="image/avif" srcSet={imgAttrs.avifSrcSet} sizes="(max-width: 767px) 100vw, 1200px" />
+                  <source type="image/webp" srcSet={imgAttrs.srcSet} sizes="(max-width: 767px) 100vw, 1200px" />
+                  <img
+                    src={imgAttrs.src}
+                    alt={imgAttrs.alt}
+                    loading={imgAttrs.loading}
+                    decoding={imgAttrs.decoding}
+                    width={imgAttrs.width}
+                    height={imgAttrs.height}
+                    className={imgAttrs.className}
+                  />
+                </picture>
+              );
+            })()}
             
             {/* Título primero */}
             <h1 className="blog-post__title">

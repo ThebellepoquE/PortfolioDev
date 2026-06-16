@@ -4,6 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 import { projectsData } from '../lib/projects';
 import { formatDateDayMonthYear } from '../lib/formatDate';
 import { SEO } from '../components/SEO';
+import { SITE_CONFIG } from '../lib/config';
+import type { JsonLd } from '../lib/jsonLd';
 
 /** Convierte YYYY-MM a ISO 8601 (YYYY-MM-01) para meta y <time dateTime>. */
 function toISODate(value: string): string {
@@ -43,7 +45,7 @@ export function ProjectPage() {
     return (
       <div className="error-boundary">
         <div className="error-content">
-          <span className="error-icon">🕵️‍♀️</span>
+          <span className="error-icon">404</span>
           <h1>Proyecto no encontrado</h1>
           <p>No existe un proyecto con ese identificador.</p>
           <Link className="btn-main" to="/#proyectos">
@@ -52,6 +54,31 @@ export function ProjectPage() {
         </div>
       </div>
     );
+  }
+
+  const baseUrl = SITE_CONFIG.baseUrl;
+  const projectUrl = `${baseUrl}/proyecto/${project.id}`;
+
+  const jsonLd: JsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.shortDescription,
+    datePublished: toISODate(project.date),
+    url: projectUrl,
+    '@id': `${projectUrl}#creativework`,
+    author: {
+      '@type': 'Person',
+      name: 'Ione Rodríguez',
+      url: baseUrl,
+      '@id': `${baseUrl}/#person`,
+    },
+  };
+
+  if (project.image) {
+    jsonLd.image = project.image.startsWith('http')
+      ? project.image
+      : `${baseUrl}${project.image}`;
   }
 
   return (
@@ -64,6 +91,7 @@ export function ProjectPage() {
         type="article"
         publishedTime={toISODate(project.date)}
         tags={project.technologies}
+        jsonLd={jsonLd}
       />
       <article className="project-page">
         <div className="project-page__container">

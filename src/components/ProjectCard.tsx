@@ -24,7 +24,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {/* Badge destacado (si no es wip) */}
         {featured && status !== 'wip' && (
           <span className="project-card__featured" aria-label="Proyecto destacado">
-            Destacado
+            {project.featuredText ?? 'Destacado'}
           </span>
         )}
 

@@ -6,7 +6,7 @@ import { SectionTitle } from './SectionTitle';
 export function Hero() {
   return (
     <section id="inicio" className="hero">
-      <div className="hero__container">
+        <div className="hero__container">
         {/* Columna izquierda - Foto */}
         <div className="hero__image-wrapper">
           <div className="hero__image-container">

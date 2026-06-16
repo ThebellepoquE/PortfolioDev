@@ -1,0 +1,42 @@
+@media print {
+  .navbar,
+  .mobile-nav,
+  .footer,
+  .blog-post__back {
+    display: none !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .blog-post {
+    padding: 0;
+    background: white;
+
+    &__content {
+      color: black;
+      font-size: 12pt;
+      line-height: 1.5;
+      text-align: left;
+
+      a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #555;
+      }
+
+      pre {
+        border: 1px solid #ccc;
+        background: #f9f9f9;
+        color: black;
+      }
+
+      code {
+        color: black;
+        font-weight: 600;
+      }
+    }
+  }
+}

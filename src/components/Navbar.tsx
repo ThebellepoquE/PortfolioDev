@@ -9,11 +9,13 @@ import {
 import { ThemeToggle } from './ThemeToggle';
 import { LogoDots } from './LogoDots';
 import { SITE_CONFIG } from '../lib/config';
+import { useActiveSection } from '../hooks/useActiveSection';
 
 /** Navbar con logo de 3 puntos y navegación */
 export function Navbar() {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const activeSection = useActiveSection(['inicio', 'proyectos', 'contacto']);
 
   return (
     <>
@@ -69,6 +71,7 @@ export function Navbar() {
                     location.pathname.startsWith('/blog') ? 'is-active' : ''
                   }`}
                   aria-label="Ir al blog"
+                  aria-current={location.pathname.startsWith('/blog') ? 'page' : undefined}
             >
               Blog
             </Link>
@@ -98,7 +101,7 @@ export function Navbar() {
                 {/* Icono Home */}
                 <a
                   href="#inicio"
-                  className="mobile-nav__item mobile-nav__item--pink"
+                  className={`mobile-nav__item mobile-nav__item--pink${activeSection === 'inicio' ? ' is-active' : ''}`}
                   aria-label="Ir a sección inicio"
                 >
                   <div className="mobile-nav__item-icon">
@@ -109,7 +112,7 @@ export function Navbar() {
                 {/* Icono Proyectos */}
                 <a
                   href="#proyectos"
-                  className="mobile-nav__item mobile-nav__item--yellow"
+                  className={`mobile-nav__item mobile-nav__item--yellow${activeSection === 'proyectos' ? ' is-active' : ''}`}
                   aria-label="Ver proyectos"
                 >
                   <div className="mobile-nav__item-icon">
@@ -120,8 +123,11 @@ export function Navbar() {
                 {/* Icono Blog */}
                 <Link
                   to="/blog"
-                  className="mobile-nav__item mobile-nav__item--green"
+                  className={`mobile-nav__item mobile-nav__item--green ${
+                    location.pathname.startsWith('/blog') ? 'is-active' : ''
+                  }`}
                   aria-label="Ir al blog"
+                  aria-current={location.pathname.startsWith('/blog') ? 'page' : undefined}
                 >
                   <div className="mobile-nav__item-icon">
                     <FileIcon width={24} height={24} />
@@ -131,7 +137,7 @@ export function Navbar() {
                 {/* Icono Contacto */}
                 <a
                   href="#contacto"
-                  className="mobile-nav__item mobile-nav__item--pink"
+                  className={`mobile-nav__item mobile-nav__item--pink${activeSection === 'contacto' ? ' is-active' : ''}`}
                   aria-label="Ir a contacto"
                 >
                   <div className="mobile-nav__item-icon">

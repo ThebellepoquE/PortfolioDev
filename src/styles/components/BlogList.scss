@@ -1,11 +1,16 @@
 @use "../variables" as *;
 
 .blog-list {
-  min-height: 100vh;
+  min-height: calc(100svh - 60px);
+
+  @media (width >= 768px) {
+    min-height: calc(100svh - 80px);
+  }
+
   display: flex;
   justify-content: center;
   padding: 120px 1.5rem 80px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   background-color: $bg-dark;
 
   @media (width >= 640px) { padding-left: 2rem; padding-right: 2rem; }
@@ -73,13 +78,15 @@
   padding: 1.5rem;
   border: 1px solid var(--border);
   border-radius: 0.5rem;
-  transition: all 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
   background-color: $bg-card;
 
   @media (width >= 640px) { padding: 2rem; }
 
   &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba($green-rgb, 0.15);
     border-color: rgba($green-rgb, 0.5);
   }
 
@@ -138,7 +145,6 @@
     font-size: 0.875rem;
     color: $yellow;
     font-weight: 500;
-    transition: all 0.3s;
-    text-shadow: var(--text-shadow-yellow);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 }

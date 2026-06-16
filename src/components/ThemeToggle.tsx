@@ -13,10 +13,10 @@ export function ThemeToggle() {
       className="theme-toggle"
       aria-label={`Cambiar a modo ${theme === 'dark' ? 'claro' : 'oscuro'}`}
     >
-      {/* Sol - modo claro (decorativo; el botón tiene aria-label) */}
+      {/* Sol — visible en modo oscuro para invitar a cambiar a claro */}
       <svg
         className={`theme-toggle__icon theme-toggle__icon--sun ${
-          theme === 'light' ? 'is-visible' : 'is-hidden'
+          theme === 'dark' ? 'is-visible' : 'is-hidden'
         }`}
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -32,10 +32,10 @@ export function ThemeToggle() {
         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
       </svg>
 
-      {/* Luna - modo oscuro (decorativo) */}
+      {/* Luna — visible en modo claro para invitar a cambiar a oscuro */}
       <svg
         className={`theme-toggle__icon theme-toggle__icon--moon ${
-          theme === 'dark' ? 'is-visible' : 'is-hidden'
+          theme === 'light' ? 'is-visible' : 'is-hidden'
         }`}
         viewBox="0 0 24 24"
         aria-hidden="true"

@@ -14,31 +14,48 @@
     max-width: 500px;
     
     .error-icon {
-      font-size: 4rem;
+      font-size: 8rem;
+      font-weight: 900;
       display: block;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      color: $pink;
+      text-shadow:
+        0 0 7px $pink,
+        0 0 10px $pink,
+        0 0 21px $pink,
+        0 0 42px $pink,
+        0 0 82px $pink,
+        0 0 92px $pink;
     }
 
     h1 {
       color: $pink;
       font-family: Inter, sans-serif;
-      font-weight: 800;
-      font-size: 2.5rem;
+      font-weight: 700;
+      font-size: 2rem;
       margin-bottom: 1rem;
+      text-shadow:
+        0 0 7px $pink,
+        0 0 10px $pink;
     }
 
     p {
-      color: $text;
-      opacity: 0.8;
+      color: $text-secondary;
       margin-bottom: 2rem;
       line-height: 1.6;
+    }
+
+    .btn-main {
+      box-shadow:
+        0 0 7px $pink,
+        0 0 10px $pink;
     }
 
     .error-details {
       margin-top: 2rem;
       padding: 1rem;
       background: $bg-card;
-      border: 1px solid rgba($pink, 0.2);
+      border: 1px solid rgba($pink-rgb, 0.2);
       border-radius: 8px;
       font-family: monospace;
       font-size: 0.8rem;

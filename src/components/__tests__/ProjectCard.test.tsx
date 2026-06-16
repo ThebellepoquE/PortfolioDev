@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { ProjectCard } from '../ProjectCard';
 import type { Project } from '../../types/project';
+import { checkA11y } from '../../test/a11y-utils';
 
 /** Proyecto mínimo válido para tests */
 function buildProject(overrides: Partial<Project> = {}): Project {
@@ -172,5 +173,18 @@ describe('ProjectCard', () => {
 
       expect(screen.queryByRole('list', { name: 'Métricas del proyecto' })).not.toBeInTheDocument();
     });
+  });
+});
+
+describe('ProjectCard a11y', () => {
+  it('should have no accessibility violations', async () => {
+    const project = buildProject({});
+    const { container } = renderProjectCard(project);
+    const results = await checkA11y(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it.skip('color contrast requires manual browser verification', async () => {
+    // TODO: axe color-contrast rule doesn't work in jsdom, test manually in browser
   });
 });

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { projectsData } from '../lib/projects';
 import { ProjectCard } from './ProjectCard';
 import { SectionTitle } from './SectionTitle';
+import { Reveal } from './Reveal';
 
 /** Sección de proyectos: destacados primero, luego el resto */
 export function Projects() {
@@ -15,6 +16,23 @@ export function Projects() {
     []
   );
 
+  if (sortedProjects === null) {
+    return (
+      <section id="proyectos" className="projects">
+        <div className="projects__container">
+          <SectionTitle className="projects__title">Proyectos</SectionTitle>
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="project-card project-card--skeleton" aria-hidden="true">
+              <span className="skeleton" style={{ width: '70%', height: '1.5rem' }} />
+              <span className="skeleton" style={{ width: '100%', height: '0.875rem', marginTop: '0.75rem' }} />
+              <span className="skeleton" style={{ width: '50%', height: '1.5rem', marginTop: '1rem' }} />
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="proyectos" className="projects">
       <div className="projects__container">
@@ -22,8 +40,10 @@ export function Projects() {
           Proyectos
         </SectionTitle>
 
-        {sortedProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {sortedProjects.map((project, i) => (
+          <Reveal key={project.id} delay={i * 100}>
+            <ProjectCard project={project} />
+          </Reveal>
         ))}
       </div>
     </section>

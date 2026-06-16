@@ -1,12 +1,14 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
+import { ScrollToTopButton } from './components/ScrollToTopButton/ScrollToTopButton';
+import { HomePage } from './pages/HomePage';
 
 // Lazy load por ruta (code-splitting: cada página en su chunk)
-const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
 const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.BlogPage })));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage').then(m => ({ default: m.BlogPostPage })));
 const ProjectPage = lazy(() => import('./pages/ProjectPage').then(m => ({ default: m.ProjectPage })));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 
 const PageFallback = () => <div className="loading-placeholder" />;
@@ -25,15 +27,14 @@ function ScrollToTop() {
 function App() {
   return (
     <div className="app">
+      <a href="#main-content" className="skip-link">
+        Saltar al contenido principal
+      </a>
       <ScrollToTop />
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Routes>
-          <Route path="/" element={
-            <Suspense fallback={<PageFallback />}>
-              <HomePage />
-            </Suspense>
-          } />
+          <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={
             <Suspense fallback={<PageFallback />}>
               <BlogPage />
@@ -50,19 +51,13 @@ function App() {
             </Suspense>
           } />
           <Route path="*" element={
-            <div className="error-boundary">
-              <div className="error-content">
-                <span className="error-icon">🕵️‍♀️</span>
-                <h1>404 - No hay nada aquí</h1>
-                <p>Esa ruta no existe. Quizás el enlace estaba roto o te has aventurado demasiado lejos.</p>
-                <Link className="btn-main" to="/">
-                  Volver al inicio
-                </Link>
-              </div>
-            </div>
+            <Suspense fallback={<PageFallback />}>
+              <NotFoundPage />
+            </Suspense>
           } />
         </Routes>
       </main>
+      <ScrollToTopButton />
       <Suspense fallback={null}>
         <Footer />
       </Suspense>

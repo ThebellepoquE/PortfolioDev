@@ -1,6 +1,7 @@
 @use "variables" as *;
 @use "base/global";
 @use "base/typography";
+@use "utilities/print";
 @use "utilities/common";
 @use "components/Navbar";
 @use "components/Hero";
@@ -13,4 +14,7 @@
 @use "components/Footer";
 @use "components/ThemeToggle";
 @use "components/ErrorBoundary";
+@use "components/skeleton";
+@use "components/ScrollToTopButton";
+@use "components/NotFound";
 @use "themes/light";

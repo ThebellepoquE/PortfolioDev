@@ -1,7 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { BlogPost } from '../BlogPost';
+import { checkA11y } from '../../../test/a11y-utils';
+import type { JsonLd } from '../../../lib/jsonLd';
 
 const mockGetPostBySlug = vi.fn();
 const mockFormatDate = vi.fn((value: string) => value);
@@ -101,6 +104,104 @@ describe('BlogPost', () => {
       renderBlogPost('test-post');
 
       expect(mockFormatDate).toHaveBeenCalledWith('2025-01-15');
+    });
+  });
+});
+
+describe('BlogPost a11y', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockFormatDate.mockReturnValue('15 de enero de 2025');
+  });
+
+  it('should have no accessibility violations', async () => {
+    mockGetPostBySlug.mockReturnValue({
+      meta: {
+        slug: 'test-post',
+        title: 'Título accesible',
+        description: 'Descripción',
+        date: '2025-01-15',
+        tags: ['react'],
+        image: '/images/post.webp',
+      },
+      content: '## Subtítulo\n\nContenido del post.',
+    });
+    const { container } = renderBlogPost('test-post');
+    const results = await checkA11y(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it.skip('color contrast requires manual browser verification', async () => {
+    // TODO: axe color-contrast rule doesn't work in jsdom, test manually in browser
+  });
+});
+
+describe('BlogPost JSON-LD', () => {
+  const mockPost = {
+    meta: {
+      slug: 'test-post',
+      title: 'Título del post',
+      description: 'Descripción corta',
+      date: '2025-01-15',
+      tags: ['react', 'testing'],
+      image: '/images/post.webp',
+    },
+    content: '## Subtítulo\n\nPárrafo con **negrita** y [enlace](https://example.com).',
+  };
+
+  function renderForLd(slug: string) {
+    return render(
+      <HelmetProvider>
+        <MemoryRouter initialEntries={[`/blog/${slug}`]}>
+          <Routes>
+            <Route path="/blog/:slug" element={<BlogPost />} />
+          </Routes>
+        </MemoryRouter>
+      </HelmetProvider>,
+    );
+  }
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockFormatDate.mockReturnValue('15 de enero de 2025');
+    mockGetPostBySlug.mockReturnValue(mockPost);
+    document.head.innerHTML = '';
+  });
+
+  function getJsonLd(): JsonLd | null {
+    const script = document.querySelector('script[type="application/ld+json"]');
+    if (!script?.textContent) return null;
+    return JSON.parse(script.textContent);
+  }
+
+  it('contains @type: "BlogPosting"', () => {
+    renderForLd('test-post');
+
+    const jsonLd = getJsonLd();
+    expect(jsonLd).not.toBeNull();
+    expect(jsonLd!['@type']).toBe('BlogPosting');
+  });
+
+  it('contains url, @id, mainEntityOfPage fields', () => {
+    renderForLd('test-post');
+
+    const jsonLd = getJsonLd();
+    expect(jsonLd).not.toBeNull();
+    expect(jsonLd!.url).toBe('https://thebellepoque.dev/blog/test-post');
+    expect(jsonLd!['@id']).toBe('https://thebellepoque.dev/blog/test-post#blogposting');
+    expect(jsonLd!.mainEntityOfPage).toBe('https://thebellepoque.dev/blog/test-post');
+  });
+
+  it('author has @id pointing to /#person', () => {
+    renderForLd('test-post');
+
+    const jsonLd = getJsonLd();
+    expect(jsonLd).not.toBeNull();
+    expect(jsonLd!.author).toEqual({
+      '@type': 'Person',
+      name: 'Ione Rodríguez',
+      url: 'https://thebellepoque.dev',
+      '@id': 'https://thebellepoque.dev/#person',
     });
   });
 });
