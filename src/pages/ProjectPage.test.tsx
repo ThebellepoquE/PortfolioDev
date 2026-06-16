@@ -44,13 +44,13 @@ describe('ProjectPage JSON-LD', () => {
     expect(jsonLd!.name).toBe('Portfolio Personal');
     expect(typeof jsonLd!.description).toBe('string');
     expect(jsonLd!.datePublished).toBe('2026-01-01');
-    expect(jsonLd!.url).toBe('https://thebellepoque.dev/proyecto/portfolio-thebellepoque');
-    expect(jsonLd!['@id']).toBe('https://thebellepoque.dev/proyecto/portfolio-thebellepoque#creativework');
+    expect(jsonLd!.url).toBe('https://www.thebellepoque.dev/proyecto/portfolio-thebellepoque');
+    expect(jsonLd!['@id']).toBe('https://www.thebellepoque.dev/proyecto/portfolio-thebellepoque#creativework');
     expect(jsonLd!.author).toEqual({
       '@type': 'Person',
       name: 'Ione Rodríguez',
-      url: 'https://thebellepoque.dev',
-      '@id': 'https://thebellepoque.dev/#person',
+      url: 'https://www.thebellepoque.dev',
+      '@id': 'https://www.thebellepoque.dev/#person',
     });
   });
 
