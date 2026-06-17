@@ -1,7 +1,7 @@
 Contact: mailto:hola@thebellepoque.dev
 Expires: 2026-12-31T23:59:59.000Z
 Preferred-Languages: en, es
-Canonical: https://thebellepoque.dev/security.txt
+Canonical: https://www.thebellepoque.dev/security.txt
 
 # Please report security vulnerabilities to the contact above.
 # We appreciate responsible disclosure and will respond promptly.

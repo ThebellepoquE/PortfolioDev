@@ -19,8 +19,8 @@ export function HomePage() {
           '@type': 'Person',
           name: 'Ione',
           alternateName: 'thebellepoque',
-          url: 'https://thebellepoque.dev',
-          image: 'https://thebellepoque.dev/profile.webp',
+          url: 'https://www.thebellepoque.dev',
+          image: 'https://www.thebellepoque.dev/profile.webp',
           sameAs: [
             'https://github.com/ThebellepoquE',
             'https://www.linkedin.com/in/thebellepoque',

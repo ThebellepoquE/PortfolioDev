@@ -2,7 +2,7 @@
 
 **Desarrolladora Web · Python, JavaScript, React, MySQL, TypeScript & Automatizaciones**
 
-Este es el código de mi portfolio personal en [thebellepoque.dev](https://thebellepoque.dev). Construido desde cero con React 19, Vite 7 y TypeScript, sin plantillas. Cada decisión técnica tiene una razón.
+Este es el código de mi portfolio personal en [thebellepoque.dev](https://www.thebellepoque.dev). Construido desde cero con React 19, Vite 7 y TypeScript, sin plantillas. Cada decisión técnica tiene una razón.
 
 ## Que hay aqui
 

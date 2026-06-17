@@ -1,7 +1,7 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://thebellepoque.dev/sitemap.xml
+Sitemap: https://www.thebellepoque.dev/sitemap.xml
 
 User-agent: GPTBot
 Disallow: /
