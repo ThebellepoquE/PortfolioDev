@@ -7,6 +7,23 @@ function isTheme(value: string | null): value is Theme {
   return value === 'dark' || value === 'light';
 }
 
+function getInitialTheme(): Theme {
+  if (typeof window === 'undefined') {
+    return 'dark';
+  }
+
+  const root = document.documentElement;
+  if (root.classList.contains('light')) return 'light';
+  if (root.classList.contains('dark')) return 'dark';
+
+  const savedTheme = localStorage.getItem('theme');
+  if (isTheme(savedTheme)) return savedTheme;
+
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+
+  return 'dark';
+}
+
 /**
  * Hook personalizado para gestionar el tema (dark/light mode)
  * - Persiste la preferencia en localStorage
@@ -14,19 +31,11 @@ function isTheme(value: string | null): value is Theme {
  * - Aplica la clase 'light' al documento para CSS
  */
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    // Pre-inicialización para evitar parpadeos y cumplir con ESLint
-    if (typeof window === 'undefined') return 'dark';
-    const savedTheme = localStorage.getItem('theme');
-    if (isTheme(savedTheme)) return savedTheme;
-    if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
-    return 'dark';
-  });
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     const root = document.documentElement;
 
-    // Aplicar o remover clase 'light' en el HTML
     if (theme === 'light') {
       root.classList.add('light');
       root.classList.remove('dark');
@@ -35,7 +44,6 @@ export function useTheme() {
       root.classList.remove('light');
     }
 
-    // Guardar en localStorage
     localStorage.setItem('theme', theme);
   }, [theme]);
 
