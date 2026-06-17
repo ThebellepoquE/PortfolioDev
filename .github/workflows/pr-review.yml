@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-      - run: pnpm config set onlyBuiltDependencies '["@parcel/watcher","esbuild","sharp","unrs-resolver"]'
+      - run: pnpm approve-builds @parcel/watcher esbuild sharp unrs-resolver || true
       - run: pnpm install --frozen-lockfile
       - run: pnpm test -- --run
 
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-      - run: pnpm config set onlyBuiltDependencies '["@parcel/watcher","esbuild","sharp","unrs-resolver"]'
+      - run: pnpm approve-builds @parcel/watcher esbuild sharp unrs-resolver || true
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
 
@@ -49,7 +49,7 @@ jobs:
           node-version: '22'
           cache: pnpm
 
-      - run: pnpm config set onlyBuiltDependencies '["@parcel/watcher","esbuild","sharp","unrs-resolver"]'
+      - run: pnpm approve-builds @parcel/watcher esbuild sharp unrs-resolver || true
       - run: pnpm install --frozen-lockfile
 
       - name: Run ESLint
