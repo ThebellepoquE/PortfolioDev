@@ -1,4 +1,5 @@
 {
+  "installCommand": "pnpm approve-builds @parcel/watcher esbuild sharp unrs-resolver && pnpm install --frozen-lockfile",
   "headers": [
     {
       "source": "/api/(.*)",
