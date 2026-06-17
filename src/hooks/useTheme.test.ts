@@ -2,9 +2,10 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useTheme } from './useTheme';
 
-// Reset localStorage y matchMedia entre tests
+// Reset localStorage, matchMedia y clases del documento entre tests
 beforeEach(() => {
   localStorage.clear();
+  document.documentElement.classList.remove('dark', 'light');
   vi.restoreAllMocks();
 });
 
@@ -77,5 +78,21 @@ describe('useTheme', () => {
 
     const { result } = renderHook(() => useTheme());
     expect(result.current.theme).toBe('dark'); // fallback a dark
+  });
+
+  it('respeta la clase light ya presente en el documento', () => {
+    document.documentElement.classList.add('light');
+    localStorage.setItem('theme', 'dark');
+    vi.spyOn(window, 'matchMedia').mockReturnValue({
+      matches: false,
+      media: '',
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    } as unknown as MediaQueryList);
+
+    const { result } = renderHook(() => useTheme());
+    expect(result.current.theme).toBe('light');
+
+    document.documentElement.classList.remove('light');
   });
 });

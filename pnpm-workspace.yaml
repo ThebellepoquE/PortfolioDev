@@ -1,9 +1,12 @@
-overrides:
-  minimatch: 10.2.3
-  rollup: '>=4.59.0'
-  immutable: 5.1.5
-  flatted: 3.4.0
+packages:
+  - '.'
 allowBuilds:
   '@parcel/watcher': true
   esbuild: true
   sharp: true
+  unrs-resolver: true
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
+  - sharp
+  - unrs-resolver
