@@ -1,9 +1,6 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // Temporary extension to avoid Next.js treating the legacy Vite pages in
-  // src/pages as Pages Router routes. Will revert once the SPA files are removed.
-  pageExtensions: ['page.tsx', 'page.ts'],
   images: {
     formats: ['image/avif', 'image/webp'],
   },
