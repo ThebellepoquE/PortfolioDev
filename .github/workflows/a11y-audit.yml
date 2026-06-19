@@ -39,6 +39,6 @@ jobs:
           npx next start &
           npx --yes wait-on http://localhost:3000 --timeout 30000
           echo "Server ready, running audit..."
-          node scripts/audit-contrast.mjs
+          node scripts/audit-contrast.mjs http://localhost:3000
         env:
           CHROME_PATH: /usr/bin/google-chrome-stable
