@@ -32,12 +32,12 @@ jobs:
           sudo apt-get install -y google-chrome-stable
 
       - name: Build SPA
-        run: pnpm run build
+        run: pnpm next build
 
       - name: Start server & audit contrast
         run: |
-          npx --yes vite preview --port 5173 &
-          npx --yes wait-on http://localhost:5173 --timeout 30000
+          npx next start &
+          npx --yes wait-on http://localhost:3000 --timeout 30000
           echo "Server ready, running audit..."
           node scripts/audit-contrast.mjs
         env:
