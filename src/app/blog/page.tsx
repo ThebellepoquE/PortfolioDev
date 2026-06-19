@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { BlogList } from '@/components/Blog/BlogList';
 import { getAllPosts } from '@/lib/posts.server';
 import { buildMetadata, buildBlogJsonLd } from '@/lib/metadata';
+import Link from 'next/link'; // Import Link
 
 export const metadata: Metadata = buildMetadata({
   title: 'Blog',
@@ -16,6 +17,9 @@ export default async function BlogPage() {
 
   return (
     <>
+      <Link href="/" className="blog-list__back">
+        <span>←</span> Volver
+      </Link>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

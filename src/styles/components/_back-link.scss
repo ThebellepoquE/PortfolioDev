@@ -1,0 +1,16 @@
+@use "../variables" as *;
+
+.blog-list__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  margin-bottom: 3rem; // Espaciado solicitado
+  text-decoration: none;
+  transition: color 0.3s;
+  color: $text-secondary;
+
+  &:hover {
+    color: $green;
+  }
+}

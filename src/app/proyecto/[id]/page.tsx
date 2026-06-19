@@ -57,14 +57,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </header>
 
             <div className="project__content">
-              <div className="project__image-container">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="project__image"
-                />
-              </div>
-
               <div className="project__description">
                 <p>{project.shortDescription}</p>
               </div>

@@ -3,6 +3,7 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
+import next from 'eslint-config-next'
 
 export default defineConfig([
   globalIgnores(['dist', 'coverage', '.next', 'next-env.d.ts']),
@@ -12,6 +13,7 @@ export default defineConfig([
       js.configs.recommended,
       tseslint.configs.recommended,
       reactHooks.configs.flat.recommended,
+      next,
     ],
     languageOptions: {
       ecmaVersion: 2020,
