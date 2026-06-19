@@ -61,7 +61,7 @@ importers:
         specifier: ^9.39.4
         version: 9.39.4
       eslint-config-next:
-        specifier: ^15.2.0
+        specifier: ^15.5.19
         version: 15.5.19(eslint@9.39.4)(typescript@5.9.3)
       eslint-plugin-react-hooks:
         specifier: ^7.1.1
