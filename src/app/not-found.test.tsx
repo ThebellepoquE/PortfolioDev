@@ -6,7 +6,8 @@ describe('NotFound', () => {
   it('renders a 404 heading', () => {
     render(<NotFound />);
 
-    expect(screen.getByRole('heading', { name: /404/i })).toBeInTheDocument();
+    expect(screen.getByText(/404/i)).toBeInTheDocument();
+    expect(screen.getByText(/te has perdido/i)).toBeInTheDocument();
   });
 
   it('renders a link back to home', () => {

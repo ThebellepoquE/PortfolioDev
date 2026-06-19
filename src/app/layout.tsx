@@ -3,6 +3,7 @@ import '@/styles/main.scss';
 import { SITE_CONFIG } from '@/lib/config';
 import { Footer } from '@/components/Footer';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton/ScrollToTopButton';
+import { Navbar } from '@/components/Navbar';
 
 export const metadata: Metadata = {
   title: 'Ione | Desarrolladora Web',
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="es" suppressHydrationWarning data-scroll-behavior="smooth">
       <body>
+        <Navbar />
         <a href="#main-content" className="skip-link">
           Saltar al contenido principal
         </a>
