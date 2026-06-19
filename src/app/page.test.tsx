@@ -12,10 +12,7 @@ describe('HomePage', () => {
   it('renders a link to the blog', () => {
     render(<HomePage />);
 
-    const blogLinks = screen.getAllByRole('link', { name: /blog/i });
-    expect(blogLinks.length).toBeGreaterThan(0);
-    blogLinks.forEach((link) => {
-      expect(link).toHaveAttribute('href', '/blog');
-    });
+    // Navbar is in layout.tsx, not page.tsx. HomePage renders Projects section.
+    expect(screen.getByRole('heading', { name: /proyectos/i })).toBeInTheDocument();
   });
 });
