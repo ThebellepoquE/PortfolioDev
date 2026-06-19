@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import NotFound from './not-found.page';
+import NotFound from './not-found.tsx';
 
 describe('NotFound', () => {
   it('renders a 404 heading', () => {

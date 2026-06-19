@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import RootLayout from './layout.page';
+import RootLayout from './layout.tsx';
 
 describe('RootLayout', () => {
   it('renders children', () => {

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ErrorPage from './error.page';
+import ErrorPage from './error.tsx';
 
 describe('ErrorPage', () => {
   it('renders a fallback message when an error is provided', () => {

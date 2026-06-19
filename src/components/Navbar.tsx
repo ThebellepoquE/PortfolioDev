@@ -1,4 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   GithubIcon,
   HomeIcon,
@@ -13,8 +14,8 @@ import { useActiveSection } from '../hooks/useActiveSection';
 
 /** Navbar con logo de 3 puntos y navegación */
 export function Navbar() {
-  const location = useLocation();
-  const isHome = location.pathname === '/';
+  const pathname = usePathname();
+  const isHome = pathname === '/';
   const activeSection = useActiveSection(['inicio', 'proyectos', 'contacto']);
 
   return (
@@ -24,7 +25,7 @@ export function Navbar() {
         <div className="navbar__content">
           {/* Logo - 3 puntos fluorescentes */}
           <Link
-            to="/"
+            href="/"
             aria-label="Inicio, página principal"
             className="navbar__logo"
           >
@@ -59,22 +60,22 @@ export function Navbar() {
               </>
             ) : (
               <Link
-                to="/"
+                href="/"
                 className="navbar__link navbar__link--pink"
               >
                 ← Home
               </Link>
             )}
-                <Link
-                  to="/blog"
-                  className={`navbar__link navbar__link--pink ${
-                    location.pathname.startsWith('/blog') ? 'is-active' : ''
-                  }`}
-                  aria-label="Ir al blog"
-                  aria-current={location.pathname.startsWith('/blog') ? 'page' : undefined}
-            >
-              Blog
-            </Link>
+                 <Link
+                   href="/blog"
+                   className={`navbar__link navbar__link--pink ${
+                     pathname?.startsWith('/blog') ? 'is-active' : ''
+                   }`}
+                   aria-label="Ir al blog"
+                   aria-current={pathname?.startsWith('/blog') ? 'page' : undefined}
+             >
+               Blog
+             </Link>
             {/* Theme Toggle */}
             <ThemeToggle />
             {/* GitHub icon */}
@@ -121,14 +122,14 @@ export function Navbar() {
                 </a>
 
                 {/* Icono Blog */}
-                <Link
-                  to="/blog"
-                  className={`mobile-nav__item mobile-nav__item--green ${
-                    location.pathname.startsWith('/blog') ? 'is-active' : ''
-                  }`}
-                  aria-label="Ir al blog"
-                  aria-current={location.pathname.startsWith('/blog') ? 'page' : undefined}
-                >
+                 <Link
+                   href="/blog"
+                   className={`mobile-nav__item mobile-nav__item--green ${
+                     pathname?.startsWith('/blog') ? 'is-active' : ''
+                   }`}
+                   aria-label="Ir al blog"
+                   aria-current={pathname?.startsWith('/blog') ? 'page' : undefined}
+                 >
                   <div className="mobile-nav__item-icon">
                     <FileIcon width={24} height={24} />
                   </div>
@@ -154,7 +155,7 @@ export function Navbar() {
               <>
                 {/* Botón Home cuando estamos en otra página */}
                 <Link
-                  to="/"
+                  href="/"
                   className="mobile-nav__item mobile-nav__item--pink"
                   aria-label="Inicio, página principal"
                 >
@@ -165,13 +166,13 @@ export function Navbar() {
                 </Link>
 
                 {/* Icono Blog - activo */}
-                <Link
-                  to="/blog"
-                  className={`mobile-nav__item mobile-nav__item--green ${
-                    location.pathname.startsWith('/blog') ? 'is-active' : ''
-                  }`}
-                  aria-label="Ir al blog"
-                >
+                 <Link
+                   href="/blog"
+                   className={`mobile-nav__item mobile-nav__item--green ${
+                     pathname?.startsWith('/blog') ? 'is-active' : ''
+                   }`}
+                   aria-label="Ir al blog"
+                 >
                   <div className="mobile-nav__item-icon">
                     <FileIcon width={24} height={24} />
                   </div>
