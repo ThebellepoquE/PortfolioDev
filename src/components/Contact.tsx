@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { CheckIcon, AlertIcon, LoaderIcon, FileIcon } from './icons';
 import type { FormEvent, ReactNode } from 'react';

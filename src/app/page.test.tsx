@@ -12,7 +12,10 @@ describe('HomePage', () => {
   it('renders a link to the blog', () => {
     render(<HomePage />);
 
-    const blogLink = screen.getByRole('link', { name: /blog/i });
-    expect(blogLink).toHaveAttribute('href', '/blog');
+    const blogLinks = screen.getAllByRole('link', { name: /blog/i });
+    expect(blogLinks.length).toBeGreaterThan(0);
+    blogLinks.forEach((link) => {
+      expect(link).toHaveAttribute('href', '/blog');
+    });
   });
 });

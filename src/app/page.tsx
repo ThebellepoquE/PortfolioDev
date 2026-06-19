@@ -1,13 +1,15 @@
-import Link from 'next/link';
+import { Hero } from '@/components/Hero';
+import { Projects } from '@/components/Projects';
+import { Contact } from '@/components/Contact';
+import { Navbar } from '@/components/Navbar'; // Assuming Navbar should be here
 
 export default function HomePage() {
   return (
-    <section className="home-placeholder">
-      <h1>Ione | Desarrolladora Web</h1>
-      <p>Portfolio en proceso de migración a Next.js.</p>
-      <Link href="/blog" className="btn-main">
-        Ver blog
-      </Link>
-    </section>
+    <>
+      <Navbar />
+      <Hero />
+      <Projects />
+      <Contact />
+    </>
   );
 }

@@ -1,5 +1,4 @@
 {
-  "installCommand": "pnpm approve-builds @parcel/watcher esbuild sharp unrs-resolver && pnpm install --frozen-lockfile",
   "outputDirectory": ".next",
   "headers": [
     {

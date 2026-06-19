@@ -10,14 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
-      - run: pnpm approve-builds @parcel/watcher esbuild sharp unrs-resolver || true
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm test -- --run
+          cache: npm
+      - run: npm ci
+      - run: npm run test -- --run
 
   build:
     name: Build
@@ -25,14 +23,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
-      - run: pnpm approve-builds @parcel/watcher esbuild sharp unrs-resolver || true
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm run build
+          cache: npm
+      - run: npm ci
+      - run: npm run build
 
   code-review:
     name: Code Review
@@ -43,20 +39,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: pnpm
+          cache: npm
 
-      - run: pnpm approve-builds @parcel/watcher esbuild sharp unrs-resolver || true
-      - run: pnpm install --frozen-lockfile
+      - run: npm ci
 
       - name: Run ESLint
         id: eslint
         continue-on-error: true
         run: |
-          pnpm run lint 2>&1 | tee eslint-output.txt
+          npm run lint 2>&1 | tee eslint-output.txt
           echo "${PIPESTATUS[0]}" > eslint-exit-code.txt
 
       - name: Run Stylelint
@@ -64,7 +58,7 @@ jobs:
         if: always()
         continue-on-error: true
         run: |
-          pnpm run lint:styles 2>&1 | tee stylelint-output.txt
+          npm run lint:styles 2>&1 | tee stylelint-output.txt
           echo "${PIPESTATUS[0]}" > stylelint-exit-code.txt
 
       - name: Fail if lint issues
