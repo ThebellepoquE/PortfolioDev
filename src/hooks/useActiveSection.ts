@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 
 export function useActiveSection(sectionIds: string[]): string | null {
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const ratiosRef = useRef<Map<string, number>>(new Map());
 

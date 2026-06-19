@@ -1,0 +1,57 @@
+# SDD Configuration — portfoliodev
+# Generated: 2026-06-18
+
+context: |
+  Personal portfolio built with React 19 + TypeScript 5.9 + Vite 7.
+  pnpm 11 monorepo, deployed to Vercel.
+  SCSS with CSS Modules, Stylelint. ESLint 9 flat config.
+  Vitest 4 + Testing Library for unit/integration tests.
+  vitest-axe for accessibility assertions in tests.
+  react-router-dom v7, react-helmet-async, react-markdown.
+  Strict TypeScript, bundler module resolution, jsdom test env.
+
+strict_tdd: true
+
+testing:
+  runner: vitest
+  runner_command: pnpm run test -- --run
+  layers:
+    unit: true
+    integration: true
+    e2e: false
+  coverage:
+    available: true
+    command: pnpm run test:coverage
+    provider: v8
+  quality:
+    linter:
+      available: true
+      command: pnpm run lint
+    style_linter:
+      available: true
+      command: pnpm run lint:styles
+    type_checker:
+      available: true
+      command: pnpm run typecheck
+    formatter:
+      available: false
+
+phases:
+  propose:
+    required: true
+  spec:
+    required: true
+  design:
+    required: true
+  tasks:
+    required: true
+  apply:
+    required: true
+  verify:
+    required: true
+    commands:
+      - pnpm run test:run
+      - pnpm run lint
+      - pnpm run typecheck
+  archive:
+    required: true

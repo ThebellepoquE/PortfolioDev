@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import type { BlogPost } from '../../lib/posts';
 import { formatDateDayMonthYear } from '../../lib/formatDate';
 import { SectionTitle } from '../SectionTitle';
@@ -49,7 +49,7 @@ export function BlogList({ posts }: BlogListProps) {
             {posts.map((post, i) => (
               <Reveal key={post.slug} delay={i * 100}>
                 <Link
-                  to={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}`}
                   className="blog-card"
                 >
                 <div className="blog-card__content">

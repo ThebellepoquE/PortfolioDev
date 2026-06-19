@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import type { Project } from '../types/project';
 import { MetricBadge } from './MetricBadge';
 
@@ -51,7 +51,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {/* Enlace a página de detalle / caso de estudio */}
         <div className="project-card__actions">
           <Link
-            to={`/proyecto/${project.id}`}
+            href={`/proyecto/${project.id}`}
             className="project-card__details-link"
           >
             Ver caso de estudio →

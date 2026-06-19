@@ -1,7 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
-  ],
+  "installCommand": "pnpm approve-builds @parcel/watcher esbuild sharp unrs-resolver && pnpm install --frozen-lockfile",
+  "outputDirectory": ".next",
   "headers": [
     {
       "source": "/api/(.*)",

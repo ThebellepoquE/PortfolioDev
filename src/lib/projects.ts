@@ -266,7 +266,7 @@ export const projectsData: ProjectFull[] = [
       {
         title: 'Migración Reflex → React 19 + Vite 7',
         description: 'Portfolio original en stack distinto (Python/Reflex) sin control granular sobre el output HTML ni SEO.',
-        solution: 'Reescritura completa con Vite 7, React 19, react-router-dom 7, react-helmet-async para SEO y contenido estático en TypeScript.',
+        solution: 'Reescritura completa con Vite 7, React 19 y Next.js para SEO y contenido estático en TypeScript.',
         technologies: ['React 19', 'TypeScript', 'Vite 7'],
       },
       {
@@ -276,7 +276,7 @@ export const projectsData: ProjectFull[] = [
         technologies: ['SEO', 'JSON-LD', 'Sharp', 'WebP', 'AVIF'],
       },
     ],
-    architecture: 'SPA con Vite 7 + React 19 + TypeScript. Rutas con react-router-dom 7 y lazy loading por chunk. SEO con react-helmet-async. Blog con Markdown (react-markdown + remark-gfm). API Serverless en Vercel para formulario de contacto (Resend). Imágenes optimizadas con sharp (WebP/AVIF). Bundle analyzer con rollup-plugin-visualizer. Tema claro/oscuro con variables SCSS.',
+    architecture: 'Next.js 14 App Router + TypeScript. SEO gestionado por Next.js. Blog con Markdown (react-markdown + remark-gfm). API Serverless en Vercel para formulario de contacto (Resend). Imágenes optimizadas con sharp (WebP/AVIF). Bundle analyzer con rollup-plugin-visualizer. Tema claro/oscuro con variables SCSS.',
     learnings: [
       'React 19 y Vite 7 en producción',
       'SEO completo: Open Graph, Twitter Cards, JSON-LD, sitemap con imágenes',
