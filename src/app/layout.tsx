@@ -38,6 +38,11 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="es" suppressHydrationWarning data-scroll-behavior="smooth">
+      <head>
+        <link rel="preconnect" href="https://github.com" />
+        <link rel="preconnect" href="https://www.linkedin.com" />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body>
         <Navbar />
         <a href="#main-content" className="skip-link">
@@ -48,7 +53,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </main>
         <ScrollToTopButton />
         <Footer />
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </body>
     </html>
   );
