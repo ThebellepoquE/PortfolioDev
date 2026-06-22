@@ -58,6 +58,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   height={675}
                   className="blog-post__image"
                   sizes="(max-width: 767px) 100vw, 1200px"
+                  priority
                 />
               )}
 

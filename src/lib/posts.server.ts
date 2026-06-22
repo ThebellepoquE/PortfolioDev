@@ -40,7 +40,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
       slug,
       title: data.title ?? slug,
       description: data.description ?? '',
-      date: data.date ? String(data.date) : '',
+      date: data.date ? new Date(data.date).toISOString() : '',
       tags: Array.isArray(data.tags) ? data.tags : [],
       image: data.image ?? undefined,
     });
@@ -75,7 +75,7 @@ export async function getPostBySlug(
       slug,
       title: data.title ?? slug,
       description: data.description ?? '',
-      date: data.date ? String(data.date) : '',
+      date: data.date ? new Date(data.date).toISOString() : '',
       tags: Array.isArray(data.tags) ? data.tags : [],
       image: data.image ?? undefined,
     };
