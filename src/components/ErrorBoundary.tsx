@@ -1,4 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
+import Link from 'next/link';
 
 interface Props {
   children?: ReactNode;
@@ -33,12 +34,12 @@ export class ErrorBoundary extends Component<Props, State> {
             <span className="error-icon">!</span>
             <h1>Puuuuuf... algo se ha roto</h1>
             <p>Parece que el código ha entrado en un bucle infinito de nostalgia o un error inesperado.</p>
-            <a 
+            <Link 
               className="btn-main" 
               href="/"
             >
               Volver al inicio
-            </a>
+            </Link>
             {import.meta.env.DEV && (
               <pre className="error-details">
                 {this.state.error?.toString()}
