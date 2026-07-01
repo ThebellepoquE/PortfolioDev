@@ -20,7 +20,11 @@ dist-ssr/
 .vscode/
 !.vscode/extensions.json
 .idea/
-.cursor/
+# Cursor (MCP local); las reglas .cursor/rules/ y mcp.json sí se versionan
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+!.cursor/mcp.json
 .cursorrules
 .DS_Store
 *.suo
