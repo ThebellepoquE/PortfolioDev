@@ -29,7 +29,7 @@ Todo el mundo parece tener muy claro cuándo se pasa de uno a otro. Hay posts, h
 
 Pero ¿quién decide eso? ¿Cuántos años tienen que pasar? ¿Cuántos proyectos? ¿Cuándo dejas de tener preguntas? Porque yo no conozco a nadie, con dos años o con veinte, que haya dejado de tenerlas.
 
-A mí esa fiebre me importa cero.
+A mí esa fiebre me importa zero.
 
 No porque no valore crecer. Sino porque la etiqueta me parece lo menos interesante de todo el proceso. Prefiero seguir siendo junior toda la vida si eso significa seguir aprendiendo, seguir teniendo curiosidad, seguir encontrando cosas que no sabía que existían.
 
