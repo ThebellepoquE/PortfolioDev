@@ -19,7 +19,7 @@ Contaba el salto al vacío, el agradecimiento a Fundación VASS y Bottega Univer
 
 Hoy tengo cuatro proyectos en producción, un blog activo y un portfolio que refleja mejor cómo trabajo.
 
-Y quiero contarlo con honestidad. La de verdad.
+Y quiero contarlo con honestidad.
 
 ## El punto raro que nadie te explica bien
 
