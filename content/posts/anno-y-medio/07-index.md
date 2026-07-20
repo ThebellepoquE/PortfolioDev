@@ -69,6 +69,14 @@ La lista es larga. Y me parece perfecto.
 - El diseño de sistemas a gran escala. Puedo construir cosas sólidas a escala pequeña-mediana. En arquitecturas con muchos servicios, todavía me pierdo.
 - La gestión del tiempo cuando hay varios proyectos activos a la vez. Sigo aprendiendo a priorizar.
 
+Solo sé que no sé nada.
+
+No lo digo como excusa. Lo digo como ancla.
+
+Porque cuanto más aprendes, más ves lo que te queda por aprender. Y eso, en lugar de agobiar, da calma. En un mundo que te bombardea con información nueva cada día, con frameworks que se quedan obsoletos antes de dominarlos, con modelos que mejoran cada semana... tener claro que nunca lo sabrás todo es lo más liberador que te puede pasar.
+
+No corres para llegar. Caminas para seguir.
+
 Reconocerlo no es una debilidad. Es parte de ser la eterna aprendiz.
 
 Y eso, lejos de avergonzarme, es lo que más me gusta de esta profesión.
