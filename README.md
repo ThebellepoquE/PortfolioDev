@@ -28,9 +28,9 @@ Este es el código de mi portfolio personal en [thebellepoque.dev](https://www.t
 ## Correr localmente
 
 ```bash
-# Requisitos: Node.js 22+, npm
-npm install
-npm run dev         # http://localhost:3000
+# Requisitos: Node.js 22+, pnpm
+pnpm install
+pnpm run dev        # http://localhost:3000
 
 # Tests
 pnpm test:run
