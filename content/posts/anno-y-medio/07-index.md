@@ -110,7 +110,7 @@ Lo demás llega. Poco a poco. Con cada proyecto, con cada error, con cada commit
 
 Junior. Aprendiendo. Con ayuda. Y contenta de serlo.
 
-Caminante, no hay camino.
+Caminante, no hay camino...
 
 Se hace camino al andar.
 
