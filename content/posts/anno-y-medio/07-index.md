@@ -47,8 +47,6 @@ Es una base. Una ligera idea sobre conceptos. Suficiente para empezar a buscar, 
 
 Pero conocimiento profundo, el de verdad, el que te permite construir cosas complejas desde cero sin ayuda... ese no llega en seis meses.
 
-Y ser honesta con eso me parece importante.
-
 ## Sin la IA no habría podido construir lo que he construido
 
 Lo digo así, claro.
