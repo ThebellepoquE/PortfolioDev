@@ -1,6 +1,6 @@
 ---
 title: "Año y medio: lo que sé que no sé"
-description: "Dieciocho meses construyendo, fallando y aprendiendo. Sigo siendo junior y no me avergüenza nada. De hecho, es lo mejor que me ha pasado."
+description: "Dieciocho meses construyendo con honestidad. La IA ha sido parte central de lo que he podido crear, y no me avergüenza nada decirlo."
 date: 2026-07-13
 tags:
   - Reflexión
@@ -19,92 +19,74 @@ Contaba el salto al vacío, el agradecimiento a Fundación VASS y Bottega Univer
 
 Hoy tengo cuatro proyectos en producción, un blog activo y un portfolio que refleja mejor cómo trabajo.
 
-Y sigo siendo junior.
+Y quiero contarlo con honestidad. La de verdad.
 
-Contenta de serlo.
+## Lo que un bootcamp te da y lo que no
 
-## La etiqueta que la gente convierte en problema
+Un bootcamp no te convierte en desarrolladora. Te da algo más parecido a un mapa borroso.
 
-Hay mucho ruido en torno a cuándo dejas de ser junior. Como si fuera una fecha de caducidad que tienes que superar cuanto antes. Como si aprender mucho y rápido significara que ya no cabe la palabra.
+Entiendes para qué sirve una base de datos. Sabes que existe TypeScript. Puedes leer un componente React y entender más o menos qué hace. Sabes que hay algo llamado Docker aunque no lo hayas usado de verdad todavía.
 
-No lo entiendo.
+Es una base. Una ligera idea sobre conceptos. Suficiente para empezar a buscar, para entender lo que lees, para no perderte del todo cuando alguien habla de arquitectura o de APIs.
 
-¿Cuándo eres senior? ¿Con dos años de experiencia? ¿Con cinco? ¿Cuando ya no te bloqueas? ¿Cuando no tienes preguntas? Porque si es lo último, te tengo una noticia: los desarrolladores con veinte años de experiencia siguen teniendo preguntas. Siguen aprendiendo cosas nuevas. Siguen abriendo repositorios ajenos y tardando un rato en entender cómo están organizados.
+Pero conocimiento profundo, el de verdad, el que te permite construir cosas complejas desde cero sin ayuda... ese no llega en seis meses.
 
-La etiqueta no define lo que sabes. Define cuánto llevas. Y yo llevo año y medio.
+Y ser honesta con eso me parece importante. Porque hay mucho portfolio brillante ahí fuera que no cuenta cómo se hizo realmente.
 
-Eso es lo que soy. Y está bien.
+## Sin la IA no habría podido construir lo que he construido
 
-## Lo que sí ha cambiado
+Lo digo así, claro.
 
-Que lleve año y medio no significa que sea la misma de enero de 2025.
+LightON, PurpleBasqueTours, Discográfica, este mismo portfolio. No habrían existido en la forma en que existen sin Claude, sin DeepSeek, sin las horas de conversación con modelos que me ayudaron a entender qué estaba haciendo y por qué.
 
-Tengo proyectos reales en producción que usa gente real. Tomo decisiones técnicas sola y tengo criterio para defenderlas. Sé cuándo algo está bien hecho y cuándo está hecho con prisa. Sé qué preguntar y, cada vez más, cómo buscar la respuesta antes de preguntar.
+No como atajo. Como co-arquitecta.
 
-Eso es crecer. No cambiar de etiqueta.
+Cuando no entendía cómo estructurar el backend de LightON, pregunté. Cuando no sabía cómo funciona un CMS headless con Next.js, pregunté. Cuando algo fallaba y el error no me decía nada, pregunté. Cuando quería hacer algo y no sabía si existía una forma mejor, pregunté.
 
-## Lo que cambia cuando los proyectos son reales
+La IA fue la que pudo con las partes que yo todavía no podía.
 
-Hay una diferencia enorme entre aprender algo y usarlo en un proyecto que alguien va a ver, tocar o depender de él.
+Y aun así, los proyectos son míos. Porque yo decidí qué construir. Porque yo evalué si lo que producía tenía sentido. Porque yo entendí — a veces despacio, a veces muy despacio — por qué funcionaba. Porque yo seguí cuando algo fallaba. Porque yo los llevé a producción, los mantuve, los mejoré.
 
-Con LightON aprendí que el mantenimiento importa más que el estreno.
+Sin criterio, la IA te da basura. Y el criterio, por pequeño que sea, era mío.
 
-Con PurpleBasqueTours aprendí que el multilingüismo no es añadir traducciones, es pensar en dos lógicas desde el principio.
+## Lo que sí sé hacer
 
-Con Discográfica estoy aprendiendo que construir desde cero para alguien con contenido real —catálogo, artistas, fotos— es muy distinto a construir para un proyecto sin historia.
+Si tengo que ser honesta sobre mis puntos fuertes, no son los que aparecen en la mayoría de portfolios.
 
-Con este portfolio aprendí que una herramienta propia tampoco puede descuidarse.
+No soy la que más sabe de algoritmos. No memorizo documentación. No tengo años de experiencia en ningún stack.
 
-Cada proyecto me ha enseñado algo que ningún tutorial podría. Porque en un tutorial, si algo falla, no pasa nada. En un proyecto real, si algo falla, alguien lo nota.
+Pero sé buscar. Sé encontrar la información que necesito, evaluarla, filtrar lo que no sirve y quedarme con lo que sí. Sé estar al día: probar herramientas nuevas, modelos nuevos, plataformas, entornos. Sé reconocer cuándo algo ha mejorado y cuándo es solo ruido.
 
-Eso cambia la forma de escribir código. Cambia cómo planificas, cómo testeas, cómo tomas decisiones antes de que las cosas rompan.
+Y sé trabajar con IA de forma que amplíe lo que puedo hacer, no que lo sustituya.
 
-## Los agentes de IA y mi flujo de trabajo
-
-Tengo que hablar de esto, porque ha cambiado bastante mi día a día.
-
-Uso Claude Code de forma activa. No como sustituto de pensar, sino como un par de ojos más: un colaborador que no se cansa, que puede explorar código durante horas y que a veces me hace preguntas que me hacen darme cuenta de que no tenía tan claro lo que creía tener claro.
-
-He aprendido a trabajar con agentes para tareas concretas: revisar si un cambio rompe algo, explorar partes del código que no conozco bien, comprobar si la estructura de un componente tiene sentido, leer documentación viva sin perder tiempo buscando.
-
-No es magia. Hay que saber dirigirlos. Hay que revisar lo que producen. Hay que saber cuándo su respuesta está desactualizada o simplemente equivocada.
-
-Pero cuando se usan bien, multiplican lo que puedes hacer sola.
-
-Me parece una habilidad tan real como aprender TypeScript o Docker. Y la estoy desarrollando conscientemente, no por moda sino porque veo el resultado en mi trabajo.
+Eso también es una habilidad. No la que te enseñan en los bootcamps, pero sí la que cada vez importa más.
 
 ## Lo que sigo sin hacer bien
 
 La lista es larga. Y me parece perfecto.
 
-- Los tests de integración todavía me cuestan. Sé escribirlos, pero no siempre sé qué testear primero ni dónde está la frontera entre un test unitario y uno de integración en proyectos reales.
-- El diseño de sistemas a gran escala. Puedo construir cosas sólidas a escala pequeña-mediana. Cuando pienso en arquitecturas con muchos servicios y equipos, todavía me pierdo en los detalles.
-- La gestión del tiempo cuando hay varios proyectos activos a la vez. Sigo aprendiendo a priorizar sin perder el hilo de cada uno.
+- Los tests de integración todavía me cuestan. Sé escribirlos, pero no siempre sé qué testear primero.
+- El diseño de sistemas a gran escala. Puedo construir cosas sólidas a escala pequeña-mediana. En arquitecturas con muchos servicios, todavía me pierdo.
+- La gestión del tiempo cuando hay varios proyectos activos a la vez. Sigo aprendiendo a priorizar.
 
 Reconocerlo no es una debilidad. Es parte de ser la eterna aprendiz.
 
 Y eso, lejos de avergonzarme, es lo que más me gusta de esta profesión.
 
-## Un año y medio en números que no son los importantes
+## Por qué lo cuento así
 
-Podría decirte cuántos commits, cuántas líneas, cuántos tests.
+Porque hay muchos posts de desarrolladorxs junior que parecen escritos para impresionar.
 
-Pero los números que me importan son otros:
+Y yo no quiero impresionar. Quiero que si alguien está empezando, sintiéndose pequeño frente a lo que no sabe, pensando que los demás lo tienen más claro... pueda leer esto y reconocerse.
 
-Proyectos que funcionan y que alguien usa. Decisiones técnicas tomadas con criterio propio. Errores que no volvería a cometer. Preguntas que ya sé hacer mejor. La diferencia entre cómo entendía el código hace un año y cómo lo entiendo ahora.
+No hace falta saber todo. Hace falta saber buscar, tener ganas de probar, ser honestx sobre dónde estás y no rendirte cuando algo no sale.
 
-Eso no cabe en un número. Ni en una etiqueta.
+Lo demás llega. Poco a poco. Con cada proyecto, con cada error, con cada commit que arregla el del día anterior.
 
-## Qué viene
-
-Tengo Discográfica en fase final. Tengo ganas de escribir más sobre el flujo de trabajo con agentes de IA, porque es algo de lo que se habla mucho en abstracto y muy poco con ejemplos reales y honestos.
-
-Y tengo, sobre todo, ganas de seguir construyendo cosas que sirvan para algo.
-
-Junior. Aprendiendo. Contenta.
+Junior. Aprendiendo. Con ayuda. Y contenta de serlo.
 
 Caminante, no hay camino.
 
 Se hace camino al andar.
 
-#Reflexión #AñoYMedio #JuniorDev #EternaAprendiz #BuildingInPublic #AgentesIA #DesarrolloWeb
+#Reflexión #AñoYMedio #JuniorDev #EternaAprendiz #BuildingInPublic #HonesidadTécnica #IA #DesarrolloWeb
