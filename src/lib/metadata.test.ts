@@ -200,7 +200,7 @@ describe('buildHomeJsonLd', () => {
   it('incluye nombre y alternateName', () => {
     const result = buildHomeJsonLd();
 
-    expect(result.name).toBe('Ione');
+    expect(result.name).toBe('Ione Rodríguez');
     expect(result.alternateName).toBe('thebellepoque');
   });
 
