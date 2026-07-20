@@ -41,7 +41,7 @@ export function Hero() {
 
           {/* Descripción */}
           <p className="hero__subtitle">
-            Full-stack Developer | Automatizaciones
+            Desarrolladora Web | Automatizaciones
           </p>
 
           {/* Bio */}

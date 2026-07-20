@@ -114,7 +114,7 @@ export function buildHomeJsonLd(): JsonLd {
       SITE_CONFIG.social.github,
       SITE_CONFIG.social.linkedin,
     ],
-    jobTitle: 'Full-stack Developer',
+    jobTitle: 'Desarrolladora Web',
     description:
       'Desarrolladora full-stack especializada en React, TypeScript y automatizaciones.',
   };
