@@ -1,14 +1,14 @@
 # Aloha, soy Ione
 
-**Desarrolladora Web · Python, JavaScript, React, MySQL, TypeScript & Automatizaciones**
+**Desarrolladora Web · TypeScript, React, Next.js, Python & Automatizaciones**
 
-Este es el código de mi portfolio personal en [thebellepoque.dev](https://www.thebellepoque.dev). Construido desde cero con React 19, Vite 7 y TypeScript, sin plantillas. Cada decisión técnica tiene una razón.
+Este es el código de mi portfolio personal en [thebellepoque.dev](https://www.thebellepoque.dev). Construido desde cero con Next.js 15, React 19 y TypeScript, sin plantillas. Cada decisión técnica tiene una razón.
 
 ## Que hay aqui
 
 - **Portfolio interactivo** con tema oscuro/claro, diseño neón y secciones animadas
 - **Blog** con posts en Markdown, renderizado via `react-markdown`
-- **6 proyectos** con métricas, badges y páginas de caso de estudio (`/proyecto/:id`)
+- **4 proyectos** con métricas, badges y páginas de caso de estudio (`/proyecto/:id`)
 - **SEO completo**: Open Graph, Twitter Cards, JSON-LD por ruta, sitemap dinámico, imágenes WebP/AVIF
 - **Formulario de contacto** serverless con Resend
 - **135 tests** (Vitest + Testing Library + axe-core a11y)
@@ -18,9 +18,9 @@ Este es el código de mi portfolio personal en [thebellepoque.dev](https://www.t
 
 | Capa       | Tecnología                                                                |
 |------------|---------------------------------------------------------------------------|
-| Frontend   | React 19 · TypeScript 5.9 · Vite 7                                       |
+| Framework  | Next.js 15 App Router · React 19 · TypeScript 5.9                        |
 | Estilos    | SCSS modular (BEM) · CSS custom properties · temas dark/light             |
-| SEO        | react-helmet-async · JSON-LD · sitemap · imágenes WebP/AVIF               |
+| SEO        | Next.js Metadata API · JSON-LD · sitemap · imágenes WebP/AVIF             |
 | Testing    | Vitest · Testing Library · axe-core (a11y) · puppeteer (contrast CI)     |
 | CI/CD      | GitHub Actions (tests, lint, a11y, build) · Vercel deploy                 |
 | Infra      | Vercel serverless (Resend) · CSP headers · HSTS · security.txt            |
@@ -28,9 +28,9 @@ Este es el código de mi portfolio personal en [thebellepoque.dev](https://www.t
 ## Correr localmente
 
 ```bash
-# Requisitos: Node.js 22+, pnpm
-pnpm install
-pnpm run dev        # http://localhost:5173
+# Requisitos: Node.js 22+, npm
+npm install
+npm run dev         # http://localhost:3000
 
 # Tests
 pnpm test:run
@@ -47,7 +47,7 @@ src/
   components/   # Componentes React (BEM), co-localizados con tests
   hooks/        # useTheme, useActiveSection
   lib/          # Lógica: proyectos, posts (Markdown), fechas, imágenes
-  pages/        # Páginas (lazy-loaded por ruta)
+  app/          # Páginas Next.js App Router
   styles/       # SCSS por capas: base → utilities → themes → components
   types/        # Tipos TypeScript
 api/            # Serverless functions (Vercel)

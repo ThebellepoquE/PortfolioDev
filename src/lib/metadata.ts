@@ -106,7 +106,7 @@ export function buildHomeJsonLd(): JsonLd {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Ione',
+    name: 'Ione Rodríguez',
     alternateName: 'thebellepoque',
     url: SITE_CONFIG.baseUrl,
     image: `${SITE_CONFIG.baseUrl}/profile.webp`,

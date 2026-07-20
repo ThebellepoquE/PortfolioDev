@@ -227,7 +227,7 @@ export function Contact() {
             {/* Mensaje de error */}
             {showError && (
               <StatusMessage type="error">
-                Error al enviar. Revisa la consola o contacta por GitHub.
+                Error al enviar. Puedes escribirme directamente a hola@thebellepoque.dev
               </StatusMessage>
             )}
           </div>

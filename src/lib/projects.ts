@@ -29,7 +29,7 @@ function toLegacy(p: ProjectFull): Project {
 export const projectsData: ProjectFull[] = [
   {
     id: 'purple-basque-tours',
-    title: 'Turismo',
+    title: 'PurpleBasqueTours',
     tagline: 'Web turística multilingüe con CMS, booking y SEO internacional',
     shortDescription:
       'Plataforma web para una marca de tours privados en Euskadi. Next.js 15 + Sanity CMS con contenido multilingüe EN/ES, integración de booking con Cal.com, formularios con Resend + Zod, galerías de fotos con lightbox y SEO internacional completo.',
@@ -105,7 +105,7 @@ export const projectsData: ProjectFull[] = [
   },
   {
     id: 'lighton-es',
-    title: 'Electricista',
+    title: 'LightOn',
     tagline: 'Plataforma full-stack con automatización, E2E y PostgreSQL',
     shortDescription:
       'Web corporativa full-stack para empresa de instalaciones eléctricas en Benidorm. React 19 + Vite en frontend, Node.js + Express + PostgreSQL en backend, automatización Python para encuestas y reseñas, y test suite completa con Vitest + Playwright E2E.',
@@ -153,7 +153,7 @@ export const projectsData: ProjectFull[] = [
       {
         title: 'Automatización de feedback post-servicio',
         description: 'El cliente necesitaba recoger opiniones automáticamente y derivar solo las positivas a Google Reviews.',
-        solution: 'Scripts Python con scheduler: envío de email con encuesta, lógica condicional (4+ estrellas → Google Reviews, menos → feedback interno). Containerizado con Docker.',
+        solution: 'Script Python con scheduler: encuesta por email con lógica condicional (4+ estrellas → Google Reviews, menos → feedback interno). Containerizado con Docker y ejecutado como servicio independiente en producción.',
         technologies: ['Python', 'Docker', 'Email APIs'],
       },
       {
@@ -179,63 +179,17 @@ export const projectsData: ProjectFull[] = [
     relatedPosts: ['lighton-de-cero-a-produccion', 'modularizacion-lighton'],
   },
   {
-    id: 'lighton-encuestas',
-    title: 'Sistema de Encuestas & Reseñas',
-    tagline: 'Automatización de feedback y Google Reviews',
-    shortDescription:
-      'Script Python que automatiza el envío de encuestas de satisfacción post-servicio. Si el cliente puntúa 4+ estrellas, se redirige automáticamente a Google Reviews. Optimiza la reputación online filtrando feedback negativo y potenciando reviews positivas.',
-    fullDescription:
-      'Script Python que automatiza el envío de encuestas de satisfacción post-servicio. Si el cliente puntúa 4+ estrellas, se redirige automáticamente a Google Reviews. Optimiza la reputación online filtrando feedback negativo y potenciando reviews positivas. Integrado con APIs de email y lógica de flujo condicional.',
-    complexity: 6,
-    innovation: 8,
-    impact: 8,
-    technologies: ['Python', 'Automatización', 'Email APIs', 'Logic Flow', 'Data Processing'],
-    image: '/og-image-default.jpg',
-    imageAlt: 'Flujo de encuestas y reseñas',
-    metrics: [
-      {
-        id: 'encuestas-business',
-        type: 'business',
-        value: 'Reputación online',
-        label: 'Feedback dirigido a Google Reviews',
-        description: 'Solo puntuaciones altas derivan a reseña pública; el resto queda interno',
-      },
-      {
-        id: 'encuestas-users',
-        type: 'users',
-        value: 'Experiencia cliente',
-        label: 'Un solo clic para opinar',
-        description: 'El cliente recibe un email con enlace directo según su valoración',
-      },
-    ],
-    links: [],
-    challenges: [
-      {
-        title: 'Flujo condicional según valoración',
-        description: 'Distinguir respuestas positivas de negativas y redirigir correctamente',
-        solution: 'Lógica en Python con umbral 4+ estrellas y URLs distintas para Google Reviews vs feedback interno',
-        technologies: ['Python', 'Email APIs'],
-      },
-    ],
-    learnings: ['Automatización de procesos de negocio', 'Integración con servicios externos'],
-    featured: true,
-    featuredText: 'lighton.es',
-    date: '2025-12',
-    role: 'Desarrolladora / Automatización',
-    relatedPosts: ['modularizacion-lighton'],
-  },
-  {
     id: 'portfolio-thebellepoque',
     title: 'Portfolio Personal',
-    tagline: 'Portfolio moderno con React 19, Vite 7 y SEO completo',
+    tagline: 'Portfolio moderno con Next.js 15, TypeScript y SEO completo',
     shortDescription:
-      'Portfolio personal con diseño neón, tema claro/oscuro, blog con Markdown y formulario serverless. React 19 + Vite 7 + TypeScript, 124 tests con Vitest, SEO completo (metadatos, datos estructurados, imágenes responsivas WebP/AVIF), bundle visualizer y despliegue en Vercel.',
+      'Portfolio personal con diseño neón, tema claro/oscuro, blog con Markdown y formulario serverless. Next.js 15 + TypeScript, 135 tests con Vitest, SEO completo (metadatos, datos estructurados, imágenes responsivas WebP/AVIF) y despliegue en Vercel.',
     fullDescription:
-      'Portfolio moderno con diseño fluorescente neón, migrado desde Reflex a React 19 + Vite 7 + TypeScript. Incluye lazy loading y code-splitting por ruta, formulario de contacto con API Serverless (Resend), 124 tests con Vitest + Testing Library, y blog con Markdown (react-markdown + remark-gfm). SEO completo: Open Graph + Twitter Cards, JSON-LD estructurado (BlogPosting, CreativeWork, CollectionPage), imágenes responsivas con srcSet WebP/AVIF vía sharp, sitemap con extensiones de imagen, y robots meta configurable. Desplegado en Vercel con headers de seguridad y CI/CD con lint + typecheck + test + build. Bundle visualizer con rollup-plugin-visualizer. Tema claro/oscuro con variables SCSS. Desarrollo asistido por agentes IA con SDD (Spec-Driven Development).',
+      'Portfolio moderno con diseño fluorescente neón, construido con Next.js 15 App Router + TypeScript. Incluye blog con Markdown (react-markdown + remark-gfm), formulario de contacto serverless (Resend), 135 tests con Vitest + Testing Library + axe-core, y tema claro/oscuro con variables SCSS. SEO completo: Open Graph + Twitter Cards, JSON-LD estructurado (BlogPosting, CreativeWork, CollectionPage), imágenes responsivas WebP/AVIF, sitemap dinámico. CSP estricta sin unsafe-inline, HSTS, bloqueo de bots IA. Desarrollo asistido por agentes IA con SDD (Spec-Driven Development).',
     complexity: 7,
     innovation: 8,
     impact: 5,
-    technologies: ['React 19', 'TypeScript', 'Vite 7', 'SCSS', 'Vitest', 'SEO', 'WebP/AVIF'],
+    technologies: ['Next.js 15', 'TypeScript', 'React 19', 'SCSS', 'Vitest', 'SEO', 'WebP/AVIF'],
     image: '/og-image-default.jpg',
     imageAlt: 'Portfolio thebellepoque.dev',
     metrics: [
@@ -292,7 +246,7 @@ export const projectsData: ProjectFull[] = [
   },
   {
     id: 'discografica',
-    title: 'Discográfica',
+    title: 'Decadencia Corporal',
     tagline: 'Web para discográfica independiente con CMS y catálogo',
     shortDescription:
       'Aplicación web para gestión y difusión de catálogo discográfico. Next.js 16 + Sanity CMS con next/image para portadas optimizadas, Lighthouse CI para Core Web Vitals, Playwright E2E y Sentry para monitoreo. Sustituye al WordPress actual.',
