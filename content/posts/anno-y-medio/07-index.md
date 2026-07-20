@@ -83,9 +83,9 @@ La lista es larga. Y me parece perfecto.
 
 Cada día aprendo algo más. Y ese es mi mantra.
 
-No corres para llegar. Caminas para seguir.
+No corro para llegar. Camino para disfrutar.
 
-Reconocerlo no es una debilidad. Es parte de ser la eterna aprendiz.
+Y lo reconozco, es parte de esa eterna aprendiz.
 
 Y eso, lejos de avergonzarme, es lo que más me gusta de esta profesión.
 
