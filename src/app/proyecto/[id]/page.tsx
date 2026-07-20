@@ -4,7 +4,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { projectsData } from '@/lib/projects';
 import { formatDateDayMonthYear } from '@/lib/formatDate';
-import { buildMetadata, buildProjectJsonLd } from '@/lib/metadata';
+import { buildMetadata, buildProjectJsonLd, buildBreadcrumbJsonLd } from '@/lib/metadata';
+import { SITE_CONFIG } from '@/lib/config';
 
 /** Convierte YYYY-MM a ISO 8601 (YYYY-MM-01) para meta y <time dateTime>. */
 function toISODate(value: string): string {
@@ -64,12 +65,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   const jsonLd = buildProjectJsonLd(project);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Inicio', url: SITE_CONFIG.baseUrl },
+    { name: 'Proyectos', url: `${SITE_CONFIG.baseUrl}/#proyectos` },
+    { name: project.title, url: `${SITE_CONFIG.baseUrl}/proyecto/${project.id}` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <article className="project-page">
         <div className="project-page__container">
