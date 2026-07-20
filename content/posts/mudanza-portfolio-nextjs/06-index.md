@@ -10,6 +10,7 @@ tags:
   - Building in Public
 draft: false
 image: /images/blog/mudanza.webp
+imageCredit: "Foto de [Markus Winkler](https://unsplash.com/es/@markuswinkler?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) en [Unsplash](https://unsplash.com/es/fotos/un-bloque-de-madera-que-deletrea-la-palabra-sitio-web-en-una-mesa-Vagh0KcwvwQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)"
 ---
 
 En mayo os contaba que había estado blindando el portfolio: casos de estudio, SEO, sitemap, Open Graph, scripts de validación antes de publicar.
@@ -89,3 +90,7 @@ Y que el portfolio no es un documento estático. Es un proyecto vivo que tiene q
 Sigo aprendiendo. Sigo construyendo. Sigo mudándome cuando hace falta.
 
 #NextJS #Portfolio #DecisionesTécnicas #BuildingInPublic #JuniorDev #AppRouter #Migración
+
+---
+
+*Foto de [Markus Winkler](https://unsplash.com/es/@markuswinkler?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) en [Unsplash](https://unsplash.com/es/fotos/un-bloque-de-madera-que-deletrea-la-palabra-sitio-web-en-una-mesa-Vagh0KcwvwQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*

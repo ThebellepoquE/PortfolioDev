@@ -102,3 +102,7 @@ Junior. Aprendiendo. Con ayuda. Y agradecida.
 Solo sé que no sé nada... pero cada día sumo algún granito de arena más. Pura satisfacción.
 
 #Reflexión #AñoYMedio #JuniorDev #EternaAprendiz #BuildingInPublic #HonesidadTécnica #IA #DesarrolloWeb
+
+---
+
+*Foto de [Markus Winkler](https://unsplash.com/es/@markuswinkler?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) en [Unsplash](https://unsplash.com/es/fotos/un-primer-plano-de-una-maquina-de-escribir-con-un-papel-que-dice-aprendizaje-permanente-Ts9AELTAkzo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
