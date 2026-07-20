@@ -99,6 +99,6 @@ Lo demás llega. Poco a poco. Con cada proyecto, con cada error, con cada commit
 
 Junior. Aprendiendo. Con ayuda. Y agradecida.
 
-Solo sé que no sé nada.
+Solo sé que no sé nada... pero cada día sumo algún granito de arena más. Pura satisfacción.
 
 #Reflexión #AñoYMedio #JuniorDev #EternaAprendiz #BuildingInPublic #HonesidadTécnica #IA #DesarrolloWeb
