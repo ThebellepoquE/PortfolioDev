@@ -100,9 +100,7 @@ Y eso, lejos de avergonzarme, es lo que más me gusta de esta profesión.
 
 ## Por qué lo cuento así
 
-Porque hay muchos posts de desarrolladorxs junior que parecen escritos para impresionar.
-
-Y yo no quiero impresionar. Quiero que si alguien está empezando, sintiéndose pequeño frente a lo que no sabe, pensando que los demás lo tienen más claro... pueda leer esto y reconocerse.
+Quiero que si alguien está empezando, sintiéndose pequeño frente a lo que no sabe, pensando que los demás lo tienen más claro... pueda leer esto y reconocerse.
 
 No hace falta saber todo. Hace falta saber buscar, tener ganas de probar, ser honestx sobre dónde estás y no rendirte cuando algo no sale.
 
