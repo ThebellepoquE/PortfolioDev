@@ -17,12 +17,12 @@ describe('buildMetadata', () => {
 
   it('omite el sufijo cuando noSuffix es true', () => {
     const result = buildMetadata({
-      title: 'Ione | Full-stack Developer',
+      title: 'Ione | Desarrolladora Web',
       description: 'Desc',
       noSuffix: true,
     });
 
-    expect(result.title).toBe('Ione | Full-stack Developer');
+    expect(result.title).toBe('Ione | Desarrolladora Web');
   });
 
   it('construye la URL canónica a partir de path', () => {
@@ -228,7 +228,7 @@ describe('buildHomeJsonLd', () => {
   it('incluye jobTitle y description', () => {
     const result = buildHomeJsonLd();
 
-    expect(result.jobTitle).toBe('Full-stack Developer');
+    expect(result.jobTitle).toBe('Desarrolladora Web');
     expect(result.description).toContain('full-stack');
   });
 });

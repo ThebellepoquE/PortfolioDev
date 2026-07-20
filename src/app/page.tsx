@@ -5,7 +5,7 @@ import { Contact } from '@/components/Contact';
 import { buildMetadata, buildHomeJsonLd } from '@/lib/metadata';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Desarrolladora Web',
+  title: 'Portfolio',
   description:
     'Portfolio de Ione: Desarrolladora Web. Python, JavaScript, React, TypeScript & Automatizaciones.',
 });
