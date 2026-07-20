@@ -46,23 +46,20 @@ export function Hero() {
 
           {/* Bio */}
           <p className="hero__bio">
-            Llevo un año creando experiencias web y aprendiendo cada día algo nuevo.
-            Me formé en Bottega University (DevCamp) con Jordan Hudgens, gracias a Fundación VASS,
-            y desde entonces he ido construyendo proyectos reales con React, TypeScript, Python y automatizaciones.
-            Me gusta unir desarrollo, claridad y estrategia: webs que se entienden, funcionan bien y ayudan a avanzar.
-            Ahora estoy llevando lighton.es al siguiente nivel y montando mi propio pequeño equipo de agentes y
-            subagentes de IA para automatizar mi flujo de trabajo, apoyándome en Context7 para leer documentación
-            viva sin perder tiempo. Cada proyecto es una oportunidad para crecer, ordenar ideas y llevarlas a la
-            práctica de forma útil.
+            Llevo un año construyendo webs full-stack reales — desde cero a producción.
+            Me formé en Bottega University con Jordan Hudgens y desde entonces trabajo con
+            React, TypeScript, Next.js y Python.
+            Me interesa unir desarrollo técnico con impacto real: webs que funcionan,
+            se entienden y ayudan a crecer.
           </p>
 
           {/* Tags de stack */}
           <div className="hero__tags">
-            <span className="hero__tag hero__tag--pink">Python</span>
-            <span className="hero__tag hero__tag--yellow">JavaScript</span>
+            <span className="hero__tag hero__tag--yellow">TypeScript</span>
             <span className="hero__tag hero__tag--green">React</span>
-            <span className="hero__tag hero__tag--pink">MySQL</span>
-            <span className="hero__tag hero__tag--yellow">Vite</span>
+            <span className="hero__tag hero__tag--pink">Next.js</span>
+            <span className="hero__tag hero__tag--yellow">Python</span>
+            <span className="hero__tag hero__tag--green">PostgreSQL</span>
           </div>
 
           {/* Social links */}

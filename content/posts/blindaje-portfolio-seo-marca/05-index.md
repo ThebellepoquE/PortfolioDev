@@ -114,3 +114,7 @@ Pero también sigo construyendo.
 Y cada ajuste, cada test, cada caso de estudio y cada post me acercan un poco más a esa versión de mí que sabe llevar las ideas a la práctica de forma útil.
 
 #Portfolio #SEO #OpenGraph #Testing #MarcaPersonal #BuildingInPublic #JuniorDev
+
+---
+
+*Foto de [Azza Al Ghardaqa](https://unsplash.com/es/@azzaaaa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) en [Unsplash](https://unsplash.com/es/fotos/portal-dorado-en-un-paisaje-desertico-bajo-el-cielo-estrellado-Ch8o7Ic8y14?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
