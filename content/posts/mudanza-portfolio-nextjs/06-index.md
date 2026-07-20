@@ -58,19 +58,13 @@ Pero lo que me llevé fue algo más valioso que la migración en sí: la sensaci
 
 Cuando llevas meses trabajando con una tecnología en proyectos reales, llega un momento en el que deja de ser "el framework que uso" y se convierte en "la forma en que pienso la estructura". Eso pasó con Next.js en junio.
 
-## Hay que tener criterio para saber cuándo moverse
+## Por qué migré
 
-Migrar no es siempre la respuesta correcta.
+La razón es simple: el SEO y el GEO.
 
-He visto muchos posts y hilos donde parece que el objetivo del desarrollo es reescribir las cosas constantemente. Saltar al framework nuevo. Adoptar la arquitectura del momento. Refactorizar porque sí.
+Next.js me da control real sobre los metadatos, el renderizado en servidor y cómo los motores de búsqueda — y los modelos de IA — leen el contenido. Con Vite podía hacer muchas cosas, pero siempre con parches encima. Aquí todo fluye de forma natural.
 
-Eso no es criterio. Eso es ruido.
-
-En este caso la razón era concreta: quería que el portfolio viviera en el mismo stack que mis proyectos activos, con las mismas capacidades SEO, sin parches de librería.
-
-Una razón técnica real vale una migración. El aburrimiento o las modas, no.
-
-Y eso también lo aprendí migrando.
+Me gustaría hacer lo mismo con LightON, pero ahora mismo quizás no convenga. Tiene más capas, más dependencias, y una migración mal planificada puede romper lo que ya funciona. Cuando sea el momento, lo haré. De momento, el portfolio ya respira mejor.
 
 ## El portfolio sigue siendo la casa
 
