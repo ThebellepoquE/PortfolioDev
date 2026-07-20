@@ -41,7 +41,7 @@ Con LightON aprendí que el mantenimiento importa más que el estreno.
 
 Con PurpleBasqueTours aprendí que el multilingüismo no es añadir traducciones, es pensar en dos lógicas desde el principio.
 
-Con Discográfica estoy aprendiendo que migrar una web desde WordPress sin romper el SEO es una ingeniería fina que no perdona errores.
+Con Discográfica estoy aprendiendo que construir desde cero para alguien con contenido real —catálogo, artistas, fotos— es muy distinto a construir para un proyecto sin historia.
 
 Con este portfolio aprendí que una herramienta propia tampoco puede descuidarse.
 
