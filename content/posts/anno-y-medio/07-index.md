@@ -21,6 +21,22 @@ Hoy tengo cuatro proyectos en producción, un blog activo y un portfolio que ref
 
 Y quiero contarlo con honestidad. La de verdad.
 
+## El punto raro que nadie te explica bien
+
+Hay una fiebre en el mundo dev con lo de junior y senior.
+
+Todo el mundo parece tener muy claro cuándo se pasa de uno a otro. Hay posts, hilos, frameworks de evaluación, niveles salariales atados a la etiqueta. Como si en algún momento alguien te diera un toque en el hombro y dijera: "ya eres senior, enhorabuena".
+
+Pero ¿quién decide eso? ¿Cuántos años tienen que pasar? ¿Cuántos proyectos? ¿Cuándo dejas de tener preguntas? Porque yo no conozco a nadie, con dos años o con veinte, que haya dejado de tenerlas.
+
+A mí esa fiebre me importa cero.
+
+No porque no valore crecer. Sino porque la etiqueta me parece lo menos interesante de todo el proceso. Prefiero seguir siendo junior toda la vida si eso significa seguir aprendiendo, seguir teniendo curiosidad, seguir encontrando cosas que no sabía que existían.
+
+Para mí ser junior no es una fase a superar. Es un privilegio. Es el alma de la eterna aprendiz.
+
+Y ahí es donde yo me siento reflejada.
+
 ## Lo que un bootcamp te da y lo que no
 
 Un bootcamp no te convierte en desarrolladora. Te da algo más parecido a un mapa borroso.
