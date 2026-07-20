@@ -41,7 +41,7 @@ Y ahí es donde yo me siento reflejada.
 
 Un bootcamp no te convierte en desarrolladora. Te da algo más parecido a un mapa borroso.
 
-Entiendes para qué sirve una base de datos. Sabes que existe TypeScript. Puedes leer un componente React y entender más o menos qué hace. Sabes que hay algo llamado Docker aunque no lo hayas usado de verdad todavía.
+Entiendes para qué sirve una base de datos. Sabes que existe React. Puedes leer un componente React y entender más o menos qué hace. Sabes que hay algo llamado Docker aunque no lo hayas usado de verdad todavía.
 
 Es una base. Una ligera idea sobre conceptos. Suficiente para empezar a buscar, para entender lo que lees, para no perderte del todo cuando alguien habla de arquitectura o de APIs.
 
