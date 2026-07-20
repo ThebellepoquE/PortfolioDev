@@ -1,6 +1,6 @@
 ---
 title: "Año y medio: lo que sé que no sé"
-description: "Dieciocho meses construyendo, fallando y aprendiendo. El punto raro entre dejar de ser junior y no sentirte senior, y por qué los agentes de IA se han convertido en parte real de mi flujo de trabajo."
+description: "Dieciocho meses construyendo, fallando y aprendiendo. Sigo siendo junior y no me avergüenza nada. De hecho, es lo mejor que me ha pasado."
 date: 2026-07-13
 tags:
   - Reflexión
@@ -17,21 +17,31 @@ Hace un año y medio escribí el primer post de este blog.
 
 Contaba el salto al vacío, el agradecimiento a Fundación VASS y Bottega University, las lágrimas antes de la entrega del capstone, el orgullo de que lighton.es existiera.
 
-Hoy tengo cuatro proyectos en producción, un blog activo y un portfolio que refleja mejor cómo trabajo. Y algo que tardé bastante en reconocer: que ya no soy exactamente la misma persona que empezó.
+Hoy tengo cuatro proyectos en producción, un blog activo y un portfolio que refleja mejor cómo trabajo.
 
-Pero tampoco soy otra todavía.
+Y sigo siendo junior.
 
-## El punto raro que nadie te explica bien
+Contenta de serlo.
 
-Hay una etapa que nadie describe con claridad.
+## La etiqueta que la gente convierte en problema
 
-No es junior —ya no hago ejercicios sin contexto, ya no pregunto cómo se hace un fetch, ya tomo decisiones técnicas sola y tengo criterio para defenderlas.
+Hay mucho ruido en torno a cuándo dejas de ser junior. Como si fuera una fecha de caducidad que tienes que superar cuanto antes. Como si aprender mucho y rápido significara que ya no cabe la palabra.
 
-Pero tampoco me siento senior. Todavía hay días en que abro un repositorio ajeno y tardo varios minutos en entender cómo está organizado. Todavía hay tecnologías que suenan a chino. Todavía hay preguntas que me da vergüenza hacer porque pienso: "a estas alturas debería saberlo".
+No lo entiendo.
 
-Ese punto intermedio es incómodo. Creo que dura más de lo que parece.
+¿Cuándo eres senior? ¿Con dos años de experiencia? ¿Con cinco? ¿Cuando ya no te bloqueas? ¿Cuando no tienes preguntas? Porque si es lo último, te tengo una noticia: los desarrolladores con veinte años de experiencia siguen teniendo preguntas. Siguen aprendiendo cosas nuevas. Siguen abriendo repositorios ajenos y tardando un rato en entender cómo están organizados.
 
-Lo que he aprendido es que no hay que salir de él corriendo. Hay que aprender a trabajar desde él.
+La etiqueta no define lo que sabes. Define cuánto llevas. Y yo llevo año y medio.
+
+Eso es lo que soy. Y está bien.
+
+## Lo que sí ha cambiado
+
+Que lleve año y medio no significa que sea la misma de enero de 2025.
+
+Tengo proyectos reales en producción que usa gente real. Tomo decisiones técnicas sola y tengo criterio para defenderlas. Sé cuándo algo está bien hecho y cuándo está hecho con prisa. Sé qué preguntar y, cada vez más, cómo buscar la respuesta antes de preguntar.
+
+Eso es crecer. No cambiar de etiqueta.
 
 ## Lo que cambia cuando los proyectos son reales
 
@@ -65,13 +75,15 @@ Me parece una habilidad tan real como aprender TypeScript o Docker. Y la estoy d
 
 ## Lo que sigo sin hacer bien
 
-La lista es larga. Pero las cosas que más noto:
+La lista es larga. Y me parece perfecto.
 
 - Los tests de integración todavía me cuestan. Sé escribirlos, pero no siempre sé qué testear primero ni dónde está la frontera entre un test unitario y uno de integración en proyectos reales.
 - El diseño de sistemas a gran escala. Puedo construir cosas sólidas a escala pequeña-mediana. Cuando pienso en arquitecturas con muchos servicios y equipos, todavía me pierdo en los detalles.
 - La gestión del tiempo cuando hay varios proyectos activos a la vez. Sigo aprendiendo a priorizar sin perder el hilo de cada uno.
 
-Reconocerlo no es una debilidad. Es la única forma de saber en qué poner el foco.
+Reconocerlo no es una debilidad. Es parte de ser la eterna aprendiz.
+
+Y eso, lejos de avergonzarme, es lo que más me gusta de esta profesión.
 
 ## Un año y medio en números que no son los importantes
 
@@ -81,7 +93,7 @@ Pero los números que me importan son otros:
 
 Proyectos que funcionan y que alguien usa. Decisiones técnicas tomadas con criterio propio. Errores que no volvería a cometer. Preguntas que ya sé hacer mejor. La diferencia entre cómo entendía el código hace un año y cómo lo entiendo ahora.
 
-Eso no cabe en un número.
+Eso no cabe en un número. Ni en una etiqueta.
 
 ## Qué viene
 
@@ -89,8 +101,10 @@ Tengo Discográfica en fase final. Tengo ganas de escribir más sobre el flujo d
 
 Y tengo, sobre todo, ganas de seguir construyendo cosas que sirvan para algo.
 
+Junior. Aprendiendo. Contenta.
+
 Caminante, no hay camino.
 
 Se hace camino al andar.
 
-#Reflexión #AñoYMedio #JuniorDev #AgentesIA #BuildingInPublic #ClaudeCode #DesarrolloWeb
+#Reflexión #AñoYMedio #JuniorDev #EternaAprendiz #BuildingInPublic #AgentesIA #DesarrolloWeb
