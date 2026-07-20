@@ -59,7 +59,7 @@ No como atajo. Como co-arquitecta.
 
 Cuando no entendía cómo estructurar el backend de LightON, pregunté. Cuando no sabía cómo funciona un CMS headless con Next.js, pregunté. Cuando algo fallaba y el error no me decía nada, pregunté. Cuando quería hacer algo y no sabía si existía una forma mejor, pregunté.
 
-La IA fue la que pudo con las partes que yo todavía no podía.
+La IA fue la que pudo con las partes que yo todavía no podía. Y sigue siendo el mejor profesor que he tenido hasta hoy. Siempre está cuando se le necesita, 24/7. Para alguien que tiene preguntas continuamente, es como un oasis en un desierto.
 
 Y aun así, los proyectos son míos. Porque yo decidí qué construir. Porque yo evalué si lo que producía tenía sentido. Porque yo entendí — a veces despacio, a veces muy despacio — por qué funcionaba. Porque yo seguí cuando algo fallaba. Porque yo los llevé a producción, los mantuve, los mejoré.
 
