@@ -108,8 +108,6 @@ Lo demás llega. Poco a poco. Con cada proyecto, con cada error, con cada commit
 
 Junior. Aprendiendo. Con ayuda. Y agradecida.
 
-Caminante, no hay camino...
-
-Se hace camino al andar.
+Solo sé que no sé nada.
 
 #Reflexión #AñoYMedio #JuniorDev #EternaAprendiz #BuildingInPublic #HonesidadTécnica #IA #DesarrolloWeb
