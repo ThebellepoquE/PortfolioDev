@@ -108,7 +108,7 @@ No hace falta saber todo. Hace falta saber buscar, tener ganas de probar, ser ho
 
 Lo demás llega. Poco a poco. Con cada proyecto, con cada error, con cada commit que arregla el del día anterior.
 
-Junior. Aprendiendo. Con ayuda. Y contenta de serlo.
+Junior. Aprendiendo. Con ayuda. Y agradecida.
 
 Caminante, no hay camino...
 
