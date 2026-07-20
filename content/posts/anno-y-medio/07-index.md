@@ -65,6 +65,7 @@ Eso también es una habilidad. No la que te enseñan en los bootcamps, pero sí 
 
 La lista es larga. Y me parece perfecto.
 
+- Abrir un repositorio ajeno y entenderlo de un vistazo. Cada vez entiendo más cosas pequeñas, cada vez me pierdo un poco menos. Pero que alguien abra un repo y sepa al instante cómo está organizado... eso aún me queda lejos. Y no lo voy a fingir.
 - Los tests de integración todavía me cuestan. Sé escribirlos, pero no siempre sé qué testear primero.
 - El diseño de sistemas a gran escala. Puedo construir cosas sólidas a escala pequeña-mediana. En arquitecturas con muchos servicios, todavía me pierdo.
 - La gestión del tiempo cuando hay varios proyectos activos a la vez. Sigo aprendiendo a priorizar.
