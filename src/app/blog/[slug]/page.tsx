@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { getPostBySlug } from '@/lib/posts.server';
 import { formatDateDayMonthYear } from '@/lib/formatDate';
 import { BlogPostBody } from '@/components/BlogPostBody';
-import { buildMetadata, buildBlogPostJsonLd } from '@/lib/metadata';
+import { buildMetadata, buildBlogPostJsonLd, buildBreadcrumbJsonLd } from '@/lib/metadata';
+import { SITE_CONFIG } from '@/lib/config';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -35,12 +36,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) notFound();
 
   const jsonLd = buildBlogPostJsonLd(post.meta);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Inicio', url: SITE_CONFIG.baseUrl },
+    { name: 'Blog', url: `${SITE_CONFIG.baseUrl}/blog` },
+    { name: post.meta.title, url: `${SITE_CONFIG.baseUrl}/blog/${post.meta.slug}` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <article className="blog-post">
         <div className="blog-post__container">

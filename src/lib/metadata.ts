@@ -162,6 +162,23 @@ export function buildBlogPostJsonLd(post: {
       url: SITE_CONFIG.baseUrl,
       '@id': `${SITE_CONFIG.baseUrl}/#person`,
     },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.blog-post__title', '.blog-post__content'],
+    },
+  };
+}
+
+export function buildBreadcrumbJsonLd(items: { name: string; url: string }[]): JsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
 }
 
