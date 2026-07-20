@@ -73,22 +73,15 @@ Pero sé buscar. Sé encontrar la información que necesito, evaluarla, filtrar 
 
 Y sé trabajar con IA de forma que amplíe lo que puedo hacer, no que lo sustituya.
 
-Eso también es una habilidad. No la que te enseñan en los bootcamps, pero sí la que cada vez importa más.
-
 ## Lo que sigo sin hacer bien
 
 La lista es larga. Y me parece perfecto.
 
-- Abrir un repositorio ajeno y entenderlo de un vistazo. Cada vez entiendo más cosas pequeñas, cada vez me pierdo un poco menos. Pero que alguien abra un repo y sepa al instante cómo está organizado... eso aún me queda lejos. Y no lo voy a fingir.
-- Los tests de integración todavía me cuestan. Sé escribirlos, pero no siempre sé qué testear primero.
+- Abrir un repositorio ajeno y entenderlo de un vistazo. Cada vez entiendo más cosas pequeñas, cada vez me pierdo un poco menos. Pero que alguien abra un repo y sepa al instante cómo está organizado... eso aún me queda lejos.
 - El diseño de sistemas a gran escala. Puedo construir cosas sólidas a escala pequeña-mediana. En arquitecturas con muchos servicios, todavía me pierdo.
 - La gestión del tiempo cuando hay varios proyectos activos a la vez. Sigo aprendiendo a priorizar.
 
-Solo sé que no sé nada.
-
-No lo digo como excusa. Lo digo como ancla.
-
-Porque cuanto más aprendes, más ves lo que te queda por aprender. Y eso, en lugar de agobiar, da calma. En un mundo que te bombardea con información nueva cada día, con frameworks que se quedan obsoletos antes de dominarlos, con modelos que mejoran cada semana... tener claro que nunca lo sabrás todo es lo más liberador que te puede pasar.
+Cada día aprendo algo más. Y ese es mi mantra.
 
 No corres para llegar. Caminas para seguir.
 
