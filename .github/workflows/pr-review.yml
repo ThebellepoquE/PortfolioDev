@@ -2,12 +2,23 @@ name: CI
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, ready_for_review]
+    paths-ignore:
+      - 'docs/**'
+      - '**/*.md'
+      - 'openspec/**'
+      - '.engram/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   tests:
     name: Tests
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -20,8 +31,10 @@ jobs:
 
   build:
     name: Build
+    if: github.event.pull_request.draft == false
     needs: tests
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -30,11 +43,21 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Restore Next.js cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-next-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('next.config.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-next-${{ hashFiles('pnpm-lock.yaml') }}-
+            ${{ runner.os }}-next-
       - run: pnpm run build
 
   code-review:
     name: Code Review
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
       pull-requests: write

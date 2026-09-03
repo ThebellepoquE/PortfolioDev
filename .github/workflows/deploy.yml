@@ -17,9 +17,14 @@ on:
       - 'next.config.ts'
       - 'vercel.json'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,6 +41,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Restore Next.js cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-next-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('next.config.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-next-${{ hashFiles('pnpm-lock.yaml') }}-
+            ${{ runner.os }}-next-
+
       - name: Type check
         run: pnpm run typecheck
 
@@ -44,6 +58,15 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+      # Caché del global dir de pnpm para Vercel CLI (evita re-descarga ~30-60s).
+      - name: Restore Vercel CLI cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/global
+          key: ${{ runner.os }}-vercel-cli-latest
+          restore-keys: |
+            ${{ runner.os }}-vercel-cli-
 
       - name: Install Vercel CLI
         run: pnpm add --global vercel@latest
