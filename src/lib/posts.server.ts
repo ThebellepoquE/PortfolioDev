@@ -1,15 +1,9 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import matter from 'gray-matter';
+import type { BlogPost } from './posts';
 
-export interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  tags: string[];
-  image?: string;
-}
+export type { BlogPost };
 
 const postsDirectory = join(process.cwd(), 'content/posts');
 
