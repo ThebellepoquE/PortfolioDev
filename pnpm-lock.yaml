@@ -69,18 +69,12 @@ importers:
       eslint-plugin-react-hooks:
         specifier: ^7.1.1
         version: 7.1.1(eslint@9.39.5)
-      eslint-plugin-react-refresh:
-        specifier: ^0.4.26
-        version: 0.4.26(eslint@9.39.5)
       globals:
         specifier: ^16.5.0
         version: 16.5.0
       jsdom:
         specifier: ^29.1.1
         version: 29.1.1
-      lightningcss:
-        specifier: ^1.32.0
-        version: 1.33.0
       postcss-scss:
         specifier: ^4.0.9
         version: 4.0.9(postcss@8.5.27)
@@ -96,18 +90,9 @@ importers:
       stylelint:
         specifier: ^17.13.0
         version: 17.14.1(typescript@5.9.3)
-      stylelint-config-standard:
-        specifier: ^40.0.0
-        version: 40.0.0(stylelint@17.14.1(typescript@5.9.3))
       stylelint-config-standard-scss:
         specifier: ^17.0.0
         version: 17.0.0(postcss@8.5.27)(stylelint@17.14.1(typescript@5.9.3))
-      stylelint-scss:
-        specifier: ^7.2.0
-        version: 7.2.0(stylelint@17.14.1(typescript@5.9.3))
-      tsx:
-        specifier: ^4.22.4
-        version: 4.23.13
       typescript:
         specifier: ~5.9.3
         version: 5.9.3
@@ -1941,11 +1926,6 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0 || ^10.0.0
-
-  eslint-plugin-react-refresh@0.4.26:
-    resolution: {integrity: sha512-1RETEylht2O6FM/MvgnyvT+8K21wLqDNg4qD51Zj3guhjt433XbnnkVttHMyaVyAFD03QSV4LPS5iE3VQmO7XQ==}
-    peerDependencies:
-      eslint: '>=8.40'
 
   eslint-plugin-react@7.37.5:
     resolution: {integrity: sha512-Qteup0SqU15kdocexFNAJMvCJEfa2xUKNV4CC1xsVMrIIqEy3SQ/rqyxCWNzfrd3/ldy6HMlD2e0JDVpDg2qIA==}
@@ -5496,6 +5476,7 @@ snapshots:
       '@esbuild/win32-arm64': 0.28.2
       '@esbuild/win32-ia32': 0.28.2
       '@esbuild/win32-x64': 0.28.2
+    optional: true
 
   escalade@3.2.0: {}
 
@@ -5627,10 +5608,6 @@ snapshots:
       zod-validation-error: 4.0.2(zod@4.5.4)
     transitivePeerDependencies:
       - supports-color
-
-  eslint-plugin-react-refresh@0.4.26(eslint@9.39.5):
-    dependencies:
-      eslint: 9.39.5
 
   eslint-plugin-react@7.37.5(eslint@9.39.5):
     dependencies:
@@ -7714,6 +7691,7 @@ snapshots:
       esbuild: 0.28.2
     optionalDependencies:
       fsevents: 2.3.3
+    optional: true
 
   type-check@0.4.0:
     dependencies:
