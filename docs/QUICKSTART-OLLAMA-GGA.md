@@ -44,13 +44,13 @@ Default recomendado: `ollama:qwen2.5-coder:7b`
 
 ## Mini checklist por repo
 
-- [ ] Confirmar gestor de paquetes (`pnpm`, `npm`, `yarn` o `bun`)
+- [ ] Confirmar gestor de paquetes (`pnpm`; no npm, yarn ni npx)
 - [ ] Añadir script local (`"gga:run": "gga run"`) en `package.json`
 - [ ] Ejecutar `gga-setup` en la raíz del repo
 - [ ] Verificar que el hook de `pre-commit` está activo
 - [ ] Probar un commit de prueba
 
-## Variante de script por gestor de paquetes
+## Script en package.json
 
 ```json
 {
@@ -60,12 +60,7 @@ Default recomendado: `ollama:qwen2.5-coder:7b`
 }
 ```
 
-Uso:
-
-- pnpm: `pnpm run gga:run`
-- npm: `npm run gga:run`
-- yarn: `yarn gga:run`
-- bun: `bun run gga:run`
+Uso: `pnpm run gga:run`
 
 ## Alias recomendado (una vez en tu máquina)
 

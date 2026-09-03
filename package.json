@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "packageManager": "npm@10.9.2",
+  "packageManager": "pnpm@10.32.1",
   "scripts": {
     "dev": "next dev",
     "gga:run": "bash -lc 'command -v gga >/dev/null 2>&1 || { echo \"Falta gga en PATH (instalación global requerida).\"; exit 1; }; gga run'",
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@next/eslint-plugin-next": "15.5.19",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -67,6 +68,7 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.61.0",
     "vitest": "^4.1.9",
-    "vitest-axe": "^0.1.0"
+    "vitest-axe": "^0.1.0",
+    "wait-on": "^9.1.0"
   }
 }
