@@ -7,8 +7,8 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
   globalIgnores(['dist', 'coverage', '.next', '.opencode', 'next-env.d.ts']),
-  nextPlugin.flatConfig.recommended,
-  nextPlugin.flatConfig.coreWebVitals,
+  nextPlugin.configs.recommended,
+  nextPlugin.configs['core-web-vitals'],
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
