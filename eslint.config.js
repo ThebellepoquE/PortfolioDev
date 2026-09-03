@@ -6,7 +6,7 @@ import nextPlugin from '@next/eslint-plugin-next'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist', 'coverage', '.next', 'next-env.d.ts']),
+  globalIgnores(['dist', 'coverage', '.next', '.opencode', 'next-env.d.ts']),
   nextPlugin.flatConfig.recommended,
   nextPlugin.flatConfig.coreWebVitals,
   {
