@@ -3,12 +3,37 @@ name: A11y Audit (Color Contrast)
 on:
   push:
     branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'content/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'next.config.ts'
+      - 'scripts/audit-contrast.mjs'
+      - '.github/workflows/a11y-audit.yml'
   pull_request:
     branches: [main]
+    types: [opened, synchronize, ready_for_review]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'content/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'next.config.ts'
+      - 'scripts/audit-contrast.mjs'
+      - '.github/workflows/a11y-audit.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   a11y-audit:
+    if: github.event_name == 'push' || github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
@@ -26,10 +51,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Install Google Chrome
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+      - name: Setup Chrome
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Restore Next.js cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-next-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('next.config.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-next-${{ hashFiles('pnpm-lock.yaml') }}-
+            ${{ runner.os }}-next-
 
       - name: Build SPA
         run: pnpm run build
@@ -41,4 +76,4 @@ jobs:
           echo "Server ready, running audit..."
           node scripts/audit-contrast.mjs http://localhost:3000
         env:
-          CHROME_PATH: /usr/bin/google-chrome-stable
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
