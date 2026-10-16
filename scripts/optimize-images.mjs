@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 /**
- * Genera variantes WebP de imágenes del portfolio: OG image y blog images.
- * Uso: pnpm run optimize:images
+ * Generates WebP/AVIF variants for portfolio images: OG image and blog images.
+ * Usage: pnpm run optimize:images
  *
- * Target A — OG image: public/og-image-default.jpg → .webp (1200×630) y -600.webp (600×315)
- * Target B — Blog images: public/images/blog/*.webp → *-600.webp (width 600)
+ * Target A — OG image: public/og-image-default.jpg → .webp (1200×630) and -600.webp (600×315)
+ * Target B — Blog images: public/images/blog/*.webp → *-600 and *-900 (webp + avif), plus full .avif
  *
- * Idempotente: salta si el output ya existe.
+ * Idempotent: skips outputs that already exist.
  */
 
 import { existsSync, readdirSync } from 'node:fs';
-import { join, dirname, basename } from 'node:path';
+import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -18,12 +18,42 @@ const root = join(__dirname, '..');
 const publicDir = join(root, 'public');
 const blogImagesDir = join(publicDir, 'images', 'blog');
 
+/** Source masters only — skip width variants like -600.webp / -900.webp. */
+function isBlogSourceWebp(filename) {
+  return filename.endsWith('.webp') && !/-\d+\.webp$/.test(filename);
+}
+
+async function ensureWebpVariant(sharp, sourcePath, outPath, width, label) {
+  if (existsSync(outPath)) {
+    console.log(`  SKIP ${label} — already exists`);
+    return;
+  }
+  await sharp(sourcePath)
+    .resize(width, null, { withoutEnlargement: true })
+    .webp({ quality: 85 })
+    .toFile(outPath);
+  console.log(`  → ${label} (width ${width})`);
+}
+
+async function ensureAvifVariant(sharp, sourcePath, outPath, width, label) {
+  if (existsSync(outPath)) {
+    console.log(`  SKIP ${label} — already exists`);
+    return;
+  }
+  let pipeline = sharp(sourcePath);
+  if (width !== null) {
+    pipeline = pipeline.resize(width, null, { withoutEnlargement: true });
+  }
+  await pipeline.avif({ quality: 50 }).toFile(outPath);
+  console.log(`  → ${label}`);
+}
+
 async function main() {
   let sharp;
   try {
     sharp = (await import('sharp')).default;
   } catch {
-    console.error('Falta la dependencia "sharp". Instálala con: pnpm add -D sharp');
+    console.error('Missing dependency "sharp". Install with: pnpm add -D sharp');
     process.exit(1);
   }
 
@@ -32,7 +62,7 @@ async function main() {
   /* ------------------------------------------------------------------ */
   const ogSource = join(publicDir, 'og-image-default.jpg');
   if (!existsSync(ogSource)) {
-    console.error('No se encontró public/og-image-default.jpg. Coloca la imagen fuente en public/.');
+    console.error('Missing public/og-image-default.jpg. Place the source image in public/.');
     process.exit(1);
   }
 
@@ -45,7 +75,7 @@ async function main() {
   for (const { name, width, height } of ogOutputs) {
     const outPath = join(publicDir, name);
     if (existsSync(outPath)) {
-      console.log(`  SKIP ${name} — ya existe`);
+      console.log(`  SKIP ${name} — already exists`);
       continue;
     }
     await sharp(ogSource)
@@ -60,55 +90,58 @@ async function main() {
   /* ------------------------------------------------------------------ */
   console.log('\n=== Target B: Blog images ===');
   if (!existsSync(blogImagesDir)) {
-    console.log('  No existe public/images/blog/. Omitido.');
+    console.log('  public/images/blog/ does not exist. Skipped.');
   } else {
-    const files = readdirSync(blogImagesDir).filter(
-      (f) => f.endsWith('.webp') && !f.endsWith('-600.webp'),
-    );
+    const files = readdirSync(blogImagesDir).filter(isBlogSourceWebp);
 
     if (files.length === 0) {
-      console.log('  No se encontraron imágenes .webp en public/images/blog/.');
+      console.log('  No source .webp images found in public/images/blog/.');
     }
 
     for (const file of files) {
       const baseName = file.replace(/\.webp$/, '');
-      const outName = `${baseName}-600.webp`;
-      const outPath = join(blogImagesDir, outName);
+      const sourcePath = join(blogImagesDir, file);
 
-      if (!existsSync(outPath)) {
-        await sharp(join(blogImagesDir, file))
-          .resize(600, null, { withoutEnlargement: true })
-          .webp({ quality: 85 })
-          .toFile(outPath);
-        console.log(`  → ${outName} (width 600)`);
-      } else {
-        console.log(`  SKIP ${outName} — ya existe`);
-      }
+      await ensureWebpVariant(
+        sharp,
+        sourcePath,
+        join(blogImagesDir, `${baseName}-600.webp`),
+        600,
+        `${baseName}-600.webp`,
+      );
+      await ensureWebpVariant(
+        sharp,
+        sourcePath,
+        join(blogImagesDir, `${baseName}-900.webp`),
+        900,
+        `${baseName}-900.webp`,
+      );
 
-      const avifResized = join(blogImagesDir, `${baseName}-600.avif`);
-      if (!existsSync(avifResized)) {
-        await sharp(join(blogImagesDir, file))
-          .resize(600, null, { withoutEnlargement: true })
-          .avif({ quality: 50 })
-          .toFile(avifResized);
-        console.log(`  → ${basename(avifResized)}`);
-      } else {
-        console.log(`  SKIP ${basename(avifResized)} — ya existe`);
-      }
-
-      const avifFull = join(blogImagesDir, `${baseName}.avif`);
-      if (!existsSync(avifFull)) {
-        await sharp(join(blogImagesDir, file))
-          .avif({ quality: 50 })
-          .toFile(avifFull);
-        console.log(`  → ${basename(avifFull)}`);
-      } else {
-        console.log(`  SKIP ${basename(avifFull)} — ya existe`);
-      }
+      await ensureAvifVariant(
+        sharp,
+        sourcePath,
+        join(blogImagesDir, `${baseName}-600.avif`),
+        600,
+        `${baseName}-600.avif`,
+      );
+      await ensureAvifVariant(
+        sharp,
+        sourcePath,
+        join(blogImagesDir, `${baseName}-900.avif`),
+        900,
+        `${baseName}-900.avif`,
+      );
+      await ensureAvifVariant(
+        sharp,
+        sourcePath,
+        join(blogImagesDir, `${baseName}.avif`),
+        null,
+        `${baseName}.avif`,
+      );
     }
   }
 
-  console.log('\n✅ Listo.');
+  console.log('\nDone.');
 }
 
 main().catch((err) => {
