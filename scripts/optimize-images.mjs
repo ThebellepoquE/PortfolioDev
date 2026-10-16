@@ -1,12 +1,18 @@
 #!/usr/bin/env node
 /**
  * Generates WebP/AVIF variants for portfolio images: OG image and blog images.
- * Usage: pnpm run optimize:images
+ * Usage (manual only — not wired into CI or `next build`):
+ *   pnpm run optimize:images
+ *
+ * Run after adding or replacing a source image under public/images/blog/ or
+ * public/og-image-default.jpg. Generated *-600 / *-900 / *.avif files are
+ * committed so a fresh clone does not need this script to build or serve.
  *
  * Target A — OG image: public/og-image-default.jpg → .webp (1200×630) and -600.webp (600×315)
  * Target B — Blog images: public/images/blog/*.webp → *-600 and *-900 (webp + avif), plus full .avif
  *
- * Idempotent: skips outputs that already exist.
+ * Idempotent: if an output path already exists, it is left untouched (no rewrite, no mtime bump).
+ * Missing outputs are created so a partial tree converges to the full set.
  */
 
 import { existsSync, readdirSync } from 'node:fs';
