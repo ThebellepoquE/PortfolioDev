@@ -1,66 +1,113 @@
-// Vercel Serverless Function - Envío de emails con Resend
+/**
+ * Validación y cuerpo del formulario de contacto.
+ * El envío SMTP vive en privateEmail.ts (Namecheap Private Email).
+ */
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const TO_EMAIL = process.env.CONTACT_EMAIL || 'tu-email@ejemplo.com';
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const NAME_MAX_LENGTH = 100;
+const EMAIL_MAX_LENGTH = 254;
+const MESSAGE_MAX_LENGTH = 5000;
 
-// Configuración de colores (Sincronizado con _variables.scss)
 const THEME = {
   pink: '#FF1493',
   yellow: '#FFF01F',
   green: '#00FF00',
   bgDark: '#0a0a0a',
   bgCard: '#1a1a1a',
-  bgEmailBody: '#16213e', // Color específico para jerarquía en el email
+  bgEmailBody: '#16213e',
   text: '#F5F5F5',
-  textMuted: '#aaaaaa',  // Mejorado para contraste
-  textFooter: '#888888'  // Mejorado para contraste
-};
+  textMuted: '#aaaaaa',
+  textFooter: '#888888',
+} as const;
 
-export default async function handler(request, response) {
-  // Solo permitir POST
-  if (request.method !== 'POST') {
-    return response.status(405).json({ error: 'Method not allowed' });
+export interface SanitizedContactMessage {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export interface OutboundContactMail {
+  from: string;
+  to: string;
+  replyTo: string;
+  subject: string;
+  html: string;
+  text: string;
+}
+
+export interface MailSender {
+  send: (mail: OutboundContactMail) => Promise<MailSendResult>;
+}
+
+export type ContactValidationResult =
+  | { ok: true; value: SanitizedContactMessage }
+  | { ok: false; error: string };
+
+export type MailSendResult =
+  | { ok: true; id: string }
+  | { ok: false; error: string };
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+/** Escapa texto de usuario antes de interpolarlo en el HTML del correo. */
+export function escapeHtml(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function collapseHeaderText(value: string): string {
+  return value.replace(/[\r\n\t]+/g, ' ').replace(/ {2,}/g, ' ').trim();
+}
+
+/**
+ * Normaliza el cuerpo JSON del formulario.
+ * Rechaza tipos incorrectos, emails inválidos y campos vacíos tras recortar.
+ */
+export function validateContactInput(body: unknown): ContactValidationResult {
+  if (!isRecord(body)) {
+    return { ok: false, error: 'El cuerpo de la petición no es válido' };
   }
 
-  // Verificar API key configurada
-  if (!RESEND_API_KEY) {
-    console.error('RESEND_API_KEY no configurada');
-    return response.status(500).json({ error: 'Server configuration error' });
+  const { name, email, message } = body;
+
+  if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string') {
+    return { ok: false, error: 'Faltan campos obligatorios' };
   }
 
-  try {
-    const { name, email, message } = request.body;
+  const sanitizedName = collapseHeaderText(name).slice(0, NAME_MAX_LENGTH);
+  const sanitizedEmail = collapseHeaderText(email);
+  const sanitizedMessage = message.replaceAll('\0', '').trim().slice(0, MESSAGE_MAX_LENGTH);
 
-    // Validación básica
-    if (!name || !email || !message) {
-      return response.status(400).json({ error: 'Missing required fields' });
-    }
+  if (!sanitizedName || !sanitizedEmail || !sanitizedMessage) {
+    return { ok: false, error: 'Faltan campos obligatorios' };
+  }
 
-    // Validar formato de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return response.status(400).json({ error: 'Invalid email format' });
-    }
+  if (sanitizedEmail.length > EMAIL_MAX_LENGTH || !EMAIL_PATTERN.test(sanitizedEmail)) {
+    return { ok: false, error: 'El email no tiene un formato válido' };
+  }
 
-    // Sanitizar inputs
-    const sanitizedName = name.slice(0, 100).trim();
-    const sanitizedEmail = email.slice(0, 254).trim();
-    const sanitizedMessage = message.slice(0, 5000).trim();
+  return {
+    ok: true,
+    value: {
+      name: sanitizedName,
+      email: sanitizedEmail,
+      message: sanitizedMessage,
+    },
+  };
+}
 
-    // Enviar email con Resend
-    const resendResponse = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: 'Ione Rodríguez <hola@thebellepoque.dev>',
-        to: [TO_EMAIL],
-        reply_to: sanitizedEmail,
-        subject: `Nuevo mensaje de ${sanitizedName} - Portfolio`,
-        html: `
-<!DOCTYPE html>
+function renderContactHtml(input: SanitizedContactMessage): string {
+  const name = escapeHtml(input.name);
+  const email = escapeHtml(input.email);
+  const message = escapeHtml(input.message);
+
+  return `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -71,8 +118,6 @@ export default async function handler(request, response) {
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%;">
-          
-          <!-- HEADER -->
           <tr>
             <td style="background: linear-gradient(135deg, ${THEME.pink} 0%, ${THEME.yellow} 50%, ${THEME.green} 100%); padding: 3px; border-radius: 12px 12px 0 0;">
               <table width="100%" cellpadding="0" cellspacing="0">
@@ -89,15 +134,11 @@ export default async function handler(request, response) {
               </table>
             </td>
           </tr>
-          
-          <!-- BODY -->
           <tr>
             <td style="background-color: ${THEME.bgCard}; padding: 0 3px;">
               <table width="100%" cellpadding="0" cellspacing="0" style="background-color: ${THEME.bgEmailBody};">
                 <tr>
                   <td style="padding: 30px;">
-                    
-                    <!-- Nombre -->
                     <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
                       <tr>
                         <td style="background-color: ${THEME.bgCard}; padding: 20px; border-radius: 8px; border-left: 4px solid ${THEME.pink};">
@@ -105,47 +146,38 @@ export default async function handler(request, response) {
                             Nombre
                           </p>
                           <p style="margin: 0; color: ${THEME.text}; font-size: 18px; font-weight: 500;">
-                            ${sanitizedName}
+                            ${name}
                           </p>
                         </td>
                       </tr>
                     </table>
-                    
-                    <!-- Email -->
                     <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
                       <tr>
                         <td style="background-color: ${THEME.bgCard}; padding: 20px; border-radius: 8px; border-left: 4px solid ${THEME.yellow};">
                           <p style="margin: 0 0 8px 0; color: ${THEME.yellow}; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
                             Email
                           </p>
-                          <a href="mailto:${sanitizedEmail}" style="color: ${THEME.text}; font-size: 18px; font-weight: 500; text-decoration: none;">
-                            ${sanitizedEmail}
+                          <a href="mailto:${email}" style="color: ${THEME.text}; font-size: 18px; font-weight: 500; text-decoration: none;">
+                            ${email}
                           </a>
                         </td>
                       </tr>
                     </table>
-                    
-                    <!-- Mensaje -->
                     <table width="100%" cellpadding="0" cellspacing="0">
                       <tr>
                         <td style="background-color: ${THEME.bgCard}; padding: 20px; border-radius: 8px; border-left: 4px solid ${THEME.green};">
                           <p style="margin: 0 0 12px 0; color: ${THEME.green}; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
                             Mensaje
                           </p>
-                          <p style="margin: 0; color: ${THEME.text}; font-size: 16px; line-height: 1.6; white-space: pre-wrap;">
-${sanitizedMessage}
-                          </p>
+                          <p style="margin: 0; color: ${THEME.text}; font-size: 16px; line-height: 1.6; white-space: pre-wrap;">${message}</p>
                         </td>
                       </tr>
                     </table>
-                    
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
-          
-          <!-- FOOTER -->
           <tr>
             <td style="background: linear-gradient(135deg, ${THEME.pink} 0%, ${THEME.yellow} 50%, ${THEME.green} 100%); padding: 3px; border-radius: 0 0 12px 12px;">
               <table width="100%" cellpadding="0" cellspacing="0">
@@ -155,48 +187,45 @@ ${sanitizedMessage}
                       Enviado desde tu portfolio
                     </p>
                     <p style="margin: 0; color: ${THEME.textFooter}; font-size: 11px;">
-                      Responde directamente a este email para contactar con ${sanitizedName}
+                      Responde directamente a este email para contactar con ${name}
                     </p>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
-          
         </table>
       </td>
     </tr>
   </table>
 </body>
-</html>
-        `,
-        text: `
-Nuevo mensaje desde tu Portfolio
-======================================
+</html>`;
+}
 
-Nombre: ${sanitizedName}
-Email: ${sanitizedEmail}
-
-Mensaje:
-${sanitizedMessage}
-
--------------------------------------
-Enviado desde tu portfolio
-        `.trim(),
-      }),
-    });
-
-    if (!resendResponse.ok) {
-      const errorData = await resendResponse.json();
-      console.error('Resend API error:', errorData);
-      return response.status(500).json({ error: 'Failed to send email' });
-    }
-
-    const data = await resendResponse.json();
-    return response.status(200).json({ success: true, id: data.id });
-
-  } catch (error) {
-    console.error('Contact API error:', error);
-    return response.status(500).json({ error: 'Internal server error' });
-  }
+/** Arma el mensaje SMTP. replyTo es el visitante, para responder desde Private Email. */
+export function buildContactEmail(
+  input: SanitizedContactMessage,
+  toEmail: string,
+  fromAddress: string,
+): OutboundContactMail {
+  return {
+    from: fromAddress,
+    to: toEmail,
+    replyTo: input.email,
+    subject: `Nuevo mensaje de ${input.name} - Portfolio`,
+    html: renderContactHtml(input),
+    text: [
+      'Nuevo mensaje desde tu Portfolio',
+      '======================================',
+      '',
+      `Nombre: ${input.name}`,
+      `Email: ${input.email}`,
+      '',
+      'Mensaje:',
+      input.message,
+      '',
+      '-------------------------------------',
+      'Enviado desde tu portfolio',
+    ].join('\n'),
+  };
 }
