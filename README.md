@@ -38,6 +38,11 @@ pnpm test:coverage
 
 # Validación pre-deploy
 pnpm run check:preprod   # tests + lint + build + audit
+
+# Variantes de imagen (manual; no corre en CI ni en el build)
+# Solo hace falta tras añadir o reemplazar fuentes en public/images/blog/
+# o public/og-image-default.jpg. Las variantes *-600 / *-900 van en el repo.
+pnpm run optimize:images
 ```
 
 ## Estructura
