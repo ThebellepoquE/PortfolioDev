@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
   experimental: {
     inlineCss: true,
   },
+  redirects() {
+    return [
+      {
+        source: '/proyecto/lighton-encuestas',
+        destination: '/proyecto/lighton-es',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
