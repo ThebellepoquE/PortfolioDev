@@ -27,6 +27,10 @@ describe('next.config security headers', () => {
     expect(headers['Permissions-Policy']).toContain('geolocation=()');
   });
 
+  it('offers AVIF before WebP to next/image', () => {
+    expect(nextConfig.images?.formats).toEqual(['image/avif', 'image/webp']);
+  });
+
   it('keeps the retired project slug as a permanent redirect', async () => {
     const redirects = await nextConfig.redirects?.();
 

@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   devIndicators: false,
   typedRoutes: true,
+  images: {
+    // Next 16 serves WebP only by default; AVIF is ~20-30% smaller at the cost
+    // of a slower first encode.
+    formats: ['image/avif', 'image/webp'],
+  },
   experimental: {
     inlineCss: true,
   },

@@ -11,7 +11,7 @@ Este es el código de mi portfolio personal en [thebellepoque.dev](https://www.t
 - **4 proyectos** con métricas, badges y páginas de caso de estudio (`/proyecto/:id`)
 - **SEO completo**: Open Graph, Twitter Cards, JSON-LD por ruta, sitemap dinámico, imágenes WebP/AVIF
 - **Formulario de contacto** serverless con SMTP de Namecheap Private Email (`nodemailer`)
-- **150 tests** (Vitest + Testing Library + axe-core a11y)
+- **151 tests** (Vitest + Testing Library + axe-core a11y)
 - **Headers de seguridad** (HSTS, COOP, anti-clickjacking) y `security.txt`
 
 ## Stack
