@@ -2,7 +2,7 @@
 
 **Desarrolladora Web · TypeScript, React, Next.js, Python & Automatizaciones**
 
-Este es el código de mi portfolio personal en [thebellepoque.dev](https://www.thebellepoque.dev). Construido desde cero con Next.js 15, React 19 y TypeScript, sin plantillas. Cada decisión técnica tiene una razón.
+Este es el código de mi portfolio personal en [thebellepoque.dev](https://www.thebellepoque.dev). Construido desde cero con Next.js 16, React 19 y TypeScript, sin plantillas. Cada decisión técnica tiene una razón.
 
 ## Que hay aqui
 
@@ -10,20 +10,20 @@ Este es el código de mi portfolio personal en [thebellepoque.dev](https://www.t
 - **Blog** con posts en Markdown, renderizado via `react-markdown`
 - **4 proyectos** con métricas, badges y páginas de caso de estudio (`/proyecto/:id`)
 - **SEO completo**: Open Graph, Twitter Cards, JSON-LD por ruta, sitemap dinámico, imágenes WebP/AVIF
-- **Formulario de contacto** serverless con Resend
-- **135 tests** (Vitest + Testing Library + axe-core a11y)
-- **CSP estricta**, headers de seguridad, bloqueo de bots IA, `security.txt`
+- **Formulario de contacto** serverless con SMTP de Namecheap Private Email (`nodemailer`)
+- **151 tests** (Vitest + Testing Library + axe-core a11y)
+- **Headers de seguridad** (HSTS, COOP, anti-clickjacking) y `security.txt`
 
 ## Stack
 
 | Capa       | Tecnología                                                                |
 |------------|---------------------------------------------------------------------------|
-| Framework  | Next.js 15 App Router · React 19 · TypeScript 5.9                        |
+| Framework  | Next.js 16 App Router · React 19 · TypeScript 5.9                        |
 | Estilos    | SCSS modular (BEM) · CSS custom properties · temas dark/light             |
 | SEO        | Next.js Metadata API · JSON-LD · sitemap · imágenes WebP/AVIF             |
 | Testing    | Vitest · Testing Library · axe-core (a11y) · puppeteer (contrast CI)     |
 | CI/CD      | GitHub Actions (tests, lint, a11y, build) · Vercel deploy                 |
-| Infra      | Vercel serverless (Resend) · CSP headers · HSTS · security.txt            |
+| Infra      | Vercel serverless · SMTP Private Email · HSTS · COOP · security.txt       |
 
 ## Correr localmente
 
@@ -62,7 +62,9 @@ scripts/        # Sitemap, auditoría de contraste, imágenes
 
 ## Seguridad
 
-CSP con hashes SHA-256, COOP/COEP, HSTS, bloqueo de bots IA en `robots.txt`, `security.txt` para reportes. Sin `unsafe-inline`.
+Headers aplicados a todas las respuestas desde `next.config.ts` —versionados con el código, no en `vercel.json`—: `Strict-Transport-Security` con `includeSubDomains`, `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Cross-Origin-Opener-Policy: same-origin` y una `Permissions-Policy` restrictiva. `X-Powered-By` deshabilitado. Reporte de vulnerabilidades vía `security.txt` (RFC 9116) en `/security.txt`.
+
+**Pendiente: Content-Security-Policy.** Todavía no hay CSP. `experimental.inlineCss` inyecta etiquetas `<style>` en el HTML, así que `style-src 'self'` las bloquearía: primero hay que generar hashes en build (o migrar a nonce) y recién después activar la política con `default-src 'self'`. Nada de `unsafe-inline` en `script-src`.
 
 ## Licencia
 
